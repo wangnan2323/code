@@ -1,0 +1,65 @@
+﻿.div-logcontent-businessflow
+{
+    position: absolute;
+   
+}
+
+.div-logconten1t-businessflow
+{
+   background-color: #c0deed;
+    color: #667580;
+    border: solid 1px #808080;
+    border-radius:5px;
+    padding: 2px;
+    width: 200px;
+}
+
+
+.div-logcontent-div-businessflow
+{
+      border-bottom: solid 1px #808080;
+}
+
+
+.div-logcontent-user-businessflow
+{
+    border-top: solid 0px #808080;
+    border-left: solid 0px #808080;
+    border-right: solid 0px #808080;
+    text-align: right;
+    font-weight: bold;
+}
+
+.div-logcontent-date-businessflow
+{
+    text-align: right;
+    font-size: 10px;
+    border-bottom: solid 0px #808080;
+    border-left: solid 0px #808080;
+    border-right: solid 0px #808080;
+}
+
+.div-logcontent-content-businessflow
+{
+  
+    /*background-color: #fefefe;*/
+    border-left: solid 0px #808080;
+    border-right: solid 0px #808080;
+}
+
+.div-logarrow-div-businessflow
+{
+  position:relative;
+  left:20px;
+    top:4px;
+    width:0px;
+    height:0px;
+    display:inline-block;
+    border-top: solid 0px;
+    border-bottom: solid 10px #808080;
+    border-left: solid 5px transparent;
+    border-right: solid 5px transparent;
+}
+
+
+ /*//颜色备份：最浅蓝色c0deed//字体颜色667580*/

@@ -1,0 +1,129 @@
+﻿<div class="modal fade" id="div_input_modal_tbl_maintable_button">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="h4_input_title_tbl_maintable_button"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid main-content">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div id="div_dropdown_input_nextuser_tbl_maintable_button" class="form-group">
+                                <label for="dropdown_input_nextuser_tbl_maintable_button" class="control-label">待办人<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input type="hidden" id="dropdown_input_nextuser_tbl_maintable_button" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div id="div_txt_input_log_tbl_maintable_button" class="form-group">
+                                <label id="label_input_log_tbl_maintable_button" for="txt_input_log_tbl_maintable_button" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+
+                                <textarea id="txt_input_log_tbl_maintable_button" class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_input_modal_confirm_tbl_maintable_button" class="btn btn-primary" type="button">确定<span class="badge"></span></button>
+                    <button id="btn_input_modal_cancle_tbl_maintable_button" class="btn btn-default-outline" type="button">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="div_workflow_modal_tbl_maintable_button">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="h4_workflow_title_tbl_maintable_button">审核流程</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid main-content">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+
+                            <div id="div_ul_workflow_useroperation_tbl_maintable_button" class="form-group">
+                                <label for="ul_workflow_useroperation_tbl_maintable_button" class="control-label">设定流程<i class="icon-exclamation-sign hand hidden"></i></label>
+
+                                <ul id="ul_workflow_useroperation_tbl_maintable_button" class="nav nav-tabs"></ul>
+
+                                <div id="div_workflow_useroperation_tbl_maintable_button" class="tab-content">
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+                        <div class="col-lg-10">
+                            <div id="div_workflow_txt_shyj_tbl_maintable_button" class="form-group">
+                                <label for="workflow_txt_shyj_tbl_maintable_button" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+
+                                <textarea id="workflow_txt_shyj_tbl_maintable_button" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div id="div_workflow_list_shyjlb_tbl_maintable_button" class="form-group">
+                                <label for="workflow_list_shyjlb_tbl_maintable_button" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                <div id="workflow_list_shyjlb_tbl_maintable_button"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div id="div_workflow_text_czr_tbl_maintable_button" class="form-group">
+                                <label for="workflow_text_czr_tbl_maintable_button" class="control-label">操作人<i class="icon-exclamation-sign hand hidden"></i></label>
+
+                                <input id="workflow_text_czr_tbl_maintable_button" class="form-control" type="text" placeholder="">
+                                <input id="workflow_text_czrid_tbl_maintable_button" class="form-control hidden" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div id="div_workflow_datetime_czrq_tbl_maintable_button_date" class="form-group">
+                                        <label for="workflow_datetime_czrq_tbl_maintable_button_date" class="control-label">操作日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <div id="workflow_datetime_czrq_tbl_maintable_button_date" class="input-group date datepicker">
+                                            <input class="form-control" type="text" />
+                                            <span class="input-group-addon hand">
+                                                <i class="icon-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_workflow_datetime_czrq_tbl_maintable_button_time" class="form-group">
+                                        <label for="workflow_datetime_czrq_tbl_maintable_button_time" class="control-label">操作时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input class="form-control" id="workflow_datetime_czrq_tbl_maintable_button_time" type="text" />
+                                            <span class="input-group-addon hand">
+                                                <i class="icon-time"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_workflow_modal_start_tbl_maintable_button" style="display:none;" onclick="tblMainTableButtonObj.btn_workflow_modal_start_onclick();" class="btn btn-primary" type="button">启动<span class="badge"></span></button>
+                    <button id="btn_workflow_modal_send_tbl_maintable_button" style="display:none;" onclick="tblMainTableButtonObj.btn_workflow_modal_send_onclick();" class="btn btn-primary" type="button">流转<span class="badge"></span></button>
+                    <button id="btn_workflow_modal_cancle_tbl_maintable_button" onclick="tblMainTableButtonObj.btn_workflow_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

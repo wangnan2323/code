@@ -1,0 +1,223 @@
+﻿<script src="../t_code/t_code_content_modallist_part.min.js" type="text/javascript"></script>
+<link href="../t_code/t_code_content_modallist_part.min.css" media="all" rel="stylesheet" type="text/css" />
+
+<!--按钮行 start -->
+<div class="container-fluid main-content cc-command">
+    <div class="row ">
+        <div class="col-md-6 col-xs-8 cc-command-button">
+            <button id="btn_command_new_t_code_content_modallist" class="btn btn-success" onclick="t_code_content_modallist_Obj.btn_command_new_onclick();">新建</button>
+            <button id="btn_command_delete_t_code_content_modallist" class="btn btn-danger" onclick="t_code_content_modallist_Obj.btn_command_delete_onclick();">删除</button>
+
+        </div>
+        <div class="col-md-2 col-xs-1" style="text-align:right;">
+            <ul id="btn_command_clearselect_t_code_content_modallist" class="nav cc-badge-ul hidden">
+                <li>
+                    <a class="cc-badge-a" onclick="t_code_content_modallist_Obj.btn_command_clearselect_onclick();" title="清空选择内容">
+                        <span aria-hidden="true" class="icon-list-ul"></span>
+                        <p class="cc-badge-p "></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4  cc-command-search cc-hidden-sm cc-hidden-xs">
+            <div class="input-group">
+                <input id="txt_command_search_t_code_content_modallist" type="text" class="form-control">
+                <div class="input-group-btn">
+                    <button id="btn_command_search_t_code_content_modallist" type="button" class="btn btn-warning" value="" onclick="t_code_content_modallist_Obj.btn_command_search_onclick();">简单查询</button>
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" style="margin-left:-10px;">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right btn-command-search-dropdown">
+                        <li><a href="javascript:void(0);" onclick="t_code_content_modallist_Obj.btn_command_search_1_onclick();"><i class="icon-plus-sign"></i>简单查询</a></li>
+                        <li><a href="javascript:void(0);" onclick="t_code_content_modallist_Obj.btn_command_search_2_onclick();"><i class="icon-edit"></i>高级查询</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-1 cc-hidden-lg cc-hidden-md  col-xs-3 cc-command-search-xs " style="text-align:right;">
+            <button id="btn_command_search_xs_t_code_content_modallist" class="btn btn-warning " onclick="t_code_content_modallist_Obj.btn_command_search_xs_onclick();">查询</button>
+        </div>
+    </div>
+</div>
+<!--按钮行 end -->
+<!--内容部分 start-->
+<div class="container-fluid main-content cc-grid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table" id="table_grid_t_code_content_modallist"></table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="div_search_modal_t_code_content_modallist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        高级查询
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_id_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_id_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_id_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_nodeid_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_nodeid_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_nodeid_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_parentnodeid_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_parentnodeid_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_parentnodeid_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_parentnodename_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_parentnodename_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_parentnodename_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_nodename_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_nodename_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_nodename_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_nodevalue_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_nodevalue_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_nodevalue_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_nodetype_t_code_content_modallist" class="form-group">
+                                    <label for="search_txt_nodetype_t_code_content_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_nodetype_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_search_modal_search_t_code_content_modallist" onclick="t_code_content_modallist_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">查询<span class="badge"></span></button>
+                        <button id="btn_search_modal_cancle_t_code_content_modallist" onclick="t_code_content_modallist_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="div_detail_modal_t_code_content_modallist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        t_code_content_modallist
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_id_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_id_t_code_content_modallist" class="control-label">id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_id_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_nodeid_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_nodeid_t_code_content_modallist" class="control-label">nodeid【节点id】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_nodeid_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_parentnodeid_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_parentnodeid_t_code_content_modallist" class="control-label">parentnodeid【父节点id】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_parentnodeid_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_parentnodename_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_parentnodename_t_code_content_modallist" class="control-label">parentnodename【父节点名称】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_parentnodename_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_nodename_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_nodename_t_code_content_modallist" class="control-label">nodename【节点名称】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_nodename_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_nodevalue_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_nodevalue_t_code_content_modallist" class="control-label">nodevalue【节点值】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_nodevalue_t_code_content_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_nodetype_t_code_content_modallist" class="form-group">
+                                    <label for="detail_txt_nodetype_t_code_content_modallist" class="control-label">nodetype【节点状态（启用/停用）】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_nodetype_t_code_content_modallist" type="hidden">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_detail_modal_save_t_code_content_modallist" onclick="t_code_content_modallist_Obj.btn_detail_modal_save_onclick();" class="btn btn-success" type="button">确定<span class="badge"></span></button>
+                            <button id="btn_detail_modal_cancle_t_code_content_modallist" onclick="t_code_content_modallist_Obj.btn_detail_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--内容部分 end-->

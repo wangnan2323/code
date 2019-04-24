@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        cc-list
+    </title>
+    <link href="tbl_ld_xxbgnr_list.css" media="all" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+      
+   
+    
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.js"></script>
+
+    <script src="tbl_ld_xxbgnr_list.js" type="text/javascript"></script>
+    <script>
+
+        $.include({
+            rootip: '127.0.0.1',
+            ismin: false,
+            file: ['base', 'resource',
+                 '../../commonjs/commonjs.js',
+                    '../../commoncss/commoncss.css',
+                '../basepage/basepage.css',
+                '../basepage/basepage.js'
+            ]
+        });
+
+    </script>
+
+
+</head>
+<body>
+
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <div class="col-md-6 col-xs-8 cc-command-button">
+                <!--<button id="btn_command_new_tbl_ld_xxbgnr_list" class="btn btn-success" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_new_onclick();">新建</button>
+                <button id="btn_command_delete_tbl_ld_xxbgnr_list" class="btn btn-danger" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_delete_onclick();">删除</button>-->
+                <button id="btn_command_export_tbl_ld_xxbgnr_list" class="btn btn-success" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_export_onclick();">导出</button>
+
+                </div>
+                <div class="col-md-2 col-xs-1" style="text-align:right;">
+                <ul id="btn_command_clearselect_tbl_ld_xxbgnr_list" class="nav cc-badge-ul hidden">
+                        <li>
+                            <a class="cc-badge-a" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_clearselect_onclick();" title="清空选择内容">
+                                <span aria-hidden="true" class="icon-list-ul"></span>
+                                <p class="cc-badge-p "></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4  cc-command-search cc-hidden-sm cc-hidden-xs">
+                    <div class="input-group">
+                    <input id="txt_command_search_tbl_ld_xxbgnr_list" type="text" class="form-control">
+                        <div class="input-group-btn">
+                        <button id="btn_command_search_tbl_ld_xxbgnr_list" type="button" class="btn btn-warning" value="" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_search_onclick();">简单查询</button>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" style="margin-left:-10px;">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right btn-command-search-dropdown">
+                                <li><a href="javascript:void(0);" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_search_1_onclick();"><i class="icon-plus-sign"></i>简单查询</a></li>
+                                <li><a href="javascript:void(0);" onclick="tbl_ld_xxbgnr_list_Obj.btn_command_search_2_onclick();"><i class="icon-edit"></i>高级查询</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-1 cc-hidden-lg cc-hidden-md  col-xs-3 cc-command-search-xs " style="text-align:right;">
+                <button id="btn_command_search_xs_tbl_ld_xxbgnr_list" class="btn btn-warning " onclick="tbl_ld_xxbgnr_list_Obj.btn_command_search_xs_onclick();">查询</button>
+                </div>
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>信息变更内容详情</div>
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+    <!--内容部分 start-->
+    <div class="container-fluid main-content cc-grid leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table" id="table_grid_tbl_ld_xxbgnr_list"></table>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="div_search_modal_tbl_ld_xxbgnr_list">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            高级查询
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid main-content">
+                            <div class="row hidden">
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdownlist_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdownlist_old_tbl_ld_xxbgnr_list" class="control-label">singledropdownlist<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdownlist_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdownlist_oldid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdownlist_oldid_tbl_ld_xxbgnr_list" class="control-label">singledropdownlistid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdownlist_oldid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdownlist_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdownlist_new_tbl_ld_xxbgnr_list" class="control-label">singledropdownlist<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdownlist_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdownlist_newid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdownlist_newid_tbl_ld_xxbgnr_list" class="control-label">singledropdownlistid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdownlist_newid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_multidropdownlist_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_multidropdownlist_old_tbl_ld_xxbgnr_list" class="control-label">multidropdownlist<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_multidropdownlist_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_multidropdownlist_oldid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_multidropdownlist_oldid_tbl_ld_xxbgnr_list" class="control-label">multidropdownlistid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_multidropdownlist_oldid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_multidropdownlist_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_multidropdownlist_new_tbl_ld_xxbgnr_list" class="control-label">multidropdownlist<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_multidropdownlist_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_multidropdownlist_newid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_multidropdownlist_newid_tbl_ld_xxbgnr_list" class="control-label">multidropdownlistid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_multidropdownlist_newid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_datefrom" class="form-group">
+                                                <label for="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_datefrom" class="control-label">datetime开始日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_datefrom" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_timefrom" class="form-group">
+                                                <label for="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_timefrom" class="control-label">datetime开始时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_timefrom" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_dateto" class="form-group">
+                                                <label for="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_dateto" class="control-label">datetime结束日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_dateto" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_timeto" class="form-group">
+                                                <label for="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_timeto" class="control-label">datetime结束时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetime_old_tbl_ld_xxbgnr_list_timeto" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_datefrom" class="form-group">
+                                                <label for="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_datefrom" class="control-label">datetime开始日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_datefrom" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_timefrom" class="form-group">
+                                                <label for="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_timefrom" class="control-label">datetime开始时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_timefrom" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_dateto" class="form-group">
+                                                <label for="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_dateto" class="control-label">datetime结束日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_dateto" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_timeto" class="form-group">
+                                                <label for="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_timeto" class="control-label">datetime结束时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetime_new_tbl_ld_xxbgnr_list_timeto" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_datefrom" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_datefrom" class="control-label">datetime_time开始日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_datefrom" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_timefrom" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_timefrom" class="control-label">datetime_time开始时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_timefrom" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_dateto" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_dateto" class="control-label">datetime_time结束日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_dateto" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_timeto" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_timeto" class="control-label">datetime_time结束时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetimetime_old_tbl_ld_xxbgnr_list_timeto" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_datefrom" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_datefrom" class="control-label">datetime_time开始日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_datefrom" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_timefrom" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_timefrom" class="control-label">datetime_time开始时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_timefrom" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_dateto" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_dateto" class="control-label">datetime_time结束日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div id="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_dateto" class="input-group date datepicker">
+                                                    <input class="form-control" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="div_search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_timeto" class="form-group">
+                                                <label for="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_timeto" class="control-label">datetime_time结束时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                                <div class="input-group bootstrap-timepicker">
+                                                    <input class="form-control" id="search_datetime_f_datetimetime_new_tbl_ld_xxbgnr_list_timeto" type="text" />
+                                                    <span class="input-group-addon hand">
+                                                        <i class="icon-time"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_toggle_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_toggle_old_tbl_ld_xxbgnr_list" class="control-label">toggle<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_toggle_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_toggle_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_toggle_new_tbl_ld_xxbgnr_list" class="control-label">toggle<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_toggle_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_textarea_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_textarea_old_tbl_ld_xxbgnr_list" class="control-label">textarea<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_textarea_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_textarea_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_textarea_new_tbl_ld_xxbgnr_list" class="control-label">textarea<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_textarea_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_bgnrid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_bgnrid_tbl_ld_xxbgnr_list" class="control-label">变更内容id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_bgnrid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_dy_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_dy_old_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_dy_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_dy_oldid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_dy_oldid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_dy_oldid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_sc_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_sc_old_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_sc_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_sc_oldid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_sc_oldid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_sc_oldid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_qy_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_qy_old_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_qy_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_qy_oldid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_qy_oldid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_qy_oldid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_pq_old_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_pq_old_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_pq_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_pq_oldid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_pq_oldid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_pq_oldid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_dy_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_dy_new_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_dy_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_dy_newid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_dy_newid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_dy_newid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_sc_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_sc_new_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_sc_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_sc_newid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_sc_newid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_sc_newid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_qy_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_qy_new_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_qy_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_qy_newid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_qy_newid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_qy_newid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_pq_new_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_pq_new_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroup<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_pq_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_singledropdowngroup_pq_newid_tbl_ld_xxbgnr_list" class="form-group">
+                                        <label for="search_txt_f_singledropdowngroup_pq_newid_tbl_ld_xxbgnr_list" class="control-label">singledropdowngroupid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_singledropdowngroup_pq_newid_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+                                </div>  
+	                                            
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value1_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value1_tbl_ld_xxbgnr_list" class="control-label">备用字段1<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value1_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value2_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value2_tbl_ld_xxbgnr_list" class="control-label">备用字段2<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value2_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value3_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value3_tbl_ld_xxbgnr_list" class="control-label">备用字段3<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value3_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value4_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value4_tbl_ld_xxbgnr_list" class="control-label">备用字段4<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value4_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value5_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value5_tbl_ld_xxbgnr_list" class="control-label">备用字段5<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value5_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value6_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value6_tbl_ld_xxbgnr_list" class="control-label">备用字段6<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value6_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value7_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value7_tbl_ld_xxbgnr_list" class="control-label">备用字段7<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value7_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value8_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value8_tbl_ld_xxbgnr_list" class="control-label">备用字段8<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value8_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value9_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value9_tbl_ld_xxbgnr_list" class="control-label">备用字段9<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value9_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_value10_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_value10_tbl_ld_xxbgnr_list" class="control-label">备用字段10<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value10_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="提示文本">
+                                </div>                                
+                          </div>                        
+                          
+                        </div>
+                        <div class="row">
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_bgnr_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_bgnr_tbl_ld_xxbgnr_list" class="control-label">变更内容<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_bgnr_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="">
+                                </div>                                
+                          </div>                        
+                                                
+                      
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_text_old_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_text_old_tbl_ld_xxbgnr_list" class="control-label">变更前<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_text_old_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="">
+                                </div>                                
+                          </div>                        
+                                                
+                          <div class="col-lg-6">
+															<div id="div_search_txt_f_text_new_tbl_ld_xxbgnr_list" class="form-group">
+                                    <label for="search_txt_f_text_new_tbl_ld_xxbgnr_list" class="control-label">变更后<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_text_new_tbl_ld_xxbgnr_list" class="form-control" type="text" placeholder="">
+                                </div>                                
+                          </div>                        
+                                                
+                         
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_search_modal_search_tbl_ld_xxbgnr_list" onclick="tbl_ld_xxbgnr_list_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">查询<span class="badge"></span></button>
+                            <button id="btn_search_modal_cancle_tbl_ld_xxbgnr_list" onclick="tbl_ld_xxbgnr_list_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot">
+        </div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+
+</body>
+
+</html>
+
+
+
+
+

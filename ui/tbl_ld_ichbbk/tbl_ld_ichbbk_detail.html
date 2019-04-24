@@ -1,0 +1,924 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        换表补卡
+    </title>
+    <link href="tbl_ld_ichbbk_detail.css" media="all" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+    <script src="tbl_ld_ichbbk_detail.js" type="text/javascript"></script>
+    <script>
+        $.include({
+            rootip: '162.16.166.1',
+            ismin: true,
+            file: ['base', 'resource',
+                '../../commonjs/commonjs.js',
+                   '../../commoncss/commoncss.css',
+                '../basepage/basepage.css',
+                '../basepage/basepage.js'
+            ]
+        });
+    </script>
+</head>
+<body>
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <div class="col-xs-8 cc-command-button">
+                    <button id="btn_command_read_tbl_ld_ichbbk_detail" class="btn btn-success" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_read_onclick();">寻卡<span class="badge"></span></button>
+                    <button id="btn_command_save_tbl_ld_ichbbk_detail" class="btn btn-success" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_save_onclick();">保存<span class="badge"></span></button>
+                    <button id="btn_command_write_tbl_ld_ichbbk_detail" class="btn btn-success" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_write_onclick();">写卡<span class="badge"></span></button>
+
+                </div>
+                <div class="col-xs-4  cc-command-cancle">
+                    <button id="btn_command_cancle_tbl_ld_ichbbk_detail" class="btn btn-warning" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_cancle_onclick();">返回</button>
+                </div>
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content hidden">
+        <div class="row">
+            <div class="col-sm-12">
+                <div>换表补卡</div>
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+    <!--内容部分 start-->
+    <div class="container-fluid main-content cc-content leftmenu-center-content">
+        <div class="row">
+            <div class="col-sm-12  hidden">
+                <div class="widget-container fluid-height clearfix">
+                    <div class="heading hidden">
+                        <i class="icon-collapse"></i>换表补卡
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+
+
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value2_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value2_tbl_ld_ichbbk_detail" class="control-label">备用字段2<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value2_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value3_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value3_tbl_ld_ichbbk_detail" class="control-label">备用字段3<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value3_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value4_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value4_tbl_ld_ichbbk_detail" class="control-label">备用字段4<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value4_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value5_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value5_tbl_ld_ichbbk_detail" class="control-label">备用字段5<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value5_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value6_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value6_tbl_ld_ichbbk_detail" class="control-label">备用字段6<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value6_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value7_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value7_tbl_ld_ichbbk_detail" class="control-label">备用字段7<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value7_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value8_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value8_tbl_ld_ichbbk_detail" class="control-label">备用字段8<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value8_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value9_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value9_tbl_ld_ichbbk_detail" class="control-label">备用字段9<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value9_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_value10_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value10_tbl_ld_ichbbk_detail" class="control-label">备用字段10<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value10_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xkms_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xkms_tbl_ld_ichbbk_detail" class="control-label">写卡模式<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_xkms_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3 hidden">
+                                <div id="div_detail_f_sjbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_sjbh_tbl_ld_ichbbk_detail" class="control-label">收据编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_sjbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div id="div_detail_f_khfz_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khfz_tbl_ld_ichbbk_detail" class="control-label">客户分组<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khfz_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="div_detail_f_khfzid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khfzid_tbl_ld_ichbbk_detail" class="control-label">客户分组id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khfzid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="div_detail_f_cbbh_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_cbbh_tbl_ld_ichbbk_detail" class="control-label">抄表编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_cbbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div id="div_detail_f_cbbhid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_cbbhid_tbl_ld_ichbbk_detail" class="control-label">抄表编号id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_cbbhid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row hidden">
+                                <div class="col-sm-3">
+
+                                    <div id="div_detail_f_yslxid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_yslxid_tbl_ld_ichbbk_detail" class="control-label">用水类型id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_yslxid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_dy_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_dy_tbl_ld_ichbbk_detail" class="control-label">地域<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_dy_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_qy_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_qy_tbl_ld_ichbbk_detail" class="control-label">区域<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_qy_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+
+                                    <div id="div_detail_f_yhbh_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_yhbh_tbl_ld_ichbbk_detail" class="control-label">用户编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_yhbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_dyid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_dyid_tbl_ld_ichbbk_detail" class="control-label">地域id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_dyid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_qyid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_qyid_tbl_ld_ichbbk_detail" class="control-label">区域id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_qyid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+
+                                    <div id="div_detail_f_khbhid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khbhid_tbl_ld_ichbbk_detail" class="control-label">客户编号id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khbhid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_yhbhid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_yhbhid_tbl_ld_ichbbk_detail" class="control-label">用户编号id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_yhbhid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_sc_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_sc_tbl_ld_ichbbk_detail" class="control-label">水厂<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_sc_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_pq_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_pq_tbl_ld_ichbbk_detail" class="control-label">片区<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_pq_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+
+                                    <div id="div_detail_f_yslx_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_yslx_tbl_ld_ichbbk_detail" class="control-label">用水类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_yslx_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_khrq_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khrq_tbl_ld_ichbbk_detail" class="control-label">开户日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khrq_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_scid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_scid_tbl_ld_ichbbk_detail" class="control-label">水厂id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_scid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div id="div_detail_f_pqid_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_pqid_tbl_ld_ichbbk_detail" class="control-label">片区id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_pqid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="widget-container fluid-height clearfix">
+                    <div class="heading hidden">
+                        <i class="icon-collapse"></i>换表补卡
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="div_loading_iccard" style="height:100px;"><img src="../../images/loading.gif" />数据装载中...</div>
+                                <div id="div_container_iccard" style="display:none;"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_hbbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_hbbh_tbl_ld_ichbbk_detail" class="control-label">换表编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_hbbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_khbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_khbh_tbl_ld_ichbbk_detail" class="control-label">客户编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_khbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_yhm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_yhm_tbl_ld_ichbbk_detail" class="control-label">用户名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_yhm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_jfm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_jfm_tbl_ld_ichbbk_detail" class="control-label">缴费名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_jfm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_value1_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label for="detail_f_value1_tbl_ld_ichbbk_detail" class="control-label">水表地址<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_value1_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_lxth_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_lxth_tbl_ld_ichbbk_detail" class="control-label">老系统号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_lxth_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dh_tbl_ld_ichbbk_detail" class="control-label">电话<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dz_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dz_tbl_ld_ichbbk_detail" class="control-label">地址<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dz_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_gslb_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_gslb_tbl_ld_ichbbk_detail" class="control-label">购水类别<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_gslb_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_lbljgl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_lbljgl_tbl_ld_ichbbk_detail" class="control-label">老表累积购量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_lbljgl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_o_sbds_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbds_tbl_ld_ichbbk_detail" class="control-label">老水表底数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <div class="input-group">
+                                        <input id="detail_f_o_sbds_tbl_ld_ichbbk_detail" type="text" class="form-control" placeholder="">
+                                        <span class="input-group-btn">
+                                            <button id="btn_detail_f_o_sbds_tbl_ld_ichbbk_detail" class="btn btn-default" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_jsbs_onclick();" type="button">计算补水水量</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_bssl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_bssl_tbl_ld_ichbbk_detail" class="control-label">补水水量<i class="icon-exclamation-sign hand hidden"></i></label>
+
+                                        <input id="detail_f_bssl_tbl_ld_ichbbk_detail" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_hbyy_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_hbyy_tbl_ld_ichbbk_detail" class="control-label">换表原因<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_hbyy_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p style="padding-bottom:0px;padding-left:5px;padding-right:5px;padding-top:0px;margin:5px;font-size:25px;border-bottom:solid 1px #eeeeee">读写卡信息</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xklx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xklx_tbl_ld_ichbbk_detail" class="control-label">写卡类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xklx_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xkkh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xkkh_tbl_ld_ichbbk_detail" class="control-label">写卡卡号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xkkh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xkgscs_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xkgscs_tbl_ld_ichbbk_detail" class="control-label">写卡购水次数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xkgscs_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xkbcgsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xkbcgsl_tbl_ld_ichbbk_detail" class="control-label">写卡本次购水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xkbcgsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xkljgl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xkljgl_tbl_ld_ichbbk_detail" class="control-label">写卡累积购量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xkljgl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_xkjzlx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xkjzlx_tbl_ld_ichbbk_detail" class="control-label">写卡介质类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xkjzlx_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_port_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_port_tbl_ld_ichbbk_detail" class="control-label">串口号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_port_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dkkh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dkkh_tbl_ld_ichbbk_detail" class="control-label">读卡卡号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dkkh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dkbcgsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dkbcgsl_tbl_ld_ichbbk_detail" class="control-label">读卡本次购水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dkbcgsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dkgscs_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dkgscs_tbl_ld_ichbbk_detail" class="control-label">读卡购水次数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dkgscs_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dkljgl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dkljgl_tbl_ld_ichbbk_detail" class="control-label">读卡累积购量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dkljgl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dkjzlx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dkjzlx_tbl_ld_ichbbk_detail" class="control-label">读卡介质类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dkjzlx_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_dksbzt_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_dksbzt_tbl_ld_ichbbk_detail" class="control-label">读卡刷表状态<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_dksbzt_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p style="padding-bottom:0px;padding-left:5px;padding-right:5px;padding-top:0px;margin:5px;font-size:25px;border-bottom:solid 1px #eeeeee">老水表信息</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="div_container_tbl_ld_sbb_detail" style="display:none;"></div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_o_sbbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbbh_tbl_ld_ichbbk_detail" class="control-label">老水表编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sbfzid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbfzid_tbl_ld_ichbbk_detail" class="control-label">老水表水表分组id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbfzid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_khbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_khbh_tbl_ld_ichbbk_detail" class="control-label">老水表客户编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_khbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sblx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sblx_tbl_ld_ichbbk_detail" class="control-label">老水表类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sblx_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_cszm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_cszm_tbl_ld_ichbbk_detail" class="control-label">老水表初始止码<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_cszm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_ljgl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_ljgl_tbl_ld_ichbbk_detail" class="control-label">老水表累积购量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_ljgl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_o_jsbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_jsbh_tbl_ld_ichbbk_detail" class="control-label">老水表旧水表号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_jsbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sbpp_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbpp_tbl_ld_ichbbk_detail" class="control-label">老水表水表品牌<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbpp_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_rs_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_rs_tbl_ld_ichbbk_detail" class="control-label">老水表人数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_rs_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sblxid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sblxid_tbl_ld_ichbbk_detail" class="control-label">老水表类型id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sblxid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_bqzm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_bqzm_tbl_ld_ichbbk_detail" class="control-label">老水表本期止码<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_bqzm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_qsqpjsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_qsqpjsl_tbl_ld_ichbbk_detail" class="control-label">老水表前三期平均水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_qsqpjsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_o_lxth_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_lxth_tbl_ld_ichbbk_detail" class="control-label">老水表老系统号 <i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_lxth_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_mph_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_mph_tbl_ld_ichbbk_detail" class="control-label">老水表铭牌号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_mph_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sbkj_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbkj_tbl_ld_ichbbk_detail" class="control-label">老水表口径<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbkj_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_jllx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_jllx_tbl_ld_ichbbk_detail" class="control-label">老水表计量类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_jllx_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sqzm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sqzm_tbl_ld_ichbbk_detail" class="control-label">老水表上期止码<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sqzm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_qlqpjsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_qlqpjsl_tbl_ld_ichbbk_detail" class="control-label">老水表前六期平均水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_qlqpjsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_o_sbfz_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbfz_tbl_ld_ichbbk_detail" class="control-label">老水表水表分组<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbfz_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sbdz_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbdz_tbl_ld_ichbbk_detail" class="control-label">老水表水表地址<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbdz_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sbkjid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbkjid_tbl_ld_ichbbk_detail" class="control-label">老水表口径id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbkjid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_jllxid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_jllxid_tbl_ld_ichbbk_detail" class="control-label">老水表计量类型id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_jllxid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_sqsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sqsl_tbl_ld_ichbbk_detail" class="control-label">老水表上期水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sqsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                                <div id="div_detail_f_o_bqsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_bqsl_tbl_ld_ichbbk_detail" class="control-label">老水表当月水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_bqsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_o_sbbhid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_o_sbbhid_tbl_ld_ichbbk_detail" class="control-label">老水表编号id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_o_sbbhid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p style="padding-bottom:0px;padding-left:5px;padding-right:5px;padding-top:0px;margin:5px;font-size:25px;border-bottom:solid 1px #eeeeee">新水表信息</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sbbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sbbh_tbl_ld_ichbbk_detail" class="control-label">新水表编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_sbbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_jsbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_jsbh_tbl_ld_ichbbk_detail" class="control-label">新水表旧水表号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_jsbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_lxth_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_lxth_tbl_ld_ichbbk_detail" class="control-label">新水表老系统号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_lxth_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sbfz_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sbfz_tbl_ld_ichbbk_detail" class="control-label">新水表水表分组<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_n_sbfz_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4 hidden">
+                                <div id="div_detail_f_n_khbh_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_khbh_tbl_ld_ichbbk_detail" class="control-label">新系统客户编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_khbh_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sbpp_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sbpp_tbl_ld_ichbbk_detail" class="control-label">新水表水表品牌<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_sbpp_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_mph_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_mph_tbl_ld_ichbbk_detail" class="control-label">新水表铭牌号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_mph_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sblx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sblx_tbl_ld_ichbbk_detail" class="control-label">新水表类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_n_sblx_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_jllx_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_jllx_tbl_ld_ichbbk_detail" class="control-label">新水表计量类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_n_jllx_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_rs_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_rs_tbl_ld_ichbbk_detail" class="control-label">新水表人数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_rs_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sbkj_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sbkj_tbl_ld_ichbbk_detail" class="control-label">新水表口径<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_n_sbkj_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="div_detail_f_n_sbdz_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sbdz_tbl_ld_ichbbk_detail" class="control-label">新水表地址<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_sbdz_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row hidden">
+
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_cqzm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_cqzm_tbl_ld_ichbbk_detail" class="control-label">新水表初期止码<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_cqzm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_bqzm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_bqzm_tbl_ld_ichbbk_detail" class="control-label">新水表本期止码<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_bqzm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sqzm_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sqzm_tbl_ld_ichbbk_detail" class="control-label">新水表上期止码<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_sqzm_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_sqsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_sqsl_tbl_ld_ichbbk_detail" class="control-label">新水表上期水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_sqsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_bqsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_bqsl_tbl_ld_ichbbk_detail" class="control-label">新水表当月水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_bqsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row hidden">
+
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_qsqpjsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_qsqpjsl_tbl_ld_ichbbk_detail" class="control-label">新水表前三期平均水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_qsqpjsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_qlqpjsl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_qlqpjsl_tbl_ld_ichbbk_detail" class="control-label">新水表前六期平均水量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_qlqpjsl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="div_detail_f_n_ljgl_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_n_ljgl_tbl_ld_ichbbk_detail" class="control-label">新水表累积购量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_n_ljgl_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--冗余读写卡-->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p style="padding-bottom:0px;padding-left:5px;padding-right:5px;padding-top:0px;margin:5px;font-size:25px;border-bottom:solid 1px #eeeeee">状态信息</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_zt_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_zt_tbl_ld_ichbbk_detail" class="control-label">状态<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input type="hidden" id="detail_f_zt_tbl_ld_ichbbk_detail" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_xunkr_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xunkr_tbl_ld_ichbbk_detail" class="control-label">寻卡人<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xunkr_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_xunkrq_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xunkrq_tbl_ld_ichbbk_detail" class="control-label">寻卡日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xunkrq_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 hidden">
+                                <div id="div_detail_f_xunkrid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xunkrid_tbl_ld_ichbbk_detail" class="control-label">寻卡人id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xunkrid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_xiekr_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xiekr_tbl_ld_ichbbk_detail" class="control-label">写卡人<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xiekr_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="div_detail_f_xiekrq_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xiekrq_tbl_ld_ichbbk_detail" class="control-label">写卡日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xiekrq_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 hidden">
+                                <div id="div_detail_f_xiekrid_tbl_ld_ichbbk_detail" class="form-group">
+                                    <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                    <label for="detail_f_xiekrid_tbl_ld_ichbbk_detail" class="control-label">写卡人id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_f_xiekrid_tbl_ld_ichbbk_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="div_detail_f_bz_tbl_ld_ichbbk_detail" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_bz_tbl_ld_ichbbk_detail" class="control-label">备注<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <textarea id="detail_f_bz_tbl_ld_ichbbk_detail" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        <!--message-->
+        <div class="row hidden">
+            <div class="col-sm-12">
+                <div class="widget-container fluid-height">
+                    <div class="heading">
+                        <i class="icon-edit"></i>消息控件
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button class="btn btn-default btn-command-message" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_message_onclick('result');">result</button>
+                                <button class="btn btn-default btn-command-message" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_message_onclick('alert');">alert</button>
+                                <button class="btn btn-default btn-command-message" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_message_onclick('confirm');">confirm</button>
+                                <button class="btn btn-default btn-command-message" onclick="tbl_ld_ichbbk_detail_Obj.btn_command_message_onclick('block');">block</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot"></div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+</body>
+</html>
+
+
+
+
+
+
+
+

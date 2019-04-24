@@ -1,0 +1,183 @@
+﻿<div class="easyui-layout" fit="true">
+    <div region="north" border="false" style="height: 30px;">
+        <a href="##" class="easyui-linkbutton" plain="true" iconcls="icon-save" onclick="btn_save_connection()">保存</a>
+        <!--<a href="##" class="easyui-linkbutton" plain="true" iconcls="icon-remove" onclick="btn_delete_connection()">删除</a>-->
+    </div>
+    <div region="center" border="true">
+        <table id="table_detail_t_sl_ljx" style="width: 99%;">
+            <tr>
+                <td class="td_detail_title"></td>
+                <td class="td_detail_flag"></td>
+                <td class="td_detail_content"></td>
+                <td class="td_detail_title"></td>
+                <td class="td_detail_flag"></td>
+                <td class="td_detail_content"></td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">sys_id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_sys_id" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">版本号： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_sys_version" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">备注： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_sys_remark" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">连接线名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_ljxmc" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">连接线实例名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_ljxslmc" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">连接线类型： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <!--<input id="txt_ljxlx" type="text" />-->
+                    <input id="txt_ljxlx" class="easyui-combobox" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">连接线状态： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <!--<input id="txt_ljxzt" type="text" />-->
+                    <input id="txt_ljxzt" class="easyui-combobox" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">流程定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_dy_lc_sys_id" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">节点定义id[前驱]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_dy_jd_sys_id_from" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">节点定义id[后继]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_dy_jd_sys_id_to" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程实例id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_sl_lc_sys_id" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">节点实例id[前驱]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_sl_jd_sys_id_from" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">节点实例id[后继]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_sl_jd_sys_id_to" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">连接线定义ID： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_dy_ljx_sys_id" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,186 @@
+﻿
+<div class="easyui-layout" fit="true">
+    <div region="north" border="false" style="height: 30px;">
+        <a href="##" class="easyui-linkbutton" plain="true" iconcls="icon-save" onclick="btn_save_process()">保存</a>
+        <a href="##" class="easyui-linkbutton" plain="true" iconcls="icon-back" onclick="btn_cancle_designer_onclick();">关闭</a>
+    </div>
+    <div region="center" border="true">
+
+        <table id="table_detail_t_dy_lc" style="width: 99%;">
+            <tr>
+                <td class="td_detail_title" style="width:100px;"></td>
+                <td class="td_detail_flag" style="width:10px;"></td>
+                <td class="td_detail_content" style="width:300px;"></td>
+            </tr>
+
+            <tr>
+
+                <td class="td_detail_title">
+                    sys_id： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_sys_id" type="text" style="width: 300px" disabled="disabled" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    sys_appcode： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_sys_remark" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    流程定义名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_lcmc" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    流程描述： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_lcms" style="width: 300px" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td class="td_detail_title">
+                    版本号： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_sys_version" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr style="display:none;">
+                <td class="td_detail_title">
+                    流程总时限： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_lcsx" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr style="display:none;">
+                <td class="td_detail_title">
+                    是否子流程： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_sfzlc" type="text" style="width: 300px" />-->
+                    <input id="txt_sfzlc" class="easyui-combobox" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td class="td_detail_title">
+                    父流程节点： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_flcjddyid" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    开始节点id： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_lcksjddyid" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    结束节点id： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_lcjsjddyid" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    业务表名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_ywbmc" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">
+                    业务表主键名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">
+                    &nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_ywbzjmc" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+
+
+
+        </table>
+    </div>
+</div>
+

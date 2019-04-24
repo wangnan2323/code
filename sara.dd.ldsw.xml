@@ -1,0 +1,1898 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F99FB7CC-FFC9-40DA-8A06-1EEFB21826B8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sara.dd.tjhmbs</RootNamespace>
+    <AssemblyName>sara.dd.tjhmbs</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="cn.jpush.api">
+      <HintPath>lib\androidjpush\cn.jpush.api.dll</HintPath>
+    </Reference>
+    <Reference Include="Eva.Library, Version=1.2017.5.7, Culture=neutral, PublicKeyToken=2f3ca3862148e53c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Eva.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.6.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MagickNet">
+      <HintPath>lib\MagickNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.DBUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Maticsoft.DBUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\androidjpush\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="sara.platform.operation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\sara.platform.operation.dll</HintPath>
+    </Reference>
+    <Reference Include="sara.platform.service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\sara.platform.service.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="commonjs\exportjs\Blob.js" />
+    <Content Include="commonjs\exportjs\Blob.min.js" />
+    <Content Include="commonjs\exportjs\FileSaver.js" />
+    <Content Include="commonjs\exportjs\FileSaver.min.js" />
+    <Content Include="commonjs\exportjs\tableExport.js" />
+    <Content Include="commonjs\exportjs\tableExport.min.js" />
+    <Content Include="developLog.txt" />
+    <Content Include="images\lib\MagickNet.dll" />
+    <Content Include="ProjectTool.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_auth.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_field.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_fieldgroup.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_organ.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_position.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_role.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_rule.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_rulegroup.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_user.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_usergroup.asmx" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_detail_part.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_detail_part.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_detail_part.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_tree.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_tree.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_tree.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_detail_part.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_detail_part.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_detail_part.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_tree.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_tree.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_tree.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_detail_part.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_detail_part.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_detail_part.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_tree.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_tree.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_tree.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_list.min.js" />
+    <Content Include="sara.platform.operation\code\service\service_t_code_content.asmx" />
+    <Content Include="sara.platform.operation\code\service\service_t_code_menu.asmx" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code.html" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code.min.css" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code.min.js" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_content_modallist_part.html" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_content_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_content_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_menu_detail_part.html" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_menu_detail_part.min.css" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_menu_detail_part.min.js" />
+    <Content Include="sara.platform.operation\design\service\service_t_codedesign_cell.asmx" />
+    <Content Include="sara.platform.operation\design\service\service_t_codedesign_page.asmx" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_cell_modallist_part.html" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_cell_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_cell_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_config.min.js" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_page_detail.html" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_page_detail.min.css" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_page_detail.min.js" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_page_list.html" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_page_list.min.css" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_page_list.min.js" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_view.html" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_view.min.css" />
+    <Content Include="sara.platform.operation\design\ui\t_codedesign\t_codedesign_view.min.js" />
+    <Content Include="sara.platform.operation\generation\service\service_t_codegeneration_column.asmx" />
+    <Content Include="sara.platform.operation\generation\service\service_t_codegeneration_table.asmx" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_column\t_codegeneration_column_modallist_part.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_column\t_codegeneration_column_modallist_part.html" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_column\t_codegeneration_column_modallist_part.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\index.html" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushAS3.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushBash.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushCpp.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushCSharp.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushCss.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushDelphi.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushDiff.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushErlang.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushGroovy.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushJava.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushJScript.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushPerl.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushPhp.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushPlain.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushPython.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushRuby.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushScala.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushSql.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushVb.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shBrushXml.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shCore.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\scripts\shLegacy.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\src\shCore.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\src\shLegacy.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\help.png" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\magnifier.png" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\page_white_code.png" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\page_white_copy.png" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\printer.png" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shCore.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeDefault.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeDjango.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeEclipse.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeEmacs.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeMidnight.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\syntaxhighlighter\styles\shThemeRDark.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\t_codegeneration_table_detail.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\t_codegeneration_table_detail.html" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\t_codegeneration_table_detail.js" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\t_codegeneration_table_list.css" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\t_codegeneration_table_list.html" />
+    <Content Include="sara.platform.operation\generation\ui\t_codegeneration_table\t_codegeneration_table_list.js" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content_column.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content_locate.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content_style.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_errorcode.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_main.asmx" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content\t_report_content_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content\t_report_content_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content\t_report_content_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_column\t_report_content_column_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_column\t_report_content_column_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_column\t_report_content_column_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_locate\t_report_content_locate_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_locate\t_report_content_locate_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_locate\t_report_content_locate_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_style\t_report_content_style_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_style\t_report_content_style_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_style\t_report_content_style_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_errorcode\t_report_errorcode_modallist.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_errorcode\t_report_errorcode_modallist.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_errorcode\t_report_errorcode_modallist.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_detail.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_detail.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_detail.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_list.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_list.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_list.min.js" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-0.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-1.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-2.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-3.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-4.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-5.png" />
+    <Content Include="sara.platform.operation\workflow\images\back.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_black.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_blue.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_green.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_orange.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_pink.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_purple.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_red.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_yellow.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-0.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-1.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-2.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-3.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-4.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-5.png" />
+    <Content Include="sara.platform.operation\workflow\images\error.png" />
+    <Content Include="sara.platform.operation\workflow\images\grid_10.png" />
+    <Content Include="sara.platform.operation\workflow\images\jsonformat_collapsed.gif" />
+    <Content Include="sara.platform.operation\workflow\images\jsonformat_expanded.gif" />
+    <Content Include="sara.platform.operation\workflow\images\loading.gif" />
+    <Content Include="sara.platform.operation\workflow\images\loading1.gif" />
+    <Content Include="sara.platform.operation\workflow\images\manual-task.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_act.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_cleardraw.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_dis.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_draw.png" />
+    <Content Include="sara.platform.operation\workflow\images\menu.gif" />
+    <Content Include="sara.platform.operation\workflow\images\menu_sep.png" />
+    <Content Include="sara.platform.operation\workflow\images\properties.gif" />
+    <Content Include="sara.platform.operation\workflow\images\result.png" />
+    <Content Include="sara.platform.operation\workflow\images\warning.png" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_jd.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_lc.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_ljx.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_yy.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_jd.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_lc.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_ljx.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_yy.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_workitem.asmx" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\definition\designer_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\definition\designer_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\definition\designer_process.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\designer_connection_inputport.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\designer_connection_outputport.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\designer_contextmenu.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\instance\designer_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\instance\designer_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\instance\designer_process.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_jd\t_dy_jd_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_jd\t_dy_jd_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_jd\t_dy_jd_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_detail.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_detail.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_detail.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_list.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_list.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_list.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_ljx\t_dy_ljx_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_ljx\t_dy_ljx_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_ljx\t_dy_ljx_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_yy\t_dy_yy_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_yy\t_dy_yy_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_yy\t_dy_yy_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_jd\t_sl_jd_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_jd\t_sl_jd_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_jd\t_sl_jd_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_detail.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_detail.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_detail.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_list.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_list.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_list.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_ljx\t_sl_ljx_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_ljx\t_sl_ljx_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_ljx\t_sl_ljx_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_yy\t_sl_yy_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_yy\t_sl_yy_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_yy\t_sl_yy_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_workitem\t_workitem_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_workitem\t_workitem_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_workitem\t_workitem_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_activity.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_connection.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_none.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_process.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_process.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_activity.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_connection.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_none.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_process.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_process.min.js" />
+    <Content Include="service\app_datacenterlite.asmx" />
+    <Content Include="service\app_file.asmx" />
+    <Content Include="service\app_me.asmx" />
+    <Content Include="service\app_index.asmx" />
+    <Content Include="service\app_version.asmx" />
+    <Content Include="service\app_user.asmx" />
+    <Content Include="service\app_news.asmx" />
+    <Content Include="service\app_pushnotification.asmx" />
+    <Content Include="service\app_common.asmx" />
+    <Content Include="service\service_commonselectuser.asmx" />
+    <Content Include="service\service_t_codegeneration_column.asmx" />
+    <Content Include="service\service_t_codegeneration_table.asmx" />
+    <Content Include="service\service_t_datacenter_config.asmx" />
+    <Content Include="service\service_t_datacenter_content.asmx" />
+    <Content Include="service\service_tbl_app_codefactory.asmx" />
+    <Content Include="service\service_tbl_app_g_fp.asmx" />
+    <Content Include="service\service_tbl_app_g_hk.asmx" />
+    <Content Include="service\service_tbl_app_g_ht.asmx" />
+    <Content Include="service\service_tbl_app_g_jz.asmx" />
+    <Content Include="service\service_tbl_app_g_kh.asmx" />
+    <Content Include="service\service_tbl_app_index.asmx" />
+    <Content Include="service\service_tbl_app_index_title.asmx" />
+    <Content Include="service\service_tbl_app_version_color.asmx" />
+    <Content Include="service\service_tbl_app_news.asmx" />
+    <Content Include="service\service_tbl_app_news_content.asmx" />
+    <Content Include="service\service_tbl_app_news_discuss.asmx" />
+    <Content Include="service\service_tbl_app_news_like.asmx" />
+    <Content Include="service\service_tbl_app_news_title.asmx" />
+    <Content Include="service\service_tbl_app_pushnotification.asmx" />
+    <Content Include="service\service_tbl_app_version.asmx" />
+    <Content Include="service\service_tbl_app_version_html.asmx" />
+    <Content Include="service\service_tbl_codefactory.asmx" />
+    <Content Include="service\service_tbl_notice.asmx" />
+    <Content Include="service\service_tbl_resource.asmx" />
+    <Content Include="service\service_tbl_task.asmx" />
+    <Content Include="ui\commonselectuser\commonselectuser_part.css" />
+    <Content Include="ui\commonselectuser\commonselectuser_part.html" />
+    <Content Include="ui\commonselectuser\commonselectuser_part.js" />
+    <Content Include="ui\datacenter\commoncss\commoncss.css" />
+    <Content Include="ui\datacenter\commonjs\commonconfig.js" />
+    <Content Include="ui\datacenter\main\main.css" />
+    <Content Include="ui\datacenter\main\main.html" />
+    <Content Include="ui\datacenter\main\main.js" />
+    <Content Include="ui\datacenter\paper\paper.css" />
+    <Content Include="ui\datacenter\paper\paper.js" />
+    <Content Include="ui\datacenter\paper\paper_falls.html" />
+    <Content Include="ui\datacenter\paper\paper_falls.js" />
+    <Content Include="ui\datacenter\paper\paper_fullscreen.js" />
+    <Content Include="ui\datacenter\paper\paper_fullscreen100.html" />
+    <Content Include="ui\datacenter\widget\header\header.html" />
+    <Content Include="ui\datacenter\widget\header\header.js" />
+    <Content Include="ui\datacenter\widget\paragraph\baseparagraph.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommonaccordion.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommonbutton.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommonchart.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommonhtml.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommonimage.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommonmap.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_docommontable.js" />
+    <Content Include="ui\datacenter\widget\paragraph\commonparagraph_dodoublepiechart.js" />
+    <Content Include="ui\main\main.css" />
+    <Content Include="ui\main\main.html" />
+    <Content Include="ui\main\main.js" />
+    <Content Include="ui\t_codegeneration_column\t_codegeneration_column_modallist_part.css" />
+    <Content Include="ui\t_codegeneration_column\t_codegeneration_column_modallist_part.html" />
+    <Content Include="ui\t_codegeneration_column\t_codegeneration_column_modallist_part.js" />
+    <Content Include="ui\t_codegeneration_table\t_codegeneration_table_detail.css" />
+    <Content Include="ui\t_codegeneration_table\t_codegeneration_table_detail.html" />
+    <Content Include="ui\t_codegeneration_table\t_codegeneration_table_detail.js" />
+    <Content Include="ui\t_codegeneration_table\t_codegeneration_table_list.css" />
+    <Content Include="ui\t_codegeneration_table\t_codegeneration_table_list.html" />
+    <Content Include="ui\t_codegeneration_table\t_codegeneration_table_list.js" />
+    <Content Include="ui\t_datacenter_config\t_datacenter_config_detail.css" />
+    <Content Include="ui\t_datacenter_config\t_datacenter_config_detail.html" />
+    <Content Include="ui\t_datacenter_config\t_datacenter_config_detail.js" />
+    <Content Include="ui\t_datacenter_content\t_datacenter_content_detail.html" />
+    <Content Include="ui\t_datacenter_content\t_datacenter_content_detail.js" />
+    <Content Include="ui\t_datacenter_content\t_datacenter_content_list.html" />
+    <Content Include="ui\t_datacenter_content\t_datacenter_content_list.js" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_detail.css" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_detail.html" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_detail.js" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_list.css" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_list.html" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_list.js" />
+    <Content Include="ui\tbl_app_index_title\tbl_app_index_title_modallist_part.css" />
+    <Content Include="ui\tbl_app_index_title\tbl_app_index_title_modallist_part.html" />
+    <Content Include="ui\tbl_app_index_title\tbl_app_index_title_modallist_part.js" />
+    <Content Include="ui\tbl_app_version_color\tbl_app_version_color_modallist_part.css" />
+    <Content Include="ui\tbl_app_version_color\tbl_app_version_color_modallist_part.html" />
+    <Content Include="ui\tbl_app_version_color\tbl_app_version_color_modallist_part.js" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_detail.css" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_detail.html" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_detail.js" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_list.css" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_list.html" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_list.js" />
+    <Content Include="ui\tbl_app_news_content\tbl_app_news_content_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_content\tbl_app_news_content_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_content\tbl_app_news_content_modallist_part.js" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_detail_part.css" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_detail_part.html" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_detail_part.js" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_list_part.css" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_list_part.html" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_list_part.js" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_discuss_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_discuss_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_discuss_modallist_part.js" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_modallist_part.js" />
+    <Content Include="ui\tbl_app_news_title\tbl_app_news_title_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_title\tbl_app_news_title_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_title\tbl_app_news_title_modallist_part.js" />
+    <Content Include="ui\tbl_app_pushnotification\tbl_app_pushnotification_modallist.css" />
+    <Content Include="ui\tbl_app_pushnotification\tbl_app_pushnotification_modallist.html" />
+    <Content Include="ui\tbl_app_pushnotification\tbl_app_pushnotification_modallist.js" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_detail.css" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_detail.html" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_detail.js" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_list.css" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_list.html" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_list.js" />
+    <Content Include="ui\tbl_app_version_html\tbl_app_version_html_modallist_part.css" />
+    <Content Include="ui\tbl_app_version_html\tbl_app_version_html_modallist_part.html" />
+    <Content Include="ui\tbl_app_version_html\tbl_app_version_html_modallist_part.js" />
+    <Content Include="ui\tbl_notice\tbl_notice_detail.css" />
+    <Content Include="ui\tbl_notice\tbl_notice_detail.html" />
+    <Content Include="ui\tbl_notice\tbl_notice_detail.js" />
+    <Content Include="ui\tbl_notice\tbl_notice_list.css" />
+    <Content Include="ui\tbl_notice\tbl_notice_list.html" />
+    <Content Include="ui\tbl_notice\tbl_notice_list.js" />
+    <Content Include="ui\t_datacenter_paper\t_datacenter_paper_detail.css" />
+    <Content Include="ui\t_datacenter_paper\t_datacenter_paper_detail.html" />
+    <Content Include="ui\t_datacenter_paper\t_datacenter_paper_detail.js" />
+    <Content Include="ui\t_datacenter_paper\t_datacenter_paper_list.css" />
+    <Content Include="ui\t_datacenter_paper\t_datacenter_paper_list.html" />
+    <Content Include="ui\t_datacenter_paper\t_datacenter_paper_list.js" />
+    <Content Include="ui\t_datacenter_paper\img\jsoneditor-icons.png" />
+    <Content Include="ui\t_datacenter_paper\jsoneditor.css" />
+    <Content Include="ui\t_datacenter_paper\jsoneditor.js" />
+    <Content Include="ui\t_datacenter_paragraph\t_datacenter_paragraph_detail_part.css" />
+    <Content Include="ui\t_datacenter_paragraph\t_datacenter_paragraph_detail_part.html" />
+    <Content Include="ui\t_datacenter_paragraph\t_datacenter_paragraph_detail_part.js" />
+    <Content Include="ui\t_datacenter_paragraph\t_datacenter_paragraph_list_part.css" />
+    <Content Include="ui\t_datacenter_paragraph\t_datacenter_paragraph_list_part.html" />
+    <Content Include="ui\t_datacenter_paragraph\t_datacenter_paragraph_list_part.js" />
+    <Content Include="EasyFrameServiceAuth.config" />
+    <Content Include="EasyFrameServiceCode.config" />
+    <Content Include="EasyFrameServiceReport.config" />
+    <Content Include="EasyFrameServiceWorkflow.config" />
+    <Content Include="images\bullet_black.png" />
+    <Content Include="images\bullet_blue.png" />
+    <Content Include="images\bullet_green.png" />
+    <Content Include="images\bullet_orange.png" />
+    <Content Include="images\bullet_pink.png" />
+    <Content Include="images\bullet_purple.png" />
+    <Content Include="images\bullet_red.png" />
+    <Content Include="images\bullet_yellow.png" />
+    <Content Include="images\error.png" />
+    <Content Include="images\gototop.jpg" />
+    <Content Include="images\jsonformat_collapsed.gif" />
+    <Content Include="images\jsonformat_expanded.gif" />
+    <Content Include="images\loading1.gif" />
+    <Content Include="images\loginImg.psd" />
+    <Content Include="images\logo-login%402x.psd" />
+    <Content Include="images\logoImg.psd" />
+    <Content Include="images\maplayer_act.png" />
+    <Content Include="images\maplayer_cleardraw.png" />
+    <Content Include="images\maplayer_dis.png" />
+    <Content Include="images\maplayer_draw.png" />
+    <Content Include="images\Point-BluePin1LargeB.png" />
+    <Content Include="images\Point-GreenPin1LargeB.png" />
+    <Content Include="images\Point-RedPin1LargeB.png" />
+    <Content Include="images\result.png" />
+    <Content Include="images\warning.png" />
+    <Content Include="service\datacenter_commonservice.asmx" />
+    <Content Include="service\app_fileupload.ashx" />
+    <Content Include="sara.dd.tjhmbs.config" />
+    <Content Include="website\assets\css\animate.min.css" />
+    <Content Include="website\assets\css\bicolor.min.css" />
+    <Content Include="website\assets\css\bootstrap.min.css" />
+    <Content Include="website\assets\css\font-awesome.min.css" />
+    <Content Include="website\assets\css\googleapis.css" />
+    <Content Include="website\assets\css\googleapis.min.css" />
+    <Content Include="website\assets\css\style.css" />
+    <Content Include="website\assets\css\style.min.css" />
+    <Content Include="website\assets\fonts\bicolor.svg" />
+    <Content Include="website\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="website\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="website\assets\img\1.png" />
+    <Content Include="website\assets\img\2.png" />
+    <Content Include="website\assets\img\3.png" />
+    <Content Include="website\assets\img\4.png" />
+    <Content Include="website\assets\img\5.png" />
+    <Content Include="website\assets\img\6.png" />
+    <Content Include="website\assets\img\apple-touch-icon-114x114.png" />
+    <Content Include="website\assets\img\apple-touch-icon-72x72.png" />
+    <Content Include="website\assets\img\apple-touch-icon.png" />
+    <Content Include="website\assets\img\favicon.png" />
+    <Content Include="website\assets\img\logo.png" />
+    <Content Include="website\assets\img\logo.svg" />
+    <Content Include="website\assets\js\bootstrap.min.js" />
+    <Content Include="website\assets\js\html5shiv.js" />
+    <Content Include="website\assets\js\html5shiv.min.js" />
+    <Content Include="website\assets\js\index.js" />
+    <Content Include="website\assets\js\index.min.js" />
+    <Content Include="website\assets\js\jquery-1.11.3.min.js" />
+    <Content Include="website\assets\js\jwplayer6.10\jwplayer.flash.swf" />
+    <Content Include="website\assets\js\jwplayer6.10\jwplayer.html5.js" />
+    <Content Include="website\assets\js\jwplayer6.10\jwplayer.html5.min.js" />
+    <Content Include="website\assets\js\jwplayer6.10\jwplayer.js" />
+    <Content Include="website\assets\js\jwplayer6.10\jwplayer.min.js" />
+    <Content Include="website\assets\js\jwplayer6.10\jwpsrv.js" />
+    <Content Include="website\assets\js\jwplayer6.10\jwpsrv.min.js" />
+    <Content Include="website\assets\js\jwplayer6.8\index.html" />
+    <Content Include="website\assets\js\jwplayer6.8\jwplayer.flash.swf" />
+    <Content Include="website\assets\js\jwplayer6.8\jwplayer.html5.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwplayer.html5.min.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwplayer.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwplayer.min.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwpsrv.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwpsrv.min.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwpsrv_frq.js" />
+    <Content Include="website\assets\js\jwplayer6.8\jwpsrv_frq.min.js" />
+    <Content Include="website\assets\js\jwplayer6.8\logo.png" />
+    <Content Include="website\assets\js\jwplayer6.8\ping.gif" />
+    <Content Include="website\assets\js\jwplayer6.8\player.jpg" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\background.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\cap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\ccButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\ccButtonOff.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\ccButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\fullscreenButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\fullscreenButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\hdButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\hdButtonOff.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\hdButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\muteButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\muteButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\nextButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\nextButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\normalscreenButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\normalscreenButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\pauseButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\pauseButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\playButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\playButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\prevButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\prevButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\spacer.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\timeSliderBuffer.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\timeSliderCap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\timeSliderCue.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\timeSliderProgress.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\timeSliderProgressCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\timeSliderRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\unmuteButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\unmuteButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\volumeProgress.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\volumeProgressCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\volumeRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\background.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\backgroundOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\bufferIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\bufferIconOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\capLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\capLeftOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\capRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\capRightOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\errorIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\errorIconOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\playIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\playIconOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\replayIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\replayIconOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\button.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\buttonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\divider.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\five.xml" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\divider.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\item.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\itemActive.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\itemImage.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\sliderCap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\sliderRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\sliderRailCapBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\sliderRailCapTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\sliderThumb.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\arrow.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\background.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capBottomLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capBottomRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capTopLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\capTopRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\menuOption.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\menuOptionOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\volumeCap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\volumeProgress.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\volumeProgressCapTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\volumeRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\background.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\capLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\capRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\ccButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\ccButtonOff.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\fullscreenButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\fullscreenButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\hdButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\hdButtonOff.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\muteButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\muteButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\nextButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\nextButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\normalscreenButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\normalscreenButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\pauseButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\pauseButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\playButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\playButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\prevButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\prevButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\spacer.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderBuffer.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderBufferCapLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderBufferCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderCap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderCue.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderProgress.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderProgressCapLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderProgressCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderRailCapLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderRailCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\timeSliderThumb.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\unmuteButton.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\unmuteButtonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeCapLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeProgress.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeProgressCapLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeProgressCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeRailCapLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\volumeRailCapRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\background.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\backgroundOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\bufferIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\capLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\capLeftOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\capRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\capRightOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\errorIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\playIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\playIconOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\replayIcon.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\replayIconOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\button.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\buttonActive.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\buttonOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\divider.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\divider.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\item.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\itemActive.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\itemImage.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderCap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderRailCapBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderRailCapTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderThumb.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderThumbCapBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\sliderThumbCapTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\red.xml" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\arrow.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\background.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capBottomLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capBottomRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capTopLeft.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\capTopRight.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\menuOption.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\menuOptionActive.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\menuOptionOver.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeCap.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeProgress.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeProgressCapBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeProgressCapTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeRail.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeRailCapBottom.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeRailCapTop.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\volumeThumb.png" />
+    <Content Include="website\assets\js\jwplayer6.8\skin\blue.xml" />
+    <Content Include="website\assets\js\jwplayer6.8\skin\five.xml" />
+    <Content Include="website\assets\js\jwplayer6.8\skin\green.xml" />
+    <Content Include="website\assets\js\jwplayer6.8\skin\red.xml" />
+    <Content Include="website\assets\js\jwplayer6.8\video.txt" />
+    <Content Include="website\assets\js\main.js" />
+    <Content Include="website\assets\js\main.min.js" />
+    <Content Include="website\assets\js\options.js" />
+    <Content Include="website\assets\js\options.min.js" />
+    <Content Include="website\assets\js\vendor.js" />
+    <Content Include="website\assets\js\vendor.min.js" />
+    <Content Include="website\assets\js\vivus.js" />
+    <Content Include="website\assets\js\vivus.min.js" />
+    <Content Include="website\index.html" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="website\assets\fonts\bicolor.eot" />
+    <Content Include="website\assets\fonts\bicolor.ttf" />
+    <Content Include="website\assets\fonts\bicolor.woff" />
+    <Content Include="website\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="website\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="website\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="website\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="website\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="website\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="website\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="website\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\32nyIRHyCu6iqEka_hbKsj0LW-43aMEzIO6XUTLjad8.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\32nyIRHyCu6iqEka_hbKsugdm0LZdjqr5-oayXSOefg.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\32nyIRHyCu6iqEka_hbKsv8zf_FOSsgRmwsS7Aa9k2w.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\gFXtEMCp1m_YzxsBpKl68iEAvth_LlrfE80CYdSH47w.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\IQHow_FEYlDC4Gzy_m8fchHJTnCUrjaAm2S9z52xC3Y.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\IQHow_FEYlDC4Gzy_m8fcjh33M2A-6X0bdu871ruAGs.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\NUrn2XQrRfyGZp5MknntaRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\s2PXW4WrV3VLrOUpHiqsfRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\sKd0EMYPAh5PYCRKSryvW1tXRa8TVwTICgirnJhmVJw.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\SKK6Nusyv8QPNMtI4j9J2yEAvth_LlrfE80CYdSH47w.woff2" />
+    <Content Include="website\assets\fonts\googleapiswoff\zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2" />
+    <Content Include="website\assets\img\logo.ai" />
+    <Content Include="website\assets\img\logo.psd" />
+    <Content Include="website\assets\js\jwplayer6.8\readme\JW Player  Readme.mht" />
+    <Content Include="website\assets\js\jwplayer6.8\readme\JW Player Skin Packag.website" />
+    <Content Include="website\assets\js\jwplayer6.8\readme\JWPlayer快速入门指南.mht" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\text-base\five.xml.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\cap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\ccButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\ccButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\ccButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\fullscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\fullscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\hdButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\hdButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\hdButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\muteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\muteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\nextButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\nextButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\normalscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\normalscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\pauseButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\pauseButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\playButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\playButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\prevButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\prevButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\spacer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\timeSliderBuffer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\timeSliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\timeSliderCue.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\timeSliderProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\timeSliderProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\timeSliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\unmuteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\unmuteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\volumeProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\prop-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\cap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\ccButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\ccButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\ccButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\fullscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\fullscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\hdButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\hdButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\hdButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\muteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\muteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\nextButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\nextButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\normalscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\normalscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\pauseButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\pauseButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\playButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\playButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\prevButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\prevButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\spacer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\timeSliderBuffer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\timeSliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\timeSliderCue.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\timeSliderProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\timeSliderProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\timeSliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\unmuteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\unmuteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\volumeProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\text-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\backgroundOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\bufferIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\bufferIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\capLeftOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\capRightOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\errorIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\errorIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\playIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\playIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\replayIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\prop-base\replayIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\props\bufferIcon-alt.png.svn-work" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\backgroundOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\bufferIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\bufferIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\capLeftOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\capRightOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\errorIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\errorIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\playIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\playIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\replayIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\text-base\replayIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\prop-base\button.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\prop-base\buttonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\prop-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\text-base\button.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\text-base\buttonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\text-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\five.zip" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\item.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\itemActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\itemImage.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\sliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\sliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\sliderRailCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\sliderRailCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\prop-base\sliderThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\item.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\itemActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\itemImage.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\sliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\sliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\sliderRailCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\sliderRailCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\text-base\sliderThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\arrow.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capBottomLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capBottomRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capTopLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\capTopRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\menuOption.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\menuOptionOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\volumeCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\volumeProgressCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\prop-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\arrow.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capBottomLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capBottomRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capTopLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\capTopRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\menuOption.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\menuOptionOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\volumeCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\volumeProgressCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\text-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\prop-base\six.xml.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\text-base\six.xml.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\ccButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\ccButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\fullscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\fullscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\hdButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\hdButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\muteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\muteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\nextButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\nextButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\normalscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\normalscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\pauseButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\pauseButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\playButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\playButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\prevButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\prevButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\spacer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderBuffer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderBufferCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderBufferCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderCue.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderProgressCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderRailCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderRailCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\timeSliderThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\unmuteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\unmuteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeProgressCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeRailCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\prop-base\volumeRailCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\ccButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\ccButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\fullscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\fullscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\hdButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\hdButtonOff.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\muteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\muteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\nextButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\nextButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\normalscreenButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\normalscreenButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\pauseButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\pauseButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\playButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\playButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\prevButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\prevButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\spacer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderBuffer.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderBufferCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderBufferCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderCue.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderProgressCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderRailCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderRailCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\timeSliderThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\unmuteButton.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\unmuteButtonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeProgressCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeProgressCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeRailCapLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\text-base\volumeRailCapRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\backgroundOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\bufferIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\capLeftOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\capRightOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\errorIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\playIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\playIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\replayIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\prop-base\replayIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\backgroundOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\bufferIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\capLeftOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\capRightOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\errorIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\playIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\playIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\replayIcon.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\text-base\replayIconOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\prop-base\button.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\prop-base\buttonActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\prop-base\buttonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\prop-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\text-base\button.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\text-base\buttonActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\text-base\buttonOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\text-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\item.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\itemActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\itemImage.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderRailCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderRailCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderThumbCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\prop-base\sliderThumbCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\divider.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\item.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\itemActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\itemImage.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderRailCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderRailCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderThumbCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\text-base\sliderThumbCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.DS_Store" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\all-wcprops" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\entries" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\arrow.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capBottomLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capBottomRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capTopLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\capTopRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\menuOption.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\menuOptionActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\menuOptionOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeProgressCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeProgressCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeRailCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeRailCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\prop-base\volumeThumb.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\arrow.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\background.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capBottomLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capBottomRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capTopLeft.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\capTopRight.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\menuOption.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\menuOptionActive.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\menuOptionOver.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeCap.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeProgress.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeProgressCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeProgressCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeRail.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeRailCapBottom.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeRailCapTop.png.svn-base" />
+    <Content Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\text-base\volumeThumb.png.svn-base" />
+    <Content Include="website\assets\video\LP_20150407165251.flv" />
+    <Content Include="service\service_tbl_zz_zb1.asmx" />
+    <Content Include="service\service_tbl_zz_zb2.asmx" />
+    <Content Include="service\service_tbl_zz_zb3.asmx" />
+    <Content Include="service\service_tbl_zz_ys.asmx" />
+    <Content Include="service\service_tbl_worklist.asmx" />
+    <Content Include="service\service_tbl_worklist_zj.asmx" />
+    <Content Include="service\service_tbl_worklist_nr.asmx" />
+    <Content Include="ui\tbl_worklist_nr\tbl_worklist_nr_treelist_part.css" />
+    <Content Include="ui\tbl_worklist_nr\tbl_worklist_nr_treelist_part.js" />
+    <Content Include="ui\tbl_worklist_nr\tbl_worklist_nr_treelist_part.html" />
+    <Content Include="ui\tbl_worklist_nr\tbl_worklist_nr_treelist_container.css" />
+    <Content Include="ui\tbl_worklist_nr\tbl_worklist_nr_treelist_container.js" />
+    <Content Include="ui\tbl_worklist_nr\tbl_worklist_nr_treelist_container.html" />
+    <Content Include="ui\tbl_worklist_zj\tbl_worklist_zj_modallist_part.css" />
+    <Content Include="ui\tbl_worklist_zj\tbl_worklist_zj_modallist_part.js" />
+    <Content Include="ui\tbl_worklist_zj\tbl_worklist_zj_modallist_part.html" />
+    <Content Include="ui\tbl_worklist_zj\tbl_worklist_zj_modallist_container.css" />
+    <Content Include="ui\tbl_worklist_zj\tbl_worklist_zj_modallist_container.js" />
+    <Content Include="ui\tbl_worklist_zj\tbl_worklist_zj_modallist_container.html" />
+    <Content Include="service\service_tbl_worklist_jd.asmx" />
+    <Content Include="ui\tbl_worklist_jd\tbl_worklist_jd_treelist_part.css" />
+    <Content Include="ui\tbl_worklist_jd\tbl_worklist_jd_treelist_part.js" />
+    <Content Include="ui\tbl_worklist_jd\tbl_worklist_jd_treelist_part.html" />
+    <Content Include="ui\tbl_worklist_jd\tbl_worklist_jd_treelist_container.css" />
+    <Content Include="ui\tbl_worklist_jd\tbl_worklist_jd_treelist_container.js" />
+    <Content Include="ui\tbl_worklist_jd\tbl_worklist_jd_treelist_container.html" />
+    <Content Include="ui\tbl_worklist\tbl_worklist_list.css" />
+    <Content Include="ui\tbl_worklist\tbl_worklist_list.js" />
+    <Content Include="ui\tbl_worklist\tbl_worklist_list.html" />
+    <Content Include="ui\tbl_worklist\tbl_worklist_detail.css" />
+    <Content Include="ui\tbl_worklist\tbl_worklist_detail.js" />
+    <Content Include="ui\tbl_worklist\tbl_worklist_detail.html" />
+    <Content Include="ui\tbl_zz_ys\tbl_zz_ys_list.css" />
+    <Content Include="ui\tbl_zz_ys\tbl_zz_ys_list.js" />
+    <Content Include="ui\tbl_zz_ys\tbl_zz_ys_list.html" />
+    <Content Include="ui\tbl_zz_ys\tbl_zz_ys_detail.css" />
+    <Content Include="ui\tbl_zz_ys\tbl_zz_ys_detail.js" />
+    <Content Include="ui\tbl_zz_ys\tbl_zz_ys_detail.html" />
+    <Content Include="ui\tbl_zz_zb2\tbl_zz_zb2_treelist_part.css" />
+    <Content Include="ui\tbl_zz_zb2\tbl_zz_zb2_treelist_part.js" />
+    <Content Include="ui\tbl_zz_zb2\tbl_zz_zb2_treelist_part.html" />
+    <Content Include="ui\tbl_zz_zb2\tbl_zz_zb2_treelist_container.css" />
+    <Content Include="ui\tbl_zz_zb2\tbl_zz_zb2_treelist_container.js" />
+    <Content Include="ui\tbl_zz_zb2\tbl_zz_zb2_treelist_container.html" />
+    <Content Include="ui\tbl_zz_zb1\tbl_zz_zb1_modallist_part.css" />
+    <Content Include="ui\tbl_zz_zb1\tbl_zz_zb1_modallist_part.js" />
+    <Content Include="ui\tbl_zz_zb1\tbl_zz_zb1_modallist_part.html" />
+    <Content Include="ui\tbl_zz_zb1\tbl_zz_zb1_modallist_container.css" />
+    <Content Include="ui\tbl_zz_zb1\tbl_zz_zb1_modallist_container.js" />
+    <Content Include="ui\tbl_zz_zb1\tbl_zz_zb1_modallist_container.html" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_list_part.css" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_list_part.js" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_list_part.html" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_detail_part.css" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_detail_part.js" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_detail_part.html" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_list_container.css" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_list_container.js" />
+    <Content Include="ui\tbl_zz_zb3\tbl_zz_zb3_list_container.html" />
+    <Content Include="service\service_tbl_zz_gdjzqrz.asmx" />
+    <Content Include="ui\tbl_zz_gdjzqrz\tbl_zz_gdjzqrz_list.css" />
+    <Content Include="ui\tbl_zz_gdjzqrz\tbl_zz_gdjzqrz_list.js" />
+    <Content Include="ui\tbl_zz_gdjzqrz\tbl_zz_gdjzqrz_list.html" />
+    <Content Include="ui\tbl_zz_gdjzqrz\tbl_zz_gdjzqrz_detail.css" />
+    <Content Include="ui\tbl_zz_gdjzqrz\tbl_zz_gdjzqrz_detail.js" />
+    <Content Include="ui\tbl_zz_gdjzqrz\tbl_zz_gdjzqrz_detail.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="commoncss\commoncss.css" />
+    <Content Include="commonjs\commonjs.js" />
+    <Content Include="Global.asax" />
+    <Content Include="images\detailAllModeClick.png" />
+    <Content Include="images\detailAllModeScroll.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loginImg.png" />
+    <Content Include="images\logo-login%402x - 副本.png" />
+    <Content Include="images\logo-login%402x.png" />
+    <Content Include="images\logoImg.png" />
+    <Content Include="images\lib\MySql.Data.dll" />
+    <Content Include="images\lib\projclassdtl1config\1_100_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_100_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_100_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_100_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_[sys_appcode]1001[organid]040_tablenameen.xml" />
+    <Content Include="service\service_businessflow.asmx" />
+    <Content Include="service\service_common.asmx" />
+    <Content Include="service\service_login.asmx" />
+    <Content Include="service\service_main.asmx" />
+    <Content Include="service\service_tbl_filescontent.asmx" />
+    <Content Include="service\service_tbl_maintable.asmx" />
+    <Content Include="service\service_tbl_maintable_detailall.asmx" />
+    <Content Include="service\service_t_datacenter_paper.asmx" />
+    <Content Include="service\service_t_datacenter_paragraph.asmx" />
+    <Content Include="service\service_t_projclass_dtl1.asmx" />
+    <Content Include="service\service_t_projstate_log.asmx" />
+    <Content Include="service\service_t_token_function.asmx" />
+    <Content Include="service\service_t_token_list.asmx" />
+    <Content Include="service\service_t_token_relation.asmx" />
+    <Content Include="service\tokentest.asmx" />
+    <Content Include="ui\basepage\basepage-body.html" />
+    <Content Include="ui\basepage\basepage-foot.html" />
+    <Content Include="ui\basepage\basepage-head.html" />
+    <Content Include="ui\basepage\basepage.css" />
+    <Content Include="ui\basepage\basepage.js" />
+    <Content Include="ui\browerversion\browerversion.html" />
+    <Content Include="ui\businessflow\businessflow_part.css" />
+    <Content Include="ui\businessflow\businessflow_part.html" />
+    <Content Include="ui\businessflow\businessflow_part.js" />
+    <Content Include="ui\codeHelper.html" />
+    <Content Include="ui\container\container.css" />
+    <Content Include="ui\container\container.html" />
+    <Content Include="ui\container\container.js" />
+    <Content Include="ui\error\error.html" />
+    <Content Include="ui\login\login.css" />
+    <Content Include="ui\login\login.html" />
+    <Content Include="ui\login\login.js" />
+    <Content Include="ui\main\main.css" />
+    <Content Include="ui\main\main.html" />
+    <Content Include="ui\main\main.js" />
+    <Content Include="ui\tbl_filescontent\tbl_filescontent_modallist_part.css" />
+    <Content Include="ui\tbl_filescontent\tbl_filescontent_modallist_part.html" />
+    <Content Include="ui\tbl_filescontent\tbl_filescontent_modallist_part.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_button.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_button.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_button.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detailall.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detailall.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detailall.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detail_part.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detail_part.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detail_part.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_list.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_list.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_list.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_query.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_query.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_query.js" />
+    <Content Include="ui\tbl_resource\tbl_resource_detail.css" />
+    <Content Include="ui\tbl_resource\tbl_resource_detail.html" />
+    <Content Include="ui\tbl_resource\tbl_resource_detail.js" />
+    <Content Include="ui\tbl_resource\tbl_resource_list.css" />
+    <Content Include="ui\tbl_resource\tbl_resource_list.html" />
+    <Content Include="ui\tbl_resource\tbl_resource_list.js" />
+    <Content Include="ui\tbl_task\tbl_task_modallist.css" />
+    <Content Include="ui\tbl_task\tbl_task_modallist.html" />
+    <Content Include="ui\tbl_task\tbl_task_modallist.js" />
+    <Content Include="ui\token\tokentest.aspx" />
+    <Content Include="ui\token\tokentest.html" />
+    <Content Include="ui\t_projclass_dtl1\t_projclass_dtl1_list.css" />
+    <Content Include="ui\t_projclass_dtl1\t_projclass_dtl1_list.html" />
+    <Content Include="ui\t_projclass_dtl1\t_projclass_dtl1_list.js" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_list_part.css" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_list_part.html" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_list_part.js" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_timeline.css" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_timeline.html" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_timeline.js" />
+    <Content Include="ui\t_token_function\t_token_function_detail.css" />
+    <Content Include="ui\t_token_function\t_token_function_detail.html" />
+    <Content Include="ui\t_token_function\t_token_function_detail.js" />
+    <Content Include="ui\t_token_function\t_token_function_list.css" />
+    <Content Include="ui\t_token_function\t_token_function_list.html" />
+    <Content Include="ui\t_token_function\t_token_function_list.js" />
+    <Content Include="ui\t_token_list\t_token_list_detail.css" />
+    <Content Include="ui\t_token_list\t_token_list_detail.html" />
+    <Content Include="ui\t_token_list\t_token_list_detail.js" />
+    <Content Include="ui\t_token_list\t_token_list_list.css" />
+    <Content Include="ui\t_token_list\t_token_list_list.html" />
+    <Content Include="ui\t_token_list\t_token_list_list.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="commonclass\assemblyfunction.cs" />
+    <Compile Include="commonclass\clobcontrol.cs" />
+    <Compile Include="commonclass\commonclass.cs" />
+    <Compile Include="commonclass\dalfactory.cs" />
+    <Compile Include="commonclass\emojiclass.cs" />
+    <Compile Include="commonclass\ioclass.cs" />
+    <Compile Include="commonclass\filecontrol.cs" />
+    <Compile Include="commonclass\handleitemclass.cs" />
+    <Compile Include="commonclass\langueclass.cs" />
+    <Compile Include="commonclass\webserviceadapter.cs" />
+    <Compile Include="dal\t_codegeneration_column.cs" />
+    <Compile Include="dal\t_codegeneration_table.cs" />
+    <Compile Include="dal\t_datacenter_config.cs" />
+    <Compile Include="dal\tbl_app_codefactory.cs" />
+    <Compile Include="dal\tbl_app_g_fp.cs" />
+    <Compile Include="dal\tbl_app_g_hk.cs" />
+    <Compile Include="dal\tbl_app_g_ht.cs" />
+    <Compile Include="dal\tbl_app_g_jz.cs" />
+    <Compile Include="dal\tbl_app_g_kh.cs" />
+    <Compile Include="dal\tbl_app_index.cs" />
+    <Compile Include="dal\tbl_app_index_title.cs" />
+    <Compile Include="dal\tbl_app_version_color.cs" />
+    <Compile Include="dal\tbl_app_news.cs" />
+    <Compile Include="dal\tbl_app_news_content.cs" />
+    <Compile Include="dal\tbl_app_news_discuss.cs" />
+    <Compile Include="dal\tbl_app_news_like.cs" />
+    <Compile Include="dal\tbl_app_news_title.cs" />
+    <Compile Include="dal\tbl_app_pushnotification.cs" />
+    <Compile Include="dal\tbl_app_version.cs" />
+    <Compile Include="dal\tbl_app_version_html.cs" />
+    <Compile Include="dal\tbl_clob.cs" />
+    <Compile Include="dal\tbl_codefactory.cs" />
+    <Compile Include="dal\tbl_filescontent.cs" />
+    <Compile Include="dal\tbl_maintable.cs" />
+    <Compile Include="dal\tbl_notice.cs" />
+    <Compile Include="dal\t_datacenter_paper.cs" />
+    <Compile Include="dal\t_datacenter_paragraph.cs" />
+    <Compile Include="dal\tbl_resource.cs" />
+    <Compile Include="dal\tbl_task.cs" />
+    <Compile Include="dal\t_projclass_dtl1.cs" />
+    <Compile Include="dal\t_projstate_log.cs" />
+    <Compile Include="dal\t_token_function.cs" />
+    <Compile Include="dal\t_token_list.cs" />
+    <Compile Include="dal\t_token_relation.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="idal\t_codegeneration_column.cs" />
+    <Compile Include="idal\t_codegeneration_table.cs" />
+    <Compile Include="idal\t_datacenter_config.cs" />
+    <Compile Include="idal\tbl_app_codefactory.cs" />
+    <Compile Include="idal\tbl_app_g_fp.cs" />
+    <Compile Include="idal\tbl_app_g_hk.cs" />
+    <Compile Include="idal\tbl_app_g_ht.cs" />
+    <Compile Include="idal\tbl_app_g_jz.cs" />
+    <Compile Include="idal\tbl_app_g_kh.cs" />
+    <Compile Include="idal\tbl_app_index.cs" />
+    <Compile Include="idal\tbl_app_index_title.cs" />
+    <Compile Include="idal\tbl_app_version_color.cs" />
+    <Compile Include="idal\tbl_app_news.cs" />
+    <Compile Include="idal\tbl_app_news_content.cs" />
+    <Compile Include="idal\tbl_app_news_discuss.cs" />
+    <Compile Include="idal\tbl_app_news_like.cs" />
+    <Compile Include="idal\tbl_app_news_title.cs" />
+    <Compile Include="idal\tbl_app_pushnotification.cs" />
+    <Compile Include="idal\tbl_app_version.cs" />
+    <Compile Include="idal\tbl_app_version_html.cs" />
+    <Compile Include="idal\tbl_clob.cs" />
+    <Compile Include="idal\tbl_codefactory.cs" />
+    <Compile Include="idal\tbl_filescontent.cs" />
+    <Compile Include="idal\tbl_maintable.cs" />
+    <Compile Include="idal\tbl_notice.cs" />
+    <Compile Include="idal\t_datacenter_paper.cs" />
+    <Compile Include="idal\t_datacenter_paragraph.cs" />
+    <Compile Include="idal\tbl_resource.cs" />
+    <Compile Include="idal\tbl_task.cs" />
+    <Compile Include="idal\t_projclass_dtl1.cs" />
+    <Compile Include="idal\t_projstate_log.cs" />
+    <Compile Include="idal\t_token_function.cs" />
+    <Compile Include="idal\t_token_list.cs" />
+    <Compile Include="idal\t_token_relation.cs" />
+    <Compile Include="model\t_codegeneration_column.cs" />
+    <Compile Include="model\t_codegeneration_table.cs" />
+    <Compile Include="model\t_datacenter_config.cs" />
+    <Compile Include="model\tbl_app_codefactory.cs" />
+    <Compile Include="model\tbl_app_g_fp.cs" />
+    <Compile Include="model\tbl_app_g_hk.cs" />
+    <Compile Include="model\tbl_app_g_ht.cs" />
+    <Compile Include="model\tbl_app_g_jz.cs" />
+    <Compile Include="model\tbl_app_g_kh.cs" />
+    <Compile Include="model\tbl_app_index.cs" />
+    <Compile Include="model\tbl_app_index_title.cs" />
+    <Compile Include="model\tbl_app_version_color.cs" />
+    <Compile Include="model\tbl_app_news.cs" />
+    <Compile Include="model\tbl_app_news_content.cs" />
+    <Compile Include="model\tbl_app_news_discuss.cs" />
+    <Compile Include="model\tbl_app_news_like.cs" />
+    <Compile Include="model\tbl_app_news_title.cs" />
+    <Compile Include="model\tbl_app_pushnotification.cs" />
+    <Compile Include="model\tbl_app_version.cs" />
+    <Compile Include="model\tbl_app_version_html.cs" />
+    <Compile Include="model\tbl_clob.cs" />
+    <Compile Include="model\tbl_codefactory.cs" />
+    <Compile Include="model\tbl_filescontent.cs" />
+    <Compile Include="model\tbl_maintable.cs" />
+    <Compile Include="model\tbl_notice.cs" />
+    <Compile Include="model\t_datacenter_paper.cs" />
+    <Compile Include="model\t_datacenter_paragraph.cs" />
+    <Compile Include="model\tbl_resource.cs" />
+    <Compile Include="model\tbl_task.cs" />
+    <Compile Include="model\t_projclass_dtl1.cs" />
+    <Compile Include="model\t_projstate_log.cs" />
+    <Compile Include="model\t_token_function.cs" />
+    <Compile Include="model\t_token_list.cs" />
+    <Compile Include="model\t_token_relation.cs" />
+    <Compile Include="model\userinfo.cs" />
+    <Compile Include="model\workitem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProjectTool.asmx.cs">
+      <DependentUpon>ProjectTool.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reportclass\tbl_maintable.cs" />
+    <Compile Include="service\app_datacenterlite.asmx.cs">
+      <DependentUpon>app_datacenterlite.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_file.asmx.cs">
+      <DependentUpon>app_file.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_fileupload.ashx.cs">
+      <DependentUpon>app_fileupload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="service\app_me.asmx.cs">
+      <DependentUpon>app_me.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_index.asmx.cs">
+      <DependentUpon>app_index.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_version.asmx.cs">
+      <DependentUpon>app_version.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_user.asmx.cs">
+      <DependentUpon>app_user.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_news.asmx.cs">
+      <DependentUpon>app_news.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_pushnotification.asmx.cs">
+      <DependentUpon>app_pushnotification.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\datacenter_commonservice.asmx.cs">
+      <DependentUpon>datacenter_commonservice.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_businessflow.asmx.cs">
+      <DependentUpon>service_businessflow.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_common.asmx.cs">
+      <DependentUpon>app_common.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_common.asmx.cs">
+      <DependentUpon>service_common.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_commonselectuser.asmx.cs">
+      <DependentUpon>service_commonselectuser.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_codegeneration_column.asmx.cs">
+      <DependentUpon>service_t_codegeneration_column.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_codegeneration_table.asmx.cs">
+      <DependentUpon>service_t_codegeneration_table.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_datacenter_config.asmx.cs">
+      <DependentUpon>service_t_datacenter_config.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_datacenter_content.asmx.cs">
+      <DependentUpon>service_t_datacenter_content.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_login.asmx.cs">
+      <DependentUpon>service_login.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_main.asmx.cs">
+      <DependentUpon>service_main.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_codefactory.asmx.cs">
+      <DependentUpon>service_tbl_app_codefactory.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_g_fp.asmx.cs">
+      <DependentUpon>service_tbl_app_g_fp.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_g_hk.asmx.cs">
+      <DependentUpon>service_tbl_app_g_hk.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_g_ht.asmx.cs">
+      <DependentUpon>service_tbl_app_g_ht.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_g_jz.asmx.cs">
+      <DependentUpon>service_tbl_app_g_jz.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_g_kh.asmx.cs">
+      <DependentUpon>service_tbl_app_g_kh.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_index.asmx.cs">
+      <DependentUpon>service_tbl_app_index.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_index_title.asmx.cs">
+      <DependentUpon>service_tbl_app_index_title.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_version_color.asmx.cs">
+      <DependentUpon>service_tbl_app_version_color.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news.asmx.cs">
+      <DependentUpon>service_tbl_app_news.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_content.asmx.cs">
+      <DependentUpon>service_tbl_app_news_content.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_discuss.asmx.cs">
+      <DependentUpon>service_tbl_app_news_discuss.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_like.asmx.cs">
+      <DependentUpon>service_tbl_app_news_like.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_title.asmx.cs">
+      <DependentUpon>service_tbl_app_news_title.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_pushnotification.asmx.cs">
+      <DependentUpon>service_tbl_app_pushnotification.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_version.asmx.cs">
+      <DependentUpon>service_tbl_app_version.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_version_html.asmx.cs">
+      <DependentUpon>service_tbl_app_version_html.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_codefactory.asmx.cs">
+      <DependentUpon>service_tbl_codefactory.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_filescontent.asmx.cs">
+      <DependentUpon>service_tbl_filescontent.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_maintable.asmx.cs">
+      <DependentUpon>service_tbl_maintable.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_maintable_detailall.asmx.cs">
+      <DependentUpon>service_tbl_maintable_detailall.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_notice.asmx.cs">
+      <DependentUpon>service_tbl_notice.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_datacenter_paper.asmx.cs">
+      <DependentUpon>service_t_datacenter_paper.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_datacenter_paragraph.asmx.cs">
+      <DependentUpon>service_t_datacenter_paragraph.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_resource.asmx.cs">
+      <DependentUpon>service_tbl_resource.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_task.asmx.cs">
+      <DependentUpon>service_tbl_task.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_projclass_dtl1.asmx.cs">
+      <DependentUpon>service_t_projclass_dtl1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_projstate_log.asmx.cs">
+      <DependentUpon>service_t_projstate_log.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_token_function.asmx.cs">
+      <DependentUpon>service_t_token_function.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_token_list.asmx.cs">
+      <DependentUpon>service_t_token_list.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_token_relation.asmx.cs">
+      <DependentUpon>service_t_token_relation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\tokentest.asmx.cs">
+      <DependentUpon>tokentest.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\token\tokentest.aspx.cs">
+      <DependentUpon>tokentest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ui\token\tokentest.aspx.designer.cs">
+      <DependentUpon>tokentest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="model\tbl_zz_zb1.cs" />
+    <Compile Include="idal\tbl_zz_zb1.cs" />
+    <Compile Include="service\service_tbl_zz_zb1.asmx.cs">
+      <DependentUpon>service_tbl_zz_zb1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_zz_zb1_oracle.cs" />
+    <Compile Include="model\tbl_zz_zb2.cs" />
+    <Compile Include="idal\tbl_zz_zb2.cs" />
+    <Compile Include="service\service_tbl_zz_zb2.asmx.cs">
+      <DependentUpon>service_tbl_zz_zb2.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_zz_zb2_oracle.cs" />
+    <Compile Include="model\tbl_zz_zb3.cs" />
+    <Compile Include="idal\tbl_zz_zb3.cs" />
+    <Compile Include="service\service_tbl_zz_zb3.asmx.cs">
+      <DependentUpon>service_tbl_zz_zb3.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_zz_zb3_oracle.cs" />
+    <Compile Include="model\tbl_zz_ys.cs" />
+    <Compile Include="idal\tbl_zz_ys.cs" />
+    <Compile Include="service\service_tbl_zz_ys.asmx.cs">
+      <DependentUpon>service_tbl_zz_ys.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_zz_ys_oracle.cs" />
+    <Compile Include="model\tbl_worklist.cs" />
+    <Compile Include="idal\tbl_worklist.cs" />
+    <Compile Include="service\service_tbl_worklist.asmx.cs">
+      <DependentUpon>service_tbl_worklist.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_worklist_oracle.cs" />
+    <Compile Include="model\tbl_worklist_zj.cs" />
+    <Compile Include="idal\tbl_worklist_zj.cs" />
+    <Compile Include="service\service_tbl_worklist_zj.asmx.cs">
+      <DependentUpon>service_tbl_worklist_zj.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_worklist_zj_oracle.cs" />
+    <Compile Include="model\tbl_worklist_nr.cs" />
+    <Compile Include="idal\tbl_worklist_nr.cs" />
+    <Compile Include="service\service_tbl_worklist_nr.asmx.cs">
+      <DependentUpon>service_tbl_worklist_nr.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_worklist_nr_oracle.cs" />
+    <Compile Include="model\tbl_worklist_jd.cs" />
+    <Compile Include="idal\tbl_worklist_jd.cs" />
+    <Compile Include="service\service_tbl_worklist_jd.asmx.cs">
+      <DependentUpon>service_tbl_worklist_jd.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_worklist_jd_oracle.cs" />
+    <Compile Include="model\tbl_zz_gdjzqrz.cs" />
+    <Compile Include="idal\tbl_zz_gdjzqrz.cs" />
+    <Compile Include="service\service_tbl_zz_gdjzqrz.asmx.cs">
+      <DependentUpon>service_tbl_zz_gdjzqrz.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dal\tbl_zz_gdjzqrz_oracle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_blue\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\controlbar\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\display\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\dock\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\playlist\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_five\tooltip\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\controlbar\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\display\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\dock\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\playlist\.svn\tmp\text-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\tmp\prop-base\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\tmp\props\" />
+    <Folder Include="website\assets\js\jwplayer6.8\skinning-sdk\skin_red\tooltip\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2123</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://127.0.0.1/sara.dd.tjhmbs</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\MicrosoftAjax\ajaxmin.tasks" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <JS Include="**\*.js" Exclude="**\*.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+      <CSS Include="**\*.css" Exclude="**\*.min.css" />
+    </ItemGroup>
+    <AjaxMin JsSourceFiles="@(JS)" JsSourceExtensionPattern="\.js$" JsTargetExtension=".min.js" CssSourceFiles="@(CSS)" CssSourceExtensionPattern="\.css$" CssTargetExtension=".min.css">
+    </AjaxMin>
+  </Target>
+</Project>

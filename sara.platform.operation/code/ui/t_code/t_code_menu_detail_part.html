@@ -1,0 +1,132 @@
+﻿<!--按钮行 start -->
+<script src="../t_code/t_code_menu_detail_part.min.js"></script>
+<link href="../t_code/t_code_menu_detail_part.min.css" rel="stylesheet" />
+<div class="container-fluid main-content cc-command">
+    <div class="row ">
+        <div class="col-xs-8 cc-command-button">
+            <button id="btn_command_save_t_code_menu_detail" class="btn btn-success" onclick="t_code_menu_detail_Obj.btn_command_save_onclick();">保存<span class="badge"></span></button>
+            <button id="btn_command_new_t_code_menu_detail" class="btn btn-success" onclick="t_code_menu_detail_Obj.btn_command_new_onclick();">新建子节点<span class="badge"></span></button>
+            <button id="btn_command_new2_t_code_menu_detail" class="btn btn-success" onclick="t_code_menu_detail_Obj.btn_command_new2_onclick();">新建同级节点<span class="badge"></span></button>
+
+        </div>
+
+        <div class="col-xs-4 cc-command-cancle">
+            <button id="btn_command_cancle_t_code_menu_detail" class="btn btn-warning" onclick="t_code_menu_detail_Obj.btn_command_delete_onclick();">删除</button>
+        </div>
+    </div>
+</div>
+<!--按钮行 end -->
+<!--内容部分 start-->
+<div class="container-fluid main-content cc-content">
+    <div class="row">
+        <div class="col-lg-12  hidden">
+            <div class="widget-container fluid-height clearfix">
+                <div class="heading">
+                    <i class="icon-collapse"></i>t_code_menu
+                </div>
+                <div class="widget-content padded">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="widget-container fluid-height clearfix">
+                <!--<div class="heading">
+                    <i class="icon-collapse"></i>t_code_menu
+                </div>-->
+                <div class="widget-content padded">
+                    <div class="row">
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_id_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_id_t_code_menu_detail" class="control-label">id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_id_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodeid_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodeid_t_code_menu_detail" class="control-label">nodeid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodeid_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodelayer_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodelayer_t_code_menu_detail" class="control-label">nodelayer【节点层次】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodelayer_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodename_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodename_t_code_menu_detail" class="control-label">nodename【节点名称】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodename_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_parentnodeid_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_parentnodeid_t_code_menu_detail" class="control-label">parentnodeid【父节点id】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_parentnodeid_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_parentnodename_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_parentnodename_t_code_menu_detail" class="control-label">parentnodename【父节点名】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_parentnodename_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodetype_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodetype_t_code_menu_detail" class="control-label">nodetype【是否启用】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodetype_t_code_menu_detail" type="hidden">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodeclass_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodeclass_t_code_menu_detail" class="control-label">nodeclass【是否有内容】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodeclass_t_code_menu_detail" type="hidden">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_appname_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_appname_t_code_menu_detail" class="control-label">appname<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_appname_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+                         
+
+                    </div>
+                    <div class="row">
+
+
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodetable_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodetable_t_code_menu_detail" class="control-label">nodetable<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodetable_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_nodeoperpage_t_code_menu_detail" class="form-group">
+                                <label for="detail_txt_nodeoperpage_t_code_menu_detail" class="control-label">nodeoperpage<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_nodeoperpage_t_code_menu_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--message-->
+
+
+</div>
+<!--内容部分 end-->

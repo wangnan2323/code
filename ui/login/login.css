@@ -1,0 +1,8 @@
+﻿ .txt-warning
+        {
+            border-bottom-color:red !important;
+        }
+        .span-errormessage
+        {
+            color:red;
+        }

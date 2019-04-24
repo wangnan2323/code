@@ -1,0 +1,269 @@
+﻿<!--div_userinfo_modal start-->
+<div class="modal fade" id="div_userinfo_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                账户信息
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <h3 id="txt_username"></h3>
+                            <strong>机构信息</strong>
+                            <p id="txt_userorgan">
+
+                            </p>
+                            <strong>岗位信息</strong>
+                            <p id="txt_userposition">
+
+                            </p>
+                            <strong>角色信息</strong>
+                            <p id="txt_userrole">
+
+                            </p>
+                            <strong>本机信息</strong>
+                            <p id="txt_macip">
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default-outline" type="button" onclick="basePageObj.btn_userinfo_modal_close_onclick();">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--div_userinfo_modal end-->
+
+<!--div_password_modal start-->
+<div class="modal fade" id="div_password_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                密码管理
+            </div>
+            <div class="modal-body">
+
+                <div id="tabsleft" class="tabbable tabs-left">
+                    <ul>
+                        <li><a id="a_1" href="#tabsleft-tab1" data-toggle="tab">1、验证旧密码</a></li>
+                        <li><a id="a_2" href="#tabsleft-tab2" data-toggle="tab">2、设定新密码</a></li>
+                        <li><a id="a_3" href="#tabsleft-tab3" data-toggle="tab">3、设定解锁图形</a></li>
+                        <li><a id="a_4" href="#tabsleft-tab4" data-toggle="tab">4、设定信任设备</a></li>
+                        <li><a id="a_5" href="#tabsleft-tab5" data-toggle="tab">5、开启自动登录</a></li>
+
+                    </ul>
+                    <div id="div_password_modal_message"></div>
+                    <div class="progress progress-info progress-striped">
+                        <div class="bar progress-bar progress-info progress-bar-striped"></div>
+                    </div>
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tabsleft-tab1">
+                            <div class="input-group">
+                                <input id="txt_old_password" type="password" placeholder="请输入原始密码" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" id="btn_checkoldpasswowd" type="button" onclick="basePageObj.btn_checkoldpasswowd_onclick();">验证</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabsleft-tab2">
+                           
+                          
+                          
+                            <input id="txt_new_password1" type="password" placeholder="请输入新密码" class="form-control" onkeyup="basePageObj.txt_new_password1_onkeyup();">
+                            <input id="txt_new_password2" type="password" placeholder="请确认新密码" class="form-control">
+                            <div id="div_password_strong"></div>
+                            <button class="btn btn-warning"  id="btn_newpasswowd" style="float:right" type="button"onclick="basePageObj.btn_newpasswowd_onclick();">确认</button>
+                        </div>
+                        <div class="tab-pane" id="tabsleft-tab3">
+                            <div id="div_patternpassword"></div>
+                        </div>
+                        <div class="tab-pane" id="tabsleft-tab4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    已信任的设备
+                                    <div id="div_my_macaddress" style="height:60px;"></div>
+                                    当前设备
+                                    <div id="div_current_macaddress" style="height:60px;"></div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <blockquote>
+                                        <h4>关于信任设备的说明：</h4>
+                                        <h6>
+                                            选择“信任”该设备，当前设备的唯一标识（mac地址）将和您的系统账户绑定。
+                                        </h6>
+                                        <h6>
+                                            结合<kbd>开启自动登录</kbd>功能，您可以绕开繁琐的登录手续直接使用本系统功能。
+                                        </h6>
+                                        <h6>这也意味着，任何使用或持有该设备的人都可以以您的账户登录本系统。</h6>
+                                        <h6>
+                                            建议您仅将手机、平板等私人设备开通本功能，并将手机、平板等设备随身携带。
+
+                                        </h6>
+                                        <h6>公用电脑不建议开通本功能。</h6>
+                                        <h6>如果已信任的设备发生遗失，或不在您的安全可控范围内，请立刻联系系统管理员，对您的系统账户进行安全屏蔽。</h6>
+                                        <h6>由此带来的安全风险需要由您自己负担。</h6>
+
+                                    </blockquote>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane" id="tabsleft-tab5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input id="ck_isautologin" type="checkbox" data-label-text="自动登录" data-on-text="开" data-off-text="关" />
+                                </div>
+                                <div class="col-lg-12">
+                                    <blockquote>
+                                        <h4>关于开启自动登录的说明：</h4>
+                                        <h6>
+                                            开启自动登录功能，系统会自动记录最后一次成功登录本系统的用户账户信息。
+                                        </h6>
+                                        <h6>
+                                            再次访问本系统时，系统会按照上次登录的账户进行自动登录。
+                                        </h6>
+                                        <h6>这也意味着，任何使用或持有该设备的人都可以以您的账户登录本系统。</h6>
+                                        <h6>
+                                            建议您仅将手机、平板等私人设备开通本功能，并将手机、平板等设备随身携带。
+                                        </h6>
+                                        <h6>公用电脑不建议开通本功能。</h6>
+                                        <h6>由此带来的安全风险需要由您自己负担。</h6>
+
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-default-outline" type="button" onclick="basePageObj.btn_password_modal_close_onclick();">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--div_password_modal end-->
+
+<!--返回顶部按钮 start-->
+<div   class="div-gototop hidden">
+    <img border="0" src="//162.16.166.1/sara.resource.library/images/basepage-gototop.jpg" title="回到顶部" />
+</div>
+<!--返回顶部按钮 end-->
+
+<!--返回顶部按钮 start-->
+<div class="div-showmenu hidden">
+    <img border="0" src="//162.16.166.1/sara.resource.library/images/basepage-showmenu.png" style="height: 20px; width: 30px;" title="显示菜单" />
+</div>
+<!--返回顶部按钮 end-->
+
+<!--confirmMessage start-->
+<div class="modal fade" id="div_confirm_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+               标题信息
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                           内容信息
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn_confirm_modal_confirm" class="btn btn-primary" type="button">确定</button>
+                <button id="btn_confirm_modal_cancle" class="btn btn-default-outline" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--confirmMessage end-->
+
+<!--div_function_modal start-->
+<div class="modal fade" id="div_function_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                皮肤设置
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+						<!--//？？！！-->
+                           <div style="padding:3px 10px;">
+                               <a style="color:black;" href="javascript:basePageObj.chooseStyle('topBlue-theme')"><span style="background-color: #007aff">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;顶端蓝</a>
+                           </div>
+                            <div style="padding:3px 10px;">
+                                <a style="color:black;" href="javascript:basePageObj.chooseStyle('topBlueAngle-theme')"><span style="background-color: #12443a">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;直角顶端蓝</a>
+                            </div>
+                            <div style="padding:3px 10px;">
+                                <a style="color:black;" href="javascript:basePageObj.chooseStyle('topBlueFillet-theme')"><span style="background-color: #f0ad4e">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;圆角顶端蓝</a>
+                            </div>
+                            <div style="padding:3px 10px;">
+                                <a style="color:black;" href="javascript:basePageObj.chooseStyle('leftBlue-theme')"><span style="background-color: #1b1a45">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;左侧蓝</a>
+                            </div> 
+                            <div style="padding:3px 10px;">
+                                <a style="color:black;" href="javascript:basePageObj.chooseStyle('leftBlueAngle-theme')"><span style="background-color: #12443a">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;直角左侧蓝</a>
+                            </div>
+                            <div style="padding:3px 10px;">
+                                <a style="color:black;" href="javascript:basePageObj.chooseStyle('leftBlueAngleDetailLeftMenu-theme')"><span style="background-color: #f0ad4e">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;直角左侧蓝2</a>
+                            </div>                               
+                            <div style="padding:3px 10px;">
+                                <a style="color:black;" href="javascript:basePageObj.chooseStyle('leftBlueFillet-theme')"><span style="background-color: #f0ad4e">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;圆角左侧蓝</a>
+                            </div>  
+                            
+                               
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default-outline" type="button" onclick="basePageObj.div_function_modal_close_onclick();">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--div_function_modal end-->
+
+
+<!--div_message_modal start-->
+<div class="modal fade" id="div_content_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" >
+
+            </div>
+            <div class="modal-body" >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            内容信息
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn_content_modal_cancle" class="btn btn-default-outline" type="button">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--div_message_modal end-->

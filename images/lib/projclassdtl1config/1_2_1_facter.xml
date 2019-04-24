@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <tr>
+    <num>0</num>
+    <name>审阅</name>
+    <value>f_true()?3:3</value>
+    <wfprocessdefid>[sys_appcode]1001[organid]</wfprocessdefid>
+    <remark></remark>
+  </tr>
+  <tr>
+    <num>1</num>
+    <name>退件</name>
+    <value>f_true()?1_1:1_1</value>
+    <wfprocessdefid>-1</wfprocessdefid>
+    <remark></remark>
+  </tr>
+</table>
+
+

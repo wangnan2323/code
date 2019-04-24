@@ -1,0 +1,152 @@
+﻿.div_password_modal_message_red
+{
+    color: red;
+}
+
+.span-my-macaddress
+{
+    height: 40px;
+    border: solid 1px #d6e9c6;
+    cursor: pointer;
+}
+
+.hand
+{
+    cursor: pointer;
+}
+
+.img-usericon
+{
+    width: 34px;
+    height: 34px;
+}
+
+.password-strong-1
+{
+    height: 20px;
+    background-color: #FFA0A0;
+    vertical-align: middle;
+    text-align: center;
+    width: 25%;
+}
+
+.password-strong-2
+{
+    height: 20px;
+    background-color: #FFB78C;
+    vertical-align: middle;
+    text-align: center;
+    width: 50%;
+}
+
+.password-strong-3
+{
+    height: 20px;
+    background-color: #FFEC8B;
+    vertical-align: middle;
+    text-align: center;
+    width: 75%;
+}
+
+.password-strong-4
+{
+    height: 20px;
+    background-color: #C3FF88;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+}
+
+
+/*========返回顶部按钮的css======*/
+.div-gototop
+{
+    position: fixed;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    bottom: 50px;
+    height: 33px;
+    font-size: 12px;
+    cursor: pointer;
+    right: 30px;
+    _position: absolute;
+    _right: auto;
+    z-index: 10001;
+}
+/*========返回顶部按钮的css======*/
+
+/*========显示菜单的css======*/
+.div-showmenu
+{
+    position: fixed;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    top: 5px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    right: 50%;
+    _position: absolute;
+    _right: auto;
+    z-index: 10001;
+}
+
+/*========显示菜单的css======*/
+
+
+
+/*==========div-basepage-foot=============*/
+.div-basepage-foot
+{
+    z-index: 10010;
+}
+
+.div-basepage-foot-content
+{
+    z-index: 10010;
+    background-color: #000;
+    opacity: 0.75;
+}
+
+.div-basepage-foot-content-max
+{
+    height: 500px;
+}
+
+.div-basepage-foot-content-min
+{
+    height: 50px !important;
+}
+
+.div-basepage-foot-content-button
+{
+    text-align: right;
+    padding-right: 20px;
+    height: 22px;
+}
+
+.div-basepage-foot-content-html
+{
+    width: 95%;
+    height: 90%;
+    overflow: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    color:#ffffff;
+}
+
+
+
+/*重新登录和修改密码*/
+.btn-command-xs
+{
+    float: right;
+    font-size: 25px;
+    color: #808080;
+    cursor: pointer;
+    padding-right: 10px;
+}

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>数据中心</title>
+
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+
+
+    <script>
+
+        $.include({
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['bootstrap', 'common',
+            '../commoncss/commoncss.css',
+            '../commonjs/commonconfig.js',
+            '../widget/header/header.js',
+            'home.css',
+            'home.js'
+            ]
+        });
+
+
+    </script>
+
+
+
+</head>
+
+<body id="mainbody" class="bs-docs-home" style="display:none;">
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" id="header" role="banner"></header>
+
+
+    <div class="bs-masthead" id="content" role="main">
+        <div class="container">
+            <h3 id="label_unitname"></h3>
+            <h1 style="display:inline" id="label_systemname"></h1><h2 style="display:inline" id="label_system"></h2>
+            <p id="label_leadcontent" class="lead"></p>
+            <blockquote>
+                <p><a href="javascript:void(0);">本系统</a><span id="label_resumecontent"></span></p>
+                <p>最近更新时间：<span id="label_lastupdatetime"></span></p>
+            </blockquote>
+            <p>
+                <a id="btn_paper" href="#" class="btn btn-outline-inverse btn-lg">数据分析入口</a>               
+            </p>
+        </div>
+    </div>
+
+    <footer class="container" role="contentinfo">
+
+        <ul class="bs-masthead-links">
+
+            <li>
+                <a href="#" id="label_copyright"></a>
+            </li>
+            <li class="current-version">
+                当前版本：<span id="label_versioncontent"></span>
+            </li>
+
+        </ul>
+
+    </footer>
+
+    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="h_loginmodal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="h_loginmodal">登录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txt_uname">用户名</label>
+                        <input type="text" class="form-control" id="txt_uname" placeholder="输入用户名" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_pwd">密码</label>
+                        <input type="password" class="form-control" id="txt_pwd" placeholder="输入密码" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btn_login" onclick="btn_login_click();">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+</body>
+</html>
+

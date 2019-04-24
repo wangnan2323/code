@@ -1,0 +1,296 @@
+﻿
+<script src="../tbl_app_version_color/tbl_app_version_color_modallist_part.js" type="text/javascript"></script>
+<link href="../tbl_app_version_color/tbl_app_version_color_modallist_part.css" media="all" rel="stylesheet" type="text/css" />
+
+<!--按钮行 start -->
+<div class="container-fluid main-content cc-command">
+    <div class="row ">
+        <div class="col-md-6 col-xs-8 cc-command-button">
+            <button id="btn_command_new_tbl_app_version_color_modallist" class="btn btn-success" onclick="tbl_app_version_color_modallist_Obj.btn_command_new_onclick();">新建</button>
+            <button id="btn_command_delete_tbl_app_version_color_modallist" class="btn btn-danger" onclick="tbl_app_version_color_modallist_Obj.btn_command_delete_onclick();">删除</button>
+            <button id="btn_command_export_tbl_app_version_color_modallist" class="btn btn-warning" onclick="tbl_app_version_color_modallist_Obj.btn_command_export_color_onclick();">导出</button>
+            <a id="download_color" target="_blank"></a>
+        </div>
+        <div class="col-md-2 col-xs-1" style="text-align:right;">
+            <ul id="btn_command_clearselect_tbl_app_version_color_modallist" class="nav cc-badge-ul hidden">
+                <li>
+                    <a class="cc-badge-a" onclick="tbl_app_version_color_modallist_Obj.btn_command_clearselect_onclick();" title="清空选择内容">
+                        <span aria-hidden="true" class="icon-list-ul"></span>
+                        <p class="cc-badge-p "></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+
+        <!--单选下拉选择类型-->
+        <div class="col-md-4">
+            <div id="div_detail_dropdown_f_singledropdownlist_tbl_app_version_color_modallist" class="form-group">
+                <label for="detail_dropdown_f_singledropdownlist_tbl_app_version_color_modallist" class="control-label" style="width:70px; height:28px; line-height:28px;">请选择类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input type="hidden" id="detail_dropdown_f_singledropdownlist_tbl_app_version_color_modallist" style="width:370px; height:28px;" />
+            </div>
+        </div>
+
+        <div class="col-md-1 cc-hidden-lg cc-hidden-md  col-xs-3 cc-command-search-xs " style="text-align:right;">
+            <button id="btn_command_search_xs_tbl_app_version_color_modallist" class="btn btn-warning " onclick="tbl_app_version_color_modallist_Obj.btn_command_search_xs_onclick();">查询</button>
+        </div>
+    </div>
+</div>
+<!--按钮行 end -->
+<!--内容部分 start-->
+<div class="container-fluid main-content cc-grid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table" id="table_grid_tbl_app_version_color_modallist"></table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="div_search_modal_tbl_app_version_color_modallist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        高级查询
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value1_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value1_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value1_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value2_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value2_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value2_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value3_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value3_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value3_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value4_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value4_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value4_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value5_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value5_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value5_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value6_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value6_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value6_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value7_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value7_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value7_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value8_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value8_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value8_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value9_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value9_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value9_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_value10_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_value10_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_value10_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_resourcename_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_resourcename_tbl_app_version_color_modallist" class="control-label">name<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_resourcename_tbl_app_version_color_modallist" class="form-control" placeholder="自动完成" type="text" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_resourcekey_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_resourcekey_tbl_app_version_color_modallist" class="control-label">key<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_resourcekey_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_f_resourcevalue_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="search_txt_f_resourcevalue_tbl_app_version_color_modallist" class="control-label">value<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_f_resourcevalue_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_search_modal_search_tbl_app_version_color_modallist" onclick="tbl_app_version_color_modallist_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">查询<span class="badge"></span></button>
+                        <button id="btn_search_modal_cancle_tbl_app_version_color_modallist" onclick="tbl_app_version_color_modallist_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="div_detail_modal_tbl_app_version_color_modallist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        颜色版本管理详情
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value1_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value1_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value1_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value2_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value2_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value2_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value3_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value3_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value3_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value4_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value4_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value4_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value5_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value5_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value5_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value6_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value6_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value6_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value7_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value7_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value7_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value8_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value8_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value8_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value9_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value9_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value9_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_f_value10_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_value10_tbl_app_version_color_modallist" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_value10_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-lg-12">
+                                <div id="div_detail_txt_f_resourcename_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_resourcename_tbl_app_version_color_modallist" class="control-label">name<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_resourcename_tbl_app_version_color_modallist" class="form-control" placeholder="自动完成" type="text" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div id="div_detail_txt_f_resourcekey_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_resourcekey_tbl_app_version_color_modallist" class="control-label">key<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_resourcekey_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div id="div_detail_txt_f_resourcevalue_tbl_app_version_color_modallist" class="form-group">
+                                    <label for="detail_txt_f_resourcevalue_tbl_app_version_color_modallist" class="control-label">value<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_resourcevalue_tbl_app_version_color_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_detail_modal_save_tbl_app_version_color_modallist" onclick="tbl_app_version_color_modallist_Obj.btn_detail_modal_save_onclick();" class="btn btn-success" type="button">确定<span class="badge"></span></button>
+                            <button id="btn_detail_modal_cancle_tbl_app_version_color_modallist" onclick="tbl_app_version_color_modallist_Obj.btn_detail_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--内容部分 end-->

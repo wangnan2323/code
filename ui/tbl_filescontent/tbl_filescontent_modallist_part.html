@@ -1,0 +1,268 @@
+﻿<script src="../tbl_filescontent/tbl_filescontent_modallist_part.js" type="text/javascript"></script>
+<link href="../tbl_filescontent/tbl_filescontent_modallist_part.css" media="all" rel="stylesheet" type="text/css" />
+
+
+
+
+<!--按钮行 start -->
+<div class="container-fluid main-content cc-command">
+    <div class="row ">
+        <div class="col-md-6 col-xs-8 cc-command-button">
+            <button id="btn_command_new_tbl_filescontent_modallist" class="btn btn-success" onclick="tbl_filescontent_Obj.btn_command_new_onclick();">新建</button>
+            <button id="btn_command_delete_tbl_filescontent_modallist" class="btn btn-danger" onclick="tbl_filescontent_Obj.btn_command_delete_onclick();">删除</button>
+
+        </div>
+        <div class="col-md-2 col-xs-1" style="text-align: right;">
+            <ul id="btn_command_clearselect_tbl_filescontent_modallist" class="nav cc-badge-ul hidden">
+                <li>
+                    <a class="cc-badge-a" onclick="tbl_filescontent_Obj.btn_command_clearselect_onclick();" title="清空选择内容">
+                        <span aria-hidden="true" class="icon-list-ul"></span>
+                        <p class="cc-badge-p "></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4  cc-command-search cc-hidden-sm cc-hidden-xs">
+            <div class="input-group">
+                <input id="txt_command_search_tbl_filescontent_modallist" type="text" class="form-control">
+                <div class="input-group-btn">
+                    <button id="btn_command_search_tbl_filescontent_modallist" type="button" class="btn btn-warning" value="" onclick="tbl_filescontent_Obj.btn_command_search_onclick();">简单查询</button>
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" style="margin-left: -10px;">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right btn-command-search-dropdown">
+                        <li><a href="javascript:void(0);" onclick="tbl_filescontent_Obj.btn_command_search_1_onclick();"><i class="icon-plus-sign"></i>简单查询</a></li>
+                        <li><a href="javascript:void(0);" onclick="tbl_filescontent_Obj.btn_command_search_2_onclick();"><i class="icon-edit"></i>高级查询</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-1 cc-hidden-lg cc-hidden-md  col-xs-3 cc-command-search-xs " style="text-align: right;">
+            <button id="btn_command_search_xs_tbl_filescontent_modallist" class="btn btn-warning " onclick="tbl_filescontent_Obj.btn_command_search_xs_onclick();">查询</button>
+        </div>
+    </div>
+</div>
+<!--按钮行 end -->
+<!--信息行 start-->
+<!--<div class="container-fluid main-content cc-info">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>tbl_filescontent_modallist</div>
+        </div>
+    </div>
+</div>-->
+<!--信息行 end-->
+<!--内容部分 start-->
+<div class="container-fluid main-content cc-grid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table" id="table_grid_tbl_filescontent_modallist"></table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="div_search_modal_tbl_filescontent_modallist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        高级查询
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_fk_maintable_sys_id_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_fk_maintable_sys_id_tbl_filescontent_modallist" class="control-label">外键<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_fk_maintable_sys_id_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_fk_projclass_sys_id_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_fk_projclass_sys_id_tbl_filescontent_modallist" class="control-label">业务类型ID<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_fk_projclass_sys_id_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_filename_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_filename_tbl_filescontent_modallist" class="control-label">文件名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_filename_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_filerealname_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_filerealname_tbl_filescontent_modallist" class="control-label">文件真名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_filerealname_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_fileclass_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_fileclass_tbl_filescontent_modallist" class="control-label">文件类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_fileclass_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_filenote_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_filenote_tbl_filescontent_modallist" class="control-label">文件说明<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_filenote_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_fnumber_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_fnumber_tbl_filescontent_modallist" class="control-label">次数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_fnumber_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_filetitle_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_filetitle_tbl_filescontent_modallist" class="control-label">文件名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_filetitle_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6">
+                                <div id="div_search_txt_filesize_tbl_filescontent_modallist" class="form-group">
+                                    <label for="search_txt_filesize_tbl_filescontent_modallist" class="control-label">文件数量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_txt_filesize_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6">
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_search_modal_search_tbl_filescontent_modallist" onclick="tbl_filescontent_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">查询<span class="badge"></span></button>
+                        <button id="btn_search_modal_cancle_tbl_filescontent_modallist" onclick="tbl_filescontent_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="div_detail_modal_tbl_filescontent_modallist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                          附件
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_fk_maintable_sys_id_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_fk_maintable_sys_id_tbl_filescontent_modallist" class="control-label">外键<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_fk_maintable_sys_id_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_fk_projclass_sys_id_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_fk_projclass_sys_id_tbl_filescontent_modallist" class="control-label">业务类型ID<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_fk_projclass_sys_id_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_filename_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_filename_tbl_filescontent_modallist" class="control-label">文件名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_filename_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_fileclass_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_fileclass_tbl_filescontent_modallist" class="control-label">文件类型<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_fileclass_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_filenote_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_filenote_tbl_filescontent_modallist" class="control-label">文件说明<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_filenote_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_fnumber_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_fnumber_tbl_filescontent_modallist" class="control-label">次数<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_fnumber_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+
+
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_filetitle_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_filetitle_tbl_filescontent_modallist" class="control-label">文件名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_filetitle_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="div_detail_txt_filesize_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_filesize_tbl_filescontent_modallist" class="control-label">文件数量<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_filesize_tbl_filescontent_modallist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="div_detail_txt_filerealname_tbl_filescontent_modallist" class="form-group">
+                                    <label for="detail_txt_filerealname_tbl_filescontent_modallist" class="control-label">附件<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <div id="detail_txt_filerealname_tbl_filescontent_modallist"></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_detail_modal_save_tbl_filescontent_modallist" onclick="tbl_filescontent_Obj.btn_detail_modal_save_onclick();" class="btn btn-success" type="button">确定<span class="badge"></span></button>
+                            <button id="btn_detail_modal_cancle_tbl_filescontent_modallist" onclick="tbl_filescontent_Obj.btn_detail_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--内容部分 end-->

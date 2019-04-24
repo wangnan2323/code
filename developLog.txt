@@ -1,0 +1,16 @@
+﻿1、建立独立的应用程序池 - scwy 
+2、scwy应用程序池：v4.0
+3、IIS--应用程序池--scwy--》高级设置--》启用32位应用程序--》true--图片压缩必须MagickNet
+4、IIS--应用程序池--scwy--集成--sara.resource.library.output.ScriptCs必须
+5、IIS--应用程序池--scwy--高级设置--》标识 --administrator/scZY$2016Dell---连接数据库必须
+6、项目生成--〉目标平台-->any CPU
+
+		修改数据库中的IP
+	update tbl_app_news set  f_content = replace(f_content,'127.0.0.1','www.tjsczy.com') where f_content like '%127.0.0.1%'
+
+	update tbl_app_news set  f_content = replace(f_content,'/sara.dd.ldsw.file/','/sara.dd.ldsw.file/') where f_content like '%/sara.dd.ldsw.file/%'
+	0、datacenter程序更新到t_
+	1、移植codefactory到operation
+	2、移植datacenter到operation
+	3、移植token到operation
+	4、调整数据

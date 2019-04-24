@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <tr>
+    <num>0</num>
+    <buttonId>btn_command_send_tbl_maintable_button_1_3</buttonId>
+    <buttonCss>primary</buttonCss>
+    <buttonText>转件</buttonText>
+    <buttonIsMustData>true</buttonIsMustData>
+    <tip>转件到下一状态</tip>
+    <buttonConfirmContent></buttonConfirmContent>
+    <buttonInputTitle></buttonInputTitle>
+    <buttonInputArgs></buttonInputArgs>
+    <buttonShowType>all</buttonShowType>
+    <buttonIsDisable>false</buttonIsDisable>
+    <buttonRemark></buttonRemark>
+    <buttonServerEventArgs>
+      sara.dd.ldsw^commonclass.assemblyfunction^get_resultonlyonesysid^[sys_ids]
+      |sara.dd.ldsw^commonclass.assemblyfunction^get_sendworkflow^[workitemid]$[str_resultmessage]$[clientinf]
+      |
+    </buttonServerEventArgs>
+    <buttonClientEventArgs>tblMainTableButtonObj.btn_command_sendworkflow()</buttonClientEventArgs>
+  </tr>
+</table>

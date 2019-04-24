@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        cc-list
+    </title>
+    <link href="t_token_function_list.min.css" media="all" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+
+    <script src="t_token_function_list.min.js" type="text/javascript"></script>
+
+    <script>
+        $.include( {
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['base', 'resource',
+                 '../../../../commonjs/commonjs.js',
+                '../../../../commoncss/commoncss.css',
+                '../../../../ui/basepage/basepage.css',
+                '../../../../ui/basepage/basepage.js'
+            ]
+        } );
+
+    </script>
+</head>
+<body>
+
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <div class="col-md-6 col-xs-8 cc-command-button">
+                    <button id="btn_command_new_t_token_function_list" class="btn btn-success" onclick="t_token_function_list_Obj.btn_command_new_onclick();">新建</button>
+                    <button id="btn_command_delete_t_token_function_list" class="btn btn-danger" onclick="t_token_function_list_Obj.btn_command_delete_onclick();">删除</button>
+                </div>
+                <div class="col-md-2 col-xs-1" style="text-align:right;">
+                    <ul id="btn_command_clearselect_t_token_function_list" class="nav cc-badge-ul hidden">
+                        <li>
+                            <a class="cc-badge-a" onclick="t_token_function_list_Obj.btn_command_clearselect_onclick();" title="清空选择内容">
+                                <span aria-hidden="true" class="icon-list-ul"></span>
+                                <p class="cc-badge-p "></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4  cc-command-search cc-hidden-sm cc-hidden-xs">
+                    <div class="input-group">
+                        <input id="txt_command_search_t_token_function_list" type="text" class="form-control">
+                        <div class="input-group-btn">
+                            <button id="btn_command_search_t_token_function_list" type="button" class="btn btn-warning" value="" onclick="t_token_function_list_Obj.btn_command_search_onclick();">简单查询</button>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" style="margin-left:-10px;">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right btn-command-search-dropdown">
+                                <li><a href="javascript:void(0);" onclick="t_token_function_list_Obj.btn_command_search_1_onclick();"><i class="icon-plus-sign"></i>简单查询</a></li>
+                                <li><a href="javascript:void(0);" onclick="t_token_function_list_Obj.btn_command_search_2_onclick();"><i class="icon-edit"></i>高级查询</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1 cc-hidden-lg cc-hidden-md  col-xs-3 cc-command-search-xs " style="text-align:right;">
+                    <button id="btn_command_search_xs_t_token_function_list" class="btn btn-warning " onclick="t_token_function_list_Obj.btn_command_search_xs_onclick();">查询</button>
+                </div>
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>t_token_function</div>
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+    <!--内容部分 start-->
+    <div class="container-fluid main-content cc-grid leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table" id="table_grid_t_token_function_list"></table>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="div_search_modal_t_token_function_list">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            高级查询
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid main-content">
+                            <div class="row hidden">
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value1_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value1_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value1_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value2_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value2_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value2_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value3_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value3_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value3_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value4_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value4_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value4_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value5_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value5_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value5_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value6_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value6_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value6_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value7_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value7_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value7_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value8_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value8_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value8_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value9_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value9_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value9_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_value10_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_value10_t_token_function_list" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_value10_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_appcode_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_appcode_t_token_function_list" class="control-label">系统号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_appcode_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_appname_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_appname_t_token_function_list" class="control-label">系统名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_appname_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_appnameen_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_appnameen_t_token_function_list" class="control-label">系统英文名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_appnameen_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_service_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_service_t_token_function_list" class="control-label">服务<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_service_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_function_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_function_t_token_function_list" class="control-label">方法<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_function_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_istoken_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_istoken_t_token_function_list" class="control-label">是否验证token<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_istoken_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_isencrypt_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_isencrypt_t_token_function_list" class="control-label">是否加密<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_isencrypt_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_search_txt_f_bz_t_token_function_list" class="form-group">
+                                        <label for="search_txt_f_bz_t_token_function_list" class="control-label">备注<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="search_txt_f_bz_t_token_function_list" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_search_modal_search_t_token_function_list" onclick="t_token_function_list_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">查询<span class="badge"></span></button>
+                            <button id="btn_search_modal_cancle_t_token_function_list" onclick="t_token_function_list_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容部分 end-->
+
+    <div class="modal fade" id="div_detail_modal_t_token_function_list">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        新建
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_f_appname_t_token_function_list" class="form-group">
+                                    <label for="detail_txt_f_appname_t_token_function_list" class="control-label">系统名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_appname_t_token_function_list" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_f_appcode_t_token_function_list" class="form-group">
+                                    <label for="detail_txt_f_appcode_t_token_function_list" class="control-label">系统code<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_appcode_t_token_function_list" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_f_appnameen_t_token_function_list" class="form-group">
+                                    <label for="detail_txt_f_appnameen_t_token_function_list" class="control-label">系统英文名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_f_appnameen_t_token_function_list" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div id="div_detail_txt_f_serive_t_token_function_list" class="form-group">
+                                        <label for="detail_txt_f_serive_t_token_function_list" class="control-label">服务（service）<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <textarea rows="5" id="detail_txt_f_serive_t_token_function_list" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_detail_ck_f_function_t_token_function_list" class="form-group">
+                                        <label for="detail_ck_f_function_t_token_function_list" class="control-label">
+                                            通用方法(function)
+                                            <i class="icon-exclamation-sign hand hidden"></i>
+                                        </label>
+                                        <input type="checkbox" checked="checked" id="ck_f_choose_t_token_function_list" onclick="t_token_function_list_Obj.ck_f_choose_t_token_function_list_onclick()" style="width:12px; height:12px;"></>
+                                        <div id="detail_ck_f_function_t_token_function_list"></div>
+                                    </div>
+                                </div>                               
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 ">
+                                    <div class="row">
+                                        <div id="div_detail_rd_f_istoken_t_token_function_list" class="form-group">
+                                            <label for="detail_rd_f_istoken_t_token_function_list" class="control-label">是否启用token（istoken）<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div id="detail_rd_f_istoken_t_token_function_list"></div>
+                                        </div>
+                                        <div id="div_detail_rd_f_isencrypt_t_token_function_list" class="form-group">
+                                            <label for="detail_rd_f_isencrypt_t_token_function_list" class="control-label">是否加密（isencrypt）<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div id="detail_rd_f_isencrypt_t_token_function_list"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 ">
+                                    <div id="div_detail_txt_f_function_t_token_function_list" class="form-group">
+                                        <label for="detail_txt_f_function_t_token_function_list" class="control-label">自定义方法(function)<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <textarea rows="5" id="detail_txt_f_function_t_token_function_list" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="widget-container fluid-height clearfix">
+                                    <div class="heading">
+                                        <i class="icon-plus" id="detail_icon_token_t_token_function_list" onclick="t_token_function_list_Obj.hide_div_onclick('detail_div_tokenlist_t_token_function_list','detail_icon_token_t_token_function_list')">
+                                            <a class="font-yahei">&nbsp;&nbsp;&nbsp;&nbsp;token</a>
+                                        </i>
+                                        <span>selectedIds:</span>
+                                        <span id="btn_command_token_clearselect_t_token_function_list"></span>
+                                        <button class="btn btn-default" onclick="t_token_function_list_Obj.btn_command_token_clearselect_onclick()">清除选择</button>
+                                    </div>
+                                    <div data-loaded="false" class="widget-content padded" id="detail_div_tokenlist_t_token_function_list" style="display:none">
+                                        <div class="input-group">
+                                            <input class="form-control" id="detail_txt_token_search_t_token_function" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" onclick="t_token_function_list_Obj.btn_token_search_onclick()">查询</button>
+                                            </span>
+                                        </div>
+                                        <table id="table_detail_token_list_t_token_function_list"></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div id="div_detail_txt_f_bz_t_token_function_list" class="form-group">
+                                    <label for="detail_txt_f_bz_t_token_function_list" class="control-label">备注<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <textarea class="form-control" rows="2" id="detail_txt_f_bz_t_token_function_list"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_detail_modal_save_t_token_function_list" onclick="t_token_function_list_Obj.btn_detail_modal_save_onclick();" class="btn btn-success" type="button">确定<span class="badge"></span></button>
+                            <button id="btn_detail_modal_cancle_t_token_function_list" onclick="t_token_function_list_Obj.btn_detail_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot">
+        </div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+</body>
+
+</html>

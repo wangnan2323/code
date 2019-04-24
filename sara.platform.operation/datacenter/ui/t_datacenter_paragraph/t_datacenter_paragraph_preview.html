@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+    <title>数据中心</title>
+    <script>
+       
+
+        $.include({
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['bootstrap', 'common', 'highcharts',
+            '../commoncss/commoncss.css',
+            '../widget/paragraph/commonparagraph.js',
+            '../widget/paragraph/commonparagraph_docommonchart.js',
+            '../widget/paragraph/commonparagraph_docommonmap.js',
+            '../widget/paragraph/commonparagraph_docommontable.js',
+            '../widget/paragraph/commonparagraph_docommonimage.js',
+            '../widget/paragraph/commonparagraph_dodoublepiechart.js',
+            '../widget/paragraph/commonparagraph_docommonhtml.js',
+            '../widget/paragraph/commonparagraph_docommonaccordion.js',
+            '../widget/paragraph/commonparagraph_docommonbutton.js',
+            '../widget/paragraph/baseparagraph.js',
+            't_datacenter_paragraph_preview.config.js',
+            't_datacenter_paragraph_preview.js'
+            ]
+        });
+
+    </script>
+    <style>
+        #div_gototop {
+            POSITION: fixed;
+            TEXT-ALIGN: center;
+            LINE-HEIGHT: 30px;
+            WIDTH: 30px;
+            BOTTOM: 35px;
+            HEIGHT: 33px;
+            FONT-SIZE: 12px;
+            cursor: pointer;
+            RIGHT: 30px;
+            _position: absolute;
+            _right: auto;
+            z-index: 3;
+        }
+    </style>
+
+</head>
+
+<body id="mainbody" style="display: none;">
+
+    <div style="DISPLAY: none" id="div_gototop">
+        <img border="0" src="../../../../images/gototop.jpg" title="回到顶部" />
+    </div>
+
+
+
+    <div class="container bs-docs-container">
+
+        <div class="row">
+
+            <div id="div_content" class="col-md-12" role="main">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="papermodal" tabindex="-1" role="dialog" aria-labelledby="h_papermodal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="h_papermodal"></h4>
+                </div>
+                <div id="div_modalbody" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

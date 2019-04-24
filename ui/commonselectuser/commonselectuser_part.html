@@ -1,0 +1,117 @@
+﻿<script src="../commonselectuser/commonselectuser_part.js"></script>
+<link rel="stylesheet" href="../commonselectuser/commonselectuser_part.css" />
+
+<div class="col-lg-12 div-commonselectuser">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="form-group ">
+
+                <label id="label_selecteduser_commonselectuser" for="div_selecteduser_commonselectuser" class="control-label">
+                    <a id="a_selecteduser_commonselectuser" style="color:#676767;"></a> <i class="icon-exclamation-sign hand hidden"></i>
+                </label>
+                <div id="div_selecteduser_commonselectuser">
+                 
+                </div>
+            </div>
+        </div>
+        <div id="div_selecteduser_allcontrol" class="col-lg-3 " style="text-align:right;vertical-align:bottom;">
+            <span class="label label-danger hand" onclick="commonselectuser_Obj.deleteAllUser();">删除全部已选用户<span>&times;</span></span>
+            <span class="label label-success hand"  onclick="commonselectuser_Obj.addAllUser();">选中全部备选用户<span>√</span></span>
+        </div>
+    </div>
+    <br/>
+
+    <ul id="ul_tab_commonselectuser" class="nav nav-tabs div-tab-commonselectuser">
+        <li id="li_username_commonselectuser" onclick="commonselectuser_Obj.li_onclick( 'username' );" class="hidden hand"><a>用户</a></li>
+        <li id="li_role_commonselectuser" onclick="commonselectuser_Obj.li_onclick( 'role' );" class="hidden hand"><a>角色</a></li>
+        <li id="li_position_commonselectuser" onclick="commonselectuser_Obj.li_onclick( 'position' );" class="hidden hand"><a>岗位</a></li>
+        <li id="li_usergroup_commonselectuser" onclick="commonselectuser_Obj.li_onclick( 'usergroup' );" class="hidden hand"><a>用户组</a></li>
+        <li id="li_organ_commonselectuser" onclick="commonselectuser_Obj.li_onclick( 'organ' );" class="hidden hand"><a>机构</a></li>
+    </ul>
+
+    <div id="div_content_commonselectuser" class="row div-content-commonselectuser"  style="padding-top:0px !important;">
+        <div id="div_username_commonselectuser" class="col-lg-12 hidden div-content-item-commonselectuser">
+
+            <div class="form-group">
+                <label for="txt_username_commonselectuser" class="control-label">通过用户名模糊查询<i class="icon-exclamation-sign hand hidden"></i></label>
+                <div class="input-group">
+                    <input id="txt_username_commonselectuser" type="text" class="form-control" placeholder="用户名">
+                    <span class="input-group-btn">
+                        <button id="btn_txt_username_commonselectuser" onclick="commonselectuser_Obj.btn_txt_username_onclick();" class="btn btn-default" type="button">查询</button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="div_span_username_commonselectuser">
+                    <!--<span class="label label-info hand">张三<span></span></span>
+                    <span class="label label-info hand">李四<span></span></span>
+                    <span class="label label-warning hand">王五<span>√</span></span>
+                    <span class="label label-info hand">赵六<span></span></span>-->
+                </div>
+
+            </div>
+        </div>
+        <div id="div_role_commonselectuser" class="col-lg-12 hidden div-content-item-commonselectuser" >
+
+            <div class="form-group">
+                <label for="dropdown_role_commonselectuser" class="control-label">在具备所选角色的用户中选择<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input type="hidden" id="dropdown_role_commonselectuser" />
+            </div>
+
+            <div class="form-group">
+                <div id="div_span_role_commonselectuser">
+                    <!--<span class="label label-info hand">张三<span></span></span>
+                    <span class="label label-info hand">李四<span></span></span>
+                    <span class="label label-warning hand">王五<span>√</span></span>
+                    <span class="label label-info hand">赵六<span></span></span>-->
+                </div>
+
+            </div>
+        </div>
+        <div id="div_position_commonselectuser"  class="col-lg-12 hidden div-content-item-commonselectuser" >
+            <div class="form-group">
+                <label for="dropdown_position_commonselectuser" class="control-label">在具备所选岗位的用户中选择<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input type="hidden" id="dropdown_position_commonselectuser" />
+            </div>
+            <div class="form-group">
+                <div id="div_span_position_commonselectuser">
+                    <!--<span class="label label-info hand">张三<span></span></span>
+                    <span class="label label-info hand">李四<span></span></span>
+                    <span class="label label-warning hand">王五<span>√</span></span>
+                    <span class="label label-info hand">赵六<span></span></span>-->
+                </div>
+
+            </div>
+        </div>
+        <div id="div_usergroup_commonselectuser"  class="col-lg-12 hidden div-content-item-commonselectuser" >
+            <div class="form-group">
+                <label for="dropdown_usergroup_commonselectuser" class="control-label">在具备所选岗位的用户中选择<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input type="hidden" id="dropdown_usergroup_commonselectuser" />
+            </div>
+            <div class="form-group">
+                <div id="div_span_usergroup_commonselectuser">
+                    <!--<span class="label label-info hand">张三<span></span></span>
+                    <span class="label label-info hand">李四<span></span></span>
+                    <span class="label label-warning hand">王五<span>√</span></span>
+                    <span class="label label-info hand">赵六<span></span></span>-->
+                </div>
+
+            </div>
+        </div>
+        <div id="div_organ_commonselectuser"  class="col-lg-12 hidden div-content-item-commonselectuser" >
+            <div class="form-group">
+                <label for="dropdown_organ_commonselectuser" class="control-label">在选中机构下的选择用户<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input type="hidden" id="dropdown_organ_commonselectuser" />
+            </div>
+            <div class="form-group">
+                <div id="div_span_organ_commonselectuser">
+                    <!--<span class="label label-info hand">张三<span></span></span>
+                    <span class="label label-info hand">李四<span></span></span>
+                    <span class="label label-warning hand">王五<span>√</span></span>
+                    <span class="label label-info hand">赵六<span></span></span>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="div-logo"><img src="//127.0.0.1/sara.dd.ldsw/images/logoImg.png" /></div>
+        </div>
+        <div class="col-xs-11">
+            <div class="pull-right">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown notifications cc-hidden-xs">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+                            <span aria-hidden="true" class="se7en-flag"></span>
+                            <div class="sr-only">
+                                常规功能
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" id="ul_menu_filter">
+                           
+
+                        </ul>
+                    </li>
+                    <li class="dropdown settings cc-hidden-xs">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+                            <span aria-hidden="true" class="se7en-gear"></span>
+                            <div class="sr-only">
+                                设置皮肤
+                            </div>
+                        </a>
+						<!--//？？！！-->
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="settings-link topBlue" href="javascript:basePageObj.chooseStyle('topBlue-theme')"><span></span>顶端蓝</a>
+                            </li>
+                            <li>
+                                <a class="settings-link topBlueAngle" href="javascript:basePageObj.chooseStyle('topBlueAngle-theme')"><span></span>直角顶端蓝</a>
+                            </li>
+                            <li>
+                                <a class="settings-link topBlueFillet" href="javascript:basePageObj.chooseStyle('topBlueFillet-theme')"><span></span>圆角顶端蓝</a>
+                            </li>
+                            <li>
+                                <a class="settings-link leftBlue" href="javascript:basePageObj.chooseStyle('leftBlue-theme')"><span></span>左侧蓝</a>
+                            </li>  
+                            <li>
+                                <a class="settings-link leftBlueAngle" href="javascript:basePageObj.chooseStyle('leftBlueAngle-theme')"><span></span>直角左侧蓝</a>
+                            </li>
+                            <li>
+                                <a class="settings-link leftBlueAngleDetailLeftMenu" href="javascript:basePageObj.chooseStyle('leftBlueAngleDetailLeftMenu-theme')"><span></span>直角左侧蓝2</a>
+                            </li>
+                            <li>
+                                <a class="settings-link leftBlueFillet" href="javascript:basePageObj.chooseStyle('leftBlueFillet-theme')"><span></span>圆角左侧蓝</a>
+                            </li>                         
+                        </ul>
+                    </li>
+                    <li class="dropdown user cc-hidden-xs">
+                        <a id="a_user" data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">
+                            
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a onclick="basePageObj.btn_userinfo_onclick(this);" href="javascript:void(0);">
+                                    <i class="icon-user"></i>账户信息
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="basePageObj.btn_passwordmanage_onclick(this);" href="javascript:void(0);">
+                                    <i class="icon-gear"></i>密码管理
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="basePageObj.btn_logOut_onclick(this);" href="javascript:void(0);">
+                                    <i class="icon-signout"></i>重新登录
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="btn_logOut" class="btn-command-xs cc-hidden-lg cc-hidden-md cc-hidden-sm" onclick="basePageObj.btn_logOut_onclick();" href="javascript:void(0);" title="退出登录">
+
+                <span aria-hidden="true" class="icon-signout"></span>
+            </a>
+            <a id="btn_userInf" class="btn-command-xs cc-hidden-lg cc-hidden-md cc-hidden-sm" onclick="basePageObj.btn_passwordmanage_onclick();" href="javascript:void(0);" title="设置密码">
+                <span aria-hidden="true" class="icon-edit"></span>
+            </a>
+            <a id="btn_function" class="btn-command-xs cc-hidden-lg cc-hidden-md cc-hidden-sm" onclick="basePageObj.btn_function_onclick();" href="javascript:void(0);" title="常规功能">
+                <span aria-hidden="true" class="icon-cog"></span>
+
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-nav clearfix">
+    <div class="nav-collapse">
+        <ul id="ul_menu" class="nav">
+            <!--菜单内容-->
+        </ul>
+    </div>
+</div>
+
+
+

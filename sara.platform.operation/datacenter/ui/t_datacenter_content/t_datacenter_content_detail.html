@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        cc-detail
+    </title>
+    <!--<link href="t_datacenter_content_detail.min.css" media="all" rel="stylesheet" type="text/css" />-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+
+    <script src="t_datacenter_content_detail.min.js" type="text/javascript"></script>
+
+
+    <script>
+
+        $.include({
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['base', 'resource',
+                 '../../../../commonjs/commonjs.js',
+                '../../../../commoncss/commoncss.css',
+                '../../../../ui/basepage/basepage.css',
+                '../../../../ui/basepage/basepage.js'
+            ]
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <div class="col-xs-8 cc-command-button">
+                    <!--<button id="btn_command_save_t_datacenter_content_detail" class="btn btn-success" onclick="t_datacenter_content_detail_obj.btn_command_save_onclick();">保存<span class="badge"></span></button>-->
+                </div>
+                <div class="col-xs-4 cc-command-cancle">
+                    <button id="btn_command_cancle_t_datacenter_content_detail" class="btn btn-warning" onclick="t_datacenter_content_detail_obj.btn_command_cancle_onclick();">返回</button>
+                </div>
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>数据内容</div>
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+    <!--内容部分 start-->
+    <div class="container-fluid main-content cc-content leftmenu-center-content">
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <div class="widget-container fluid-height clearfix">
+                    <div class="heading">
+                        <i class="icon-collapse"></i>数据内容
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+                            <div class="col-lg-12" id="div_t_datacenter_content_tablename">
+                                <h4>
+                                    <b>
+                                        表名称
+                                    </b>
+                                </h4>
+                                <h2></h2>
+                                <div class="row hidden" id="div_input_tablename">
+
+                                    CONTENT_<input id="input_tablename_t_datacenter_content" style="width:350px;" />
+                                </div>
+                            </div>
+                            <div class="row" id="div_pagetype1_command">
+                                <div class="col-lg-12">
+
+                                    <h5 style="color:red">
+                                        添加文件自动上传，会自动判断文件与表的格式匹配，文件必须是Excel格式，只读取第一个Sheet，并且第一行为列名，如果通过验证，可以选择是否清除表中原有数据，点击导入按钮将上传的文件中的数据导入数据库中
+                                    </h5>
+                                    <h4 style="color:red">
+                                        上传文件之前请确认内容为纯文本，如果不确定，请选中所有单元格，右击设置单元格格式为<b>文本</b>
+                                    </h4>
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <div id="div_detail_fileuploader" class="form-group">
+
+                                        <div id="detail_fileuploader"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="div_detail_filecontent" class="form-group">
+
+                                        <div id="detail_filecontent"></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div id="div_detail_checkbox" class="form-group">
+                                        <!--<label for="detail_checkbox" class="control-label">是否清除数据<i class="icon-exclamation-sign hand hidden"></i></label>-->
+                                        <input id="detail_checkbox" type="hidden" data-label-text="是否清除数据" data-on-text="是" data-off-text="否">
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <button disabled id="div_t_datacenter_content_imp2database" class="btn btn-success" onclick="t_datacenter_content_detail_obj.imp2database_onclick()">
+                                        导入
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-12" id="div_tablecontent_newdata">
+                                <div class="widget-container fluid-height clearfix">
+                                    <div class="heading">
+                                        <i class="icon-collapse"></i> 新数据
+                                    </div>
+                                    <div class="widget-content padded">
+
+                                        <div id="t_datacenter_content_detail_newdatatable">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12" id="div_tablecontent_olddata">
+                                <div class="widget-container fluid-height clearfix">
+                                    <div class="heading">
+                                        <i class="icon-collapse"></i> 原数据
+                                    </div>
+                                    <div class="widget-content padded">
+
+                                        <div id="t_datacenter_content_detail_datatable">
+
+                                        </div>
+                                        <div id="div_t_datacenter_content_loadmore" class="hidden" style="text-align:center">
+                                            <a onclick="t_datacenter_content_detail_obj.loadmoredata()" href="javascript:void(0)">加载更多</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot"></div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+</body>
+</html>

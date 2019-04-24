@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        项目信息
+    </title>
+
+
+    <link href="tbl_maintable_detailall.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="tbl_maintable_button.css" media="all" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+    <script src="tbl_maintable_detailall.js" type="text/javascript"></script>
+
+
+    <script src="tbl_maintable_button.js" type="text/javascript"></script>
+
+
+    <script>
+
+        $.include( {
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['base', 'resource', 'arcgisjsapi37', 'highcharts',
+                 '../../commonjs/commonjs.js',
+                  '../../commoncss/commoncss.css',
+                '../basepage/basepage.css',
+                '../basepage/basepage.js'
+            ]
+        } );
+
+    </script>
+
+</head>
+<body>
+
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <!--<div class="container-fluid main-content " style="padding-left: 0px !important; padding-right: 0px !important; ">
+            <div class="row " style="margin-left: 0px !important; margin-right: 0px !important; " >
+                <div class="col-md-1 cc-hidden-sm cc-hidden-xs" style="background-color: transparent !important; "></div>
+                <div id="div_btn_command_tbl_maintable_button" class="  col-xs-8 col-md-7 cc-command-button-tbl-maintable-detail-all cc-command-tbl-maintable-detail-all"  style="padding-left: 5px !important; padding-right: 5px !important; ">
+
+                </div>
+                <div class=" col-xs-4  cc-command-cancle-tbl-maintable-detail-all cc-command-tbl-maintable-detail-all">
+                    <button id="btn_command_cancle_tbl_maintable_detailall" class="btn btn-warning" onclick="btn_command_cancle_tbl_maintable_detailall_onclick();">返回</button>
+                </div>
+            </div>
+        </div>-->
+        <div class="container-fluid main-content cc-command-tbl-maintable-detail-all">
+            <div class="row ">
+                <!--//？？！！-->
+                <div id="div_btn_command_tbl_maintable_button" class="col-xs-8 cc-command-button-tbl-maintable-detail-all">
+
+                </div>
+                <!--//？？！！-->
+                <div class="col-xs-4 cc-command-cancle-tbl-maintable-detail-all">
+                    <span id="sp_detailAllMode_tbl_maintable_detailall" style="display:none;"></span>
+                    <button id="btn_command_cancle_tbl_maintable_detailall" class="btn btn-warning" onclick="tblMainTableDetailAllObject.btn_command_cancle_onclick();">返回</button>
+                </div>
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--内容部分 start-->
+    <!--//？？！！-->
+    <!--<table id="table_content_tbl_maintable_detailall" class="leftmenu-center-content" style="width:100%;margin-right:240px;" >
+        <tr>
+            <td class="td-menu-maintable-detailall visible-md visible-lg themebg" >
+
+                <div id="div_menu_tbl_maintable_detailall">
+                    <ul id="ul_menu_tbl_maintable_detailall" class="nav ul-menu-maintable-detailall"></ul>
+                </div>
+            </td>
+            <td style="vertical-align:top">
+                <div class="row" style="margin-left: 5px !important;">
+                    <div id="div_content_tbl_maintable_detailall" class="col-md-12" style="background-color: #e8e8e8; padding-left: 0px !important; ">
+                    </div>
+                    <div id="div_row_fullscreen" class="col-md-12 cc-hidden-sm cc-hidden-xs" style="background-color: #e8e8e8;padding-left: 0px !important; ">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>-->
+
+    <div class="row leftmenu-center-content" id="table_content_tbl_maintable_detailall">
+        <div class="col-md-1 td-menu-maintable-detailall visible-md visible-lg themebg">
+            <div id="div_menu_tbl_maintable_detailall">
+                <ul id="ul_menu_tbl_maintable_detailall" class="nav ul-menu-maintable-detailall"></ul>
+            </div>
+        </div>
+        <div class="col-md-11 td-content-maintable-detailall" style="vertical-align:top">
+            <div class="row" style="margin-left: 5px !important;">
+                <div id="div_content_tbl_maintable_detailall" class="col-md-12" style="background-color: #e8e8e8; padding-left: 0px !important; ">
+                </div>
+                <div id="div_row_fullscreen" class="col-md-12 cc-hidden-sm cc-hidden-xs" style="background-color: #e8e8e8;padding-left: 0px !important; ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot">
+        </div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+    <!--tbl_maintable_button start-->
+    <div id="div_tbl_maintable_button"></div>
+    <!--tbl_maintable_button end-->
+</body>
+
+</html>

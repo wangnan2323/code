@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        cc-detail
+    </title>
+    <link href="t_dy_lc_detail.min.css" media="all" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+
+    <script src="t_dy_lc_detail.min.js" type="text/javascript"></script>
+
+
+    <script>
+
+        $.include( {
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['base', 'resource',
+                '../../../../commonjs/commonjs.js',
+                '../../../../commoncss/commoncss.css',
+                '../../../../ui/basepage/basepage.css',
+                '../../../../ui/basepage/basepage.js'
+            ]
+        } );
+
+    </script>
+
+</head>
+<body>
+
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <div class="col-xs-8 cc-command-button">
+                    <button id="btn_command_save_t_dy_lc_detail" class="btn btn-success" onclick="t_dy_lc_detail_Obj.btn_command_save_onclick();">保存<span class="badge"></span></button>
+                </div>
+                <div class="col-xs-4  cc-command-cancle">
+                    <button id="btn_command_cancle_t_dy_lc_detail" class="btn btn-warning" onclick="t_dy_lc_detail_Obj.btn_command_cancle_onclick();">返回</button>
+                </div>
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>流程信息</div>
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+    <!--内容部分 start-->
+    <div class="container-fluid main-content cc-content leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12  hidden">
+                <div class="widget-container fluid-height clearfix">
+                    <div class="heading">
+                        <i class="icon-collapse"></i>流程信息
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_creatuserid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_creatuserid_t_dy_lc_detail" class="control-label">创建人id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_creatuserid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_creatusername_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_creatusername_t_dy_lc_detail" class="control-label">创建人姓名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_creatusername_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div id="div_detail_datetime_sys_creatdatetime_t_dy_lc_detail_date" class="form-group">
+                                            <label for="detail_datetime_sys_creatdatetime_t_dy_lc_detail_date" class="control-label">创建时间日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div id="detail_datetime_sys_creatdatetime_t_dy_lc_detail_date" class="input-group date datepicker">
+                                                <input class="form-control" type="text" />
+                                                <span class="input-group-addon hand">
+                                                    <i class="icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div id="div_detail_datetime_sys_creatdatetime_t_dy_lc_detail_time" class="form-group">
+                                            <label for="detail_datetime_sys_creatdatetime_t_dy_lc_detail_time" class="control-label">创建时间时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input class="form-control" id="detail_datetime_sys_creatdatetime_t_dy_lc_detail_time" type="text" />
+                                                <span class="input-group-addon hand">
+                                                    <i class="icon-time"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_lastedituserid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_lastedituserid_t_dy_lc_detail" class="control-label">最后修改人id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_lastedituserid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_lasteditusername_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_lasteditusername_t_dy_lc_detail" class="control-label">最后修改人姓名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_lasteditusername_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div id="div_detail_datetime_sys_lasteditdatetime_t_dy_lc_detail_date" class="form-group">
+                                            <label for="detail_datetime_sys_lasteditdatetime_t_dy_lc_detail_date" class="control-label">最后修改时间日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div id="detail_datetime_sys_lasteditdatetime_t_dy_lc_detail_date" class="input-group date datepicker">
+                                                <input class="form-control" type="text" />
+                                                <span class="input-group-addon hand">
+                                                    <i class="icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div id="div_detail_datetime_sys_lasteditdatetime_t_dy_lc_detail_time" class="form-group">
+                                            <label for="detail_datetime_sys_lasteditdatetime_t_dy_lc_detail_time" class="control-label">最后修改时间时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input class="form-control" id="detail_datetime_sys_lasteditdatetime_t_dy_lc_detail_time" type="text" />
+                                                <span class="input-group-addon hand">
+                                                    <i class="icon-time"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_deluserid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_deluserid_t_dy_lc_detail" class="control-label">删除人id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_deluserid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_delusername_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_delusername_t_dy_lc_detail" class="control-label">删除人姓名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_delusername_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div id="div_detail_datetime_sys_deldatetime_t_dy_lc_detail_date" class="form-group">
+                                            <label for="detail_datetime_sys_deldatetime_t_dy_lc_detail_date" class="control-label">删除时间日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div id="detail_datetime_sys_deldatetime_t_dy_lc_detail_date" class="input-group date datepicker">
+                                                <input class="form-control" type="text" />
+                                                <span class="input-group-addon hand">
+                                                    <i class="icon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div id="div_detail_datetime_sys_deldatetime_t_dy_lc_detail_time" class="form-group">
+                                            <label for="detail_datetime_sys_deldatetime_t_dy_lc_detail_time" class="control-label">删除时间时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input class="form-control" id="detail_datetime_sys_deldatetime_t_dy_lc_detail_time" type="text" />
+                                                <span class="input-group-addon hand">
+                                                    <i class="icon-time"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sfzlc_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sfzlc_t_dy_lc_detail" class="control-label">是否子流程[0：是；1：否]<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sfzlc_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_flcjddyid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_flcjddyid_t_dy_lc_detail" class="control-label">父流程节点id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_flcjddyid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_delfalg_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_delfalg_t_dy_lc_detail" class="control-label">删除标志位<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_delfalg_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_lcsx_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_lcsx_t_dy_lc_detail" class="control-label">流程总时限[以天为单位]<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_lcsx_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="widget-container fluid-height clearfix">
+                    <div class="heading">
+                        <i class="icon-collapse"></i>流程信息
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div id="div_detail_txt_sys_remark_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_remark_t_dy_lc_detail" class="control-label">sys_appcode<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_remark_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_orderid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_orderid_t_dy_lc_detail" class="control-label">序号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_orderid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_version_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_version_t_dy_lc_detail" class="control-label">版本号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_version_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_sys_id_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_sys_id_t_dy_lc_detail" class="control-label">流程定义ID<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_sys_id_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                          
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_lcmc_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_lcmc_t_dy_lc_detail" class="control-label">流程定义名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_lcmc_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_lcksjddyid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_lcksjddyid_t_dy_lc_detail" class="control-label">流程开始节点id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_lcksjddyid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_lcjsjddyid_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_lcjsjddyid_t_dy_lc_detail" class="control-label">流程结束节点id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_lcjsjddyid_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_ywbmc_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_ywbmc_t_dy_lc_detail" class="control-label">业务表名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_ywbmc_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="div_detail_txt_ywbzjmc_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_ywbzjmc_t_dy_lc_detail" class="control-label">业务表主键名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="detail_txt_ywbzjmc_t_dy_lc_detail" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div id="div_detail_txt_lcms_t_dy_lc_detail" class="form-group">
+                                    <label for="detail_txt_lcms_t_dy_lc_detail" class="control-label">流程描述<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <textarea id="detail_txt_lcms_t_dy_lc_detail" class="form-control" type="text" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="padding-top:10px;">
+                <div class="widget-container fluid-height">
+                    <div class="heading">
+                        <i class="icon-edit"></i>消息控件
+                    </div>
+                    <div class="widget-content padded">
+                        <div class="row">
+                            <div class="col-lg-12 hidden">
+
+                                <button class="btn btn-default btn-command-message" onclick="t_dy_lc_detail_Obj.btn_command_message_onclick('result');">result</button>
+                                <button class="btn btn-default btn-command-message" onclick="t_dy_lc_detail_Obj.btn_command_message_onclick('alert');">alert</button>
+                                <button class="btn btn-default btn-command-message" onclick="t_dy_lc_detail_Obj.btn_command_message_onclick('confirm');">confirm</button>
+                                <button class="btn btn-default btn-command-message" onclick="t_dy_lc_detail_Obj.btn_command_message_onclick('block');">block</button>
+                            </div>
+
+                            <div id="div_t_dy_jd_container" class="col-lg-12">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div  class="col-lg-8" style="padding-top:10px;">
+                <div class="col-lg-12" >
+                    <div class="widget-container fluid-height" >
+                        <div class="heading">
+                            <i class="icon-edit"></i>连接线
+                        </div>
+                        <div class="widget-content padded">
+    <div class="row">
+        <div id="div_t_dy_ljx_container" class="col-lg-12">
+        </div>
+    </div>
+</div>
+                    </div>
+                    
+                </div>
+                <div  class="col-lg-12"  style="padding-top:10px;">
+                    <div class="widget-container fluid-height">
+                        <div class="heading">
+                            <i class="icon-edit"></i>应用
+                        </div>
+                        <div class="widget-content padded">
+                            <div class="row">
+                                <div id="div_t_dy_yy_container" class="col-lg-12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot"></div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+</body>
+</html>

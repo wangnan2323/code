@@ -1,0 +1,270 @@
+﻿@charset "UTF-8";
+/*custom样式*/
+
+
+/*==========commond=============*/
+.cc-command
+{
+    border-top: solid 1px #e6e6e6;
+    border-bottom: solid 1px #e6e6e6;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.96);
+    height: 42px;
+}
+
+.cc-command-button
+{
+}
+
+
+
+
+/*detail*/
+.cc-command-cancle
+{
+    text-align: right;
+}
+
+/*list*/
+.btn-command-search-dropdown
+{
+    margin-top: -10px !important;
+}
+
+
+
+
+@media (max-width: 767px)
+{
+    .cc-command
+    {
+        margin-top: -2px;
+        padding-top: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+        height: 40px;
+    }
+
+    .cc-command-button
+    {
+        margin-bottom: -2px;
+        /*list*/
+        height: 40px;
+    }
+
+    /*list*/
+    .cc-command-search-xs
+    {
+        height: 40px;
+    }
+    /*detail*/
+    .cc-command-cancle
+    {
+        margin-bottom: -5px;
+    }
+}
+
+
+.cc-font-weight-bold
+{
+    font-weight: bold;
+}
+
+/*==========info=============*/
+.cc-info
+{
+    /*list*/
+    /*background-color: rgba(255, 255, 255, 0.96);*/
+    /*detail*/
+    /*background-color: rgba(255, 255, 255, 0.96);*/
+}
+
+    .cc-info .row .col-lg-12 > div
+    {
+        /*list*/
+        /*？？！！*/
+        /*padding-top: 30px;*/
+        /*detail*/
+        /*padding-top: 20px;*/
+        padding-bottom: 5px;
+        font-size: 20px;
+    }
+/*list*/
+/*平板电脑-横*/
+@media (max-width: 1200px)
+{
+    .cc-info .row .col-lg-12 > div
+    {
+        padding-top: 40px !important;
+    }
+}
+/*list*/
+/*平板电脑-竖*/
+@media (max-width: 992px)
+{
+    .cc-info .row .col-lg-12 > div
+    {
+        padding-top: 40px !important;
+    }
+}
+
+/*手机-竖*/
+@media (max-width: 767px)
+{
+    .cc-info .row .col-lg-12 > div
+    {
+        /*list*/
+        padding-top: 40px !important;
+        /*detail*/
+        /*padding-top: 50px !important;*/
+    }
+}
+
+/*==========content=============*/
+/*detail*/
+.cc-content
+{
+}
+
+/*detail*/
+@media (max-width: 767px)
+{
+}
+
+/*==========grid=============*/
+/*list*/
+.cc-grid > .row > div > div
+{
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+/*list*/
+.cc-grid .row .col-lg-12 > div
+{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 767px)
+{
+    /*list*/
+    .cc-grid .row .col-lg-12 > div
+    {
+        border: solid 0px red;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 10px !important;
+    }
+}
+
+
+
+/*==========grid的选中情况统计=============*/
+/*list*/
+.cc-badge-ul
+{
+    width: 35px;
+    float: right;
+    text-align: center;
+}
+/*list*/
+.cc-badge-a
+{
+    font-size: 20px;
+    cursor: pointer;
+    padding-top: 8px !important;
+    color: #808080 !important;
+}
+/*list*/
+.cc-badge-p
+{
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    height: 15px;
+    width: 30px;
+    min-width: 20px;
+    padding: 0 0px;
+    border-radius: 8px;
+    background: #e62828;
+    text-align: center;
+    line-height: 17px;
+    color: white;
+    font-size: 10px;
+}
+
+
+/*==========other=============*/
+/*detail*/
+.padded
+{
+    padding: 10px;
+}
+
+/*detail*/
+.hand
+{
+    cursor: pointer;
+}
+/*==========desing追加的样式=============*/
+.span-manyvalue
+{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+blockquote.text-right
+{
+    border-left: 0px solid #eee;
+    border-right: 5px solid #eee;
+}
+
+blockquote.bg-primary small
+{
+    color: #ffffff;
+}
+
+blockquote.bg-warning small
+{
+    color: #ffffff;
+}
+
+blockquote.bg-danger small
+{
+    color: #ffffff;
+}
+
+blockquote.bg-info small
+{
+    color: #ffffff;
+}
+
+blockquote.bg-success small
+{
+    color: #ffffff;
+}
+
+.div_filetorich
+{
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #feefc6;
+    border: solid 1px #cecece;
+    margin-top:5px;
+}
+
+.div_imgtorich
+{
+    cursor: pointer;
+    height: 60px;
+    background-color: #feefc6;
+    border: solid 1px #cecece;
+    padding: 5px;
+    margin-top:5px;
+}

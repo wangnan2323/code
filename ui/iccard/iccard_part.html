@@ -1,0 +1,564 @@
+﻿
+<link href="../iccard/jquery.simple.slide.css" rel="stylesheet" />
+<script src="../iccard/jquery.simple.slide.js"></script>
+<style>
+    .pfx, .activex, .delete, .download
+    {
+        padding-right: 10px;
+    }
+
+        .pfx img,
+        .activex img,
+        .delete img,
+        .download img
+        {
+            width: 100px;
+            box-shadow: 2px 2px 2px #888888;
+        }
+</style>
+
+
+<div id="div_activex_iccard_part" class="hidden">
+    <object class="hidden" id="obj_activex_iccard_part" codebase="../../lib/sara.dd.ldsw.activex.setup.cab" classid="clsid:8d7d8518-ca58-4863-b94d-3c616fda7b35"></object>
+</div>
+<div id="div_browser_iccard_part" class="hidden">
+    <div class="jumbotron">
+        <h1 id="title_browser_message"></h1>
+        <p id="content_browser_message"></p>
+        <p>
+            <a id="a_download360" class="btn btn-primary btn-lg hidden" role="button" onclick="iccard_part_Obj.a_download360_click();">1、下载360浏览器<img src="../../images/browser_360.png" width="20px" height="20px"></a>            
+            <a class="btn btn-primary btn-lg" role="button" onclick="iccard_part_Obj.a_downloaddriver_click();">2、下载驱动</a>
+            <a class="btn btn-primary btn-lg" role="button" onclick="iccard_part_Obj.a_downloadmsi_click();">3、下载插件</a>
+            <a id="a_modal360" class="btn btn-primary btn-lg hidden" role="button" onclick="iccard_part_Obj.a_modal360_click();">已经是360浏览器，如何设置“兼容模式”</a>
+        </p>
+        <p id="content_modal360_message" class="hidden"></p>
+    </div>
+</div>
+<div id="div_setup_iccard_part" class="hidden">
+    <div class="jumbotron">
+        <h1 id="title_setup_message">请完成Activex插件的安装</h1>
+        <p id="content_setup_message"></p>
+
+    </div>
+</div>
+<div id="div_command_iccard_part" class="hidden">
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'port' );">端口</button>
+        </div>
+
+        <div class="col-lg-12" id="div_port_message_iccard_part">
+
+        </div>
+
+        <div class="col-lg-12">
+            <div id="div_detail_txt_f_value1_iccard_part" class="form-group">
+                <label for="detail_txt_port_iccard_part" class="control-label">端口号<i class="icon-exclamation-sign hand hidden"></i></label>
+                <div class="input-group">
+                    <input id="detail_txt_port_iccard_part" type="text" class="form-control" placeholder="">
+                    <span class="input-group-btn">
+                        <button id="btn_detail_txt_port_iccard_part" class="btn btn-default" onclick="iccard_part_Obj.btn_command_port_onclick();" type="button">保存端口设置 </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'read' );">读取</button>
+        </div>
+        <div class="col-lg-12" id="div_read_message_iccard_part">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'write' );">写卡</button>
+        </div>
+        <div class="col-lg-12" id="div_write_message_iccard_part">
+
+        </div>
+
+        <div class="col-lg-4">
+            <div id="div_detail_txt_f_value1_iccard_part" class="form-group">
+                <label for="detail_txt_f_value1_iccard_part" class="control-label">写卡操作类型 0普通卡1补卡<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value1_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="div_detail_txt_f_value2_iccard_part" class="form-group">
+                <label for="detail_txt_f_value2_iccard_part" class="control-label">卡号，最多8位，全数字格式。<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value2_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="div_detail_txt_f_value3_iccard_part" class="form-group">
+                <label for="detail_txt_f_value3_iccard_part" class="control-label">购水次数，每次售水顺序递增即可<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value3_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="div_detail_txt_f_value4_iccard_part" class="form-group">
+                <label for="detail_txt_f_value4_iccard_part" class="control-label">本次购水量，最大99999。<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value4_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="div_detail_txt_f_value6_iccard_part" class="form-group">
+                <label for="detail_txt_f_value6_iccard_part" class="control-label">累计购水量，最大值：999999<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value6_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="div_detail_txt_f_value7_iccard_part" class="form-group">
+                <label for="detail_txt_f_value7_iccard_part" class="control-label">介质类型，0->任意,1->冷水<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value7_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div id="div_detail_txt_f_value5_iccard_part" class="form-group">
+                <label for="detail_txt_f_value5_iccard_part" class="control-label">1：用户卡注册（在表上只能回读，不能充值，给后续写卡充值作准备）。2：开户充值：智能表裸表第1次购水或换表操作。3：续费充值：再次购水操作，各种补水操作也使用此命令。<i class="icon-exclamation-sign hand hidden"></i></label>
+                <input id="detail_txt_f_value5_iccard_part" class="form-control" type="text" placeholder="">
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'clear' );">清卡</button>
+        </div>
+        <div class="col-lg-12" id="div_clear_message_iccard_part">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'debug1' );">制作调试卡</button>
+        </div>
+        <div class="col-lg-12" id="div_debug1_message_iccard_part">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'debug2' );">制作2型维护卡</button>
+        </div>
+        <div class="col-lg-12" id="div_debug2_message_iccard_part">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'debug3' );">制作清故障卡</button>
+        </div>
+        <div class="col-lg-12" id="div_debug3_message_iccard_part">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" onclick="iccard_part_Obj.button_click( 'debug4' );">制作查询卡</button>
+        </div>
+        <div class="col-lg-12" id="div_debug4_message_iccard_part">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+
+    var iccard_part_Obj = (function ()
+    {
+        var _x = null;
+        var that = {
+            //1：可编辑；2：只读
+            _pr_pagetype: '',
+            init: function (callBackFunction)
+            {
+                try
+                {
+                    if (that._pr_pagetype != '2')
+                    {
+                        //验证浏览器分类
+                        if (_browserMatch == null || _browserMatch == '')
+                        {
+                            _browserMatch = getBrowerVersion();
+                        }
+
+                        var browserStr = '';
+                        switch (_browserMatch.browser)
+                        {
+                            case "IE":
+                                break;
+                            case "firefox":
+                                browserStr = '<img src="../../images/browser_firefox.png" width="20px" height="20px">火狐浏览器';
+                                break;
+                            case "opera":
+                                browserStr = '<img src="../../images/browser_opera.png" width="20px" height="20px">opera浏览器';
+                                break;
+                            case "safari":
+                                browserStr = '<img src="../../images/browser_safari.png" width="20px" height="20px">safari浏览器';
+                                break;
+                            case "chrome":
+                                browserStr = '<img src="../../images/browser_chrome.png" width="20px" height="20px">谷歌浏览器';
+                                break;
+                            default:
+                                browserStr = '未知浏览器';
+                                break;
+                        }
+                        if (browserStr != '')
+                        {
+                            $('#div_browser_iccard_part').removeClass('hidden');
+
+                            var h1HtmlStr = '请使用<img src="../../images/browser_IE.png" width="60px" height="60px">IE浏览器';
+                            h1HtmlStr += '或者';
+                            h1HtmlStr += '<img src="../../images/browser_360.png" width="60px" height="60px">360浏览器的“兼容模式”';
+                            $('#title_browser_message').html(h1HtmlStr);
+
+                            var pHtmlStr = '您将要使用的功能基于ActiveX插件技术研发，只有IE浏览器或者360浏览器的“兼容模式”对该技术提供了良好的支持。<br/>';
+                            pHtmlStr += '您当前使用的是' + browserStr + ',版本号' + _browserMatch.version + '<br/>';
+                            pHtmlStr += '请更换浏览器';
+
+                            $('#content_browser_message').html(pHtmlStr);
+                            $('#a_download360').removeClass('hidden');
+                            if (_browserMatch.browser == 'chrome')
+                            {
+                                $('#a_modal360').removeClass('hidden');
+                            }
+
+                            callBackFunction.success('false');
+                        }
+                        else
+                        {
+                            ///校验是否安装了active插件
+                            _x = document.getElementById("obj_activex_iccard_part");
+                            var isSetup = false;
+                            try
+                            {
+                                _x.GetGuidString();
+                                isSetup = true;
+                            }
+                            catch (ex)
+                            {
+                                isSetup = false;
+                            }
+
+                            if (isSetup == false)
+                            {
+                                $('#div_setup_iccard_part').removeClass('hidden');
+
+                                //var htmlStr = '';
+                                //htmlStr += '1、点击<a  class="btn btn-primary btn-lg" role="button" onclick="iccard_part_Obj.a_downloadpfx_click();">下载证书</a>按钮，完成安全证书下载<br/>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup1.png" class="Slide download"><img  src="../../images/setup1.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup2.png" class="Slide download"><img  src="../../images/setup2.png" alt=""></a>';
+                                //htmlStr += '<br/>';
+                                //htmlStr += '2、按照下图操作步骤完成证书安装：<br/>';
+
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup3.png" class="Slide pfx"><img  src="../../images/setup3.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup4.png" class="Slide pfx"><img  src="../../images/setup4.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup5.png" class="Slide pfx"><img  src="../../images/setup5.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup6.png" class="Slide pfx"><img  src="../../images/setup6.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup7.png" class="Slide pfx"><img  src="../../images/setup7.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup8.png" class="Slide pfx"><img  src="../../images/setup8.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup9.png" class="Slide pfx"><img  src="../../images/setup9.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup10.png" class="Slide pfx"><img src="../../images/setup10.png" alt=""></a>';
+
+                                //htmlStr += '<br/>';
+
+                                //htmlStr += '3、证书安装完成后，请刷新浏览器页面，完成Activex插件的安装<br/>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup11.png" class="Slide activex"><img src="../../images/setup11.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup12.png" class="Slide activex"><img src="../../images/setup12.png" alt=""></a>';
+
+                                //htmlStr += '<br/>';
+                                //htmlStr += '4、截止到第3步，插件的安装已经完成，如果不想使用本功能，在控制面板中可以进行插件的卸载<br/>';
+
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup13.png" class="Slide delete"><img  src="../../images/setup13.png" alt=""></a>';
+                                //htmlStr += '<br/>';
+
+                                //$( '#content_setup_message' ).html( htmlStr );
+
+                                //$( '.download' ).simpleSlide();
+                                //$( '.pfx' ).simpleSlide();
+                                //$( '.activex' ).simpleSlide();
+                                //$( '.delete' ).simpleSlide();
+
+
+                                var htmlStr = '';
+                                htmlStr += '1、点击<a  class="btn btn-primary btn-lg" role="button" onclick="iccard_part_Obj.a_downloaddriver_click();">下载驱动</a>按钮，完成驱动安装<br/>';
+                                htmlStr += '2、点击<a  class="btn btn-primary btn-lg" role="button" onclick="iccard_part_Obj.a_downloadpfx_click();">下载证书</a>按钮，完成安全证书下载';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup1.png" class="Slide download"><img  src="../../images/setup1.png" alt=""></a>';
+                                //htmlStr += '<a href="javascript:;" i="../../images/setup2.png" class="Slide download"><img  src="../../images/setup2.png" alt=""></a>';
+                                //htmlStr += '<br/>';
+                                htmlStr += '或 点击<a  class="btn btn-primary btn-lg" role="button" onclick="iccard_part_Obj.a_downloadmsi_click();">下载插件</a>按钮，完成插件安装<br/>';
+
+                                $('.download').simpleSlide();
+                                $('#content_setup_message').html(htmlStr);
+
+                                callBackFunction.success('false');
+                            }
+                            else
+                            {
+                                if (that._pr_pagetype == '9')
+                                {
+                                    $('#div_command_iccard_part').removeClass('hidden');
+                                    callBackFunction.success('false');
+                                }
+                                else
+                                {
+                                    callBackFunction.success('true');
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        callBackFunction.success('false');
+                    }
+
+                }
+                catch (ex)
+                {
+                    callBackFunction.fail(ex.message);
+                }
+
+            },
+            command: function (parameterJson, callBackFunction)
+            {
+                try
+                {
+                    _x = document.getElementById("obj_activex_iccard_part");
+                    switch (parameterJson.commandName)
+                    {
+                        case "port":
+                            var message = _x.GetPort();
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+                            break;
+                        case "read":
+                            var message = _x.ReadCard(parameterJson.port);
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+                            break;
+                        case "write":
+                            /// <summary>
+                            ///
+                            /// </summary>
+                            /// <param name="port">读卡器所使用的串口号，从1开始。</param>
+                            /// <param name="xklx">写卡操作类型 0普通卡1补卡，在DLL内部无实际用处。</param>
+                            /// <param name="mcardno">卡号，最多8位，全数字格式。</param>
+                            /// <param name="mgscs">购水次数，每次售水顺序递增即可。</param>
+                            /// <param name="mbcgsl">本次购水量，最大99999。</param>
+                            /// <param name="mCzmode">1：用户卡注册（在表上只能回读，不能充值，给后续写卡充值作准备）。2：开户充值：智能表裸表第1次购水或换表操作。3：续费充值：再次购水操作，各种补水操作也使用此命令。</param>
+                            /// <param name="mljgl">累计购水量，最大值：999999</param>
+                            /// <param name="Mediatype">介质类型，0->任意,1->冷水</param>
+                            /// <returns>true:成功，其他：失败原因</returns>
+                            /*
+                            四、	在智能表上读卡出现充值失败故障后的处理办法：
+                            a)	对于介质类型为0的表具，使用写卡函数将上次购水量重新写一次即可，同时保持累计购水量、购水次数、介质类型不变。
+                            b)	对于介质类型为1的表具：
+                            1.	若是第1次充值，且充值失败，则保持累计购水量、本次购水量、购水次数、介质类型不变，同时mCzmode=2（开户充值）即可。
+                            2.	若不是第1次充值，则保持累计购水量、本次购水量、购水次数、介质类型不变，同时mCzmode=3（续费充值）即可。
+
+                            */
+
+                            var message = _x.WriteCard(parameterJson.port, parameterJson.xklx, parameterJson.mcardno, parameterJson.mgscs, parameterJson.mbcgsl, parameterJson.mCzmode, parameterJson.mljgl, parameterJson.Mediatype);
+
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+
+
+                            break;
+                        case "clear":
+
+                            var message = _x.ClearCard(parameterJson.port);
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+
+                            break;
+                        case "debug1":
+
+                            var message = _x.WriteWorkCard(parameterJson.port, parameterJson.cardtype);
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+
+                            break;
+                        case "debug2":
+
+                            var message = _x.WriteWorkCard(parameterJson.port, parameterJson.cardtype);
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+
+                            break;
+                        case "debug3":
+
+                            var message = _x.WriteWorkCard(parameterJson.port, parameterJson.cardtype);
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+
+                            break;
+                        case "debug4":
+
+                            var message = _x.WriteWorkCard(parameterJson.port, parameterJson.cardtype);
+                            var messageJson = (new Function("", "return " + message))();
+                            callBackFunction.success(messageJson);
+
+                            break;
+                    }
+                }
+                catch (ex)
+                {
+                    callBackFunction.fail(ex.message);
+                }
+
+            },
+            button_click: function (command)
+            {
+                switch (command)
+                {
+                    case "port":
+
+                        var a = _x.GetPort();
+                        $('#div_port_message_iccard_part').html(a);
+
+                        break;
+                    case "read":
+                        var a = _x.ReadCard($('#detail_txt_port_iccard_part').val());
+                        $('#div_read_message_iccard_part').html(a);
+                        break;
+                    case "write":
+                        /// <summary>
+                        ///
+                        /// </summary>
+                        /// <param name="port">读卡器所使用的串口号，从1开始。</param>
+                        /// <param name="xklx">写卡操作类型 0普通卡1补卡，在DLL内部无实际用处。</param>
+                        /// <param name="mcardno">卡号，最多8位，全数字格式。</param>
+                        /// <param name="mgscs">购水次数，每次售水顺序递增即可。</param>
+                        /// <param name="mbcgsl">本次购水量，最大99999。</param>
+                        /// <param name="mCzmode">1：用户卡注册（在表上只能回读，不能充值，给后续写卡充值作准备）。2：开户充值：智能表裸表第1次购水或换表操作。3：续费充值：再次购水操作，各种补水操作也使用此命令。</param>
+                        /// <param name="mljgl">累计购水量，最大值：999999</param>
+                        /// <param name="Mediatype">介质类型，0->任意,1->冷水</param>
+                        /// <returns>true:成功，其他：失败原因</returns>
+                        /*
+                        四、	在智能表上读卡出现充值失败故障后的处理办法：
+a)	对于介质类型为0的表具，使用写卡函数将上次购水量重新写一次即可，同时保持累计购水量、购水次数、介质类型不变。
+b)	对于介质类型为1的表具：
+1.	若是第1次充值，且充值失败，则保持累计购水量、本次购水量、购水次数、介质类型不变，同时mCzmode=2（开户充值）即可。
+2.	若不是第1次充值，则保持累计购水量、本次购水量、购水次数、介质类型不变，同时mCzmode=3（续费充值）即可。
+
+                        */
+                        var a = _x.WriteCard($('#detail_txt_port_iccard_part').val(),
+                            $('#detail_txt_f_value1_iccard_part').val(),
+                            $('#detail_txt_f_value2_iccard_part').val(),
+                            $('#detail_txt_f_value3_iccard_part').val(),
+                            $('#detail_txt_f_value4_iccard_part').val(),
+                            $('#detail_txt_f_value5_iccard_part').val(),
+                            $('#detail_txt_f_value6_iccard_part').val(),
+                            $('#detail_txt_f_value7_iccard_part').val());
+                        $('#div_write_message_iccard_part').html(a);
+                        break;
+                    case "clear":
+                        var a = _x.ClearCard($('#detail_txt_port_iccard_part').val());
+                        $('#div_clear_message_iccard_part').html(a);
+                        break;
+
+                    case "debug1":
+                        var a = _x.WriteWorkCard($('#detail_txt_port_iccard_part').val(),"1");
+                        $('#div_debug1_message_iccard_part').html(a);
+                        break;
+                    case "debug2":
+                        var a = _x.WriteWorkCard($('#detail_txt_port_iccard_part').val(), "2");
+                        $('#div_debug2_message_iccard_part').html(a);
+                        break;
+                    case "debug3":
+                        var a = _x.WriteWorkCard($('#detail_txt_port_iccard_part').val(), "3");
+                        $('#div_debug3_message_iccard_part').html(a);
+                        break;
+                    case "debug4":
+                        var a = _x.WriteWorkCard($('#detail_txt_port_iccard_part').val(), "4");
+                        $('#div_debug4_message_iccard_part').html(a);
+                        break;
+                }
+            },
+            a_download360_click: function ()
+            {
+                window.open('//127.0.0.1/sara.dd.ldsw.file/files_broswer/360se9.1.0.422.exe', '_blank');
+            },
+            a_modal360_click: function ()
+            {
+                if ($('#content_modal360_message').hasClass('hidden'))
+                {
+                    var str = '';
+                    str += ' 请按照如下步骤操作：<br />';
+                    str += ' 1、在浏览器中“地址栏”（下图中1的位置）的右侧，找到“右侧图标”（下图中2的位置）<br />';
+                    str += ' 2、如果是闪电图标（如下图2的位置），鼠标左键点击后将出现模式选择菜单（下图中3的位置）<br />';
+                    str += ' 3、选中“兼容模式”（下图中4的位置）<br />';
+                    str += ' <img  src="../../images/modal360_1.png" width="800px" height="150px"/><br />';
+                    str += ' 4、选中后效果如下图<br />';
+                    str += ' <img src="../../images/modal360_2.png" width="800px" height="150px" />';
+                    $('#content_modal360_message').html(str);
+                    $('#content_modal360_message').removeClass('hidden');
+                }
+                else
+                {
+                    $('#content_modal360_message').addClass('hidden');
+                }
+
+            },
+            a_downloadpfx_click: function ()
+            {
+                window.open('../../lib/sara.dd.ldsw.activex.setup.pfx', '_blank');
+            },
+            a_downloadmsi_click: function ()
+            {
+                window.open('//127.0.0.1/sara.dd.ldsw.file/files_activex/sara.dd.ldsw.setup.msi', '_blank');
+            },
+            a_downloaddriver_click: function ()
+            {
+                window.open('//127.0.0.1/sara.dd.ldsw.file/files_activex/silicon_labscp210x_6710_64_1024.exe', '_blank');
+            },
+            btn_command_port_onclick: function ()
+            {
+                var port = $('#detail_txt_port_iccard_part').val();
+                if (port != null && port != "")
+                {
+                    setCookieMinutes("port", port, 5256000);
+                    _alertMessage = new alertMessage();
+                    _alertMessage.show('端口设置保存成功', 'success', 2000);
+
+                }
+                else
+                {
+                    _alertMessage = new alertMessage();
+                    _alertMessage.show('端口号不能为空', 'fail');
+                }
+            }
+
+        };
+        return that;
+    })();
+
+
+</script>
+
+

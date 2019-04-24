@@ -1,0 +1,284 @@
+﻿<script src="../t_organ/t_organ_detail_part.min.js" type="text/javascript"></script>
+<link href="../t_organ/t_organ_detail_part.min.css" media="all" rel="stylesheet" type="text/css" />
+
+<!--按钮行 start -->
+<div class="container-fluid main-content cc-command">
+    <div class="row ">
+        <div class="col-xs-8 cc-command-button">
+            <button id="btn_command_save_t_organ_detail" class="btn btn-success" onclick="t_organ_detail_Obj.btn_command_save_onclick();">保存<span class="badge"></span></button>
+            <button id="btn_command_del_t_organ_detail" class="btn btn-success" onclick="t_organ_detail_Obj.btn_command_del_onclick();">删除<span class="badge"></span></button>
+            <button id="btn_command_new_t_organ_detail" class="btn btn-success" onclick="t_organ_detail_Obj.btn_command_new_onclick();">新建子机构<span class="badge"></span></button>
+        </div>
+    </div>
+</div>
+<!--按钮行 end -->
+<!--内容部分 start-->
+<div class="container-fluid main-content cc-content">
+    <div class="row">
+        <div class="col-lg-12  hidden">
+            <div class="widget-container fluid-height clearfix">
+                <div class="heading">
+                    <i class="icon-collapse"></i>机构信息
+                </div>
+                <div class="widget-content padded">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="widget-container fluid-height clearfix">
+                <!--<div class="heading">
+                    <i class="icon-collapse"></i>机构信息
+                </div>-->
+                <div class="widget-content padded">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_o_id_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_id_t_organ_detail" class="control-label">o_id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_id_t_organ_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_o_fullname_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_fullname_t_organ_detail" class="control-label">名称<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_fullname_t_organ_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4">
+                            <div id="div_detail_txt_o_state_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_state_t_organ_detail" class="control-label">o_state【是否可用】<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_state_t_organ_detail" type="hidden" placeholder="">
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3">
+                            <div id="div_detail_txt_o_parentid_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_parentid_t_organ_detail" class="control-label">o_parentid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_parentid_t_organ_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div id="div_detail_txt_o_parentname_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_parentname_t_organ_detail" class="control-label">o_parrentname<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_parentname_t_organ_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div id="div_detail_txt_o_nodeid_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_nodeid_t_organ_detail" class="control-label">o_nodeid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_nodeid_t_organ_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div id="div_detail_txt_o_parentnodeid_t_organ_detail" class="form-group">
+                                <label for="detail_txt_o_parentnodeid_t_organ_detail" class="control-label">o_parentnodeid<i class="icon-exclamation-sign hand hidden"></i></label>
+                                <input id="detail_txt_o_parentnodeid_t_organ_detail" class="form-control" type="text" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="row">
+
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_code_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_code_t_organ_detail" class="control-label">o_code【所在局id】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_code_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_shortname_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_shortname_t_organ_detail" class="control-label">o_shortname【简称】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_shortname_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_character_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_character_t_organ_detail" class="control-label">o_character<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_character_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_scale_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_scale_t_organ_detail" class="control-label">o_scale<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_scale_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_asset_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_asset_t_organ_detail" class="control-label">o_asset<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_asset_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_boss_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_boss_t_organ_detail" class="control-label">o_boss【负责人】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_boss_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_add_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_add_t_organ_detail" class="control-label">o_add<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_add_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_postcode_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_postcode_t_organ_detail" class="control-label">o_postcode【邮编】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_postcode_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_fax_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_fax_t_organ_detail" class="control-label">o_fax【传真】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_fax_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_phone_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_phone_t_organ_detail" class="control-label">o_phone【电话】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_phone_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_linkman_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_linkman_t_organ_detail" class="control-label">o_linkman<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_linkman_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="div_detail_datetime_o_registerdate_t_organ_detail_date" class="form-group">
+                                    <label for="detail_datetime_o_registerdate_t_organ_detail_date" class="control-label">日期<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <div id="detail_datetime_o_registerdate_t_organ_detail_date" class="input-group date datepicker">
+                                        <input class="form-control" type="text" />
+                                        <span class="input-group-addon hand">
+                                            <i class="icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 hidden">
+                                <div id="div_detail_datetime_o_registerdate_t_organ_detail_time" class="form-group">
+                                    <label for="detail_datetime_o_registerdate_t_organ_detail_time" class="control-label">时间<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input class="form-control" id="detail_datetime_o_registerdate_t_organ_detail_time" type="text" />
+                                        <span class="input-group-addon hand">
+                                            <i class="icon-time"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_o_inputer_t_organ_detail" class="form-group">
+                            <label for="detail_txt_o_inputer_t_organ_detail" class="control-label">o_inputer【录入人】<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_o_inputer_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value1_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value1_t_organ_detail" class="control-label">v1<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value1_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value2_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value2_t_organ_detail" class="control-label">v2<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value2_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value3_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value3_t_organ_detail" class="control-label">v3<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value3_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value4_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value4_t_organ_detail" class="control-label">v4<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value4_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value5_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value5_t_organ_detail" class="control-label">v5<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value5_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value6_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value6_t_organ_detail" class="control-label">v6<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value6_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value7_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value7_t_organ_detail" class="control-label">v7<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value7_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value8_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value8_t_organ_detail" class="control-label">v8<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value8_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value9_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value9_t_organ_detail" class="control-label">v9<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value9_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div id="div_detail_txt_f_value10_t_organ_detail" class="form-group">
+                            <label for="detail_txt_f_value10_t_organ_detail" class="control-label">v10<i class="icon-exclamation-sign hand hidden"></i></label>
+                            <input id="detail_txt_f_value10_t_organ_detail" class="form-control" type="text" placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--内容部分 end-->

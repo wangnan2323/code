@@ -1,0 +1,1531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F99FB7CC-FFC9-40DA-8A06-1EEFB21826B8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sara.dd.ldsw</RootNamespace>
+    <AssemblyName>sara.dd.ldsw</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="cn.jpush.api">
+      <HintPath>lib\androidjpush\cn.jpush.api.dll</HintPath>
+    </Reference>
+    <Reference Include="Eva.Library, Version=1.2017.5.7, Culture=neutral, PublicKeyToken=2f3ca3862148e53c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Eva.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.6.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MagickNet">
+      <HintPath>lib\MagickNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.DBUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Maticsoft.DBUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\androidjpush\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\app\wangxin2\product\11.2.0\client_1\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="sara.platform.operation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\sara.platform.operation.dll</HintPath>
+    </Reference>
+    <Reference Include="sara.platform.service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\sara.platform.service.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="commonjs\exportjs\Blob.js" />
+    <Content Include="commonjs\exportjs\Blob.min.js" />
+    <Content Include="commonjs\exportjs\FileSaver.js" />
+    <Content Include="commonjs\exportjs\FileSaver.min.js" />
+    <Content Include="commonjs\exportjs\tableExport.js" />
+    <Content Include="commonjs\exportjs\tableExport.min.js" />
+    <Content Include="commonjs\jQuery.print.js" />
+    <Content Include="developLog.txt" />
+    <Content Include="images\lib\MagickNet.dll" />
+    <Content Include="ProjectTool.asmx" />
+    <Content Include="sara.dd.ldsw.file.sln" />
+    <Content Include="sara.platform.operation\auth\service\service_auth.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_field.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_fieldgroup.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_organ.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_position.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_role.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_rule.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_rulegroup.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_user.asmx" />
+    <Content Include="sara.platform.operation\auth\service\service_t_usergroup.asmx" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_fieldgroup\t_fieldgroup_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_detail_part.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_detail_part.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_detail_part.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_tree.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_tree.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_field\t_field_tree.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_detail_part.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_detail_part.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_detail_part.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_tree.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_tree.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_organ\t_organ_tree.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_position\t_position_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_role\t_role_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rulegroup\t_rulegroup_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_detail_part.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_detail_part.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_detail_part.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_tree.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_tree.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_rule\t_rule_tree.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_usergroup\t_usergroup_list.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_detail.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_detail.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_detail.min.js" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_list.html" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_list.min.css" />
+    <Content Include="sara.platform.operation\auth\ui\t_user\t_user_list.min.js" />
+    <Content Include="sara.platform.operation\code\service\service_t_code_content.asmx" />
+    <Content Include="sara.platform.operation\code\service\service_t_code_menu.asmx" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code.html" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code.min.css" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code.min.js" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_content_modallist_part.html" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_content_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_content_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_menu_detail_part.html" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_menu_detail_part.min.css" />
+    <Content Include="sara.platform.operation\code\ui\t_code\t_code_menu_detail_part.min.js" />
+    <Content Include="sara.platform.operation\datacenter\service\datacenter_commonservice.asmx" />
+    <Content Include="sara.platform.operation\datacenter\service\service_t_datacenter_config.asmx" />
+    <Content Include="sara.platform.operation\datacenter\service\service_t_datacenter_content.asmx" />
+    <Content Include="sara.platform.operation\datacenter\service\service_t_datacenter_paper.asmx" />
+    <Content Include="sara.platform.operation\datacenter\service\service_t_datacenter_paragraph.asmx" />
+    <Content Include="sara.platform.operation\datacenter\ui\commoncss\commoncss.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\commonjs\commonconfig.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\home\home.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\home\home.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\home\home.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\paper\paper.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\paper\paper.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\paper\paper_falls.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\paper\paper_falls.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\paper\paper_full.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\paper\paper_full.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_config\t_datacenter_config_detail.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_config\t_datacenter_config_detail.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_config\t_datacenter_config_detail.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_content\t_datacenter_content_detail.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_content\t_datacenter_content_detail.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_content\t_datacenter_content_list.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_content\t_datacenter_content_list.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\img\jsoneditor-icons.png" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\jsoneditor.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\jsoneditor.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\t_datacenter_paper_detail.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\t_datacenter_paper_detail.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\t_datacenter_paper_detail.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\t_datacenter_paper_list.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\t_datacenter_paper_list.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paper\t_datacenter_paper_list.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_detail_part.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_detail_part.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_detail_part.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_list_part.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_list_part.min.css" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_list_part.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_preview.config.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_preview.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\t_datacenter_paragraph\t_datacenter_paragraph_preview.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\header\header.html" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\header\header.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\baseparagraph.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommonaccordion.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommonbutton.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommonchart.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommonhtml.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommonimage.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommonmap.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_docommontable.min.js" />
+    <Content Include="sara.platform.operation\datacenter\ui\widget\paragraph\commonparagraph_dodoublepiechart.min.js" />
+    <Content Include="sara.platform.operation\projclass\service\service_t_projclass.asmx" />
+    <Content Include="sara.platform.operation\projclass\service\service_t_projclass_dtl1.asmx" />
+    <Content Include="sara.platform.operation\projclass\service\service_t_projclass_dtl2.asmx" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass\t_projclass_detail.html" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass\t_projclass_detail.min.css" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass\t_projclass_detail.min.js" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass\t_projclass_list.html" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass\t_projclass_list.min.css" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass\t_projclass_list.min.js" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl1\jquery.xmlformater.min.js" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl1\t_projclass_dtl1_modallist_part.html" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl1\t_projclass_dtl1_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl1\t_projclass_dtl1_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl2\t_projclass_dtl2_modallist_part.html" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl2\t_projclass_dtl2_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\projclass\ui\t_projclass_dtl2\t_projclass_dtl2_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content_column.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content_locate.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_content_style.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_errorcode.asmx" />
+    <Content Include="sara.platform.operation\report\service\service_t_report_main.asmx" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content\t_report_content_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content\t_report_content_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content\t_report_content_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_column\t_report_content_column_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_column\t_report_content_column_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_column\t_report_content_column_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_locate\t_report_content_locate_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_locate\t_report_content_locate_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_locate\t_report_content_locate_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_style\t_report_content_style_modallist_part.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_style\t_report_content_style_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_content_style\t_report_content_style_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_errorcode\t_report_errorcode_modallist.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_errorcode\t_report_errorcode_modallist.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_errorcode\t_report_errorcode_modallist.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_detail.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_detail.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_detail.min.js" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_list.html" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_list.min.css" />
+    <Content Include="sara.platform.operation\report\ui\t_report_main\t_report_main_list.min.js" />
+    <Content Include="sara.platform.operation\token\service\service_t_token_function.asmx" />
+    <Content Include="sara.platform.operation\token\service\service_t_token_list.asmx" />
+    <Content Include="sara.platform.operation\token\service\service_t_token_relation.asmx" />
+    <Content Include="sara.platform.operation\token\ui\t_token_function\t_token_function_detail.html" />
+    <Content Include="sara.platform.operation\token\ui\t_token_function\t_token_function_detail.min.css" />
+    <Content Include="sara.platform.operation\token\ui\t_token_function\t_token_function_detail.min.js" />
+    <Content Include="sara.platform.operation\token\ui\t_token_function\t_token_function_list.html" />
+    <Content Include="sara.platform.operation\token\ui\t_token_function\t_token_function_list.min.css" />
+    <Content Include="sara.platform.operation\token\ui\t_token_function\t_token_function_list.min.js" />
+    <Content Include="sara.platform.operation\token\ui\t_token_list\t_token_list_detail.html" />
+    <Content Include="sara.platform.operation\token\ui\t_token_list\t_token_list_detail.min.css" />
+    <Content Include="sara.platform.operation\token\ui\t_token_list\t_token_list_detail.min.js" />
+    <Content Include="sara.platform.operation\token\ui\t_token_list\t_token_list_list.html" />
+    <Content Include="sara.platform.operation\token\ui\t_token_list\t_token_list_list.min.css" />
+    <Content Include="sara.platform.operation\token\ui\t_token_list\t_token_list_list.min.js" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-0.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-1.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-2.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-3.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-4.png" />
+    <Content Include="sara.platform.operation\workflow\images\activity-icon-5.png" />
+    <Content Include="sara.platform.operation\workflow\images\back.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_black.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_blue.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_green.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_orange.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_pink.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_purple.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_red.png" />
+    <Content Include="sara.platform.operation\workflow\images\bullet_yellow.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-0.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-1.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-2.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-3.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-4.png" />
+    <Content Include="sara.platform.operation\workflow\images\circle-5.png" />
+    <Content Include="sara.platform.operation\workflow\images\error.png" />
+    <Content Include="sara.platform.operation\workflow\images\grid_10.png" />
+    <Content Include="sara.platform.operation\workflow\images\jsonformat_collapsed.gif" />
+    <Content Include="sara.platform.operation\workflow\images\jsonformat_expanded.gif" />
+    <Content Include="sara.platform.operation\workflow\images\loading.gif" />
+    <Content Include="sara.platform.operation\workflow\images\loading1.gif" />
+    <Content Include="sara.platform.operation\workflow\images\manual-task.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_act.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_cleardraw.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_dis.png" />
+    <Content Include="sara.platform.operation\workflow\images\maplayer_draw.png" />
+    <Content Include="sara.platform.operation\workflow\images\menu.gif" />
+    <Content Include="sara.platform.operation\workflow\images\menu_sep.png" />
+    <Content Include="sara.platform.operation\workflow\images\properties.gif" />
+    <Content Include="sara.platform.operation\workflow\images\result.png" />
+    <Content Include="sara.platform.operation\workflow\images\warning.png" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_jd.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_lc.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_ljx.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_dy_yy.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_jd.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_lc.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_ljx.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_sl_yy.asmx" />
+    <Content Include="sara.platform.operation\workflow\service\service_t_workitem.asmx" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\definition\designer_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\definition\designer_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\definition\designer_process.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\designer_connection_inputport.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\designer_connection_outputport.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\designer_contextmenu.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\instance\designer_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\instance\designer_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\designerjs\instance\designer_process.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_jd\t_dy_jd_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_jd\t_dy_jd_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_jd\t_dy_jd_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_detail.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_detail.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_detail.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_list.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_list.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_lc\t_dy_lc_list.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_ljx\t_dy_ljx_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_ljx\t_dy_ljx_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_ljx\t_dy_ljx_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_yy\t_dy_yy_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_yy\t_dy_yy_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_dy_yy\t_dy_yy_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_jd\t_sl_jd_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_jd\t_sl_jd_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_jd\t_sl_jd_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_detail.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_detail.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_detail.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_list.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_list.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_lc\t_sl_lc_list.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_ljx\t_sl_ljx_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_ljx\t_sl_ljx_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_ljx\t_sl_ljx_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_yy\t_sl_yy_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_yy\t_sl_yy_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_sl_yy\t_sl_yy_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\t_workitem\t_workitem_modallist_part.html" />
+    <Content Include="sara.platform.operation\workflow\ui\t_workitem\t_workitem_modallist_part.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\t_workitem\t_workitem_modallist_part.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_activity.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_connection.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_none.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_process.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowdefinition\workflowdefinition_process.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance.min.css" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_activity.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_activity.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_connection.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_connection.min.js" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_none.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_process.html" />
+    <Content Include="sara.platform.operation\workflow\ui\workflowinstance\workflowinstance_process.min.js" />
+    <Content Include="service\app_datacenterlite.asmx" />
+    <Content Include="service\app_file.asmx" />
+    <Content Include="service\app_me.asmx" />
+    <Content Include="service\app_index.asmx" />
+    <Content Include="service\app_news.asmx" />
+    <Content Include="service\app_version.asmx" />
+    <Content Include="service\app_user.asmx" />
+    <Content Include="service\app_pushnotification.asmx" />
+    <Content Include="service\app_common.asmx" />
+    <Content Include="service\service_commonselectuser.asmx" />
+    <Content Include="service\service_eshuishenghuo_jf.asmx" />
+    <Content Include="service\service_guangda_test.asmx" />
+    <Content Include="service\service_tbl_app_codefactory.asmx" />
+    <Content Include="service\service_tbl_app_index.asmx" />
+    <Content Include="service\service_tbl_app_index_title.asmx" />
+    <Content Include="service\service_tbl_app_news.asmx" />
+    <Content Include="service\service_tbl_app_news_content.asmx" />
+    <Content Include="service\service_tbl_app_news_discuss.asmx" />
+    <Content Include="service\service_tbl_app_news_like.asmx" />
+    <Content Include="service\service_tbl_app_news_title.asmx" />
+    <Content Include="service\service_tbl_app_version_color.asmx" />
+    <Content Include="service\service_tbl_app_pushnotification.asmx" />
+    <Content Include="service\service_tbl_app_version.asmx" />
+    <Content Include="service\service_tbl_app_version_html.asmx" />
+    <Content Include="service\service_tbl_codefactory.asmx" />
+    <Content Include="service\service_tbl_ldbm_dycq.asmx" />
+    <Content Include="service\service_tbl_ldbm_expdata.asmx" />
+    <Content Include="service\service_tbl_ldbm_jtsj.asmx" />
+    <Content Include="service\service_tbl_ldbm_khfz.asmx" />
+    <Content Include="service\service_tbl_ldbm_sbfz.asmx" />
+    <Content Include="service\service_tbl_ldbm_yhfz.asmx" />
+    <Content Include="service\service_tbl_ld_cben.asmx" />
+    <Content Include="service\service_tbl_ld_cbiao.asmx" />
+    <Content Include="service\service_tbl_ld_dyhlh.asmx" />
+    <Content Include="service\service_tbl_ld_expjhts.asmx" />
+    <Content Include="service\service_tbl_ld_ghsb.asmx" />
+    <Content Include="service\service_tbl_ld_ichbbk.asmx" />
+    <Content Include="service\service_tbl_ld_ickss.asmx" />
+    <Content Include="service\service_tbl_ld_ickxj.asmx" />
+    <Content Include="service\service_tbl_ld_jfb.asmx" />
+    <Content Include="service\service_tbl_ld_jfbimp.asmx" />
+    <Content Include="service\service_tbl_ld_jmb.asmx" />
+    <Content Include="service\service_tbl_ld_khb.asmx" />
+    <Content Include="service\service_tbl_ld_log.asmx" />
+    <Content Include="service\service_tbl_ld_pgb.asmx" />
+    <Content Include="service\service_tbl_ld_pllhlb.asmx" />
+    <Content Include="service\service_tbl_ld_pllhyl.asmx" />
+    <Content Include="service\service_tbl_ld_qfts.asmx" />
+    <Content Include="service\service_tbl_ld_qftsyl.asmx" />
+    <Content Include="service\service_tbl_ld_report.asmx" />
+    <Content Include="service\service_tbl_ld_sbb.asmx" />
+    <Content Include="service\service_tbl_ld_xgsbds.asmx" />
+    <Content Include="service\service_tbl_ld_xgsbdszb.asmx" />
+    <Content Include="service\service_tbl_ld_xhhbt.asmx" />
+    <Content Include="service\service_tbl_ld_xhhbtzb.asmx" />
+    <Content Include="service\service_tbl_ld_xxbg.asmx" />
+    <Content Include="service\service_tbl_ld_xxbgnr.asmx" />
+    <Content Include="service\service_tbl_ld_xzsb.asmx" />
+    <Content Include="service\service_tbl_ld_ycbgl.asmx" />
+    <Content Include="service\service_tbl_ld_ycbglzb.asmx" />
+    <Content Include="service\service_tbl_ld_ychk.asmx" />
+    <Content Include="service\service_tbl_ld_yhb.asmx" />
+    <Content Include="service\service_tbl_notice.asmx" />
+    <Content Include="service\service_tbl_resource.asmx" />
+    <Content Include="service\service_tbl_task.asmx" />
+    <Content Include="ui\commonselectuser\commonselectuser_part.css" />
+    <Content Include="ui\commonselectuser\commonselectuser_part.html" />
+    <Content Include="ui\commonselectuser\commonselectuser_part.js" />
+    <Content Include="ui\iccard\iccard_container.css" />
+    <Content Include="ui\iccard\iccard_container.html" />
+    <Content Include="ui\iccard\iccard_container.js" />
+    <Content Include="ui\iccard\iccard_part.html" />
+    <Content Include="ui\iccard\jquery.simple.slide.css" />
+    <Content Include="ui\iccard\jquery.simple.slide.js" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_detail.css" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_detail.html" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_detail.js" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_list.css" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_list.html" />
+    <Content Include="ui\tbl_app_news\tbl_app_news_list.js" />
+    <Content Include="ui\tbl_app_news_content\tbl_app_news_content_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_content\tbl_app_news_content_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_content\tbl_app_news_content_modallist_part.js" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_detail_part.css" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_detail_part.html" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_detail_part.js" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_list_part.css" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_list_part.html" />
+    <Content Include="ui\tbl_app_news_discuss\tbl_app_news_discuss_list_part.js" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_discuss_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_discuss_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_discuss_modallist_part.js" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_like\tbl_app_news_like_modallist_part.js" />
+    <Content Include="ui\tbl_app_news_title\tbl_app_news_title_modallist_part.css" />
+    <Content Include="ui\tbl_app_news_title\tbl_app_news_title_modallist_part.html" />
+    <Content Include="ui\tbl_app_news_title\tbl_app_news_title_modallist_part.js" />
+    <Content Include="ui\main\main.css" />
+    <Content Include="ui\main\main.html" />
+    <Content Include="ui\main\main.js" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_detail.css" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_detail.html" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_detail.js" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_list.css" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_list.html" />
+    <Content Include="ui\tbl_app_index\tbl_app_index_list.js" />
+    <Content Include="ui\tbl_app_index_title\tbl_app_index_title_modallist_part.css" />
+    <Content Include="ui\tbl_app_index_title\tbl_app_index_title_modallist_part.html" />
+    <Content Include="ui\tbl_app_index_title\tbl_app_index_title_modallist_part.js" />
+    <Content Include="ui\tbl_app_version_color\tbl_app_version_color_modallist_part.css" />
+    <Content Include="ui\tbl_app_version_color\tbl_app_version_color_modallist_part.html" />
+    <Content Include="ui\tbl_app_version_color\tbl_app_version_color_modallist_part.js" />
+    <Content Include="ui\tbl_app_pushnotification\tbl_app_pushnotification_modallist.css" />
+    <Content Include="ui\tbl_app_pushnotification\tbl_app_pushnotification_modallist.html" />
+    <Content Include="ui\tbl_app_pushnotification\tbl_app_pushnotification_modallist.js" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_detail.css" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_detail.html" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_detail.js" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_list.css" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_list.html" />
+    <Content Include="ui\tbl_app_version\tbl_app_version_list.js" />
+    <Content Include="ui\tbl_app_version_html\tbl_app_version_html_modallist_part.css" />
+    <Content Include="ui\tbl_app_version_html\tbl_app_version_html_modallist_part.html" />
+    <Content Include="ui\tbl_app_version_html\tbl_app_version_html_modallist_part.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail.html" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail.min.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail.min.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail_part.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail_part.html" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail_part.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail_part.min.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_detail_part.min.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list.html" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list.min.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list.min.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list_part.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list_part.html" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list_part.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list_part.min.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_list_part.min.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist.html" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist.min.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist.min.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist_part.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist_part.html" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist_part.js" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist_part.min.css" />
+    <Content Include="ui\tbl_codefactory\tbl_codefactory_modallist_part.min.js" />
+    <Content Include="ui\tbl_ldbm_dycq\tbl_ldbm_dycq_treelist.css" />
+    <Content Include="ui\tbl_ldbm_dycq\tbl_ldbm_dycq_treelist.html" />
+    <Content Include="ui\tbl_ldbm_dycq\tbl_ldbm_dycq_treelist.js" />
+    <Content Include="ui\tbl_ldbm_expdata\tbl_ldbm_expdata_modallist.css" />
+    <Content Include="ui\tbl_ldbm_expdata\tbl_ldbm_expdata_modallist.html" />
+    <Content Include="ui\tbl_ldbm_expdata\tbl_ldbm_expdata_modallist.js" />
+    <Content Include="ui\tbl_ldbm_jtsj\tbl_ldbm_jtsj_modallist.css" />
+    <Content Include="ui\tbl_ldbm_jtsj\tbl_ldbm_jtsj_modallist.html" />
+    <Content Include="ui\tbl_ldbm_jtsj\tbl_ldbm_jtsj_modallist.js" />
+    <Content Include="ui\tbl_ldbm_khfz\tbl_ldbm_khfz_treelist.css" />
+    <Content Include="ui\tbl_ldbm_khfz\tbl_ldbm_khfz_treelist.html" />
+    <Content Include="ui\tbl_ldbm_khfz\tbl_ldbm_khfz_treelist.js" />
+    <Content Include="ui\tbl_ldbm_sbfz\tbl_ldbm_sbfz_treelist.css" />
+    <Content Include="ui\tbl_ldbm_sbfz\tbl_ldbm_sbfz_treelist.html" />
+    <Content Include="ui\tbl_ldbm_sbfz\tbl_ldbm_sbfz_treelist.js" />
+    <Content Include="ui\tbl_ldbm_sbfz\tbl_ldbm_sbfz_treelist.min.css" />
+    <Content Include="ui\tbl_ldbm_yhfz\tbl_ldbm_yhfz_treelist.css" />
+    <Content Include="ui\tbl_ldbm_yhfz\tbl_ldbm_yhfz_treelist.html" />
+    <Content Include="ui\tbl_ldbm_yhfz\tbl_ldbm_yhfz_treelist.js" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_cbiao_treelist.css" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_cbiao_treelist.html" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_cbiao_treelist.js" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_modallist.css" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_modallist.html" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_modallist.js" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_treelist.css" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_treelist.html" />
+    <Content Include="ui\tbl_ld_cben\tbl_ld_cben_treelist.js" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_detail.css" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_detail.html" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_detail.js" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list.css" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list.html" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list.js" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4cben.css" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4cben.html" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4cben.js" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4jm.css" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4jm.html" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4jm.js" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4jf.css" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4jf.html" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4jf.js" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4pg.css" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4pg.html" />
+    <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4pg.js" />
+    <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.css" />
+    <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.html" />
+    <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.js" />
+    <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.min.css" />
+    <Content Include="ui\tbl_ld_expjhts\tbl_ld_expjhts_detail.css" />
+    <Content Include="ui\tbl_ld_expjhts\tbl_ld_expjhts_detail.html" />
+    <Content Include="ui\tbl_ld_expjhts\tbl_ld_expjhts_detail.js" />
+    <Content Include="ui\tbl_ld_expjhts\tbl_ld_expjhts_list.css" />
+    <Content Include="ui\tbl_ld_expjhts\tbl_ld_expjhts_list.html" />
+    <Content Include="ui\tbl_ld_expjhts\tbl_ld_expjhts_list.js" />
+    <Content Include="ui\tbl_ld_ghsb\tbl_ld_ghsb_detail_part.css" />
+    <Content Include="ui\tbl_ld_ghsb\tbl_ld_ghsb_detail_part.html" />
+    <Content Include="ui\tbl_ld_ghsb\tbl_ld_ghsb_detail_part.js" />
+    <Content Include="ui\tbl_ld_ichbbk\tbl_ld_ichbbk_detail.css" />
+    <Content Include="ui\tbl_ld_ichbbk\tbl_ld_ichbbk_detail.html" />
+    <Content Include="ui\tbl_ld_ichbbk\tbl_ld_ichbbk_detail.js" />
+    <Content Include="ui\tbl_ld_ichbbk\tbl_ld_ichbbk_list.css" />
+    <Content Include="ui\tbl_ld_ichbbk\tbl_ld_ichbbk_list.html" />
+    <Content Include="ui\tbl_ld_ichbbk\tbl_ld_ichbbk_list.js" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_detail.css" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_detail.html" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_detail.js" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list.css" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list.html" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list.js" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list_part.css" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list_part.html" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list_part.js" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list_part4ickss.css" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list_part4ickss.html" />
+    <Content Include="ui\tbl_ld_ickss\tbl_ld_ickss_list_part4ickss.js" />
+    <Content Include="ui\tbl_ld_ickxj\tbl_ld_ickxj_detail.css" />
+    <Content Include="ui\tbl_ld_ickxj\tbl_ld_ickxj_detail.html" />
+    <Content Include="ui\tbl_ld_ickxj\tbl_ld_ickxj_detail.js" />
+    <Content Include="ui\tbl_ld_ickxj\tbl_ld_ickxj_list.css" />
+    <Content Include="ui\tbl_ld_ickxj\tbl_ld_ickxj_list.html" />
+    <Content Include="ui\tbl_ld_ickxj\tbl_ld_ickxj_list.js" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_detail.css" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_detail.html" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_detail.js" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_kp_list.css" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_kp_list.html" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_kp_list.js" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list.css" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list.html" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list.js" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list_part.css" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list_part.html" />
+    <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list_part.js" />
+    <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_detail.css" />
+    <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_detail.html" />
+    <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_detail.js" />
+    <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_list.css" />
+    <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_list.html" />
+    <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_list.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_detail.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_detail.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_detail.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4cben.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4cben.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4cben.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_plxglist.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_plxglist.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_plxglist.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khtime_query_list.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khtime_query_list.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khtime_query_list.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_query_list.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_query_list.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_query_list.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_searchcontrol_part.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_searchmodal_part.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_search_part.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_kh_search_part.js" />
+    <Content Include="ui\tbl_ld_log\tbl_ld_log_modallist_part.css" />
+    <Content Include="ui\tbl_ld_log\tbl_ld_log_modallist_part.html" />
+    <Content Include="ui\tbl_ld_log\tbl_ld_log_modallist_part.js" />
+    <Content Include="ui\tbl_ld_pgb\tbl_ld_pgb_detail.css" />
+    <Content Include="ui\tbl_ld_pgb\tbl_ld_pgb_detail.html" />
+    <Content Include="ui\tbl_ld_pgb\tbl_ld_pgb_detail.js" />
+    <Content Include="ui\tbl_ld_pgb\tbl_ld_pgb_list.css" />
+    <Content Include="ui\tbl_ld_pgb\tbl_ld_pgb_list.html" />
+    <Content Include="ui\tbl_ld_pgb\tbl_ld_pgb_list.js" />
+    <Content Include="ui\tbl_ld_pllhlb\tbl_ld_pllhlb_detail.css" />
+    <Content Include="ui\tbl_ld_pllhlb\tbl_ld_pllhlb_detail.html" />
+    <Content Include="ui\tbl_ld_pllhlb\tbl_ld_pllhlb_detail.js" />
+    <Content Include="ui\tbl_ld_pllhlb\tbl_ld_pllhlb_list.css" />
+    <Content Include="ui\tbl_ld_pllhlb\tbl_ld_pllhlb_list.html" />
+    <Content Include="ui\tbl_ld_pllhlb\tbl_ld_pllhlb_list.js" />
+    <Content Include="ui\tbl_ld_pllhyl\tbl_ld_pllhyl_modallist_container.css" />
+    <Content Include="ui\tbl_ld_pllhyl\tbl_ld_pllhyl_modallist_container.html" />
+    <Content Include="ui\tbl_ld_pllhyl\tbl_ld_pllhyl_modallist_container.js" />
+    <Content Include="ui\tbl_ld_pllhyl\tbl_ld_pllhyl_modallist_part.css" />
+    <Content Include="ui\tbl_ld_pllhyl\tbl_ld_pllhyl_modallist_part.html" />
+    <Content Include="ui\tbl_ld_pllhyl\tbl_ld_pllhyl_modallist_part.js" />
+    <Content Include="ui\tbl_ld_qftsyl\tbl_ld_qftsyl_list_part.css" />
+    <Content Include="ui\tbl_ld_qftsyl\tbl_ld_qftsyl_list_part.html" />
+    <Content Include="ui\tbl_ld_qftsyl\tbl_ld_qftsyl_list_part.js" />
+    <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_detail.css" />
+    <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_detail.html" />
+    <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_detail.js" />
+    <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_list.css" />
+    <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_list.html" />
+    <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_list.js" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.css" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.html" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.js" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.min.css" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.min.js" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_yslpm_list.css" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_yslpm_list.html" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_yslpm_list.js" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_report_modallist.css" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_report_modallist.html" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_report_modallist.js" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail.css" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail.html" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail.js" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail_part.css" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail_part.html" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail_part.js" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbjd_list.css" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbjd_list.html" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbjd_list.js" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_list.css" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_list.html" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_list.js" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_treelist_part.css" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_treelist_part.html" />
+    <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_treelist_part.js" />
+    <Content Include="ui\tbl_ld_xgsbdszb\tbl_ld_xgsbdszb_list_part.css" />
+    <Content Include="ui\tbl_ld_xgsbdszb\tbl_ld_xgsbdszb_list_part.html" />
+    <Content Include="ui\tbl_ld_xgsbdszb\tbl_ld_xgsbdszb_list_part.js" />
+    <Content Include="ui\tbl_ld_xgsbdszb\tbl_ld_xgsbdszb_list_part.min.css" />
+    <Content Include="ui\tbl_ld_xgsbds\tbl_ld_xgsbds_detail_part.css" />
+    <Content Include="ui\tbl_ld_xgsbds\tbl_ld_xgsbds_detail_part.html" />
+    <Content Include="ui\tbl_ld_xgsbds\tbl_ld_xgsbds_detail_part.js" />
+    <Content Include="ui\tbl_ld_xgsbds\tbl_ld_xgsbds_detail_part.min.css" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_container.css" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_container.html" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_container.js" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_container.min.css" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_part.css" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_part.html" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_part.js" />
+    <Content Include="ui\tbl_ld_xhhbtzb\tbl_ld_xhhbtzb_treelist_part.min.css" />
+    <Content Include="ui\tbl_ld_xhhbt\tbl_ld_xhhbt_detail_part.css" />
+    <Content Include="ui\tbl_ld_xhhbt\tbl_ld_xhhbt_detail_part.html" />
+    <Content Include="ui\tbl_ld_xhhbt\tbl_ld_xhhbt_detail_part.js" />
+    <Content Include="ui\tbl_ld_xhhbt\tbl_ld_xhhbt_detail_part.min.css" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_list.css" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_list.html" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_list.js" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_modallist_part.css" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_modallist_part.html" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_modallist_part.js" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_modallist_part.min.css" />
+    <Content Include="ui\tbl_ld_xxbgnr\tbl_ld_xxbgnr_modallist_part.min.js" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_detail.css" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_detail.html" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_detail.js" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_detail.min.css" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_detail.min.js" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_list.css" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_list.html" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_list.js" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_list.min.css" />
+    <Content Include="ui\tbl_ld_xxbg\tbl_ld_xxbg_list.min.js" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_detail_part.css" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_detail_part.html" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_detail_part.js" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_detail_part.min.css" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_list_container.css" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_list_container.html" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_list_container.js" />
+    <Content Include="ui\tbl_ld_xzsb\tbl_ld_xzsb_list_container.min.css" />
+    <Content Include="ui\tbl_ld_ycbglzb\tbl_ld_ycbglzb_modallist_part.css" />
+    <Content Include="ui\tbl_ld_ycbglzb\tbl_ld_ycbglzb_modallist_part.html" />
+    <Content Include="ui\tbl_ld_ycbglzb\tbl_ld_ycbglzb_modallist_part.js" />
+    <Content Include="ui\tbl_ld_ycbgl\tbl_ld_ycbgl_detail.css" />
+    <Content Include="ui\tbl_ld_ycbgl\tbl_ld_ycbgl_detail.html" />
+    <Content Include="ui\tbl_ld_ycbgl\tbl_ld_ycbgl_detail.js" />
+    <Content Include="ui\tbl_ld_ycbgl\tbl_ld_ycbgl_list.css" />
+    <Content Include="ui\tbl_ld_ycbgl\tbl_ld_ycbgl_list.html" />
+    <Content Include="ui\tbl_ld_ycbgl\tbl_ld_ycbgl_list.js" />
+    <Content Include="ui\tbl_ld_ychk\tbl_ld_ychk_detail.css" />
+    <Content Include="ui\tbl_ld_ychk\tbl_ld_ychk_detail.html" />
+    <Content Include="ui\tbl_ld_ychk\tbl_ld_ychk_detail.js" />
+    <Content Include="ui\tbl_ld_ychk\tbl_ld_ychk_list.css" />
+    <Content Include="ui\tbl_ld_ychk\tbl_ld_ychk_list.html" />
+    <Content Include="ui\tbl_ld_ychk\tbl_ld_ychk_list.js" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_detail.css" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_detail.html" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_detail.js" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_detail_part.css" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_detail_part.html" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_detail_part.js" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_list.css" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_list.html" />
+    <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_list.js" />
+    <Content Include="ui\tbl_notice\tbl_notice_detail.css" />
+    <Content Include="ui\tbl_notice\tbl_notice_detail.html" />
+    <Content Include="ui\tbl_notice\tbl_notice_detail.js" />
+    <Content Include="ui\tbl_notice\tbl_notice_list.css" />
+    <Content Include="ui\tbl_notice\tbl_notice_list.html" />
+    <Content Include="ui\tbl_notice\tbl_notice_list.js" />
+    <Content Include="EasyFrameServiceAuth.config" />
+    <Content Include="EasyFrameServiceCode.config" />
+    <Content Include="EasyFrameServiceReport.config" />
+    <Content Include="EasyFrameServiceWorkflow.config" />
+    <Content Include="images\bullet_black.png" />
+    <Content Include="images\bullet_blue.png" />
+    <Content Include="images\bullet_green.png" />
+    <Content Include="images\bullet_orange.png" />
+    <Content Include="images\bullet_pink.png" />
+    <Content Include="images\bullet_purple.png" />
+    <Content Include="images\bullet_red.png" />
+    <Content Include="images\bullet_yellow.png" />
+    <Content Include="images\error.png" />
+    <Content Include="images\gototop.jpg" />
+    <Content Include="images\jsonformat_collapsed.gif" />
+    <Content Include="images\jsonformat_expanded.gif" />
+    <Content Include="images\loading1.gif" />
+    <Content Include="images\loginImg.psd" />
+    <Content Include="images\logo-login%402x.psd" />
+    <Content Include="images\logoImg.psd" />
+    <Content Include="images\maplayer_act.png" />
+    <Content Include="images\maplayer_cleardraw.png" />
+    <Content Include="images\maplayer_dis.png" />
+    <Content Include="images\maplayer_draw.png" />
+    <Content Include="images\Point-BluePin1LargeB.png" />
+    <Content Include="images\Point-GreenPin1LargeB.png" />
+    <Content Include="images\Point-RedPin1LargeB.png" />
+    <Content Include="images\result.png" />
+    <Content Include="images\warning.png" />
+    <Content Include="service\app_fileupload.ashx" />
+    <Content Include="sara.dd.ldsw.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="service\service_guangda_bj01.ashx" />
+    <Content Include="service\service_guangda_bj02.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="commoncss\commoncss.css" />
+    <Content Include="commonjs\commonjs.js" />
+    <Content Include="Global.asax" />
+    <Content Include="images\detailAllModeClick.png" />
+    <Content Include="images\detailAllModeScroll.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loginImg.png" />
+    <Content Include="images\logo-login%402x - 副本.png" />
+    <Content Include="images\logo-login%402x.png" />
+    <Content Include="images\logoImg.png" />
+    <Content Include="images\lib\MySql.Data.dll" />
+    <Content Include="images\lib\projclassdtl1config\1_100_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_100_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_100_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_100_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_1_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_1_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_1_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_2_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_3_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_behave.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_facter.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_tablenameen.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_4_visibility.xml" />
+    <Content Include="images\lib\projclassdtl1config\1_[sys_appcode]1001[organid]040_tablenameen.xml" />
+    <Content Include="service\service_businessflow.asmx" />
+    <Content Include="service\service_common.asmx" />
+    <Content Include="service\service_login.asmx" />
+    <Content Include="service\service_main.asmx" />
+    <Content Include="service\service_tbl_filescontent.asmx" />
+    <Content Include="service\service_tbl_maintable.asmx" />
+    <Content Include="service\service_tbl_maintable_detailall.asmx" />
+    <Content Include="service\service_t_projstate_log.asmx" />
+    <Content Include="service\tokentest.asmx" />
+    <Content Include="ui\basepage\basepage-body.html" />
+    <Content Include="ui\basepage\basepage-foot.html" />
+    <Content Include="ui\basepage\basepage-head.html" />
+    <Content Include="ui\basepage\basepage.css" />
+    <Content Include="ui\basepage\basepage.js" />
+    <Content Include="ui\browerversion\browerversion.html" />
+    <Content Include="ui\businessflow\businessflow_part.css" />
+    <Content Include="ui\businessflow\businessflow_part.html" />
+    <Content Include="ui\businessflow\businessflow_part.js" />
+    <Content Include="ui\container\container.css" />
+    <Content Include="ui\container\container.html" />
+    <Content Include="ui\container\container.js" />
+    <Content Include="ui\error\error.html" />
+    <Content Include="ui\login\login.css" />
+    <Content Include="ui\login\login.html" />
+    <Content Include="ui\login\login.js" />
+    <Content Include="ui\tbl_filescontent\tbl_filescontent_modallist_part.css" />
+    <Content Include="ui\tbl_filescontent\tbl_filescontent_modallist_part.html" />
+    <Content Include="ui\tbl_filescontent\tbl_filescontent_modallist_part.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_button.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_button.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_button.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detailall.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detailall.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detailall.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detail_part.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detail_part.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_detail_part.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_list.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_list.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_list.js" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_query.css" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_query.html" />
+    <Content Include="ui\tbl_maintable\tbl_maintable_query.js" />
+    <Content Include="ui\tbl_resource\tbl_resource_detail.css" />
+    <Content Include="ui\tbl_resource\tbl_resource_detail.html" />
+    <Content Include="ui\tbl_resource\tbl_resource_detail.js" />
+    <Content Include="ui\tbl_resource\tbl_resource_list.css" />
+    <Content Include="ui\tbl_resource\tbl_resource_list.html" />
+    <Content Include="ui\tbl_resource\tbl_resource_list.js" />
+    <Content Include="ui\tbl_task\tbl_task_modallist.css" />
+    <Content Include="ui\tbl_task\tbl_task_modallist.html" />
+    <Content Include="ui\tbl_task\tbl_task_modallist.js" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_list_part.css" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_list_part.html" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_list_part.js" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_timeline.css" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_timeline.html" />
+    <Content Include="ui\t_projstate_log\t_projstate_log_timeline.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="commonclass\AccessOracleLargDataTrans.cs" />
+    <Compile Include="commonclass\assemblyfunction.cs" />
+    <Compile Include="commonclass\assemblyfunction10.cs" />
+    <Compile Include="commonclass\assemblyfunction11.cs" />
+    <Compile Include="commonclass\assemblyfunction12.cs" />
+    <Compile Include="commonclass\assemblyfunction3.cs" />
+    <Compile Include="commonclass\assemblyfunction4.cs" />
+    <Compile Include="commonclass\assemblyfunction5.cs" />
+    <Compile Include="commonclass\assemblyfunction6.cs" />
+    <Compile Include="commonclass\assemblyfunction7.cs" />
+    <Compile Include="commonclass\assemblyfunction8.cs" />
+    <Compile Include="commonclass\assemblyfunction9.cs" />
+    <Compile Include="commonclass\clobcontrol.cs" />
+    <Compile Include="commonclass\commonclass.cs" />
+    <Compile Include="commonclass\dalfactory.cs" />
+    <Compile Include="commonclass\emojiclass.cs" />
+    <Compile Include="commonclass\ioclass.cs" />
+    <Compile Include="commonclass\filecontrol.cs" />
+    <Compile Include="commonclass\handleitemclass.cs" />
+    <Compile Include="commonclass\langueclass.cs" />
+    <Compile Include="commonclass\webserviceadapter.cs" />
+    <Compile Include="dal\tbl_app_codefactory.cs" />
+    <Compile Include="dal\tbl_app_index.cs" />
+    <Compile Include="dal\tbl_app_index_title.cs" />
+    <Compile Include="dal\tbl_app_news.cs" />
+    <Compile Include="dal\tbl_app_news_content.cs" />
+    <Compile Include="dal\tbl_app_news_discuss.cs" />
+    <Compile Include="dal\tbl_app_news_like.cs" />
+    <Compile Include="dal\tbl_app_news_title.cs" />
+    <Compile Include="dal\tbl_app_version_color.cs" />
+    <Compile Include="dal\tbl_app_pushnotification.cs" />
+    <Compile Include="dal\tbl_app_version.cs" />
+    <Compile Include="dal\tbl_app_version_html.cs" />
+    <Compile Include="dal\tbl_clob.cs" />
+    <Compile Include="dal\tbl_codefactory.cs" />
+    <Compile Include="dal\tbl_filescontent.cs" />
+    <Compile Include="dal\tbl_ldbm_dycq_oracle.cs" />
+    <Compile Include="dal\tbl_ldbm_expdata_oracle.cs" />
+    <Compile Include="dal\tbl_ldbm_jtsj_oracle.cs" />
+    <Compile Include="dal\tbl_ldbm_khfz_oracle.cs" />
+    <Compile Include="dal\tbl_ldbm_sbfz_oracle.cs" />
+    <Compile Include="dal\tbl_ldbm_yhfz_oracle.cs" />
+    <Compile Include="dal\tbl_ld_cben_oracle.cs" />
+    <Compile Include="dal\tbl_ld_cbiao_oracle.cs" />
+    <Compile Include="dal\tbl_ld_dyhlh_oracle.cs" />
+    <Compile Include="dal\tbl_ld_expjhts_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ghsb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ichbbk_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ickss_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ickxj_oracle.cs" />
+    <Compile Include="dal\tbl_ld_jfbimp_oracle.cs" />
+    <Compile Include="dal\tbl_ld_jfb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_jmb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_khb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_log_oracle.cs" />
+    <Compile Include="dal\tbl_ld_pgb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_pllhlb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_pllhyl_oracle.cs" />
+    <Compile Include="dal\tbl_ld_qftsyl_oracle.cs" />
+    <Compile Include="dal\tbl_ld_qfts_oracle.cs" />
+    <Compile Include="dal\tbl_ld_report_oracle.cs" />
+    <Compile Include="dal\tbl_ld_sbb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xgsbdszb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xgsbds_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xhhbtzb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xhhbt_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xxbgnr_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xxbg_oracle.cs" />
+    <Compile Include="dal\tbl_ld_xzsb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ycbglzb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ycbgl_oracle.cs" />
+    <Compile Include="dal\tbl_ld_ychk_oracle.cs" />
+    <Compile Include="dal\tbl_ld_yhb_oracle.cs" />
+    <Compile Include="dal\tbl_maintable.cs" />
+    <Compile Include="dal\tbl_notice.cs" />
+    <Compile Include="dal\tbl_resource.cs" />
+    <Compile Include="dal\tbl_task.cs" />
+    <Compile Include="dal\t_projstate_log.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="idal\tbl_app_codefactory.cs" />
+    <Compile Include="idal\tbl_app_index.cs" />
+    <Compile Include="idal\tbl_app_index_title.cs" />
+    <Compile Include="idal\tbl_app_news.cs" />
+    <Compile Include="idal\tbl_app_news_content.cs" />
+    <Compile Include="idal\tbl_app_news_discuss.cs" />
+    <Compile Include="idal\tbl_app_news_like.cs" />
+    <Compile Include="idal\tbl_app_news_title.cs" />
+    <Compile Include="idal\tbl_app_version_color.cs" />
+    <Compile Include="idal\tbl_app_pushnotification.cs" />
+    <Compile Include="idal\tbl_app_version.cs" />
+    <Compile Include="idal\tbl_app_version_html.cs" />
+    <Compile Include="idal\tbl_clob.cs" />
+    <Compile Include="idal\tbl_codefactory.cs" />
+    <Compile Include="idal\tbl_filescontent.cs" />
+    <Compile Include="idal\tbl_ldbm_dycq.cs" />
+    <Compile Include="idal\tbl_ldbm_expdata.cs" />
+    <Compile Include="idal\tbl_ldbm_jtsj.cs" />
+    <Compile Include="idal\tbl_ldbm_khfz.cs" />
+    <Compile Include="idal\tbl_ldbm_sbfz.cs" />
+    <Compile Include="idal\tbl_ldbm_yhfz.cs" />
+    <Compile Include="idal\tbl_ld_cben.cs" />
+    <Compile Include="idal\tbl_ld_cbiao.cs" />
+    <Compile Include="idal\tbl_ld_dyhlh.cs" />
+    <Compile Include="idal\tbl_ld_expjhts.cs" />
+    <Compile Include="idal\tbl_ld_ghsb.cs" />
+    <Compile Include="idal\tbl_ld_ichbbk.cs" />
+    <Compile Include="idal\tbl_ld_ickss.cs" />
+    <Compile Include="idal\tbl_ld_ickxj.cs" />
+    <Compile Include="idal\tbl_ld_jfb.cs" />
+    <Compile Include="idal\tbl_ld_jfbimp.cs" />
+    <Compile Include="idal\tbl_ld_jmb.cs" />
+    <Compile Include="idal\tbl_ld_khb.cs" />
+    <Compile Include="idal\tbl_ld_log.cs" />
+    <Compile Include="idal\tbl_ld_pgb.cs" />
+    <Compile Include="idal\tbl_ld_pllhlb.cs" />
+    <Compile Include="idal\tbl_ld_pllhyl.cs" />
+    <Compile Include="idal\tbl_ld_qfts.cs" />
+    <Compile Include="idal\tbl_ld_qftsyl.cs" />
+    <Compile Include="idal\tbl_ld_report.cs" />
+    <Compile Include="idal\tbl_ld_sbb.cs" />
+    <Compile Include="idal\tbl_ld_xgsbds.cs" />
+    <Compile Include="idal\tbl_ld_xgsbdszb.cs" />
+    <Compile Include="idal\tbl_ld_xhhbt.cs" />
+    <Compile Include="idal\tbl_ld_xhhbtzb.cs" />
+    <Compile Include="idal\tbl_ld_xxbg.cs" />
+    <Compile Include="idal\tbl_ld_xxbgnr.cs" />
+    <Compile Include="idal\tbl_ld_xzsb.cs" />
+    <Compile Include="idal\tbl_ld_ycbgl.cs" />
+    <Compile Include="idal\tbl_ld_ycbglzb.cs" />
+    <Compile Include="idal\tbl_ld_ychk.cs" />
+    <Compile Include="idal\tbl_ld_yhb.cs" />
+    <Compile Include="idal\tbl_maintable.cs" />
+    <Compile Include="idal\tbl_notice.cs" />
+    <Compile Include="idal\tbl_resource.cs" />
+    <Compile Include="idal\tbl_task.cs" />
+    <Compile Include="idal\t_projstate_log.cs" />
+    <Compile Include="model\tbl_app_codefactory.cs" />
+    <Compile Include="model\tbl_app_index.cs" />
+    <Compile Include="model\tbl_app_index_title.cs" />
+    <Compile Include="model\tbl_app_news.cs" />
+    <Compile Include="model\tbl_app_news_content.cs" />
+    <Compile Include="model\tbl_app_news_discuss.cs" />
+    <Compile Include="model\tbl_app_news_like.cs" />
+    <Compile Include="model\tbl_app_news_title.cs" />
+    <Compile Include="model\tbl_app_version_color.cs" />
+    <Compile Include="model\tbl_app_pushnotification.cs" />
+    <Compile Include="model\tbl_app_version.cs" />
+    <Compile Include="model\tbl_app_version_html.cs" />
+    <Compile Include="model\tbl_clob.cs" />
+    <Compile Include="model\tbl_codefactory.cs" />
+    <Compile Include="model\tbl_filescontent.cs" />
+    <Compile Include="model\tbl_ldbm_dycq.cs" />
+    <Compile Include="model\tbl_ldbm_expdata.cs" />
+    <Compile Include="model\tbl_ldbm_jtsj.cs" />
+    <Compile Include="model\tbl_ldbm_khfz.cs" />
+    <Compile Include="model\tbl_ldbm_sbfz.cs" />
+    <Compile Include="model\tbl_ldbm_yhfz.cs" />
+    <Compile Include="model\tbl_ld_cben.cs" />
+    <Compile Include="model\tbl_ld_cbiao.cs" />
+    <Compile Include="model\tbl_ld_dyhlh.cs" />
+    <Compile Include="model\tbl_ld_expjhts.cs" />
+    <Compile Include="model\tbl_ld_ghsb.cs" />
+    <Compile Include="model\tbl_ld_ichbbk.cs" />
+    <Compile Include="model\tbl_ld_ickss.cs" />
+    <Compile Include="model\tbl_ld_ickxj.cs" />
+    <Compile Include="model\tbl_ld_jfb.cs" />
+    <Compile Include="model\tbl_ld_jfbimp.cs" />
+    <Compile Include="model\tbl_ld_jmb.cs" />
+    <Compile Include="model\tbl_ld_khb.cs" />
+    <Compile Include="model\tbl_ld_log.cs" />
+    <Compile Include="model\tbl_ld_pgb.cs" />
+    <Compile Include="model\tbl_ld_pllhlb.cs" />
+    <Compile Include="model\tbl_ld_pllhyl.cs" />
+    <Compile Include="model\tbl_ld_qfts.cs" />
+    <Compile Include="model\tbl_ld_qftsyl.cs" />
+    <Compile Include="model\tbl_ld_report.cs" />
+    <Compile Include="model\tbl_ld_sbb.cs" />
+    <Compile Include="model\tbl_ld_xgsbds.cs" />
+    <Compile Include="model\tbl_ld_xgsbdszb.cs" />
+    <Compile Include="model\tbl_ld_xhhbt.cs" />
+    <Compile Include="model\tbl_ld_xhhbtzb.cs" />
+    <Compile Include="model\tbl_ld_xxbg.cs" />
+    <Compile Include="model\tbl_ld_xxbgnr.cs" />
+    <Compile Include="model\tbl_ld_xzsb.cs" />
+    <Compile Include="model\tbl_ld_ycbgl.cs" />
+    <Compile Include="model\tbl_ld_ycbglzb.cs" />
+    <Compile Include="model\tbl_ld_ychk.cs" />
+    <Compile Include="model\tbl_ld_yhb.cs" />
+    <Compile Include="model\tbl_maintable.cs" />
+    <Compile Include="model\tbl_notice.cs" />
+    <Compile Include="model\tbl_resource.cs" />
+    <Compile Include="model\tbl_task.cs" />
+    <Compile Include="model\t_projstate_log.cs" />
+    <Compile Include="model\userinfo.cs" />
+    <Compile Include="model\workitem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProjectTool.asmx.cs">
+      <DependentUpon>ProjectTool.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reportclass\tbl_ld_cbiao.cs" />
+    <Compile Include="reportclass\tbl_ld_ichbbk.cs" />
+    <Compile Include="reportclass\tbl_ld_ickss.cs" />
+    <Compile Include="reportclass\tbl_ld_jfb.cs" />
+    <Compile Include="reportclass\tbl_ld_jmb.cs" />
+    <Compile Include="reportclass\tbl_ld_khb.cs" />
+    <Compile Include="reportclass\tbl_ld_khbzdy.cs" />
+    <Compile Include="reportclass\tbl_ld_ycbdc.cs" />
+    <Compile Include="reportclass\tbl_ld_khxx.cs" />
+    <Compile Include="reportclass\tbl_ld_report.cs" />
+    <Compile Include="reportclass\tbl_ldbm_expdata.cs" />
+    <Compile Include="reportclass\tbl_ld_sbb.cs" />
+    <Compile Include="reportclass\tbl_ld_xxbg.cs" />
+    <Compile Include="reportclass\tbl_ld_yhb.cs" />
+    <Compile Include="reportclass\tbl_maintable.cs" />
+    <Compile Include="service\app_datacenterlite.asmx.cs">
+      <DependentUpon>app_datacenterlite.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_file.asmx.cs">
+      <DependentUpon>app_file.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_fileupload.ashx.cs">
+      <DependentUpon>app_fileupload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="service\app_me.asmx.cs">
+      <DependentUpon>app_me.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_index.asmx.cs">
+      <DependentUpon>app_index.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_news.asmx.cs">
+      <DependentUpon>app_news.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_version.asmx.cs">
+      <DependentUpon>app_version.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_user.asmx.cs">
+      <DependentUpon>app_user.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_pushnotification.asmx.cs">
+      <DependentUpon>app_pushnotification.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_businessflow.asmx.cs">
+      <DependentUpon>service_businessflow.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\app_common.asmx.cs">
+      <DependentUpon>app_common.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_common.asmx.cs">
+      <DependentUpon>service_common.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_commonselectuser.asmx.cs">
+      <DependentUpon>service_commonselectuser.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_eshuishenghuo_jf.asmx.cs">
+      <DependentUpon>service_eshuishenghuo_jf.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_guangda_bj02.ashx.cs">
+      <DependentUpon>service_guangda_bj02.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="service\service_guangda_bj01.ashx.cs">
+      <DependentUpon>service_guangda_bj01.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="service\service_guangda_test.asmx.cs">
+      <DependentUpon>service_guangda_test.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_login.asmx.cs">
+      <DependentUpon>service_login.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_main.asmx.cs">
+      <DependentUpon>service_main.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_codefactory.asmx.cs">
+      <DependentUpon>service_tbl_app_codefactory.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_index.asmx.cs">
+      <DependentUpon>service_tbl_app_index.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_index_title.asmx.cs">
+      <DependentUpon>service_tbl_app_index_title.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news.asmx.cs">
+      <DependentUpon>service_tbl_app_news.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_content.asmx.cs">
+      <DependentUpon>service_tbl_app_news_content.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_discuss.asmx.cs">
+      <DependentUpon>service_tbl_app_news_discuss.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_like.asmx.cs">
+      <DependentUpon>service_tbl_app_news_like.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_news_title.asmx.cs">
+      <DependentUpon>service_tbl_app_news_title.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_version_color.asmx.cs">
+      <DependentUpon>service_tbl_app_version_color.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_pushnotification.asmx.cs">
+      <DependentUpon>service_tbl_app_pushnotification.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_version.asmx.cs">
+      <DependentUpon>service_tbl_app_version.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_app_version_html.asmx.cs">
+      <DependentUpon>service_tbl_app_version_html.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_codefactory.asmx.cs">
+      <DependentUpon>service_tbl_codefactory.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_filescontent.asmx.cs">
+      <DependentUpon>service_tbl_filescontent.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ldbm_dycq.asmx.cs">
+      <DependentUpon>service_tbl_ldbm_dycq.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ldbm_expdata.asmx.cs">
+      <DependentUpon>service_tbl_ldbm_expdata.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ldbm_jtsj.asmx.cs">
+      <DependentUpon>service_tbl_ldbm_jtsj.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ldbm_khfz.asmx.cs">
+      <DependentUpon>service_tbl_ldbm_khfz.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ldbm_sbfz.asmx.cs">
+      <DependentUpon>service_tbl_ldbm_sbfz.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ldbm_yhfz.asmx.cs">
+      <DependentUpon>service_tbl_ldbm_yhfz.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_cben.asmx.cs">
+      <DependentUpon>service_tbl_ld_cben.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_cbiao.asmx.cs">
+      <DependentUpon>service_tbl_ld_cbiao.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_dyhlh.asmx.cs">
+      <DependentUpon>service_tbl_ld_dyhlh.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_expjhts.asmx.cs">
+      <DependentUpon>service_tbl_ld_expjhts.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ghsb.asmx.cs">
+      <DependentUpon>service_tbl_ld_ghsb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ichbbk.asmx.cs">
+      <DependentUpon>service_tbl_ld_ichbbk.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ickss.asmx.cs">
+      <DependentUpon>service_tbl_ld_ickss.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ickxj.asmx.cs">
+      <DependentUpon>service_tbl_ld_ickxj.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_jfb.asmx.cs">
+      <DependentUpon>service_tbl_ld_jfb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_jfbimp.asmx.cs">
+      <DependentUpon>service_tbl_ld_jfbimp.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_jmb.asmx.cs">
+      <DependentUpon>service_tbl_ld_jmb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_khb.asmx.cs">
+      <DependentUpon>service_tbl_ld_khb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_log.asmx.cs">
+      <DependentUpon>service_tbl_ld_log.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_pgb.asmx.cs">
+      <DependentUpon>service_tbl_ld_pgb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_pllhlb.asmx.cs">
+      <DependentUpon>service_tbl_ld_pllhlb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_pllhyl.asmx.cs">
+      <DependentUpon>service_tbl_ld_pllhyl.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_qfts.asmx.cs">
+      <DependentUpon>service_tbl_ld_qfts.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_qftsyl.asmx.cs">
+      <DependentUpon>service_tbl_ld_qftsyl.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_report.asmx.cs">
+      <DependentUpon>service_tbl_ld_report.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_sbb.asmx.cs">
+      <DependentUpon>service_tbl_ld_sbb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xgsbds.asmx.cs">
+      <DependentUpon>service_tbl_ld_xgsbds.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xgsbdszb.asmx.cs">
+      <DependentUpon>service_tbl_ld_xgsbdszb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xhhbt.asmx.cs">
+      <DependentUpon>service_tbl_ld_xhhbt.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xhhbtzb.asmx.cs">
+      <DependentUpon>service_tbl_ld_xhhbtzb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xxbg.asmx.cs">
+      <DependentUpon>service_tbl_ld_xxbg.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xxbgnr.asmx.cs">
+      <DependentUpon>service_tbl_ld_xxbgnr.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_xzsb.asmx.cs">
+      <DependentUpon>service_tbl_ld_xzsb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ycbgl.asmx.cs">
+      <DependentUpon>service_tbl_ld_ycbgl.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ycbglzb.asmx.cs">
+      <DependentUpon>service_tbl_ld_ycbglzb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_ychk.asmx.cs">
+      <DependentUpon>service_tbl_ld_ychk.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_yhb.asmx.cs">
+      <DependentUpon>service_tbl_ld_yhb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_maintable.asmx.cs">
+      <DependentUpon>service_tbl_maintable.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_maintable_detailall.asmx.cs">
+      <DependentUpon>service_tbl_maintable_detailall.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_notice.asmx.cs">
+      <DependentUpon>service_tbl_notice.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_resource.asmx.cs">
+      <DependentUpon>service_tbl_resource.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_task.asmx.cs">
+      <DependentUpon>service_tbl_task.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_t_projstate_log.asmx.cs">
+      <DependentUpon>service_t_projstate_log.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\tokentest.asmx.cs">
+      <DependentUpon>tokentest.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>2123</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://127.0.0.1/sara.dd.ldsw</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\MicrosoftAjax\ajaxmin.tasks" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <JS Include="**\*.js" Exclude="**\*.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+      <CSS Include="**\*.css" Exclude="**\*.min.css" />
+    </ItemGroup>
+    <AjaxMin JsSourceFiles="@(JS)" JsSourceExtensionPattern="\.js$" JsTargetExtension=".min.js" CssSourceFiles="@(CSS)" CssSourceExtensionPattern="\.css$" CssTargetExtension=".min.css">
+    </AjaxMin>
+  </Target>
+</Project>

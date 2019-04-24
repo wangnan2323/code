@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>数据中心</title>
+
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+
+    <script>
+
+      
+
+            $.include({
+                rootip: '127.0.0.1',
+                ismin: true,
+                file: ['bootstrap', 'common', 'highcharts',
+                '../commoncss/commoncss.css',
+                '../commonjs/commonconfig.js',
+                '../widget/header/header.js',
+                '../widget/paragraph/commonparagraph.js',
+                '../widget/paragraph/commonparagraph_docommonchart.js',
+                '../widget/paragraph/commonparagraph_docommonmap.js',
+                '../widget/paragraph/commonparagraph_docommontable.js',
+                '../widget/paragraph/commonparagraph_docommonimage.js',
+                '../widget/paragraph/commonparagraph_dodoublepiechart.js',
+                '../widget/paragraph/commonparagraph_docommonhtml.js',
+                '../widget/paragraph/commonparagraph_docommonaccordion.js',
+            '../widget/paragraph/commonparagraph_docommonbutton.js',
+                '../widget/paragraph/baseparagraph.js',
+                'paper.js',
+                'paper_full.js',
+                'paper.css'
+                ]
+            });
+
+    </script>
+
+</head>
+<body id="mainbody" style="display: none;">
+    <a class="sr-only" href="#content">直接进入主页</a>
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" id="header" role="banner"></header>
+    <div style="display: none" id="div_gototop">
+        <img border="0" src="../../../../images/gototop.jpg" title="回到顶部" />
+    </div>
+    <div class="bs-header" id="bs-header">
+        <div class="container">
+            <h1 id="h_title"></h1>
+            <h3 id="h_resume"></h3>
+        </div>
+    </div>
+
+    <div id="container_fullscreen" class="container-fullscreen">
+        <!--通过修改此部分的代码，实现页面布局的自定义-start-->
+        <div style="width:100%;min-height:800px;text-align:center;" >
+            <img border="0" src="../../../../images/loading.gif" title="加载中..." />加载中...
+        </div>
+        
+        <!--通过修改此部分的代码，实现页面布局的自定义-end-->
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br /><br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br /><br />
+    <br />
+    <br />
+    <br />
+
+    <div class="modal fade" id="papermodal" tabindex="-1" role="dialog" aria-labelledby="h_papermodal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="h_papermodal"></h4>
+                </div>
+                <div id="div_modalbody" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

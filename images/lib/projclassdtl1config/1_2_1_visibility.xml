@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <tr>
+    <key>forshowitem</key>
+    <value>value1 = '[sys_userid]'^sys_projectclassdtl2 like '%[projxmlx]%'^sys_delflag = '0'</value>
+    <remark>用于设置项目的显示情况</remark>
+  </tr>
+  <tr>
+    <key>forshowuser</key>
+    <value></value>
+    <remark>用于设置项目坐在状态可见用户的情况</remark>
+  </tr>
+</table>

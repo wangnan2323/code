@@ -1,0 +1,1112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Easy2008.QuickDevelop.Tools.OfficeTool</name>
+    </assembly>
+    <members>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReport.CreateExcelReport(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel,System.String@,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="sheets"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.ExcelTool">
+            <summary>
+            Excel操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.#ctor(Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="Exceltool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.Edit(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            编辑
+            </summary>
+            <param name="Excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.GetLoaction(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="Excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportFooter.ReplaceText(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.ExcelTool">
+            <summary>
+            Excel操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.#ctor(Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="Exceltool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.Edit(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            编辑
+            </summary>
+            <param name="Excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.GetLoaction(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="Excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportHeader.ReplaceText(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.ExcelTool">
+            <summary>
+            Excel操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.#ctor(Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="Exceltool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.Edit(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            编辑
+            </summary>
+            <param name="Excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.GetLoaction(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="Excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.SetStyle(Microsoft.Office.Interop.Excel.Range,Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            设置样式
+            </summary>
+            <param name="range"></param>
+            <param name="excelreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertText_BQ(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertText_HL(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertPicture_JDWZ(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertPicture_DYG(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertFixedTable_BQ(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入固定表格
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertFixedTable_HL(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入固定表格
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertActiveTable_BQ(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入动态表格
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.InsertActiveTable_HL(Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel)">
+            <summary>
+            插入动态表格
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportMainBody.Merge(Microsoft.Office.Interop.Excel.Range,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="table"></param>
+            <param name="startrowindex"></param>
+            <param name="startcolumnindex"></param>
+            <param name="endrowindex"></param>
+            <param name="endcolumnindex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel">
+            <summary>
+            报表模型类
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.HaveTemp">
+            <summary>
+            是否基于模板
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.TempPath">
+            <summary>
+            模板路径
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.TempFileName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.TempFileFormat">
+            <summary>
+            模板类型
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.SavePath">
+            <summary>
+            保存路径
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.SaveFileName">
+            <summary>
+            保存名称
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.SaveFileFormat">
+            <summary>
+            保存类型
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportModel.ListExcelReportDataModel">
+            <summary>
+            数据携带类
+            </summary>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel">
+            <summary>
+            数据携带类
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.DataNameCN">
+            <summary>
+            数据名称中文
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.DataNameEN">
+            <summary>
+            数据名称英文
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.Container">
+            <summary>
+            容器
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.DataType">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.Style">
+            <summary>
+            样式
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.Table">
+            <summary>
+            表格
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.Merge">
+            <summary>
+            合并
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportDataModel.LocationType">
+            <summary>
+            定位方式
+            </summary>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.ReplaceString">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.Left">
+            <summary>
+            距左
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.Top">
+            <summary>
+            距右
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.StartRowIndex">
+            <summary>
+            开始行
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.StartColumnIndex">
+            <summary>
+            开始列
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.EndRowIndex">
+            <summary>
+            结束行
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.EndColumnIndex">
+            <summary>
+            结束列
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.StartCell">
+            <summary>
+            开始单元格
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelReportLocation.EndCell">
+            <summary>
+            结束单元格
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.Worksheet">
+            <summary>
+            获取当前WorkSheet
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.Workbook">
+            <summary>
+            获取当前Workbook
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.Open(System.String)">
+            <summary>
+            打开文件
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.Save">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.SaveAs(System.String,Microsoft.Office.Interop.Excel.XlFileFormat)">
+            <summary>
+            另存为
+            </summary>
+            <param name="filename"></param>
+            <param name="xlFileFormat"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.ExportPDF(System.String)">
+            <summary>
+            导出PDF
+            </summary>
+            <param name="strFilePath"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.Quit">
+            <summary>
+            退出
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Excel.ExcelTool.Dispose">
+            <summary>
+            释放内存
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReport.CreateWordReport(Easy2008.ServiceReport.OfficeTool.Word.WordReportModel,System.String@,System.String@)">
+            <summary>
+            从模板导出Word
+            </summary>
+            <param name="model">word报表数据模型</param>
+            <param name="message">返回信息</param>
+            <returns>文件路径</returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.WordTool">
+            <summary>
+            word操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.#ctor(Easy2008.ServiceReport.OfficeTool.Word.WordTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="wordtool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.Edit(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            编辑
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.GetStyle(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel,System.Object)">
+            <summary>
+            获取样式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.GetLoaction(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.InsertText(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.InsertHTML(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入HTML
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.InsertInlineShape(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入嵌入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportFooter.InsertPicture(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.WordTool">
+            <summary>
+            word操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.#ctor(Easy2008.ServiceReport.OfficeTool.Word.WordTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="wordtool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.Edit(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            编辑
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.GetStyle(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel,System.Object)">
+            <summary>
+            获取样式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.GetLoaction(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.InsertText(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.InsertHTML(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入HTML
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.InsertInlineShape(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入嵌入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportHeader.InsertPicture(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.WordTool">
+            <summary>
+            word操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.#ctor(Easy2008.ServiceReport.OfficeTool.Word.WordTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="wordtool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.Edit(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            编辑页眉
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.GetStyle(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel,System.Object)">
+            <summary>
+            获取样式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.GetLoaction(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.ReplaceText(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            替换文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.InsertText(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.InsertHTML(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入HTML
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.InsertInlineShape(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入嵌入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.InsertPicture(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.InsertActiveTable(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入动态表格
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBody.Merge(Microsoft.Office.Interop.Word.Table,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="table"></param>
+            <param name="startrowindex"></param>
+            <param name="startcolumnindex"></param>
+            <param name="endrowindex"></param>
+            <param name="endcolumnindex"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.WordTool">
+            <summary>
+            word操作工具
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.Count">
+            <summary>
+            用于生成中间临时文件记数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.#ctor(Easy2008.ServiceReport.OfficeTool.Word.WordTool)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="wordtool"></param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.Edit(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            编辑
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.GetStyle(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel,System.Object)">
+            <summary>
+            获取样式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.GetLoaction(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            获取定位
+            </summary>
+            <param name="wordreportdatamodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.ReplaceText(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            替换文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertText(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入文本
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertText_TableLocation(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入文本 表格位置
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertHTML(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入HTML
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertHTML_TableLocation(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入HTML 表格定位
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertInlineShape(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入嵌入图片
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertInlineShape_TableLocation(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入嵌入图片 表格定位
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertActiveTable(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入动态表格
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertActiveTable_TableLocation(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入动态表格 表格定位
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.InsertFixedTable_TableLocation(Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel)">
+            <summary>
+            插入固定表格 表格定位
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordReportMainBodyTable.Merge(Microsoft.Office.Interop.Word.Table,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="table"></param>
+            <param name="startrowindex"></param>
+            <param name="startcolumnindex"></param>
+            <param name="endrowindex"></param>
+            <param name="endcolumnindex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel">
+            <summary>
+            word报表数据模型类
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.TempPath">
+            <summary>
+            模板路径
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.TempFileName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.TempFileFormat">
+            <summary>
+            模板类型
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.SavePath">
+            <summary>
+            保存路径
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.SaveFileName">
+            <summary>
+            保存名称
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.SaveFileFormat">
+            <summary>
+            保存类型
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportModel.ListWordReportDataModel">
+            <summary>
+            数据项
+            </summary>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel">
+            <summary>
+            数据携带类
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.DataNameCN">
+            <summary>
+            数据名称中文
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.DataNameEN">
+            <summary>
+            数据名称英文
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.Container">
+            <summary>
+            容器
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.DataType">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.Style">
+            <summary>
+            样式
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.Location">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.Table">
+            <summary>
+            表格
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.Merge">
+            <summary>
+            合并
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportDataModel.LocationType">
+            <summary>
+            定位方式
+            </summary>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle">
+            <summary>
+            样式：没有被用到
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.UnderlineColor">
+            <summary>
+            下划线颜色
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Italic">
+            <summary>
+            斜体
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Bold">
+            <summary>
+            粗体
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Alignment">
+            <summary>
+            对齐方式
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.FontName">
+            <summary>
+            字体
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.FontSize">
+            <summary>
+            大小
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Color">
+            <summary>
+            颜色
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Underline">
+            <summary>
+            下划线
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.BackColor">
+            <summary>
+            背景色
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Width">
+            <summary>
+            宽
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.Heigth">
+            <summary>
+            高
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.WrapType">
+            <summary>
+            环绕方式
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.OutsideLineStyle">
+            <summary>
+            外边框样式
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.InsideLineStyle">
+            <summary>
+            内边框样式
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.OutsideColor">
+            <summary>
+            外边框颜色
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.InsideColor">
+            <summary>
+            内边框颜色
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.RowHeigth">
+            <summary>
+            行高
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.ColumnWidth">
+            <summary>
+            列宽
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportStyle.WrapAroundText">
+            <summary>
+            动态表格文字环绕
+            </summary>
+        </member>
+        <member name="T:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation">
+            <summary>
+            定位
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.BookMarket">
+            <summary>
+            书签
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.ReplaceString">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.Left">
+            <summary>
+            距左
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.Top">
+            <summary>
+            距右
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.TableIndex">
+            <summary>
+            第几个表格
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.RowIndex">
+            <summary>
+            第几行
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordReportLocation.ColumnIndex">
+            <summary>
+            第几列
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordTool.SavePath">
+            <summary>
+            保存路径
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordTool.SaveFileName">
+            <summary>
+            保存临时文件名称
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordTool.MissingValue">
+            <summary>
+            获得missingvalue
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Document">
+            <summary>
+            获取Document类
+            </summary>
+        </member>
+        <member name="P:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Application">
+            <summary>
+            获取ApplicationClass类 
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Quit">
+            <summary>
+            退出
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.GCForQuit">
+            <summary>
+            在垃圾回收时，在任务管理器中还存在当前操作的WORD的进程
+            查阅资料，必须在另一个方法中在调用GC才可以真正的清除掉，当前的进程
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Open">
+            <summary>
+            打开一个空的Word模板
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Open(System.String)">
+            <summary>
+            打开指定的Word文档
+            </summary>
+            <param name="strFileName">指定的Word文档</param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Open(System.String,System.Boolean)">
+            <summary>
+            打开指定的Word文档并判断是否显示
+            </summary>
+            <param name="strFileName">指定的Word文档</param>
+            <param name="isEnabled">显示与否</param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.OpenWithTemplate(System.String)">
+            <summary>
+            根据文件模板打开文件
+            </summary>
+            <param name="strFileName">文件路径及名称</param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.Save">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.SaveAs(System.String)">
+            <summary>
+            返回保存文件的FileName
+            </summary>
+            <param name="strDefaultExt">要保存文件的类型</param>
+            <param name="strFilter">文件名筛选器字符串</param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.SaveAs(System.String,Microsoft.Office.Interop.Word.WdSaveFormat)">
+            <summary>
+            返回保存文件的FileName
+            </summary>
+            <param name="strFileName">要保存文件的类型</param>
+            <param name="format">文件名筛选器字符串</param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.ExportToPDF(System.String)">
+            <summary>
+            将WORD文档导出为PDF
+            </summary>
+            <param name="strTargetPDFPath">所需要保存的PDF文档的路径</param>
+            <param name="strMsg">将错误信息返回到所调用的函数</param>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.BuildHTMLStream(System.String)">
+            <summary>
+            生成html页面
+            </summary>
+            <param name="strBodyText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy2008.ServiceReport.OfficeTool.Word.WordTool.SaveAsTextFile(System.String,System.String)">
+            <summary>
+            保存为文本文件
+            </summary>
+            <param name="stream">输出文本</param>
+            <param name="savepath">保存路径</param>
+            <param name="message">返回信息</param>
+            <returns>true为成功</returns>
+        </member>
+    </members>
+</doc>

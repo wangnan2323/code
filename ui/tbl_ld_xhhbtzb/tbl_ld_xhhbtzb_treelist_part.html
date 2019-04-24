@@ -1,0 +1,409 @@
+﻿<script src="../tbl_ld_xhhbtzb/tbl_ld_xhhbtzb_treelist_part.js" type="text/javascript"></script>
+<link href="../tbl_ld_xhhbtzb/tbl_ld_xhhbtzb_treelist_part.css" media="all" rel="stylesheet" type="text/css" />
+
+<!--按钮行 start -->
+<div class="container-fluid main-content cc-command">
+    <div class="row ">
+        <div class="col-sm-3  cc-command-button" style="padding-left:0px;">
+            <div class="row ">
+                <div class="col-sm-4">
+                    <button id="btn_command_new_tbl_ld_xhhbtzb_treelist" type="button" class="btn btn-success" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_new_onclick();">新建</button>
+                </div>
+                <div class="col-sm-8">
+                    <div class="input-group hidden">
+                        <input id="txt_command_search_tbl_ld_xhhbtzb_treelist" type="text" class="form-control">
+                        <div class="input-group-btn">
+                            <button id="btn_command_search_tbl_ld_xhhbtzb_treelist" type="button" class="btn btn-warning" value="" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_search_onclick();">简单查询</button>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" style="margin-left:-10px;">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right btn-command-search-dropdown">
+                                <li><a href="javascript:void(0);" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_search_1_onclick();"><i class="icon-plus-sign"></i>简单查询</a></li>
+                                <li><a href="javascript:void(0);" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_search_2_onclick();"><i class="icon-edit"></i>高级查询</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9  cc-command-button">
+            <div class="row">
+                <div class="col-sm-6">
+                    <button id="btn_command_save_tbl_ld_xhhbtzb_treelist" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_save_onclick();" class="btn btn-success" type="button">保存<span class="badge"></span></button>
+                </div>
+                <div class="col-sm-6" style="text-align:right">
+                    <button id="btn_command_delete_tbl_ld_xhhbtzb_treelist" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_delete_onclick();" class="btn btn-danger" type="button">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--按钮行 end -->
+<!--内容部分 start-->
+<div class="container-fluid main-content cc-grid">
+    <div class="row" style="display:inline-flex;width:100%;">
+        <div class="col-sm-3" style="padding-left:0px;">
+            <div class="widget-container fluid-height clearfix" id="div_list_container_tbl_ld_xhhbtzb">
+                <div class="widget-content padded">
+                    <div class="table-responsive">
+                        <table class="table" id="table_grid_tbl_ld_xhhbtzb_treelist"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="row" id="div_detail_tbl_ld_xhhbtzb">
+                <div class="col-sm-12 hidden">
+                    <div class="widget-container fluid-height clearfix">
+                        <div class="heading"><i class="icon-collapse"></i>销户和报停子表</div>
+                        <div class="widget-content padded">
+                            <div class="row hidden">
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value1_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value1_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段1<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value1_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value2_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value2_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段2<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value2_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value3_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value3_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段3<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value3_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value4_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value4_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段4<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value4_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value5_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value5_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段5<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value5_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value6_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value6_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段6<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value6_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value7_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value7_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段7<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value7_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value8_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value8_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段8<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value8_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value9_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value9_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段9<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value9_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_value10_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_value10_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段10<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_value10_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <div id="div_detail_f_khbhid_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khbhid_tbl_ld_xhhbtzb_treelist" class="control-label">客户编号id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khbhid_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <div id="div_detail_f_khxx_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khxx_tbl_ld_xhhbtzb_treelist" class="control-label">客户信息<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khxx_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="提示文本">
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-6">
+                                            <div id="div_detail_f_khjson_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                                <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                                <label for="detail_f_khjson_tbl_ld_xhhbtzb_treelist" class="control-label">客户json<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_khjson_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                            </div>
+                                        </div>
+                                <div class="col-sm-6">
+                                    <div id="div_detail_fk_tbl_maintable_sys_id_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_fk_tbl_maintable_sys_id_tbl_ld_xhhbtzb_treelist" class="control-label">fk_tbl_maintable_sys_id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_fk_tbl_maintable_sys_id_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="提示文本">
+                                                </div>
+                                            </div>
+                                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="padding:0">
+                    <div class="widget-container fluid-height clearfix" id="div_detail_control_container_tbl_ld_xhhbtzb">
+                        <div class="heading hidden"><i class="icon-collapse"></i>销户和报停子表</div>
+                        <div class="widget-content padded">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div id="div_detail_f_khbh_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_khbh_tbl_ld_xhhbtzb_treelist" class="control-label">客户编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <div class="input-group">
+                                            <input id="detail_f_khbh_tbl_ld_xhhbtzb_treelist" type="text" class="form-control" placeholder="">
+                                            <span class="input-group-btn">
+                                                <button id="btn_detail_f_khbh_tbl_ld_xhhbtzb_treelist" class="btn btn-default" type="button" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_command_opensearch_onclick();">选择 </button>
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_yhm_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_yhm_tbl_ld_xhhbtzb_treelist" class="control-label">用户名<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_yhm_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div id="div_treelist_f_dh_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_dh_tbl_ld_xhhbtzb_treelist" class="control-label">电话<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_dh_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="div_treelist_f_dz_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label for="detail_f_dz_tbl_ld_xhhbtzb_treelist" class="control-label">地址<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <input id="detail_f_dz_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="div_detail_f_fj_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_fj_tbl_ld_xhhbtzb_treelist" class="control-label">附件<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <div id="detail_f_fj_tbl_ld_xhhbtzb_treelist"></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div id="div_detail_f_bz_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                        <label class="control-info-label hand"><i class="icon-leaf hidden"></i></label>
+                                        <label for="detail_f_bz_tbl_ld_xhhbtzb_treelist" class="control-label">备注<i class="icon-exclamation-sign hand hidden"></i></label>
+                                        <textarea id="detail_f_bz_tbl_ld_xhhbtzb_treelist" class="form-control" rows="3"></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="div_search_modal_tbl_ld_xhhbtzb_treelist">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        高级查询
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row hidden">
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value1_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value1_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段1<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value1_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value2_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value2_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段2<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value2_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value3_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value3_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段3<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value3_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value4_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value4_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段4<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value4_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value5_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value5_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段5<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value5_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value6_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value6_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段6<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value6_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value7_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value7_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段7<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value7_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value8_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value8_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段8<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value8_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value9_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value9_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段9<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value9_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_value10_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_value10_tbl_ld_xhhbtzb_treelist" class="control-label">备用字段10<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_value10_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_khbhid_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_khbhid_tbl_ld_xhhbtzb_treelist" class="control-label">客户编号id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_khbhid_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_khxx_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_khxx_tbl_ld_xhhbtzb_treelist" class="control-label">客户信息<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_khxx_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_khjson_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_khjson_tbl_ld_xhhbtzb_treelist" class="control-label">客户json<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_khjson_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_fk_tbl_maintable_sys_id_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_fk_tbl_maintable_sys_id_tbl_ld_xhhbtzb_treelist" class="control-label">fk_tbl_maintable_sys_id<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_fk_tbl_maintable_sys_id_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_bz_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_bz_tbl_ld_xhhbtzb_treelist" class="control-label">备注<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_bz_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div id="div_search_f_khbh_tbl_ld_xhhbtzb_treelist" class="form-group">
+                                    <label for="search_f_khbh_tbl_ld_xhhbtzb_treelist" class="control-label">客户编号<i class="icon-exclamation-sign hand hidden"></i></label>
+                                    <input id="search_f_khbh_tbl_ld_xhhbtzb_treelist" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_search_modal_search_tbl_ld_xhhbtzb_treelist" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">查询<span class="badge"></span></button>
+                        <button id="btn_search_modal_cancle_tbl_ld_xhhbtzb_treelist" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="div_search_modal_tbl_ld_xhhbtzb_detail">
+        <div class="modal-dialog modal-full">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        选择客户
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid main-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="div_loading_tbl_ld_xhhbtzb_list" style="height:100px;"><img src="../../images/loading.gif" />数据装载中...</div>
+                                <div id="div_container_tbl_ld_xhhbtzb_list" style="display:none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_search_modal_search_tbl_ld_xhhbtzb_detail" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_search_modal_search_onclick();" class="btn btn-primary" type="button">选定<span class="badge"></span></button>
+                        <button id="btn_search_modal_cancle_tbl_ld_xhhbtzb_detail" onclick="tbl_ld_xhhbtzb_treelist_Obj.btn_search_modal_cancle_onclick();" class="btn btn-default-outline" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--内容部分 end-->

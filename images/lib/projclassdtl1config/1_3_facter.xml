@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <tr>
+    <num>0</num>
+    <name>转件</name>
+    <value>f_true()?4:4</value>
+    <wfprocessdefid>-1</wfprocessdefid>
+    <remark></remark>
+  </tr>
+  <tr>
+    <num>1</num>
+    <name>退件</name>
+    <value>f_true()?2_1:2_1</value>
+    <wfprocessdefid>-1</wfprocessdefid>
+    <remark></remark>
+  </tr>
+</table>
+
+

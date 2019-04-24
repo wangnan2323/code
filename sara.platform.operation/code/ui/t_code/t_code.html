@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        基础代码
+    </title>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <link href="../t_code/t_code.min.css" rel="stylesheet" />
+
+   
+
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+
+    <script src="t_code.min.js"></script>
+
+    <script>
+
+        $.include({
+            rootip: '127.0.0.1',
+            ismin: true,
+            file: ['base', 'resource',
+                 '../../../../commonjs/commonjs.js',
+                '../../../../commoncss/commoncss.css',
+                '../../../../ui/basepage/basepage.css',
+                '../../../../ui/basepage/basepage.js'
+            ]
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <!--<div class="col-xs-8 cc-command-button">
+                    <button id="btn_command_save_tbl_appinfo_detail" class="btn btn-success" onclick="tbl_appinfo_detail_Obj.btn_command_save_onclick();">保存<span class="badge"></span></button>
+                </div>
+                <div class="col-xs-4 cc-command-cancle hidden">
+                    <button id="btn_command_cancle_tbl_appinfo_detail" class="btn btn-warning" onclick="tbl_appinfo_detail_Obj.btn_command_cancle_onclick();">返回</button>
+                </div>-->
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div><!--t_code--></div>
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+
+    <div class="leftmenu-center-content">
+        <div class="col-lg-3">
+            <div class="tree">
+                <ul id="ul_treeroot"></ul>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="widget-container fluid-height clearfix">
+              
+                <div class="widget-content padded">
+                    <div id="div_code_menu_detail">
+
+                    </div>
+
+                    <div id="div_code_content_modallist">
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!--内容部分 start-->
+    <!--<div class="container-fluid main-content cc-content">
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <div class="widget-container fluid-height clearfix">
+                    <div class="heading">
+                        <i class="icon-collapse"></i>t_code
+                    </div>
+                    <div class="widget-content padded">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>-->
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot"></div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿.well-1-tbl-maintable-button
+{
+    padding: 10px;
+    min-height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #f4f4f4;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    border-color: #ddd;
+    border-color: rgba(0, 0, 0, .15);
+}
+
+    .well-1-tbl-maintable-button > table > tbody > tr > td > a,
+    .well-1-tbl-maintable-button > table > tbody > tr > td > h3
+    {
+        color: rgba(0, 0, 0, .15) !important;
+         font-size: 18px !important;
+    }
+
+
+.well0-tbl-maintable-button.color-success
+{
+    padding: 10px;
+    min-height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #60c560;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    border-color: #60c560;
+   
+}
+
+.well0-tbl-maintable-button.color-danger
+{
+    padding: 10px;
+    min-height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #d9534f;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    border-color: #d9534f;
+   
+}
+
+
+    .well0-tbl-maintable-button > table > tbody > tr > td > h3
+    {
+        color: #000 !important;
+        font-size: 18px !important;
+    }
+    .well0-tbl-maintable-button.color-success > table > tbody > tr > td > a
+    {
+          color: #60c560 !important;
+        font-size: 18px !important;
+    }
+        .well0-tbl-maintable-button.color-danger > table > tbody > tr > td > a
+    {
+          color: #d9534f !important;
+        font-size: 18px !important;
+    }
+
+
+.div-row-useroperation-tbl-maintable-button
+{
+    width: 100%;
+}
+
+
+
+.td-left-tbl-maintable-button
+{
+    text-align: left;
+    width: 100%;
+}
+
+.td-right-tbl-maintable-button
+{
+    text-align: right;
+}
+
+.font-color-success-tbl-maintable-button
+{
+    color:#60c560;
+}
+
+.font-color-danger-tbl-maintable-button
+{
+    color:#d9534f;
+}
+
+
+.a-color-success-tbl-maintable-button
+{   
+     color:#60c560;
+
+}
+
+.a-color-danger-tbl-maintable-button
+{
+    color:#d9534f;
+}
+
+

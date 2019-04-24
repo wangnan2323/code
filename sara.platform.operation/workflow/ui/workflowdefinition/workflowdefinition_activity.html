@@ -1,0 +1,249 @@
+﻿<div class="easyui-layout" fit="true">
+    <div region="north" border="false" style="height: 30px;">
+        <a href="##" class="easyui-linkbutton" plain="false" iconcls="icon-save" onclick="btn_save_activity()">保存</a>
+        <a href="##" class="easyui-linkbutton" plain="false" iconcls="icon-remove" onclick="btn_delete_activity()">删除</a>
+    </div>
+    <div region="center" border="true">
+        <table id="table_detail_t_dy_jd" style="width: 99%;">
+            <tr>
+                <td class="td_detail_title" style="width:100px;"></td>
+                <td class="td_detail_flag" style="width:10px;"></td>
+                <td class="td_detail_content" style="width:300px;"></td>
+               
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">sys_id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_sys_id" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr>
+                <td class="td_detail_title">节点名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_jdmc" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">节点描述： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_jdms" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">节点类型： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_jdlx" type="text" style="width: 80%" disabled="disabled" />-->
+
+                    <input id="txt_jdlx"  class="easyui-combobox" style="width:300px;" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">节点内的用户关系： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                   <!-- <input id="txt_jdnyh" type="text" style="width: 300px" />-->
+
+                    <input id="txt_jdnyh"  class="easyui-combobox" style="width:300px;" />
+
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">发生退回后的流转模式： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_jdthms" type="text" style="width: 300px" />-->
+                     <input id="txt_jdthms"  class="easyui-combobox" style="width:300px;" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">是否是分支节点： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_sfsfzjd" type="text" style="width: 300px" />-->
+
+                    <input id="txt_sfsfzjd"  class="easyui-combobox" style="width:300px;" />
+                    &nbsp;
+                </td>
+
+            </tr>
+             <tr>
+                <td class="td_detail_title">操作人员规则： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_czrygz" type="text" style="width: 300px" />-->
+                      <input id="txt_czrygz"  class="easyui-combobox" style="width:300px;" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">操作人员相关id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_czryid" type="text" style="width:300px;" />
+                    &nbsp;
+                </td>
+            </tr>
+           
+            <tr>
+                <td class="td_detail_title">客户应用定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_fk_dy_yy_sys_id" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <input id="txt_fk_dy_lc_sys_id" type="text" disabled="disabled" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">坐标： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+                    <input id="txt_zb" type="text"  style="width: 300px"  disabled="disabled" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="6">&nbsp;</td>
+
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">是否是子流程节点： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_sfszlcjd" type="text" style="width: 300px" />-->
+                    <input id="txt_sfszlcjd"  class="easyui-combobox"  style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">是否含有子流程： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+
+                    <!--<input id="txt_sfhyzlc" type="text" style="width: 300px" />-->
+                    <input id="txt_sfhyzlc"  class="easyui-combobox"  style="width: 300px" />
+                    &nbsp;
+                </td>
+
+            </tr>
+            <tr>
+
+                <td class="td_detail_title">子流程定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+                    <input id="txt_zlcdyid" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">节点时限： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+                    <input id="txt_jdsx" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">是否可以被取回： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+                    <!--<input id="txt_sfbqh" type="text" style="width: 300px" />-->
+                    <input id="txt_sfbqh"  class="easyui-combobox"  style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_detail_title">版本号： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+                    <input id="txt_sys_version" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">备注： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content" >
+                    <input id="txt_sys_remark" type="text" style="width: 300px" />
+                    &nbsp;
+                </td>
+            </tr>
+
+
+
+        </table>
+    </div>
+</div>
+

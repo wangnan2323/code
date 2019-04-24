@@ -1,0 +1,16 @@
+﻿
+.div_filetorich
+{
+    cursor:pointer;
+    height:30px;
+    border:solid 1px #e7e7e7;
+    background-color:#ffffe1;
+
+}
+.div_imgtorich
+{
+        cursor:pointer;
+    height:60px;
+    border:solid 1px #e7e7e7;
+    background-color:#ffffe1;
+}

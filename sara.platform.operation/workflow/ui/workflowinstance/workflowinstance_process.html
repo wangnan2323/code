@@ -1,0 +1,334 @@
+﻿<div class="easyui-layout" fit="true">
+    <div region="north" border="false" style="height: 30px;">
+        <a href="##" class="easyui-linkbutton" plain="true" iconcls="icon-save" onclick="btn_save_process()">保存</a>
+        <a href="##" class="easyui-linkbutton" plain="true" iconcls="icon-back" onclick="btn_cancle_designer_onclick();">关闭</a>
+    </div>
+    <div region="center" border="true">
+
+        <table id="table_detail_t_sl_lc" style="width: 99%;">
+            <tr>
+                <td class="td_detail_title"></td>
+                <td class="td_detail_flag"></td>
+                <td class="td_detail_content"></td>
+                <td class="td_detail_title"></td>
+                <td class="td_detail_flag"></td>
+                <td class="td_detail_content"></td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">sys_id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+                    <input id="txt_sys_id" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">&nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">版本号： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_sys_version" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">备注： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_sys_remark" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程定义表id[外键]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_fk_dy_lc_sys_id" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程定义名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcmc" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程实例名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcslmc" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程描述： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcms" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程总时限[以天为单位]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcsx" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">是否子流程： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <!--<input id="txt_sfzlc" type="text" />-->
+                    <input id="txt_sfzlc" class="easyui-combobox" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">父流程节点定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_flcjddyid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">父流程节点实例id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_flcjdslid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程开始节点定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcksjddyid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程开始节点实例id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcksjdslid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程结束节点定义id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcjsjddyid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程结束节点实例id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_lcjsjdslid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">业务表名称： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_ywbmc" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">业务表主键： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_ywbzjmc" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">业务表主键值： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_ywbzjz" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">流程状态： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+
+                    <input id="txt_lcslzt" class="easyui-combobox" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">实例创建人id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_qdrid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">实例创建人姓名： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_qdrxm" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">实例创建时间[流程启动时间]： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <!--<input id="txt_qdsj" type="text" />-->
+
+                    <input id="txt_qdsj" class="easyui-datebox" data-options="formatter:calendarFormatter,parser:calendarParser" />
+
+
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">结束人id： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_jsrid" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">结束人姓名： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <input id="txt_jsrxm" type="text" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">结束时间： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <!--<input id="txt_jssj" type="text" />-->
+
+                    <input id="txt_jssj" class="easyui-datebox" data-options="formatter:calendarFormatter,parser:calendarParser" />
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">结束标志位： &nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">
+
+                    <!--<input id="txt_jsbz" type="text" />-->
+                    <input id="txt_jsbz" class="easyui-combobox" />
+
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="td_detail_title">&nbsp;
+                </td>
+                <td class="td_detail_flag">&nbsp;
+                </td>
+                <td class="td_detail_content">&nbsp;
+                </td>
+            </tr>
+
+
+
+        </table>
+    </div>
+</div>
+

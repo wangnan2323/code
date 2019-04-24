@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <tr>
+    <num>0</num>
+    <buttonId>btn_command_workflow_tbl_maintable_button_1_1</buttonId>
+    <buttonCss>warning</buttonCss>
+    <buttonText>审批</buttonText>
+    <buttonIsMustData>true</buttonIsMustData>
+    <tip>提交审核</tip>
+    <buttonConfirmContent></buttonConfirmContent>
+    <buttonInputTitle></buttonInputTitle>
+    <buttonInputArgs></buttonInputArgs>
+    <buttonShowType>all</buttonShowType>
+    <buttonIsDisable>false</buttonIsDisable>
+    <buttonRemark></buttonRemark>
+    <buttonServerEventArgs>
+      sara.dd.ldsw^commonclass.assemblyfunction^get_resultonlyonesysid^[sys_ids]
+      |sara.dd.ldsw^commonclass.assemblyfunction^get_startworkflow^[sys_ids]$[str_facterid]$[ds_facter]$[str_resultmessage]$[clientinf]$[userinfojsonstring]
+      |0
+    </buttonServerEventArgs>
+    <buttonClientEventArgs>tblMainTableButtonObj.btn_command_startworkflow()</buttonClientEventArgs>
+  </tr>
+  <tr>
+    <num>1</num>
+    <buttonId>btn_command_sendback_tbl_maintable_button_1_2</buttonId>
+    <buttonCss>danger</buttonCss>
+    <buttonText>退回</buttonText>
+    <buttonIsMustData>true</buttonIsMustData>
+    <tip>退回到上一状态</tip>
+    <buttonConfirmContent></buttonConfirmContent>
+    <buttonInputTitle>退回意见</buttonInputTitle>
+    <buttonInputArgs></buttonInputArgs>
+    <buttonShowType>all</buttonShowType>
+    <buttonIsDisable>false</buttonIsDisable>
+    <buttonRemark></buttonRemark>
+    <buttonServerEventArgs>
+      sara.dd.ldsw^commonclass.assemblyfunction^get_resultonlyonesysid^[sys_ids]
+      |sara.dd.ldsw^commonclass.assemblyfunction^set_sendbak^[sys_ids]$[str_facterid]$[ds_facter]$[str_txt_bak_message]$[clientinf]
+      |1
+    </buttonServerEventArgs>
+    <buttonClientEventArgs>tblMainTableButtonObj.btn_command_complete(callBackFunction)</buttonClientEventArgs>
+  </tr>
+</table>
