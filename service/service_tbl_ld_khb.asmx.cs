@@ -1248,7 +1248,31 @@ namespace sara.dd.ldsw.service
             HttpContext.Current.Response.Write(callback + "(" + result + ")");
             HttpContext.Current.Response.End();
         }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string getWeixinyue(string f_khbh)
+        {
+            Dictionary<string, string> resultDic = new Dictionary<string, string>();
+            resultDic["result"] = "";
+            resultDic["message"] = "";
+            try
+            {
+                object[] args = { f_khbh };
+                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://162.16.166.1/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
 
+                resultDic["result"] = "true";
+                resultDic["message"] = result;
+
+            }
+            catch (Exception ex)
+            {
+
+                resultDic["result"] = "false";
+                resultDic["message"] = ex.ToString();
+            }
+
+            return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
+        }
         //[WebMethod]
         //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         //public string GetKhxxJsonAndSetCzlx(string khidString, string czlxString, string czidString, string clientInf)
@@ -1264,7 +1288,7 @@ namespace sara.dd.ldsw.service
         //        IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
 
 
-                
+
 
 
         //        Dictionary<string, string> khxxJsonDic = new Dictionary<string, string>();
@@ -1341,7 +1365,7 @@ namespace sara.dd.ldsw.service
         //        IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
         //        t = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
         //        t.getTrans().begin();
-              
+
         //        // set f_value1 = ''
         //        string sql = "update tbl_ld_khb set f_value1='" + "" + "',f_value2 = '" + "" + "' where sys_id = '" + khidString + "'";
         //        int flag = t.ExecuteSql(sql);

@@ -89,7 +89,7 @@ namespace sara.dd.ldsw.service
                                     string updatecb = "update TBL_LD_CBIAO set F_ZT='已缴费',F_ZTID='3',F_JFBH='" + model.f_jfbh + "',F_JFBHID='" + jfbid + "',F_JFSJ=to_date('" + model.f_jfrq + "','yyyy-MM-dd hh24:mi:ss') where SYS_ID in (" + model.f_cbbhid + ")";
 
                                     //更新客户表
-                                    string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_shss + ",F_VALUE3='" + model.f_kplbid + "',F_VALUE4='"+model.f_jffsid+"' where sys_id='" + model.f_khbhid + "'";
+                                    string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_cbyslj + ",F_VALUE3='" + model.f_kplbid + "',F_VALUE4='"+model.f_jffsid+"' where sys_id='" + model.f_khbhid + "'";
 
 
                                     int flag_cb = _iAccessDataTrans.ExecuteSql(updatecb);
@@ -213,7 +213,7 @@ namespace sara.dd.ldsw.service
                                     //更新抄表表
                                     string updatecb = "update TBL_LD_CBIAO set F_ZT='已缴费',F_ZTID='3',F_JFBH='" + model.f_jfbh + "',F_JFBHID='" + jfbid + "',F_JFSJ=to_date('" + model.f_jfrq + "','yyyy-MM-dd hh24:mi:ss') where SYS_ID in (" + model.f_cbbhid + ")";
                                     //更新客户表
-                                    string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_shss + " where sys_id='" + model.f_khbhid + "'";
+                                string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_cbyslj + " where sys_id='" + model.f_khbhid + "'";
 
                                     int flag_cb = _iAccessDataTrans.ExecuteSql(updatecb);
                                     int flag_kh = _iAccessDataTrans.ExecuteSql(updatekh);
@@ -424,7 +424,7 @@ namespace sara.dd.ldsw.service
                                 //更新抄表表
                                 string updatecb = "update TBL_LD_CBIAO set F_ZT='已缴费',F_ZTID='3',F_JFBH='" + model.f_jfbh + "',F_JFBHID='" + model.sys_id + "',F_JFSJ=to_date('" + model.f_jfrq + "','yyyy-MM-dd hh24:mi:ss') where SYS_ID in (" + model.f_cbbhid + ")";
                                 //更新客户表
-                                string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_shss + " where sys_id='" + model.f_khbhid + "'";
+                                string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_cbyslj + " where sys_id='" + model.f_khbhid + "'";
 
                                 int flag_cb = _iAccessDataTrans.ExecuteSql(updatecb);
                                 int flag_kh = _iAccessDataTrans.ExecuteSql(updatekh);
@@ -1873,7 +1873,7 @@ namespace sara.dd.ldsw.service
                             //营业厅更新抄表表
                             updatecb = "update TBL_LD_CBIAO set F_ZT='已算费',F_ZTID='2',F_JFBH='',F_JFBHID='',F_JFSJ='' where SYS_ID in (" + model.f_cbbhid + ")";
                             //更新客户表
-                            updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_khyye + "',F_TJJZSF='" + model.f_khytjjzsf + "',F_TJJZPWF='" + model.f_khytjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')+" + model.f_shss + " where sys_id='" + model.f_khbhid + "'";
+                            updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_khyye + "',F_TJJZSF='" + model.f_khytjjzsf + "',F_TJJZPWF='" + model.f_khytjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')+" + model.f_cbyslj + " where sys_id='" + model.f_khbhid + "'";
 
                             int flag_cb = _iAccessDataTrans.ExecuteSql(updatecb);
                             int flag_kh = _iAccessDataTrans.ExecuteSql(updatekh);

@@ -647,19 +647,8 @@ namespace sara.dd.ldsw.service
                     }
 
                     double ljqf = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_ljqf);
-                    //判断是否是玖龙淡化水
-                    if(model_tbl_ld_khb.f_yslxid == "105")
-                    {
-                        //玖龙淡化水
-                        ljqf += (Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf))*1.09;
-                    }
-                    else
-                    {
-                        //非玖龙淡化水
-                        ljqf += Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf);
-                    }
-                    
-                    model_tbl_ld_khb.f_ljqf = Eva.Library.Text.NumberTool.GetNumberByLength(ljqf,2);
+                    ljqf += Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf);
+                    model_tbl_ld_khb.f_ljqf = Eva.Library.Text.NumberTool.GetNumberByLength(ljqf, 2);
 
 
                     #region 客户表写日志

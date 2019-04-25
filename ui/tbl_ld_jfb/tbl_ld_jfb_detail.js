@@ -197,20 +197,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                                 tbl_ld_cbiao_list_Obj.onGridSelecteChanged = function (cbbhids, cbbhs, bqsl, sf, pwf, bqje, jmje, sfjl)
                                 {
-                                    debugger
-                                    if (sfjl.startsWith('6.36^0'))
-                                    {
-                                        
-                                        //玖龙淡化水
-                                        var jlsf = (parseFloat(sf) * 0.09).toFixed(2);
-                                        controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail', jlsf);
-                                    }
-                                    else
-                                    {
-                                        //非玖龙淡化水
-                                        controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail', '0');
-                                    }
-
                                     controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', sfjl);
                                     //清空计算信息
                                     controlObj.text('detail_f_sytjjzsf_tbl_ld_jfb_detail', '0');
@@ -738,7 +724,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                 controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_sfjl);
                 //新增
-                controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_jlsf);
                 controlObj.text('detail_f_yyt_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yyt);
                 controlObj.text('detail_f_yytid_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yytid);
                 controlObj.text('detail_f_dj_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dj);
@@ -890,7 +875,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
                         controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', '0');
                         controlObj.text('detail_f_syye_tbl_ld_jfb_detail', '0');
                         controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');
-                        controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail', '0');
 
                         controlObj.singledropdownlistid('detail_f_ly_tbl_ld_jfb_detail', '08080003');
 
@@ -1075,7 +1059,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail', '0');
 
                 controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail', '');
                 //part程序，,让传入khbhid = -1, bindGrid
                 //清空part程序的其他参数
                 tbl_ld_cbiao_list_Obj._pr_set_jfrq = '';
@@ -1243,7 +1226,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail', '0');
                 controlObj.singledropdownlistid('detail_f_kplb_tbl_ld_jfb_detail', '');
                 controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail', '0');
                 //part程序，,让传入khbhid = -1, bindGrid
                 //清空part程序的其他参数
                 tbl_ld_cbiao_list_Obj._pr_set_jfrq = '';
@@ -1491,7 +1473,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 tbl_ld_jfb_detail.f_lyid = controlObj.singledropdownlistid('detail_f_ly_tbl_ld_jfb_detail');
                 tbl_ld_jfb_detail.f_ly = controlObj.singledropdownlist('detail_f_ly_tbl_ld_jfb_detail');
                 tbl_ld_jfb_detail.f_sfjl = controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail');
-                tbl_ld_jfb_detail.f_jlsf = controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail');
                 callBackFunction.success(tbl_ld_jfb_detail);
             }
             catch (ex)
@@ -2118,7 +2099,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
         {
             var whereClause = ' sys_id = \'' + that._pr_sys_id + '\'';
             var orderByString = '';
-            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl^f_jlsf^sys_id';
+        var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl^sys_id';
             var pageSizeString = '';
             var pageIndexString = '';
             var data = {
@@ -2153,7 +2134,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
         {
             ////;
             var d = new Date();
-            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl^f_jlsf';
+        var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl';
             var json = {
                 sys_id: that._pr_sys_id,
 
@@ -2274,7 +2255,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                 f_fjje: tbl_ld_jfb_detail.f_fjje,
                 f_sfjl: tbl_ld_jfb_detail.f_sfjl,
-                f_jlsf: tbl_ld_jfb_detail.f_jlsf,
 
                 sys_lasteditusername: basePageObj._userInfoJson.sys_username,
                 sys_lastedituserid: basePageObj._userInfoJson.sys_userid,
@@ -2473,7 +2453,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 f_fjje: tbl_ld_jfb_detail.f_fjje,
 
                 f_sfjl: tbl_ld_jfb_detail.f_sfjl,
-                f_jlsf: tbl_ld_jfb_detail.f_jlsf,
+
 
                 sys_delflag: '0',
                 sys_lasteditusername: basePageObj._userInfoJson.sys_username,
@@ -3689,9 +3669,9 @@ var tbl_ld_jfb_detail_Obj = (function ()
             controlObj.toggle('detail_f_sfsytjjz_tbl_ld_jfb_detail', 'false');
             var sf = controlObj.text('detail_f_sflj_tbl_ld_jfb_detail');//水费累积
             var pwf = controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail');//排污费累积
-            var jlsf = controlObj.text('detail_f_jlsf_tbl_ld_jfb_detail');//玖龙税费
+
             var jmhys = controlObj.text('detail_f_jmhyslj_tbl_ld_jfb_detail');//减免后应收
-            jmhys = (parseFloat(jmhys) + parseFloat(jlsf)).toFixed(2);//完税减免后应收
+
             //1.判断是否可以调价
             var tjsf = controlObj.text('detail_f_khytjjzsf_tbl_ld_jfb_detail'); //客户原调价水费
             var tjpwf = controlObj.text('detail_f_khytjjzpwf_tbl_ld_jfb_detail'); //客户原调价排污费
