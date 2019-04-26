@@ -352,7 +352,7 @@ namespace sara.dd.ldsw.service
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string Add(string json, string type,string f_wxye, string clientInf)
+        public string Addwx(string json, string type,string f_wxye, string clientInf)
         {
 
             Dictionary<string, string> resultDic = new Dictionary<string, string>();
@@ -670,9 +670,9 @@ namespace sara.dd.ldsw.service
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void AddCross(string json, string type,string f_wxye, string clientInf)
+        public void AddwxCross(string json, string type,string f_wxye, string clientInf)
         {
-            string result1 = this.Add(json, type,f_wxye, clientInf);
+            string result1 = this.Addwx(json, type,f_wxye, clientInf);
             Dictionary<string, string> resultDic = new Dictionary<string, string>();
             resultDic["d"] = result1;
             string result = Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
