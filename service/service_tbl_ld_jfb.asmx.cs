@@ -352,6 +352,338 @@ namespace sara.dd.ldsw.service
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string Add(string json, string type,string f_wxye, string clientInf)
+        {
+
+            Dictionary<string, string> resultDic = new Dictionary<string, string>();
+            resultDic["result"] = "";
+            resultDic["message"] = "";
+            try
+            {
+                //缴费逻辑
+                _iAccessDataTrans = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
+                _iAccessDataTrans.getTrans().begin();
+
+                sara.dd.ldsw.model.tbl_ld_jfb model = Eva.Library.Format.FormatEntityTool.FormatJsonToModel<sara.dd.ldsw.model.tbl_ld_jfb>(json);
+
+                #region 设置时间
+                if (model.f_jfbh == "")
+                {
+                    model.f_jfbh = sara.dd.ldsw.commonclass.commonclass.getBusinessNum("jf", "");
+                }
+                if (model.f_sjbh == "")
+                {
+                    model.f_sjbh = sara.dd.ldsw.commonclass.commonclass.getBusinessNum("jf", "");
+                }
+                model.f_jfrq = DateTime.Now;
+                model.f_czsj = DateTime.Now;
+                model.sys_creatdate = DateTime.Now;
+                model.sys_lasteditdate = DateTime.Now;
+                #endregion
+
+
+                switch (type)
+                {
+                    case "jf"://缴费
+                        {
+                            #region 缴费
+                            string jfbid = _idal_tbl_ld_jfb.Add(model, _iAccessDataTrans);
+
+                            IList<sara.dd.ldsw.model.tbl_ld_khb> model_khb_list = _idal_tbl_ld_khb.GetList(" sys_id='" + model.f_khbhid.ToString() + "'", "", "*", "", "", _iAccessDataTrans);
+
+                            if (model_khb_list.Count > 0)
+                            {
+                                sara.dd.ldsw.model.tbl_ld_khb model_khb = model_khb_list[0];
+
+                                //更新抄表表
+                                string updatecb = "update TBL_LD_CBIAO set F_ZT='已缴费',F_ZTID='3',F_JFBH='" + model.f_jfbh + "',F_JFBHID='" + jfbid + "',F_JFSJ=to_date('" + model.f_jfrq + "','yyyy-MM-dd hh24:mi:ss') where SYS_ID in (" + model.f_cbbhid + ")";
+
+                                //更新客户表
+                                string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_cbyslj + ",F_VALUE3='" + model.f_kplbid + "',F_VALUE4='" + model.f_jffsid + "' where sys_id='" + model.f_khbhid + "'";
+
+
+                                int flag_cb = _iAccessDataTrans.ExecuteSql(updatecb);
+                                int flag_kh = _iAccessDataTrans.ExecuteSql(updatekh);
+
+                                if (flag_cb >= 0 && flag_kh >= 0)
+                                {
+                                    //写入客户表日志
+                                    #region 写入日志
+                                    List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
+                                    IDictionary<string, string> temp = null;
+                                    #region 对比各个业务子段，将不同的写入array
+                                    if (model.f_yhye != model_khb.f_ycje)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_ycje");
+                                        temp.Add("oldvalue", model_khb.f_ycje);
+                                        temp.Add("newvalue", model.f_yhye);
+                                        temp.Add("name", "绿化表押金");
+                                        array.Add(temp);
+                                    }
+                                    if (model.f_syhtjjzsf != model_khb.f_tjjzsf)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_tjjzsf");
+                                        temp.Add("oldvalue", model_khb.f_tjjzsf);
+                                        temp.Add("newvalue", model.f_syhtjjzsf);
+                                        temp.Add("name", "调价结转水费");
+                                        array.Add(temp);
+                                    }
+
+                                    if (model.f_syhtjjzpwf != model_khb.f_tjjzpwf)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_tjjzpwf");
+                                        temp.Add("oldvalue", model_khb.f_tjjzpwf);
+                                        temp.Add("newvalue", model.f_syhtjjzpwf);
+                                        temp.Add("name", "调价结转排污费");
+                                        array.Add(temp);
+                                    }
+                                    if (model.f_cbyslj == null || model.f_cbyslj == "")
+                                    {
+                                        model.f_cbyslj = "0";
+                                    }
+                                    if (model_khb.f_ljqf == null || model_khb.f_ljqf == "")
+                                    {
+                                        model_khb.f_ljqf = "0";
+                                    }
+
+
+                                    if (double.Parse(model.f_cbyslj) > 0)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_ljqf");
+                                        temp.Add("oldvalue", model_khb.f_ljqf);
+                                        temp.Add("newvalue", (double.Parse(model_khb.f_ljqf) - double.Parse(model.f_cbyslj)).ToString());
+                                        temp.Add("name", "累计欠费");
+                                        array.Add(temp);
+                                    }
+
+
+                                    #endregion
+                                    sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_khb", model.f_khbhid.ToString(), "tbl_ld_jfb_detail", "缴费表", array, clientInf, _iAccessDataTrans);
+                                    #endregion
+
+                                    resultDic["result"] = "true";
+                                    resultDic["message"] = jfbid;
+
+                                    _iAccessDataTrans.getTrans().commit();
+                                }
+                                else
+                                {
+                                    resultDic["result"] = "false";
+                                    string errormessage = "";
+
+                                    if (flag_cb <= 0)
+                                    {
+                                        errormessage += "抄表信息更新失败;";
+                                    }
+                                    if (flag_kh <= 0)
+                                    {
+                                        errormessage += "客户信息更新失败;";
+                                    }
+
+                                    resultDic["message"] = errormessage;
+                                    _iAccessDataTrans.getTrans().rollback();
+                                }
+                            }
+                            else
+                            {
+                                resultDic["result"] = "false";
+                                string errormessage = "";
+                                if (model_khb_list.Count <= 0)
+                                {
+                                    errormessage += "没有查询到客户信息;";
+                                }
+
+
+                                resultDic["message"] = errormessage;
+                                _iAccessDataTrans.getTrans().rollback();
+                            }
+
+                            #endregion
+
+                        }
+                        break;
+                    case "jfforapp"://app缴费
+                        {
+
+
+                            string jfbid = _idal_tbl_ld_jfb.Add(model, _iAccessDataTrans);
+
+
+                            IList<sara.dd.ldsw.model.tbl_ld_khb> model_khb_list = _idal_tbl_ld_khb.GetList(" sys_id='" + model.f_khbhid.ToString() + "'", "", "*", "", "", _iAccessDataTrans);
+
+                            if (model_khb_list.Count > 0)
+                            {
+
+                                sara.dd.ldsw.model.tbl_ld_khb model_khb = model_khb_list[0];
+
+                                //更新抄表表
+                                string updatecb = "update TBL_LD_CBIAO set F_ZT='已缴费',F_ZTID='3',F_JFBH='" + model.f_jfbh + "',F_JFBHID='" + jfbid + "',F_JFSJ=to_date('" + model.f_jfrq + "','yyyy-MM-dd hh24:mi:ss') where SYS_ID in (" + model.f_cbbhid + ")";
+                                //更新客户表
+                                string updatekh = "update TBL_LD_KHB set F_YCJE='" + model.f_yhye + "',F_TJJZSF='" + model.f_syhtjjzsf + "',F_TJJZPWF='" + model.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + model.f_cbyslj + " where sys_id='" + model.f_khbhid + "'";
+
+                                int flag_cb = _iAccessDataTrans.ExecuteSql(updatecb);
+                                int flag_kh = _iAccessDataTrans.ExecuteSql(updatekh);
+                                if (flag_cb >= 0 && flag_kh >= 0)
+                                {
+                                    //写入客户表日志
+                                    #region 写入日志
+                                    List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
+                                    IDictionary<string, string> temp = null;
+                                    #region 对比各个业务子段，将不同的写入array
+                                    if (model.f_yhye != model_khb.f_ycje)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_ycje");
+                                        temp.Add("oldvalue", model_khb.f_ycje);
+                                        temp.Add("newvalue", model.f_yhye);
+                                        temp.Add("name", "绿化表押金");
+                                        array.Add(temp);
+                                    }
+                                    if (model.f_syhtjjzsf != model_khb.f_tjjzsf)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_tjjzsf");
+                                        temp.Add("oldvalue", model_khb.f_tjjzsf);
+                                        temp.Add("newvalue", model.f_syhtjjzsf);
+                                        temp.Add("name", "调价结转水费");
+                                        array.Add(temp);
+                                    }
+
+                                    if (model.f_syhtjjzpwf != model_khb.f_tjjzpwf)
+                                    {
+                                        temp = new Dictionary<string, string>();
+                                        temp.Add("key", "f_tjjzpwf");
+                                        temp.Add("oldvalue", model_khb.f_tjjzpwf);
+                                        temp.Add("newvalue", model.f_syhtjjzpwf);
+                                        temp.Add("name", "调价结转排污费");
+                                        array.Add(temp);
+                                    }
+                                    if (model.f_cbyslj == null || model.f_cbyslj == "")
+                                    {
+                                        model.f_cbyslj = "0";
+                                    }
+                                    if (model_khb.f_ljqf == null || model_khb.f_ljqf == "")
+                                    {
+                                        model_khb.f_ljqf = "0";
+                                    }
+
+
+
+                                    #endregion
+                                    sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_khb", model.f_khbhid.ToString(), "tbl_ld_jfb_detail", "缴费表", array, clientInf, _iAccessDataTrans);
+                                    #endregion
+
+                                    #region 更新微信余额
+                                    double new_wxye = Eva.Library.Text.NumberTool.Parse(f_wxye) - Eva.Library.Text.NumberTool.Parse(model.f_shys);
+                                    object[] args = { Eva.Library.Text.NumberTool.GetNumberByLength(new_wxye, 2), model.f_khbh };
+                                    string wxresult = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://162.16.166.1/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "setWeixinyue", args).ToString();
+
+                                    #endregion
+
+                                    if (wxresult == "true")
+                                    {
+                                        resultDic["result"] = "true";
+                                        resultDic["message"] = jfbid;
+                                        _iAccessDataTrans.getTrans().commit();
+                                    }
+                                    else
+                                    {
+                                        if (_iAccessDataTrans != null)
+                                        {
+                                            _iAccessDataTrans.getTrans().rollback();
+                                        }
+
+                                        resultDic["result"] = "false";
+                                        resultDic["message"] = "回写微信余额失败";
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    resultDic["result"] = "false";
+                                    string errormessage = "";
+
+                                    if (flag_cb < 0)
+                                    {
+                                        errormessage += "抄表信息更新失败;";
+                                    }
+                                    if (flag_kh < 0)
+                                    {
+                                        errormessage += "客户信息更新失败;";
+                                    }
+
+                                    resultDic["message"] = errormessage;
+                                    _iAccessDataTrans.getTrans().rollback();
+                                }
+
+                            }
+                            else
+                            {
+                                resultDic["result"] = "false";
+                                string errormessage = "";
+                                if (model_khb_list.Count <= 0)
+                                {
+                                    errormessage += "没有查询到客户信息;";
+                                }
+
+
+                                resultDic["message"] = errormessage;
+                                _iAccessDataTrans.getTrans().rollback();
+                            }
+
+                        }
+                        break;
+                    case "pt"://普通==
+                        {
+                            string jfbid = _idal_tbl_ld_jfb.Add(model, _iAccessDataTrans);
+                            resultDic["result"] = "true";
+                            resultDic["message"] = jfbid;
+                            _iAccessDataTrans.getTrans().commit();
+                        }
+                        break;
+                }
+
+
+
+
+
+                NewLog("数据创建成功，创建的数据为：" + json, "sql_insert", clientInf);
+            }
+            catch (Exception ex)
+            {
+                if (_iAccessDataTrans != null)
+                {
+                    _iAccessDataTrans.getTrans().rollback();
+                }
+
+                resultDic["result"] = "false";
+                resultDic["message"] = Eva.Library.Format.FormatTextTool.ErrorMessageFormat(ex.Message + ex.StackTrace);
+                NewLog("数据创建失败，创建的数据为：" + json + "，异常信息：" + Eva.Library.Format.FormatTextTool.ErrorMessageFormat(ex.Message + ex.StackTrace), "sql_insert", clientInf);
+            }
+            return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void AddCross(string json, string type,string f_wxye, string clientInf)
+        {
+            string result1 = this.Add(json, type,f_wxye, clientInf);
+            Dictionary<string, string> resultDic = new Dictionary<string, string>();
+            resultDic["d"] = result1;
+            string result = Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
+            string callback = HttpContext.Current.Request["jsoncallback"];
+
+            HttpContext.Current.Response.Write(callback + "(" + result + ")");
+            HttpContext.Current.Response.End();
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string AddList(string json, string clientInf)
         {
             Dictionary<string, string> resultDic = new Dictionary<string, string>();
