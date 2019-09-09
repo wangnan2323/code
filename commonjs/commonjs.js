@@ -407,7 +407,251 @@
         {
             var url = '//127.0.0.1/sara.dd.ldsw.file/files_auth/fileuploadpath/' + filename;
             return url;
-        }
+        },
+
+
+        /* 
+*  
+*  转换文件大小（以b为单位）为文件的可读大小（kb/mb/gb）
+*  参数:文件大小以b为单位
+*  返回:
+*/
+        formatFileSize: function (contentlength)
+        {
+            var fileSize = "";
+
+            var f;
+
+            var unit = parseFloat(1024);
+
+            if (contentlength.toString().length >= 4)
+            {
+                f = (parseFloat(contentlength) / unit).toFixed(2);
+
+
+                if (f.toString().split('.')[0].toString().length >= 4)
+                {
+                    f = (parseFloat(f) / unit).toFixed(2);
+
+                    if (f.toString().split('.')[0].toString().length >= 4)
+                    {
+
+                        fileSize = (parseFloat(f) / unit).toFixed(2).toString() + "GB";
+
+                    }
+                    else
+                    {
+                        fileSize = f.toString() + "MB";
+                    }
+                }
+                else
+                {
+                    fileSize = f.toString() + "KB";
+                }
+            }
+            else//字节
+            {
+                fileSize = contentlength.toString() + "字节";
+            }
+
+
+            return fileSize;
+
+        },
+        /*
+ 处理sql语句中in的条件不能超过1000个的问题
+ */
+        formatSqlStrWidthIn1000: function (str)
+        {
+            if (str.indexOf(" in ") > -1)
+            {
+
+
+                var mc = str.match(/ in /g);
+
+
+                var current = 0;//游标
+                var start = 0;//开始位置
+                var khstart = 0;//开始括号位置
+                var khend = 0;//结束括号位置
+                var khcount = 0;//括号深度
+                var temp_str = "";//临时字符串
+                var temp_strs;//临时字符串数组
+                var column_in = "";//字段与in关键字
+                var old_str = "";//要替换的字符串
+                var new_str = "";//要替换成的字符串
+                var temp_int = 0;//需要or几次
+
+                var oldstrs = new Array();
+                var newstrs = new Array();
+                for (var i = 0; i < mc.length; i++)
+                {
+                    current = str.indexOf(" in ", current);
+                    start = current - 1;
+                    //寻找列名
+                    while (str[start] == ' ')
+                    {
+                        start--;
+                    }
+                    while (str[start] != ' ')
+                    {
+                        start--;
+                    }
+                    start++;
+
+                    column_in = str.substr(start, current - start + 4);
+
+
+                    //寻找（）
+                    current += 4;
+                    while (str[current] == ' ')
+                    {
+                        current++;
+                    }
+
+                    if (str[current] != '(')
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        khstart = current;
+                        khcount = 1;
+                        while (khcount > 0)
+                        {
+                            current++;
+                            if (str[current] == '(')
+                            {
+                                khcount++;
+                            }
+                            else if (str[current] == ')')
+                            {
+                                khcount--;
+                            }
+                        }
+                        khend = current;
+                        old_str = str.substr(start, khend - start + 1);
+
+                        //判断首字母为'''
+                        current = khstart + 1;
+                        while (str[current] == ' ')
+                        {
+                            current++;
+                        }
+                        if (str[current] != '\'')
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            temp_str = str.substr(khstart + 1, khend - khstart - 1);
+                            temp_strs = temp_str.split(',');
+                            if (temp_strs.length > 1000)
+                            {
+                                new_str = "";
+                                temp_int = 0;
+                                while (temp_int * 1000 < temp_strs.length)
+                                {
+                                    temp_str = "";
+                                    for (var i = 0; i < 1000 && temp_int * 1000 + i < temp_strs.length; i++)
+                                    {
+                                        temp_str += temp_strs[temp_int * 1000 + i] + ",";
+                                    }
+                                    if (temp_str != "")
+                                    {
+                                        temp_str = temp_str.substr(0, temp_str.length - 1);
+                                        new_str += column_in + " (" + temp_str + ") or ";
+                                    }
+                                    temp_int++;
+                                }
+
+                                if (new_str != "")
+                                {
+                                    new_str = " (" + new_str.substr(0, new_str.length - 3) + ") ";
+
+                                    oldstrs.push(old_str);
+                                    newstrs.push(new_str);
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                for (var i = 0; i < oldstrs.length; i++)
+                {
+                    str = str.replaceAll(oldstrs[i], newstrs[i]);
+                }
+                return str;
+            }
+            else
+            {
+                return str;
+            }
+        },
+        /*获取nodeid */
+        formatNodeId: function (str,len)
+        {
+            if (str != null )
+            {
+                str = str.toString();
+            }
+            var regPos = /^\d+$/; // 非负整数
+            if (len == null || len == "" || len == undefined || len == "undefined" || !regPos.test(len))
+            {
+                len = parseInt(4);
+            }
+            else
+            {
+                len = parseInt(len);
+            }
+
+            var charset = str.length % len;
+            
+            for (var i = len - charset; i > 0; i--)
+            {
+                str = "0" + str;
+            }
+
+            return str;
+        },
+        /*获取一个永不重复的16位数字*/
+        getNoRepeatNumber: function ()
+        {
+            var now = new Date();
+
+            var year = now.getFullYear();       //年  
+            var month = now.getMonth() + 1;     //月  
+            var day = now.getDate();            //日  
+
+            var hh = now.getHours();            //时  
+            var mm = now.getMinutes();          //分  
+            var ss = now.getSeconds();            //秒  
+
+            var clock = year;
+
+            if (month < 10) clock += "0";
+            clock += month;
+
+            if (day < 10) clock += "0";
+            clock += day;
+
+            if (hh < 10) clock += "0";
+            clock += hh;
+
+            if (mm < 10) clock += '0';
+            clock += mm ;
+
+            if (ss < 10) clock += '0';
+            clock += ss;
+            var randomnum = (Math.random() * 10000).toFixed(0).toString();
+            while (randomnum.length < 4)
+            {
+                randomnum = "0" + randomnum;
+            }
+            clock += randomnum;
+            return clock;
+        },
     };
     return that;
 })();

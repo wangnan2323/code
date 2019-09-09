@@ -4367,7 +4367,7 @@ var tbl_ld_jfb_list_Obj = (function ()
             setTimeout(function ()
             {
                 var whereClause = _whereClauseString;
-                whereClause = "f_khbh = " + that._pr_khbhs;
+                whereClause = "f_khbh = '" + that._pr_khbhs + "'";
                 var orderByString = ' sys_id desc';
                 var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_yyy^f_yyyid^f_czsj^f_sfykfp^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_yyt^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_yytid^f_jmjelj^f_ly^f_lyid^f_sfjl^sys_id';
                 var data = {

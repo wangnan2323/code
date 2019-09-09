@@ -2233,7 +2233,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<td colspan=\"6\">当月</td>";
                     html += "<td colspan=\"3\">欠月</td>";
                     html += "<td colspan=\"3\">欠年</td>";
-                    html += "<td colspan=\"3\">总计</td>";
+                    html += "<td colspan=\"4\">总计</td>";
                     html += "</tr>";
                     html += "<tr>";
                     html += "<td>单价</td>";
@@ -2248,13 +2248,41 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<td>水量</td>";
                     html += "<td>水费</td>";
                     html += "<td>排污费</td>";
+                    html += "<td>水量</td>";
                     html += "<td>水费</td>";
                     html += "<td>排污费</td>";
                     html += "<td>总计</td>";
                     html += "</tr>";
                     for (var i = 0; i < tableobj.length; i++)
                     {
-                        if (tableobj[i].lx == "商业邮储代收" || tableobj[i].lx == "追缴水费" || (tableobj[i].lx == "居民用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "商业用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡邮储代收" && tableobj[i + 1].lx == ""))
+                        if (tableobj[i].lx == "商业用户")
+                        {
+                            var countsy = 1;
+                            while (tableobj[i + countsy].lx == "")
+                            {
+                                countsy++;
+                            }
+                            html += "<tr>";
+                            html += "<td rowspan=\""+countsy+"\">" + tableobj[i].lx + "</td>";
+                            html += "<td>" + tableobj[i].dysfpwfdj + "</td>";
+                            html += "<td>" + tableobj[i].dysfdj + "</td>";
+                            html += "<td>" + tableobj[i].dysl + "</td>";
+                            html += "<td>" + tableobj[i].dysf + "</td>";
+                            html += "<td>" + tableobj[i].dypwfdj + "</td>";
+                            html += "<td>" + tableobj[i].dypwf + "</td>";
+                            html += "<td>" + tableobj[i].qysl + "</td>";
+                            html += "<td>" + tableobj[i].qysf + "</td>";
+                            html += "<td>" + tableobj[i].qypwf + "</td>";
+                            html += "<td>" + tableobj[i].qnsl + "</td>";
+                            html += "<td>" + tableobj[i].qnsf + "</td>";
+                            html += "<td>" + tableobj[i].qnpwf + "</td>";
+                            html += "<td>" + tableobj[i].sumsl + "</td>";
+                            html += "<td>" + tableobj[i].zjsf.toString() + "</td>";
+                            html += "<td>" + tableobj[i].zjpwf + "</td>";
+                            html += "<td>" + tableobj[i].zjsl + "</td>";
+                            html += "</tr>";
+                        }
+                        else if (tableobj[i].lx == "追缴水费" || (tableobj[i].lx == "居民用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "商业邮储代收" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡邮储代收" && tableobj[i + 1].lx == ""))
                         {
                             html += "<tr>";
                             html += "<td rowspan=\"2\">" + tableobj[i].lx + "</td>";
@@ -2270,6 +2298,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                             html += "<td>" + tableobj[i].qnsl + "</td>";
                             html += "<td>" + tableobj[i].qnsf + "</td>";
                             html += "<td>" + tableobj[i].qnpwf + "</td>";
+                            html += "<td>" + tableobj[i].sumsl + "</td>";
                             html += "<td>" + tableobj[i].zjsf.toString() + "</td>";
                             html += "<td>" + tableobj[i].zjpwf + "</td>";
                             html += "<td>" + tableobj[i].zjsl + "</td>";
@@ -2294,6 +2323,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "<td>" + tableobj[i].qnsl + "</td>";
                                 html += "<td>" + tableobj[i].qnsf + "</td>";
                                 html += "<td>" + tableobj[i].qnpwf + "</td>";
+                                html += "<td>" + tableobj[i].sumsl + "</td>";
                                 html += "<td>" + tableobj[i].zjsf.toString() + "</td>";
                                 html += "<td>" + tableobj[i].zjpwf + "</td>";
                                 html += "<td>" + tableobj[i].zjsl + "</td>";
@@ -2316,6 +2346,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "<td>" + tableobj[i].qnsl + "</td>";
                                 html += "<td>" + tableobj[i].qnsf + "</td>";
                                 html += "<td>" + tableobj[i].qnpwf + "</td>";
+                                html += "<td>" + tableobj[i].sumsl + "</td>";
                                 html += "<td>" + tableobj[i].zjsf.toString() + "</td>";
                                 html += "<td>" + tableobj[i].zjpwf + "</td>";
                                 html += "<td>" + tableobj[i].zjsl + "</td>";
@@ -3931,7 +3962,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
 
                     html += "<tr>";
-                    html += "<td rowspan=\"15\">自来水销售收入</td>";
+                    html += "<td rowspan=\"16\">自来水销售收入</td>";
 
                     html += "</tr>";
 
@@ -3995,7 +4026,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "6":
-                                html += "<td>偷盗用水</td>";
+                                html += "<td>特种行业用水</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4004,7 +4035,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "7":
-                                html += "<td>售水总量</td>";
+                                html += "<td>偷盗用水</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4013,7 +4044,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "8":
-                                html += "<td>供水总量</td>";
+                                html += "<td>售水总量</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4022,7 +4053,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "9":
-                                html += "<td>产销差率</td>";
+                                html += "<td>供水总量</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4031,7 +4062,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "10":
-                                html += "<td>销售收入</td>";
+                                html += "<td>产销差率</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4040,7 +4071,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "11":
-                                html += "<td>实收水费</td>";
+                                html += "<td>销售收入</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4049,7 +4080,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "12":
-                                html += "<td>回款率</td>";
+                                html += "<td>实收水费</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
                                     html += "<td>" + tableobj[j][i] + "</td>";
@@ -4058,6 +4089,15 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 break;
                             case "13":
+                                html += "<td>回款率</td>";
+                                $.each(tableobj[j], function (i, u)
+                                {
+                                    html += "<td>" + tableobj[j][i] + "</td>";
+                                });
+                                html += "</tr>";
+
+                                break;
+                            case "14":
                                 html += "<td>收欠年欠款</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4070,7 +4110,7 @@ var tbl_ld_report_modallist_Obj = (function ()
 
                                 html += "</tr>";
                                 break;
-                            case "14":
+                            case "15":
                                 html += "<td>玖龙粗制水售水量</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4079,7 +4119,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "</tr>";
 
                                 break;
-                            case "15":
+                            case "16":
                                 html += "<td>玖龙淡化水售水量</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4088,7 +4128,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "</tr>";
 
                                 break;
-                            case "16":
+                            case "17":
                                 html += "<td>玖龙供水量</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4097,7 +4137,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "</tr>";
 
                                 break;
-                            case "17":
+                            case "18":
                                 html += "<td>产销差率</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4106,7 +4146,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "</tr>";
 
                                 break;
-                            case "18":
+                            case "19":
                                 html += "<td>销售收入</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4115,7 +4155,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "</tr>";
 
                                 break;
-                            case "19":
+                            case "20":
                                 html += "<td>实收水费</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {
@@ -4123,7 +4163,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 });
                                 html += "</tr>";
                                 break;
-                            case "20":
+                            case "21":
                                 html += "<td>回款率</td>";
                                 $.each(tableobj[j], function (i, u)
                                 {

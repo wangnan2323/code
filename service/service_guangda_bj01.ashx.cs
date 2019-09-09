@@ -64,7 +64,7 @@ namespace sara.dd.ldsw.service
 
                     _iAccessData = commonclass.commonclass.CreateIAccessData();
 
-                    DataTable khdt = _iAccessData.Query("SELECT * FROM TBL_LD_KHB WHERE F_KHBH='"+billKey+"'").Tables[0];
+                    DataTable khdt = _iAccessData.Query("SELECT * FROM TBL_LD_KHB WHERE F_KHBH='"+billKey+ "' and f_cbbh not like 'PZ%' and f_cbbh not like 'YC%'").Tables[0];
 
                     if(billKey.Length == 10 && khdt.Rows.Count>0)
                     {

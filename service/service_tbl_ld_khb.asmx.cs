@@ -19,6 +19,7 @@ using System.Reflection;
 using System.Data;
 using Eva.Library.Data;
 using System.Text;
+using System.Threading;
 
 namespace sara.dd.ldsw.service
 {
@@ -32,11 +33,14 @@ namespace sara.dd.ldsw.service
     [System.Web.Script.Services.ScriptService]
     public class service_tbl_ld_khb : System.Web.Services.WebService
     {
+        static string sendcount = "";
+        static string onrunsysid = "";
         private sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
         private Eva.Library.Data.AccessData.IAccessData _iAccessData = null;
         private sara.dd.ldsw.reportclass.tbl_ld_khb re = new sara.dd.ldsw.reportclass.tbl_ld_khb();
         private sara.dd.ldsw.reportclass.tbl_ld_khbzdy report = new sara.dd.ldsw.reportclass.tbl_ld_khbzdy();
         private sara.dd.ldsw.reportclass.tbl_ld_khxx report_khxx = new sara.dd.ldsw.reportclass.tbl_ld_khxx();
+        
         //public service_tbl_ld_khb()
         //{
         //    _iAccessData = Eva.Library.Data.AccessData.AccessDataFactory.CreateDataAccess(DataBaseType.oracledal, Eva.Library.Configuration.ConfigurationManager.AppSettings["DataBaseConnectionString"].ToString());
@@ -52,10 +56,10 @@ namespace sara.dd.ldsw.service
             try
             {
                 sara.dd.ldsw.model.tbl_ld_khb model = Eva.Library.Format.FormatEntityTool.FormatJsonToModel<sara.dd.ldsw.model.tbl_ld_khb>(json);
-               
+
                 DateTime DateNow = DateTime.Now.AddMonths(-1);
                 DateTime DateBegin = new DateTime(DateNow.Year, DateNow.Month, 1);
-                DateTime DateEnd = DateBegin.AddMonths(1).AddDays(-1);              
+                DateTime DateEnd = DateBegin.AddMonths(1).AddDays(-1);
                 model.f_zhcbrq = DateEnd;
                 model.sys_id = int.Parse(model.f_khbh);
                 model.sys_creatdate = DateTime.Now;
@@ -148,7 +152,7 @@ namespace sara.dd.ldsw.service
 
                 #region 向用户表，水表表中刷入数据
                 string updateyhb = "update tbl_ld_yhb set f_khbh='" + model.f_khbh + "' where f_yhbh='" + model.f_yhbh + "'";
-                string updatesbb = "update tbl_ld_sbb set f_khbh='" + model.f_khbh + "' where f_sbbh='" + model.f_sbbh+"'";
+                string updatesbb = "update tbl_ld_sbb set f_khbh='" + model.f_khbh + "' where f_sbbh='" + model.f_sbbh + "'";
                 int yhflag = t.ExecuteSql(updateyhb);
                 int sbflag = t.ExecuteSql(updatesbb);
                 if (yhflag >= 0 && sbflag >= 0)
@@ -249,7 +253,7 @@ namespace sara.dd.ldsw.service
             {
                 t = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
                 t.getTrans().begin();
-             
+
                 string sql = "select count(*) from tbl_ld_cbiao where f_khbhid in (select sys_id from tbl_ld_khb where " + whereString + ")";
                 string sql1 = "select count(*) from tbl_ld_jfb where f_khbhid in (select sys_id from tbl_ld_khb where " + whereString + ")";
                 string sql2 = "select count(*) from tbl_ld_ickss where f_khbhid in (select sys_id from tbl_ld_khb where " + whereString + ")";
@@ -259,7 +263,7 @@ namespace sara.dd.ldsw.service
                 double count1 = Eva.Library.Text.NumberTool.Parse(t.GetSingle(sql1).ToString());
                 double count2 = Eva.Library.Text.NumberTool.Parse(t.GetSingle(sql2).ToString());
 
-                if (count >0 || count1 >0 || count2>0)
+                if (count > 0 || count1 > 0 || count2 > 0)
                 {
                     resultDic["result"] = "false";
                     resultDic["message"] = "您所选定的信息，在抄表表或者缴费表、IC卡表中存在引用，所以不能删除。";
@@ -525,7 +529,7 @@ namespace sara.dd.ldsw.service
             Eva.Library.Data.AccessDataTrans.IAccessDataTrans t = null;
             try
             {
-               t  = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
+                t = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
                 //带事务
                 t.getTrans().begin();
                 //查找sys_ids model
@@ -559,9 +563,9 @@ namespace sara.dd.ldsw.service
                     //model_new.f_sfjlbjf = list_model_old[i].f_sfjlbjf;
                     model_new.f_zt = list_model_old[i].f_zt;
                     model_new.f_ztid = list_model_old[i].f_ztid;
-                    
+
                     #endregion
-                   
+
                     #region 赋值
                     model_new.f_cbyxm = "";
                     model_new.f_cbyid = "";
@@ -605,9 +609,9 @@ namespace sara.dd.ldsw.service
                     if (f_ztid != "")
                     {
                         model_new.f_ztid = f_ztid;
-                    } 
+                    }
                     #endregion
-                   
+
                     _idal_tbl_ld_khb.Update(model_new, "f_cbbh,f_cbbhid,f_cbyxm,f_cbyid,f_cbzq,f_cbmc,f_khfz,f_khfzid,f_yslx,f_yslxid,f_sfjlbjl,f_zt,f_ztid", t);
                     list_model_new.Add(model_new);
                 }
@@ -1136,12 +1140,12 @@ namespace sara.dd.ldsw.service
                 sql += " where" + whereString + "";
                 DataTable dt = _iAccessData.Query(sql).Tables[0];
 
-                        string file = re.ReportExcel(dt);
+                string file = re.ReportExcel(dt);
 
-                        resultDic["result"] = "true";
-                        resultDic["message"] = file;
+                resultDic["result"] = "true";
+                resultDic["message"] = file;
 
-               
+
             }
             catch (Exception ex)
             {
@@ -1149,16 +1153,16 @@ namespace sara.dd.ldsw.service
                 resultDic["message"] = Eva.Library.Format.FormatTextTool.ErrorMessageFormat(ex.Message + ex.StackTrace);
             }
             return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
-                //string sql = "select " + column;
-                //sql += " from tbl_ld_khb";
-                //sql += " where" + whereString + "";
-                //DataTable dt = _iAccessData.Query(sql).Tables[0];
+            //string sql = "select " + column;
+            //sql += " from tbl_ld_khb";
+            //sql += " where" + whereString + "";
+            //DataTable dt = _iAccessData.Query(sql).Tables[0];
         }
 
         //导出数据客户信息
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string ReportTime(string whereString,string orderByString, string column, string columnname, string clientInf)
+        public string ReportTime(string whereString, string orderByString, string column, string columnname, string clientInf)
         {
             Dictionary<string, string> resultDic = new Dictionary<string, string>();
             resultDic["result"] = "";
@@ -1198,7 +1202,7 @@ namespace sara.dd.ldsw.service
             try
             {
                 IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
-            
+
                 DataTable dt = _idal_tbl_ld_khb.GetDataTableForPC(whereString, orderByString, column, "", "", null);
 
                 if (column.EndsWith("f_value10"))
@@ -1258,7 +1262,7 @@ namespace sara.dd.ldsw.service
             try
             {
                 object[] args = { f_khbh };
-                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://162.16.166.1/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
+                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://ewater.actionlive.cn/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
 
                 resultDic["result"] = "true";
                 resultDic["message"] = result;
@@ -1273,139 +1277,141 @@ namespace sara.dd.ldsw.service
 
             return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
         }
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public string GetKhxxJsonAndSetCzlx(string khidString, string czlxString, string czidString, string clientInf)
-        //{
-        //    Dictionary<string, string> resultDic = new Dictionary<string, string>();
-        //    resultDic["result"] = "";
-        //    resultDic["message"] = "";
-        //    Eva.Library.Data.AccessDataTrans.IAccessDataTrans t = null;
-        //    try
-        //    {
-        //        t = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
-        //        t.getTrans().begin();
-        //        IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
+        
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string SendMessage(string time,string wherestring,string gridselectids,string sysid)
+        {
+                
+                Dictionary<string, string> resultDic = new Dictionary<string, string>();
+                resultDic["result"] = "true";
+                resultDic["message"] = "";
+            if(onrunsysid == "" ||　onrunsysid == sysid)
+            {
+                if (time == "0")
+                {
+                    onrunsysid = sysid;
+                    sendcount = "0";
+                    DoSendWork dosend = new DoSendWork();
+                    dosend.sysid = sysid;
+                    dosend.wherestring = wherestring;
+                    dosend.gridselectids = gridselectids;
+
+                    Thread t = new Thread(new ThreadStart(dosend.DoWork)); //实例化一个线程
+                    t.Start(); //启动
+                }
+                else
+                {
+
+                    HttpCookie cookie = HttpContext.Current.Request.Cookies["sendmessage" + sysid];
+                    if (cookie == null)
+                    {
+                        cookie = new HttpCookie("sendmessage" + sysid);
+                    }
+                    cookie.Value = sendcount;
+                    cookie.Path = "/sara.dd.ldsw/";
+                    HttpContext.Current.Response.AppendCookie(cookie);
 
 
+                }
+            }
+            else
+            {
+                resultDic["result"] = "false";
+                resultDic["message"] = "";
+            }
 
 
-
-        //        Dictionary<string, string> khxxJsonDic = new Dictionary<string, string>();
-
-        //        //根据客户编号id查khxx
-        //        DataTable khxx = t.Query("select * from tbl_ld_khb where sys_id = '" + khidString + "'").Tables[0];
-
-        //        //用户编号id/水表编号id
-        //        string yhbhid = khxx.Rows[0]["f_yhbhid"].ToString();
-        //        string sbbhid = khxx.Rows[0]["f_sbbhid"].ToString();
-
-        //        DataTable yhxx = t.Query("select * from tbl_ld_yhb where sys_id = '" + yhbhid + "'").Tables[0];
-        //        DataTable sbxx = t.Query("select * from tbl_ld_sbb where sys_id = '" + sbbhid + "'").Tables[0];
-
-        //        khxxJsonDic["khxx"] = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(khxx); ;
-        //        khxxJsonDic["yhxx"] = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(yhxx);
-        //        khxxJsonDic["sbxx"] = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(sbxx);
-
-        //        string khxxJson = Eva.Library.Format.FormatEntityTool.FormatDicToJson(khxxJsonDic);
-
-        //        string sql = "update tbl_ld_khb set f_value1='" + czlxString + "',f_value2 = '" + czidString + "' where sys_id = '" + khidString + "'";
-        //        int flag = t.ExecuteSql(sql);
-        //        if (flag >= 0)
-        //        {
-        //            t.getTrans().commit();
-        //        }
-        //        else
-        //        {
-        //            t.getTrans().rollback();
-        //        }
-        //        resultDic["result"] = "true";
-        //        resultDic["message"] = khxxJson;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        if (t != null)
-        //        {
-        //            t.getTrans().rollback();
-        //        }
-        //        resultDic["result"] = "false";
-        //        resultDic["message"] = Eva.Library.Format.FormatTextTool.ErrorMessageFormat(ex.Message + ex.StackTrace);
-
-        //    }
-        //    return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
-        //}
+                return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
+            
+        }
+        class DoSendWork
+        {
+            public string sysid;//id
+            public string wherestring; //查询条件where语句
+            public string gridselectids; //选中发送人
 
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public void GetKhxxJsonAndSetCzlxCross(string khidString, string czlxString, string czidString, string clientInf)
-        //{
-        //    string result1 = this.GetKhxxJsonAndSetCzlx(khidString, czlxString, czidString, clientInf);
-        //    Dictionary<string, string> resultDic = new Dictionary<string, string>();
-        //    resultDic["d"] = result1;
-        //    string result = Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
-        //    string callback = HttpContext.Current.Request["jsoncallback"];
+            public void DoWork()
+            {
 
-        //    HttpContext.Current.Response.Write(callback + "(" + result + ")");
-        //    HttpContext.Current.Response.End();
-        //}
+                    sara.dd.ldsw.idal.Itbl_ld_dxcs _idal_tbl_ld_dxcs = new sara.dd.ldsw.dal.tbl_ld_dxcs();
+                    sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
+                    //判断是否存在勾选项
+                    if (gridselectids != null && gridselectids.Length > 0)
+                    {
+                        //存在勾选，只对勾选项用户发送短信息
+                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("sys_id in (" + gridselectids.Replace('^', ',') + ")", "", "f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
+                        //循环发送信息
+                        for (int i = 0; i < khmodellist.Count; i++)
+                        {
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public string ClearCzlx(string khidString, string clientInf )
-        //{
-        //    Dictionary<string, string> resultDic = new Dictionary<string, string>();
-        //    Eva.Library.Data.AccessDataTrans.IAccessDataTrans t = null;
-        //    resultDic["result"] = "";
-        //    resultDic["message"] = "";
-        //    _iAccessData = sara.dd.ldsw.commonclass.commonclass.CreateIAccessData();
-        //    try
-        //    {
-        //        IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
-        //        t = sara.dd.ldsw.commonclass.commonclass.CreateIAccessDataTrans();
-        //        t.getTrans().begin();
+                            sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
+                            //判断客户是否存在电话
+                            if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
+                            {
+                                Thread.Sleep(10);
+                                //存在电话发送短信
+                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh, khmodel.f_dz, khmodel.f_ljqf);
+                                sendcount = i.ToString();
 
-        //        // set f_value1 = ''
-        //        string sql = "update tbl_ld_khb set f_value1='" + "" + "',f_value2 = '" + "" + "' where sys_id = '" + khidString + "'";
-        //        int flag = t.ExecuteSql(sql);
-        //        if (flag >= 0)
-        //        {
-        //            t.getTrans().commit();
-        //        }
-        //        else
-        //        {
-        //            t.getTrans().rollback();
-        //        }
+                            }
+                            else
+                            {
+                                //没有电话跳到下一位
+                                sendcount = i.ToString();
+                            }
+                        }
 
-        //        resultDic["result"] = "true";
-        //        resultDic["message"] = "";
+                        sendcount = khmodellist.Count.ToString();
+                    }
+                    else
+                    {
+                        //不存在勾选项，按照wherestirng查询信息获取用户电话
+
+                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList(wherestring, "", "f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
+                        //循环发送信息
+                        for (int i = 0; i < khmodellist.Count; i++)
+                        {
+                            Thread.Sleep(10);
+                            sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
+                            //判断客户是否存在电话
+                            if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
+                            {
+                                //存在电话发送短信
+                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh, khmodel.f_dz, khmodel.f_ljqf);
+                                sendcount = i.ToString();
+                            }
+                            else
+                            {
+                                //没有电话跳到下一位
+                                sendcount = i.ToString();
+
+                            }
+                        }
+                        sendcount = khmodellist.Count.ToString();
+                    }
 
 
+                    //短信发送完成更新发送状态
+                    List<sara.dd.ldsw.model.tbl_ld_dxcs> modellist = _idal_tbl_ld_dxcs.GetList("sys_id='" + this.sysid + "'", "", "*", "", "", null);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        resultDic["result"] = "false";
-        //        resultDic["message"] = Eva.Library.Format.FormatTextTool.ErrorMessageFormat(ex.Message + ex.StackTrace);
+                    if (modellist.Count == 1)
+                    {
+                        sara.dd.ldsw.model.tbl_ld_dxcs model = modellist[0];
 
-        //    }
-        //    return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
-        //}
+                        model.f_fsztid = "2";
+                        model.f_fszt = "已发送";
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public void ClearCzlxCross(string khidString, string clientInf)
-        //{
-        //    string result1 = this.ClearCzlx(khidString, clientInf);
-        //    Dictionary<string, string> resultDic = new Dictionary<string, string>();
-        //    resultDic["d"] = result1;
-        //    string result = Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
-        //    string callback = HttpContext.Current.Request["jsoncallback"];
+                        _idal_tbl_ld_dxcs.Update(model, "f_fsztid,f_fszt", null);
+                    }
 
-        //    HttpContext.Current.Response.Write(callback + "(" + result + ")");
-        //    HttpContext.Current.Response.End();
-        //}
+                onrunsysid = "";
+            }
+
+        }
+
 
     }
 }

@@ -2713,7 +2713,7 @@ var tbl_ld_yhb_list_Obj = (function ()
                     success: function (result)
                     {
                         var messageJson = (new Function("", "return " + result))();
-
+                        
                         $('#table_grid_tbl_ld_yhb_list').bootstrapTable("hideLoading");
 
                         $('#table_grid_tbl_ld_yhb_list').bootstrapTable("loadJson", messageJson);

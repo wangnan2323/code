@@ -839,7 +839,7 @@ var tbl_ld_xxbg_list_Obj = (function ()
                                     whereClause += "(";
 
                                     whereClause += " f_fqr like '%" + vv[i] + "%' or ";
-
+                                    whereClause += " f_khbh like '%" + vv[i] + "%' or ";
                                     whereClause += " f_fqrid like '%" + vv[i] + "%' or ";
 
 

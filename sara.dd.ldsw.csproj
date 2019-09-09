@@ -78,6 +78,27 @@
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -432,6 +453,7 @@
     <Content Include="service\service_tbl_ldbm_yhfz.asmx" />
     <Content Include="service\service_tbl_ld_cben.asmx" />
     <Content Include="service\service_tbl_ld_cbiao.asmx" />
+    <Content Include="service\service_tbl_ld_dxcs.asmx" />
     <Content Include="service\service_tbl_ld_dyhlh.asmx" />
     <Content Include="service\service_tbl_ld_expjhts.asmx" />
     <Content Include="service\service_tbl_ld_ghsb.asmx" />
@@ -463,6 +485,7 @@
     <Content Include="service\service_tbl_ld_yhb.asmx" />
     <Content Include="service\service_tbl_notice.asmx" />
     <Content Include="service\service_tbl_resource.asmx" />
+    <Content Include="service\service_tbl_spgl.asmx" />
     <Content Include="service\service_tbl_task.asmx" />
     <Content Include="ui\commonselectuser\commonselectuser_part.css" />
     <Content Include="ui\commonselectuser\commonselectuser_part.html" />
@@ -600,6 +623,12 @@
     <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4pg.css" />
     <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4pg.html" />
     <Content Include="ui\tbl_ld_cbiao\tbl_ld_cbiao_list_part4pg.js" />
+    <Content Include="ui\tbl_ld_dxcs\tbl_ld_dxcs_detail.css" />
+    <Content Include="ui\tbl_ld_dxcs\tbl_ld_dxcs_detail.html" />
+    <Content Include="ui\tbl_ld_dxcs\tbl_ld_dxcs_detail.js" />
+    <Content Include="ui\tbl_ld_dxcs\tbl_ld_dxcs_list.css" />
+    <Content Include="ui\tbl_ld_dxcs\tbl_ld_dxcs_list.html" />
+    <Content Include="ui\tbl_ld_dxcs\tbl_ld_dxcs_list.js" />
     <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.css" />
     <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.html" />
     <Content Include="ui\tbl_ld_dyhlh\tbl_ld_dyhlh_detail_part.js" />
@@ -661,6 +690,9 @@
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list.css" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list.html" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4dx.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4dx.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4dx.js" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part.css" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part.html" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part.js" />
@@ -850,6 +882,7 @@
     </Content>
     <Content Include="service\service_guangda_bj01.ashx" />
     <Content Include="service\service_guangda_bj02.ashx" />
+    <Content Include="ui\tbl_spgl\lib\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -947,6 +980,19 @@
     <Content Include="ui\tbl_resource\tbl_resource_list.css" />
     <Content Include="ui\tbl_resource\tbl_resource_list.html" />
     <Content Include="ui\tbl_resource\tbl_resource_list.js" />
+    <Content Include="ui\tbl_spgl\aliyun-upload-sdk-1.5.0.min.js" />
+    <Content Include="ui\tbl_spgl\lib\aliyun-oss-sdk-5.3.1.min.js" />
+    <Content Include="ui\tbl_spgl\lib\es6-promise.min.js" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_detail.css" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_detail.html" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_detail.js" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_detail.min.css" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_detail.min.js" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_list.css" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_list.html" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_list.js" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_list.min.css" />
+    <Content Include="ui\tbl_spgl\tbl_spgl_list.min.js" />
     <Content Include="ui\tbl_task\tbl_task_modallist.css" />
     <Content Include="ui\tbl_task\tbl_task_modallist.html" />
     <Content Include="ui\tbl_task\tbl_task_modallist.js" />
@@ -976,11 +1022,43 @@
     <Compile Include="commonclass\clobcontrol.cs" />
     <Compile Include="commonclass\commonclass.cs" />
     <Compile Include="commonclass\dalfactory.cs" />
+    <Compile Include="commonclass\duanxinclass.cs" />
+    <Compile Include="commonclass\duanxin\FileVoiceSender.cs" />
+    <Compile Include="commonclass\duanxin\FileVoiceSenderResult.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\DefaultHTTPClient.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\HTTPException.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\HTTPMethod.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\HTTPRequest.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\HTTPResponse.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\IHTTPClient.cs" />
+    <Compile Include="commonclass\duanxin\httpclient\PoolingHTTPClient.cs" />
+    <Compile Include="commonclass\duanxin\json\JSONException.cs" />
+    <Compile Include="commonclass\duanxin\json\JSONObject.cs" />
+    <Compile Include="commonclass\duanxin\SmsBase.cs" />
+    <Compile Include="commonclass\duanxin\SmsMobileStatusPuller.cs" />
+    <Compile Include="commonclass\duanxin\SmsMultiSender.cs" />
+    <Compile Include="commonclass\duanxin\SmsMultiSenderResult.cs" />
+    <Compile Include="commonclass\duanxin\SmsResultBase.cs" />
+    <Compile Include="commonclass\duanxin\SmsSenderUtil.cs" />
+    <Compile Include="commonclass\duanxin\SmsSingleSender.cs" />
+    <Compile Include="commonclass\duanxin\SmsSingleSenderResult.cs" />
+    <Compile Include="commonclass\duanxin\SmsStatusPullCallbackResult.cs" />
+    <Compile Include="commonclass\duanxin\SmsStatusPuller.cs" />
+    <Compile Include="commonclass\duanxin\SmsStatusPullReplyResult.cs" />
+    <Compile Include="commonclass\duanxin\SmsVoicePromptSender.cs" />
+    <Compile Include="commonclass\duanxin\SmsVoicePromptSenderResult.cs" />
+    <Compile Include="commonclass\duanxin\SmsVoiceVerifyCodeSender.cs" />
+    <Compile Include="commonclass\duanxin\SmsVoiceVerifyCodeSenderResult.cs" />
+    <Compile Include="commonclass\duanxin\TtsVoiceSender.cs" />
+    <Compile Include="commonclass\duanxin\TtsVoiceSenderResult.cs" />
+    <Compile Include="commonclass\duanxin\VoiceFileUploader.cs" />
+    <Compile Include="commonclass\duanxin\VoiceFileUploaderResult.cs" />
     <Compile Include="commonclass\emojiclass.cs" />
     <Compile Include="commonclass\ioclass.cs" />
     <Compile Include="commonclass\filecontrol.cs" />
     <Compile Include="commonclass\handleitemclass.cs" />
     <Compile Include="commonclass\langueclass.cs" />
+    <Compile Include="commonclass\RequestHelper.cs" />
     <Compile Include="commonclass\webserviceadapter.cs" />
     <Compile Include="dal\tbl_app_codefactory.cs" />
     <Compile Include="dal\tbl_app_index.cs" />
@@ -1005,6 +1083,7 @@
     <Compile Include="dal\tbl_ldbm_yhfz_oracle.cs" />
     <Compile Include="dal\tbl_ld_cben_oracle.cs" />
     <Compile Include="dal\tbl_ld_cbiao_oracle.cs" />
+    <Compile Include="dal\tbl_ld_dxcs_oracle.cs" />
     <Compile Include="dal\tbl_ld_dyhlh_oracle.cs" />
     <Compile Include="dal\tbl_ld_expjhts_oracle.cs" />
     <Compile Include="dal\tbl_ld_ghsb_oracle.cs" />
@@ -1065,6 +1144,7 @@
     <Compile Include="idal\tbl_ldbm_yhfz.cs" />
     <Compile Include="idal\tbl_ld_cben.cs" />
     <Compile Include="idal\tbl_ld_cbiao.cs" />
+    <Compile Include="idal\tbl_ld_dxcs.cs" />
     <Compile Include="idal\tbl_ld_dyhlh.cs" />
     <Compile Include="idal\tbl_ld_expjhts.cs" />
     <Compile Include="idal\tbl_ld_ghsb.cs" />
@@ -1122,6 +1202,7 @@
     <Compile Include="model\tbl_ldbm_yhfz.cs" />
     <Compile Include="model\tbl_ld_cben.cs" />
     <Compile Include="model\tbl_ld_cbiao.cs" />
+    <Compile Include="model\tbl_ld_dxcs.cs" />
     <Compile Include="model\tbl_ld_dyhlh.cs" />
     <Compile Include="model\tbl_ld_expjhts.cs" />
     <Compile Include="model\tbl_ld_ghsb.cs" />
@@ -1339,6 +1420,10 @@
       <DependentUpon>service_tbl_ld_cbiao.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="service\service_tbl_ld_dxcs.asmx.cs">
+      <DependentUpon>service_tbl_ld_dxcs.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="service\service_tbl_ld_dyhlh.asmx.cs">
       <DependentUpon>service_tbl_ld_dyhlh.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1471,6 +1556,10 @@
       <DependentUpon>service_tbl_resource.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="service\service_tbl_spgl.asmx.cs">
+      <DependentUpon>service_tbl_spgl.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="service\service_tbl_task.asmx.cs">
       <DependentUpon>service_tbl_task.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1526,5 +1615,10 @@
     </ItemGroup>
     <AjaxMin JsSourceFiles="@(JS)" JsSourceExtensionPattern="\.js$" JsTargetExtension=".min.js" CssSourceFiles="@(CSS)" CssSourceExtensionPattern="\.css$" CssTargetExtension=".min.css">
     </AjaxMin>
+  </Target>
+  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
 </Project>

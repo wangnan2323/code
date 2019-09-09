@@ -760,7 +760,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
                         sb.Append("           and t_kh.f_bqzm = t_cb.f_bqzm");
                         sb.Append("           and t_kh.f_sqzm = t_cb.f_sqzm");
-                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-2)");
+                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_sfsfts = 'false') as ycbzc,");
                         sb.Append("       ");
                         sb.Append("       (select COUNT(DISTINCT(T_CB.F_KHBH))");
@@ -770,7 +770,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
                         sb.Append("           and t_kh.f_bqzm = t_cb.f_bqzm");
                         sb.Append("           and t_kh.f_sqzm = t_cb.f_sqzm");
-                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-2)");
+                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_sfsfts = 'true') as ycbyc,");
                         sb.Append("       ");
                         sb.Append("      (select count(*) ");
@@ -815,7 +815,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
                         sb.Append("           and t_kh.f_bqzm = t_cb.f_bqzm");
                         sb.Append("           and t_kh.f_sqzm = t_cb.f_sqzm");
-                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-2)");
+                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_sfsfts = 'false') as ycbzc,");
                         sb.Append("       ");
                         sb.Append("       (select COUNT(DISTINCT(T_CB.F_KHBH))");
@@ -825,7 +825,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
                         sb.Append("           and t_kh.f_bqzm = t_cb.f_bqzm");
                         sb.Append("           and t_kh.f_sqzm = t_cb.f_sqzm");
-                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-2)");
+                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_sfsfts = 'true') as ycbyc,");
                         sb.Append("       ");
                         sb.Append("       (select COUNT(DISTINCT(T_CB.F_KHBH))");
@@ -835,7 +835,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
                         sb.Append("           and t_kh.f_bqzm = t_cb.f_bqzm");
                         sb.Append("           and t_kh.f_sqzm = t_cb.f_sqzm");
-                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-2)");
+                        sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_ztid = '3') as yjfs,");
                         sb.Append("       ");
                         sb.Append("       (select nvl(sum(to_number(t_jf.f_shss)),0)");
@@ -843,7 +843,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
                         sb.Append("           and t_kh.F_CBBHid = t.sys_id");
                         sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
-                        sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-2)");
+                        sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_ztid = '3'");
                         sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as yjfje,");
                         sb.Append("       ");

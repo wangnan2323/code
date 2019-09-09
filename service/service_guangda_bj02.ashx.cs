@@ -74,7 +74,7 @@ namespace sara.dd.ldsw.service
                     if(billKey.Length == 10)
                     {
                         //查询该用户未缴费的抄表记录
-                        DataTable dt = _iAccessData.Query("select wm_concat(sys_id) as sys_id,wm_concat(f_cb_cbbh) as f_cbbh,sum(f_bqje) as f_bqje,sum(f_bqsl) as f_bqsl,sum(f_sf) as f_sf,sum(f_pwf) as f_pwf,f_yhm,REPLACE(wm_concat(f_sfjl),',','|') as f_sfjl from TBL_LD_CBIAO where f_khbh='" + billKey+"' and f_ztid='2' group by f_yhm").Tables[0];
+                        DataTable dt = _iAccessData.Query("select wm_concat(sys_id) as sys_id,wm_concat(f_cb_cbbh) as f_cbbh,sum(f_bqje) as f_bqje,sum(f_bqsl) as f_bqsl,sum(f_sf) as f_sf,sum(f_pwf) as f_pwf,f_yhm,REPLACE(wm_concat(f_sfjl),',','|') as f_sfjl from TBL_LD_CBIAO where f_khbh='" + billKey+ "' and f_ztid='2' and f_cbbh not like 'PZ%' and f_cbbh not like 'YC%' group by f_yhm").Tables[0];
 
                         double bqje = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_bqje"].ToString());
                         double bqsl = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_bqsl"].ToString());
@@ -167,7 +167,7 @@ namespace sara.dd.ldsw.service
                             jfmodel.f_jmjelj = "0";
                             jfmodel.f_ly = "光大自助缴费";
                             jfmodel.f_lyid = "08080006";
-
+                            jfmodel.f_bz = xmlstr;
 
                             jfmodel.f_sfjl = dt.Rows[0]["f_sfjl"].ToString();
 

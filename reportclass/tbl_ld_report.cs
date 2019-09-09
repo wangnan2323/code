@@ -273,6 +273,7 @@ namespace sara.dd.ldsw.reportclass
             int jlzydhs = 0;
             int jlzyczs = 0;
             int hmylg = 0;
+            int tzhyys = 0;
 
             for (int i = 0; i < dl_data.Columns.Count; i++)
             {
@@ -362,6 +363,10 @@ namespace sara.dd.ldsw.reportclass
                 if (dl_data.Rows[i]["LX"].ToString() == "绿化水表押金")
                 {
                     lhsbyj = i;
+                }
+                if (dl_data.Rows[i]["LX"].ToString() == "特种行业用水")
+                {
+                    tzhyys = i;
                 }
                 if (dl_data.Rows[i]["LX"].ToString() == "合计")
                 {
@@ -456,7 +461,7 @@ namespace sara.dd.ldsw.reportclass
                 dr_merge = dt_merge.NewRow();
                 dr_merge["startrow"] = (lhsbyj + 1).ToString();
                 dr_merge["startcolumn"] = "1";
-                dr_merge["endrow"] = (hj).ToString();
+                dr_merge["endrow"] = (tzhyys).ToString();
                 dr_merge["endcolumn"] = "1";
                 dt_merge.Rows.Add(dr_merge);
 

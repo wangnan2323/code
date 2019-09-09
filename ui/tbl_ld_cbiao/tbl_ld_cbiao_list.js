@@ -250,6 +250,8 @@ var tbl_ld_cbiao_list_Obj = (function ()
 
         codeServiceId += "0545^";
 
+        codeServiceId += "0555^";
+
         codeServiceId = codeServiceId.trimEnd('^');
         commonObj.getCodeServiceJson(codeServiceId, {
             success: function (resultArray)
@@ -270,6 +272,8 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     _baseCodeHashMap.put('codeservice_0544', resultArray['0544']);
 
                     _baseCodeHashMap.put('codeservice_0545', resultArray['0545']);
+
+                    _baseCodeHashMap.put('codeservice_yslx', resultArray['0555']);
                     var cbgx = [ { id: '1', text: '>' }, { id: '2', text: '>=' }, { id: '3', text: '<' }, { id: '4', text: '<=' }, { id: '5', text: '=' }];
                     _baseCodeHashMap.put('codeservice_cbgx', cbgx);
                     var columnsArray = [
@@ -426,6 +430,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
             var codeservice_sbfz = _baseCodeHashMap.get('codeservice_sbfz');
             var codeservice_cbbh = _baseCodeHashMap.get('codeservice_cbbh');
             var codeservice_cbgx = _baseCodeHashMap.get('codeservice_cbgx');
+            var codeservice_yslx = _baseCodeHashMap.get('codeservice_yslx');
             controlObj.multidropdownlistinit('search_f_cbbh_tbl_ld_cbiao_list', codeservice_cbbh);
             controlObj.multidropdownlistinit('search_f_khfz_tbl_ld_cbiao_list', codeservice_khfz);
             controlObj.multidropdownlistinit('search_f_yhfz_tbl_ld_cbiao_list', codeservice_yhfz);
@@ -446,7 +451,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
             controlObj.singledropdownlistinit('search_f_qy_tbl_ld_cbiao_list', codeService_0514, f_qy_onchange);
             controlObj.singledropdownlistinit('search_f_pq_tbl_ld_cbiao_list', codeService_0515, f_pq_onchange);
             controlObj.singledropdownlistinit('search_f_cbgx_tbl_ld_cbiao_list', codeservice_cbgx, null);
-
+            controlObj.multidropdownlistinit('search_f_yslx_tbl_ld_cbiao_list', codeservice_yslx, null);
             controlObj.datetimeinit('search_f_pgsj_tbl_ld_cbiao_list_datefrom', 'search_f_pgsj_tbl_ld_cbiao_list_timefrom');
             controlObj.datetimeinit('search_f_pgsj_tbl_ld_cbiao_list_dateto', 'search_f_pgsj_tbl_ld_cbiao_list_timeto');
 
@@ -598,6 +603,9 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         controlObj.singledropdownlistid('search_f_dy_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_dyid);
 
                         controlObj.singledropdownlistid('search_f_cbgx_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_cbgxid);
+                        controlObj.multidropdownlistid('search_f_yslx_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_yslxid);
+                        controlObj.text('search_f_dz_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_dz);
+
                         var dy = { "added": { "id": tbl_ld_cbiao_list.f_dyid } };
                         var sc = { "added": { "id": tbl_ld_cbiao_list.f_scid } };
                         var qy = { "added": { "id": tbl_ld_cbiao_list.f_qyid } };
@@ -902,7 +910,10 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     tbl_ld_cbiao_list.f_rs = controlObj.text('search_f_rs_tbl_ld_cbiao_list');
 
                     tbl_ld_cbiao_list.f_cbgxid = controlObj.singledropdownlistid('search_f_cbgx_tbl_ld_cbiao_list');
+                    tbl_ld_cbiao_list.f_yslxid = controlObj.multidropdownlistid('search_f_yslx_tbl_ld_cbiao_list');
+
                     tbl_ld_cbiao_list.f_cbsl = controlObj.text('search_f_cbsl_tbl_ld_cbiao_list');
+                    tbl_ld_cbiao_list.f_dz = controlObj.text('search_f_dz_tbl_ld_cbiao_list');
                     that._pr_searchcontent.type2 = tbl_ld_cbiao_list;
                     break;
 
@@ -1351,7 +1362,10 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     errorMessageHansMap.put('search_f_cb_cbbh_tbl_ld_cbiao_list', '长度不能超过<a style="color:red">200</a>个字');
                 }
 
-
+                if (tbl_ld_cbiao_list.f_dz.length > 200)
+                {
+                    errorMessageHansMap.put('search_f_dz_tbl_ld_cbiao_list', '长度不能超过<a style="color:red">200</a>个字');
+                }
 
 
                 if (tbl_ld_cbiao_list.f_yhbh.length > 200)
@@ -1683,8 +1697,13 @@ var tbl_ld_cbiao_list_Obj = (function ()
 
                 that._pr_searchcontent.type2.f_cbgxid = '';
                 controlObj.singledropdownlistid('search_f_cbgx_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_cbgxid);
+                that._pr_searchcontent.type2.f_yslxid = '';
+                controlObj.multidropdownlistid('search_f_yslx_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_yslxid);
+
                 that._pr_searchcontent.type2.f_cbsl = '';
                 controlObj.text('search_f_cbsl_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_cbsl);
+                that._pr_searchcontent.type2.f_dz = '';
+                controlObj.text('search_f_dz_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_dz);
                 break;
             case "2":
                 if (that._pr_searchcontent.type1 == undefined)
@@ -2383,10 +2402,10 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         }
 
 
-                        if (tbl_ld_cbiao_list.f_yslx.length > 0)
-                        {
-                            whereClause += " f_yslx like '%" + tbl_ld_cbiao_list.f_yslx + "%' and ";
-                        }
+                        //if (tbl_ld_cbiao_list.f_yslx.length > 0)
+                        //{
+                        //    whereClause += " f_yslx like '%" + tbl_ld_cbiao_list.f_yslx + "%' and ";
+                        //}
 
 
                         if (tbl_ld_cbiao_list.f_cbbhid.length > 0)
@@ -2479,6 +2498,31 @@ var tbl_ld_cbiao_list_Obj = (function ()
                             }
                             whereClause += " " + tbl_ld_cbiao_list.f_cbsl + "";
                             whereClause += " and ";
+                        }
+                      
+                        if (tbl_ld_cbiao_list.f_yslxid.length > 0)
+                        {
+                            var elementArray = tbl_ld_cbiao_list.f_yslxid.split(',');
+                            whereClause += '(';
+                            $.each(elementArray, function (i, u)
+                            {
+                                if (i == 0)
+                                {
+                                    whereClause += ' ';
+                                }
+                                else
+                                {
+                                    whereClause += ' or ';
+                                }
+                                whereClause += "((','||f_yslxid||',') like ('%,'||'" + elementArray[i] + "'||',%')) ";
+
+                            });
+                            whereClause += ') and ';
+                        }
+
+                        if (tbl_ld_cbiao_list.f_dz.length > 0)
+                        {
+                            whereClause += " f_dz like '%" + tbl_ld_cbiao_list.f_dz + "%' and ";
                         }
 
                     }
