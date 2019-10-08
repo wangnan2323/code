@@ -79,38 +79,38 @@ namespace sara.dd.ldsw.service
             DateTime to = Convert.ToDateTime(cxrqto);
             string wherestr = "";
 
-            if(cxrqfrom != null && cxrqfrom != "")
+            if (cxrqfrom != null && cxrqfrom != "")
             {
-                wherestr += " and f_cbsj >= to_date('" + cxrqfrom+"','yyyy-mm-dd hh24:mi:ss')";
+                wherestr += " and f_cbsj >= to_date('" + cxrqfrom + "','yyyy-mm-dd hh24:mi:ss')";
             }
 
-            if(cxrqto != null && cxrqto != "")
+            if (cxrqto != null && cxrqto != "")
             {
                 wherestr += " and f_cbsj <=to_date('" + cxrqto + "','yyyy-mm-dd hh24:mi:ss')";
             }
 
-            if(yslfrom != null && yslfrom != "")
+            if (yslfrom != null && yslfrom != "")
             {
                 wherestr += " and f_bqsl >=" + yslfrom;
             }
 
-            if(yslto != null && yslto != "")
+            if (yslto != null && yslto != "")
             {
                 wherestr += " and f_bqsl <=" + yslto;
             }
 
-            string sql = "select d.*,TRUNC(d.yszje/d.yssl,2) as dj,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' " + wherestr+ ") as sszje from (select rownum as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where 1=1 " + wherestr+ " group by f_yhm order by yssl desc) t) d";
+            string sql = "select d.*,TRUNC(d.yszje/d.yssl,2) as dj,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' " + wherestr + ") as sszje from (select rownum as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where 1=1 " + wherestr + " group by f_yhm order by yssl desc) t) d";
 
-            if(pm != null && pm != "")
+            if (pm != null && pm != "")
             {
-                sql += " where rn<="+pm;
+                sql += " where rn<=" + pm;
             }
             else
             {
                 sql += " where rn<=20";
             }
 
-            
+
             DataSet ds = new DataSet();
             DataTable resultDataTable = new DataTable();
             ds = _iAccessData.Query(sql);
@@ -127,8 +127,8 @@ namespace sara.dd.ldsw.service
                 //粗制水查询
                 sql = "select count(*) as count from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl like '3.97^0^%' " + wherestr;
                 string count2 = _iAccessData.GetSingle(sql).ToString();
-                
-                if(count1 == "0" || count2 == "0")
+
+                if (count1 == "0" || count2 == "0")
                 {
                     //玖龙单水价
                     resultDataTable = tempDataTable;
@@ -136,11 +136,11 @@ namespace sara.dd.ldsw.service
                 else
                 {
                     //玖龙多水价
-                    for(int i=0;i< tempDataTable.Rows.Count; i++)
+                    for (int i = 0; i < tempDataTable.Rows.Count; i++)
                     {
-                        if(tempDataTable.Rows[i]["f_yhm"].ToString()== "玖龙纸业(天津)有限公司")
+                        if (tempDataTable.Rows[i]["f_yhm"].ToString() == "玖龙纸业(天津)有限公司")
                         {
-                            sql = "select d.*,'6.996' as dj,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' and f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + ") as sszje from (select '"+(i+1)+ "' as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + " group by f_yhm) t) d";
+                            sql = "select d.*,'6.996' as dj,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' and f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + ") as sszje from (select '" + (i + 1) + "' as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + " group by f_yhm) t) d";
                             DataTable dt1 = _iAccessData.Query(sql).Tables[0];
 
                             DataRow newrow1 = dt1.Rows[0];
@@ -161,7 +161,7 @@ namespace sara.dd.ldsw.service
                     }
                 }
                 resultDic["result"] = "true";
-                resultDic["message"] = "{\"total\":\""+ total.ToString() + "\",\"rows\":"+ Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(resultDataTable) + "}";
+                resultDic["message"] = "{\"total\":\"" + total.ToString() + "\",\"rows\":" + Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(resultDataTable) + "}";
 
 
             }
@@ -377,156 +377,156 @@ namespace sara.dd.ldsw.service
                         #endregion
                         break;
                     default:
-                            IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
-                            string userid = clientInfoDic["userid"];
-                            string username = clientInfoDic["username"];
+                        IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
+                        string userid = clientInfoDic["userid"];
+                        string username = clientInfoDic["username"];
 
-                            switch (model.f_bblxid)
-                            {
-                                case "08110001"://日结账报表
+                        switch (model.f_bblxid)
+                        {
+                            case "08110001"://日结账报表
+                                {
+
+                                    DataTable dt = Get08110001(model.f_zbrid, model.f_zbsj, model.f_value4, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+
+                                    if (columns.IndexOf(",f_content,") < 0)
                                     {
-
-                                        DataTable dt = Get08110001(model.f_zbrid, model.f_zbsj,model.f_value4, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
-
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
-                                        message = model.f_content;
-                                        _idal_tbl_ld_report.Update(model, columns, null);
+                                        columns += ",f_content";
                                     }
-                                    break;
-                                case "08110002"://经管部日结账报表
-                                    {
-                                        DataTable dt = Get08110002(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
-
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110003"://用户情况年度汇总表
-                                    {
-                                        DataTable dt = Get08110003(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110002"://经管部日结账报表
+                                {
+                                    DataTable dt = Get08110002(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110004"://年度销售收入情况表
-                                    {
-                                        DataTable dt = Get08110004(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110003"://用户情况年度汇总表
+                                {
+                                    DataTable dt = Get08110003(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110005"://商业用水欠费统计表
-                                    {
-                                        DataTable dt = Get08110005(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110004"://年度销售收入情况表
+                                {
+                                    DataTable dt = Get08110004(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110006"://水表更换情况年度统计表
-                                    {
-                                        DataTable dt = Get08110006(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110005"://商业用水欠费统计表
+                                {
+                                    DataTable dt = Get08110005(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110007"://收费情况年度统计表
-                                    {
-                                        DataTable dt = Get08110007(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110006"://水表更换情况年度统计表
+                                {
+                                    DataTable dt = Get08110006(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110008"://日结算报表
-                                    {
-                                        DataTable dt = Get08110008(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110007"://收费情况年度统计表
+                                {
+                                    DataTable dt = Get08110007(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110009"://节水办用户明细表
-                                    {
-                                        DataTable dt = Get08110009(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110008"://日结算报表
+                                {
+                                    DataTable dt = Get08110008(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110010"://节水办用户信息变更明细表
-                                    {
-                                        DataTable dt = Get08110010(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110009"://节水办用户明细表
+                                {
+                                    DataTable dt = Get08110009(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
-                                    }
-                                    break;
-                                case "08110011"://月销售情况统计表
-                                    {
-                                        DataTable dt = Get08110011(model.f_zbrid, model.f_zbsj, _iAccessData);
-                                        model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                                }
+                                break;
+                            case "08110010"://节水办用户信息变更明细表
+                                {
+                                    DataTable dt = Get08110010(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                                        if (columns.IndexOf(",f_content,") < 0)
-                                        {
-                                            columns += ",f_content";
-                                        }
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
+                                    }
                                     message = model.f_content;
                                     _idal_tbl_ld_report.Update(model, columns, null);
+                                }
+                                break;
+                            case "08110011"://月销售情况统计表
+                                {
+                                    DataTable dt = Get08110011(model.f_zbrid, model.f_zbsj, _iAccessData);
+                                    model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+
+                                    if (columns.IndexOf(",f_content,") < 0)
+                                    {
+                                        columns += ",f_content";
                                     }
-                                    break;
+                                    message = model.f_content;
+                                    _idal_tbl_ld_report.Update(model, columns, null);
+                                }
+                                break;
                             case "08110012"://年水量及销售收入情况分析表
                                 {
                                     DataTable dt = Get08110012(model.f_zbrid, model.f_zbsj, _iAccessData);
@@ -617,7 +617,7 @@ namespace sara.dd.ldsw.service
 
 
             //reportdt.Rows[0] 总表4.2
-            reportdt.Rows.Add("0","0","0%","0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0", "0%");
+            reportdt.Rows.Add("0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0", "0%");
             //reportdt.Rows[1] 总表3.95
             reportdt.Rows.Add("0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0%", "0", "0", "0", "0", "0%");
             //reportdt.Rows[2] 卡表3.95
@@ -871,7 +871,7 @@ namespace sara.dd.ldsw.service
                     }
 
                     //欠收水量
-                    double qssl = yssl - sssl ;
+                    double qssl = yssl - sssl;
                     reportdt.Rows[j]["qssl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(qssl, 0);
 
                 }
@@ -897,13 +897,13 @@ namespace sara.dd.ldsw.service
                 }
                 else
                 {
-                    for(int jj = 0; jj < 9; jj++)
+                    for (int jj = 0; jj < 9; jj++)
                     {
                         double rate = Eva.Library.Text.NumberTool.Parse(reportdt.Rows[jj]["sssl" + i].ToString()) / yssllj * 100;
                         reportdt.Rows[jj]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(rate, 2) + "%";
                     }
-                    
-                    
+
+
                 }
                 #endregion
 
@@ -1100,7 +1100,7 @@ namespace sara.dd.ldsw.service
                 double yssljl = 0;
                 double sssljl = 0;
 
-                for(int m = 9; m < 25; m++)
+                for (int m = 9; m < 25; m++)
                 {
                     yssldh += Eva.Library.Text.NumberTool.Parse(reportdt.Rows[m]["yssl" + i].ToString());
                     sssldh += Eva.Library.Text.NumberTool.Parse(reportdt.Rows[m]["sssl" + i].ToString());
@@ -1268,12 +1268,12 @@ namespace sara.dd.ldsw.service
                 //月占比
                 if (yzj > 0)
                 {
-                    reportdt.Rows[0]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["sl" + i].ToString()) / yzj*100, 2) + "%";
-                    
-                    reportdt.Rows[1]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["sl" + i].ToString()) / yzj*100, 2) + "%";
-                    reportdt.Rows[2]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["sl" + i].ToString()) / yzj*100, 2) + "%";
-                    reportdt.Rows[3]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["sl" + i].ToString()) / yzj*100, 2) + "%";
-                    reportdt.Rows[4]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["sl" + i].ToString()) / yzj*100, 2) + "%";
+                    reportdt.Rows[0]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["sl" + i].ToString()) / yzj * 100, 2) + "%";
+
+                    reportdt.Rows[1]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["sl" + i].ToString()) / yzj * 100, 2) + "%";
+                    reportdt.Rows[2]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["sl" + i].ToString()) / yzj * 100, 2) + "%";
+                    reportdt.Rows[3]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["sl" + i].ToString()) / yzj * 100, 2) + "%";
+                    reportdt.Rows[4]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["sl" + i].ToString()) / yzj * 100, 2) + "%";
 
                 }
                 else
@@ -1319,7 +1319,7 @@ namespace sara.dd.ldsw.service
             for (int i = 1; i < 14; i++)
             {
                 //月水量
-                reportdt.Columns.Add("sl"+i, System.Type.GetType("System.String"));
+                reportdt.Columns.Add("sl" + i, System.Type.GetType("System.String"));
                 //月占比
                 reportdt.Columns.Add("rate" + i, System.Type.GetType("System.String"));
             }
@@ -1332,9 +1332,9 @@ namespace sara.dd.ldsw.service
             string jmpwf = "";
             string jmdj = "";
 
-            for(int i = 0; i < jmysdt.Rows.Count; i++)
+            for (int i = 0; i < jmysdt.Rows.Count; i++)
             {
-                jmsf += jmysdt.Rows[i]["f_jtsj"].ToString()+"|";
+                jmsf += jmysdt.Rows[i]["f_jtsj"].ToString() + "|";
                 jmpwf += jmysdt.Rows[i]["f_pwf"].ToString() + "|";
                 jmdj += jmysdt.Rows[i]["dj"].ToString() + "|";
             }
@@ -1344,7 +1344,7 @@ namespace sara.dd.ldsw.service
             jmdj = jmdj.Trim('|');
 
             //学校/居委会
-             sql = "select f_jtsj,f_pwf,to_char((f_jtsj+f_pwf),'FM90.000') as dj from TBL_LDBM_JTSJ t where t.f_jsrq>sysdate and t.f_zzrq>sysdate and f_yslxid='101' order by to_number(f_jtsj) asc";
+            sql = "select f_jtsj,f_pwf,to_char((f_jtsj+f_pwf),'FM90.000') as dj from TBL_LDBM_JTSJ t where t.f_jsrq>sysdate and t.f_zzrq>sysdate and f_yslxid='101' order by to_number(f_jtsj) asc";
             DataTable xxdt = _iAccessData.Query(sql).Tables[0];
             string xxsf = xxdt.Rows[0]["f_jtsj"].ToString();
             string xxpwf = xxdt.Rows[0]["f_pwf"].ToString();
@@ -1391,7 +1391,7 @@ namespace sara.dd.ldsw.service
             //特种行业用水
             sql = "select f_jtsj,f_pwf,to_char((f_jtsj+f_pwf),'FM90.000') as dj from TBL_LDBM_JTSJ t where t.f_jsrq>sysdate and t.f_zzrq>sysdate and f_yslxid='6' order by to_number(f_jtsj) asc";
             DataTable tzdt = _iAccessData.Query(sql).Tables[0];
-            string  tzsf= tzdt.Rows[0]["f_jtsj"].ToString();
+            string tzsf = tzdt.Rows[0]["f_jtsj"].ToString();
             string tzpwf = tzdt.Rows[0]["f_pwf"].ToString();
             string tzdj = tzdt.Rows[0]["dj"].ToString();
 
@@ -1484,10 +1484,10 @@ namespace sara.dd.ldsw.service
                 DateTime yearstart = new DateTime(zbsj.Year, 1, 1);
                 if (i < 12)
                 {
-                    if(i == 11)
+                    if (i == 11)
                     {
                         monthstart = new DateTime(zbsj.Year, (i + 1), 1);
-                        monthend = new DateTime(zbsj.Year+1, 1, 1);
+                        monthend = new DateTime(zbsj.Year + 1, 1, 1);
                         monthend = monthend.AddDays(-1);
                     }
                     else
@@ -1540,7 +1540,7 @@ namespace sara.dd.ldsw.service
                 for (int j = 0; j < byysdt.Rows.Count; j++)
                 {
                     string sfarr = byysdt.Rows[j]["f_sfjl"].ToString();
-                    if(sfarr==null || sfarr == "")
+                    if (sfarr == null || sfarr == "")
                     {
                         string[] arr = byysdt.Rows[j]["f_value2"].ToString().Split('|');
 
@@ -1554,16 +1554,16 @@ namespace sara.dd.ldsw.service
                         }
                     }
                     double sfdj = Eva.Library.Text.NumberTool.Parse(sfarr.Split('^')[0].ToString());
-                    
-                    
+
+
                     if (("|" + jmsf + "|").IndexOf("|" + Eva.Library.Text.NumberTool.GetNumberByLength(sfdj, 3) + "|") != -1)
                     {
                         reportdt.Rows[0]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[j]["f_bqsl"].ToString()), 2);
-                        
+
                         reportdt.Rows[11]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[j]["f_bqje"].ToString()), 2);
 
                     }
-                    else if(sfdj == Eva.Library.Text.NumberTool.Parse(xxsf))
+                    else if (sfdj == Eva.Library.Text.NumberTool.Parse(xxsf))
                     {
                         reportdt.Rows[1]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[j]["f_bqsl"].ToString()), 2);
                         reportdt.Rows[11]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[j]["f_bqje"].ToString()), 2);
@@ -1607,7 +1607,7 @@ namespace sara.dd.ldsw.service
                         reportdt.Rows[19]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[19]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[j]["f_bqje"].ToString()), 2);
                     }
 
-                    
+
 
 
                 }
@@ -1683,7 +1683,7 @@ namespace sara.dd.ldsw.service
                     {
                         reportdt.Rows[20]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[20]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[j]["f_bqje"].ToString()), 2);
                     }
-                    else if (sfdj == 7)
+                    else if (sfdj == 7 || sfdj == Eva.Library.Text.NumberTool.Parse(dhssf))
                     {
                         reportdt.Rows[20]["sl" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[20]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[j]["f_bqje"].ToString()), 2);
                     }
@@ -1757,7 +1757,7 @@ namespace sara.dd.ldsw.service
                 double jlsszlhj = Eva.Library.Text.NumberTool.Parse(reportdt.Rows[15]["sl" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[16]["sl" + i].ToString());
 
                 //月占比
-                if(sszlhj == 0)
+                if (sszlhj == 0)
                 {
                     reportdt.Rows[0]["rate" + i] = "0%";
                     reportdt.Rows[1]["rate" + i] = "0%";
@@ -1778,7 +1778,7 @@ namespace sara.dd.ldsw.service
                     reportdt.Rows[6]["rate" + i] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[6]["sl" + i].ToString()) / sszlhj * 100), 2) + "%";
                 }
 
-                if(jlsszlhj == 0)
+                if (jlsszlhj == 0)
                 {
                     reportdt.Rows[15]["rate" + i] = "0%";
                     reportdt.Rows[16]["rate" + i] = "0%";
@@ -1791,7 +1791,7 @@ namespace sara.dd.ldsw.service
                 }
 
                 //回款率
-                if(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["sl" + i].ToString()) == 0)
+                if (Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["sl" + i].ToString()) == 0)
                 {
                     reportdt.Rows[13]["sl" + i] = "0%";
 
@@ -1802,7 +1802,7 @@ namespace sara.dd.ldsw.service
 
                 }
 
-                if(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[19]["sl" + i].ToString()) == 0)
+                if (Eva.Library.Text.NumberTool.Parse(reportdt.Rows[19]["sl" + i].ToString()) == 0)
                 {
                     reportdt.Rows[21]["sl" + i] = "0%";
 
@@ -1840,7 +1840,7 @@ namespace sara.dd.ldsw.service
             double jlsszl = Eva.Library.Text.NumberTool.Parse(reportdt.Rows[15]["sl13"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[16]["sl13"].ToString());
 
             //月占比
-            if(sszl == 0)
+            if (sszl == 0)
             {
                 reportdt.Rows[0]["rate13"] = "0%";
                 reportdt.Rows[1]["rate13"] = "0%";
@@ -1876,7 +1876,7 @@ namespace sara.dd.ldsw.service
             }
 
             //回款率
-            if(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["sl13"].ToString()) == 0)
+            if (Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["sl13"].ToString()) == 0)
             {
                 reportdt.Rows[13]["sl13"] = "0%";
 
@@ -1887,7 +1887,7 @@ namespace sara.dd.ldsw.service
 
             }
 
-            if(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[19]["sl13"].ToString()) == 0)
+            if (Eva.Library.Text.NumberTool.Parse(reportdt.Rows[19]["sl13"].ToString()) == 0)
             {
                 reportdt.Rows[21]["sl13"] = "0%";
 
@@ -1943,7 +1943,7 @@ namespace sara.dd.ldsw.service
             reportdt.Columns.Add("shqnpwf", System.Type.GetType("System.String"));
 
             //reportdt.Rows[0] 居民生活
-            reportdt.Rows.Add("0","0","0","0","0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+            reportdt.Rows.Add("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
             //reportdt.Rows[1] 学校/居委会
             reportdt.Rows.Add("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
             //reportdt.Rows[2] 生态城
@@ -1959,7 +1959,7 @@ namespace sara.dd.ldsw.service
             //reportdt.Rows[7] 自来水合计
             reportdt.Rows.Add("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
             //列标题
-            reportdt.Rows.Add("实收水费", "", " 当    月      实         收         情         况", "", "", "", "","", "当 月 污 水 处 理 费", "", "", "  收  回  欠  费  情  况", "", "", "");
+            reportdt.Rows.Add("实收水费", "", " 当    月      实         收         情         况", "", "", "", "", "", "当 月 污 水 处 理 费", "", "", "  收  回  欠  费  情  况", "", "", "");
             //列标题
             reportdt.Rows.Add("", "", "应    收     数", "", "实    收    数", "", "欠   收   数", "", "实收排污费（元）", "欠收排污费（元）", "排污费合计（元）", "本    年    度", "", " 上   年   度", "");
             //列标题
@@ -1974,7 +1974,7 @@ namespace sara.dd.ldsw.service
 
 
             DateTime datastart = new DateTime(zbsj.Year, zbsj.Month, 1);
-            
+
             DateTime monthstart = new DateTime();
             DateTime monthend = new DateTime();
             int month = zbsj.Month + 1;
@@ -2025,7 +2025,7 @@ namespace sara.dd.ldsw.service
             DataTable byysdt = _iAccessData.Query(sql).Tables[0];
 
             //获取本月实收数据
-            sql = "select f_sf,f_pwf,f_bqsl,f_sfjl,f_bqje,f_value2 from TBL_LD_CBIAO where (f_ztid = '2' or f_ztid = '3') and f_cbbh not like 'YC%' and f_cbsj " + czsjwhere + " and f_jfsj "+ czsjwhere;
+            sql = "select f_sf,f_pwf,f_bqsl,f_sfjl,f_bqje,f_value2 from TBL_LD_CBIAO where (f_ztid = '2' or f_ztid = '3') and f_cbbh not like 'YC%' and f_cbsj " + czsjwhere + " and f_jfsj " + czsjwhere;
             sql += " union all ";
             sql += "select f_sf,f_pwf,f_bqsl,f_sfjl,f_bqje,f_value2 from TBL_LD_CBIAO where (f_ztid = '2' or f_ztid = '3') and f_cbbh like 'YC%' and f_cbsj " + ycczsjwhere + " and f_jfsj " + ycczsjwhere;
             sql += " union all ";
@@ -2052,7 +2052,7 @@ namespace sara.dd.ldsw.service
                     if (arr.Length > 1)
                     {
                         sfarr = arr[1];
-                        if(sfarr.Length < 4)
+                        if (sfarr.Length < 4)
                         {
                             continue;
                         }
@@ -2063,64 +2063,64 @@ namespace sara.dd.ldsw.service
                     }
                 }
 
-                    switch (sfarr.Substring(0, 4))
-                    {
-                        case "3.95":
-                        case "5.25":
-                        case "7.05":
-                            reportdt.Rows[0]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssf"].ToString()) +  Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[0]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[0]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                switch (sfarr.Substring(0, 4))
+                {
+                    case "3.95":
+                    case "5.25":
+                    case "7.05":
+                        reportdt.Rows[0]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[0]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[0]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
                         break;
-                        case "4.60":
-                        case "4.6^":
-                            reportdt.Rows[1]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[1]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[1]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                    case "4.60":
+                    case "4.6^":
+                        reportdt.Rows[1]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[1]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[1]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "5.55":
-                            reportdt.Rows[2]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[2]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[2]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                        break;
+                    case "5.55":
+                        reportdt.Rows[2]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[2]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[2]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "6.50":
-                        case "6.5^":
-                            reportdt.Rows[3]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[3]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[3]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                        break;
+                    case "6.50":
+                    case "6.5^":
+                        reportdt.Rows[3]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[3]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[3]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "4.85":
-                            reportdt.Rows[4]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[4]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[4]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                        break;
+                    case "4.85":
+                        reportdt.Rows[4]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[4]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[4]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "6.45":
-                            reportdt.Rows[5]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[5]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[5]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                        break;
+                    case "6.45":
+                        reportdt.Rows[5]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[5]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[5]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "7^0^":
-                        case "7.00":
-                        case "7.0^":
-                            reportdt.Rows[11]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[11]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[11]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                        break;
+                    case "7^0^":
+                    case "7.00":
+                    case "7.0^":
+                        reportdt.Rows[11]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[11]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[11]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "3.97":
-                            reportdt.Rows[12]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[12]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[12]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
+                        break;
+                    case "3.97":
+                        reportdt.Rows[12]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[12]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[12]["dyyspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dyyspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byysdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                    }
-                
+                        break;
+                }
+
             }
             #endregion
 
@@ -2148,20 +2148,20 @@ namespace sara.dd.ldsw.service
                 }
 
                 switch (sfarr.Substring(0, 4))
-                    {
-                        case "3.95":
-                        case "5.25":
-                        case "7.05":
-                            reportdt.Rows[0]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
-                            reportdt.Rows[0]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
+                {
+                    case "3.95":
+                    case "5.25":
+                    case "7.05":
+                        reportdt.Rows[0]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
+                        reportdt.Rows[0]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
 
-                            reportdt.Rows[0]["dysssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
-                            reportdt.Rows[0]["dysssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqsl"].ToString()), 2);
-                            reportdt.Rows[0]["dysspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_pwf"].ToString()), 2);
+                        reportdt.Rows[0]["dysssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
+                        reportdt.Rows[0]["dysssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqsl"].ToString()), 2);
+                        reportdt.Rows[0]["dysspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_pwf"].ToString()), 2);
 
-                            break;
-                        case "4.60":
-                        case "4.6^":
+                        break;
+                    case "4.60":
+                    case "4.6^":
 
                         reportdt.Rows[1]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
                         reportdt.Rows[1]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
@@ -2171,7 +2171,7 @@ namespace sara.dd.ldsw.service
                         reportdt.Rows[1]["dysspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dysspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_pwf"].ToString()), 2);
 
                         break;
-                        case "5.55":
+                    case "5.55":
                         reportdt.Rows[2]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
                         reportdt.Rows[2]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
 
@@ -2180,8 +2180,8 @@ namespace sara.dd.ldsw.service
                         reportdt.Rows[2]["dysspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dysspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_pwf"].ToString()), 2);
 
                         break;
-                        case "6.50":
-                        case "6.5^":
+                    case "6.50":
+                    case "6.5^":
 
                         reportdt.Rows[3]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
                         reportdt.Rows[3]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
@@ -2192,7 +2192,7 @@ namespace sara.dd.ldsw.service
 
 
                         break;
-                        case "4.85":
+                    case "4.85":
                         reportdt.Rows[4]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
                         reportdt.Rows[4]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
 
@@ -2202,7 +2202,7 @@ namespace sara.dd.ldsw.service
 
 
                         break;
-                        case "6.45":
+                    case "6.45":
                         reportdt.Rows[5]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
                         reportdt.Rows[5]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
 
@@ -2212,9 +2212,9 @@ namespace sara.dd.ldsw.service
 
 
                         break;
-                        case "7^0^":
-                        case "7.00":
-                        case "7.0^":
+                    case "7^0^":
+                    case "7.00":
+                    case "7.0^":
                         reportdt.Rows[11]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
 
                         reportdt.Rows[11]["dysssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[11]["dysssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
@@ -2223,7 +2223,7 @@ namespace sara.dd.ldsw.service
 
 
                         break;
-                        case "3.97":
+                    case "3.97":
                         reportdt.Rows[12]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_bqje"].ToString()), 2);
 
                         reportdt.Rows[12]["dysssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dysssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_sf"].ToString()), 2);
@@ -2231,8 +2231,8 @@ namespace sara.dd.ldsw.service
                         reportdt.Rows[12]["dysspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[12]["dysspwf"].ToString()) + Eva.Library.Text.NumberTool.Parse(byssdt.Rows[i]["f_pwf"].ToString()), 2);
 
                         break;
-                    }
-                
+                }
+
             }
             #endregion
 
@@ -2444,7 +2444,7 @@ namespace sara.dd.ldsw.service
             #endregion
 
             #region 统计欠收情况
-            reportdt.Rows[0]["dyqssf"] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssf"].ToString())- Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssf"].ToString())), 2);
+            reportdt.Rows[0]["dyqssf"] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssf"].ToString()) - Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssf"].ToString())), 2);
             reportdt.Rows[0]["dyqssl"] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssl"].ToString()) - Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysssl"].ToString())), 2);
             reportdt.Rows[0]["dyqspwf"] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyspwf"].ToString()) - Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dysspwf"].ToString())), 2);
 
@@ -2478,7 +2478,7 @@ namespace sara.dd.ldsw.service
 
             #endregion
             #region 统计合计行
-            reportdt.Rows[7]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zje"].ToString())+ Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["zje"].ToString())+ Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["zje"].ToString())+ Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["zje"].ToString())+ Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["zje"].ToString())+ Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["zje"].ToString()), 2);
+            reportdt.Rows[7]["zje"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["zje"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["zje"].ToString()), 2);
             reportdt.Rows[7]["zsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["zsf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["zsf"].ToString()), 2);
             reportdt.Rows[7]["dyyssf"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyssf"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyssf"].ToString()), 2);
             reportdt.Rows[7]["dyyssl"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[1]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[2]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[3]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[4]["dyyssl"].ToString()) + Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["dyyssl"].ToString()), 2);
@@ -2816,7 +2816,7 @@ namespace sara.dd.ldsw.service
                 switch (dt.Rows[i]["f_jffs"].ToString())
                 {
                     case "现金":
-                        reportdt.Rows[0]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["je"].ToString())+ Eva.Library.Text.NumberTool.Parse(dt.Rows[i]["total"].ToString()),2);
+                        reportdt.Rows[0]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(reportdt.Rows[0]["je"].ToString()) + Eva.Library.Text.NumberTool.Parse(dt.Rows[i]["total"].ToString()), 2);
                         total += Eva.Library.Text.NumberTool.Parse(dt.Rows[i]["total"].ToString());
                         break;
                     case "支票":
@@ -4018,12 +4018,12 @@ namespace sara.dd.ldsw.service
                     string wherestr = GetWhereInValuesSql("k.f_khbh", khidlist, 900);
 
                     string sql = "select";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4053,%' and "+wherestr+") as jm, ";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4058,%' and "+wherestr+") as zb,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4063,%' and "+wherestr+") as ic,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4054,%' and "+wherestr+") as yc,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid != '2' and f_sblxid='100' and "+wherestr+") as dhjx,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid != '2' and ',' || k.f_khfzid || ',' like '%,4063,%' and "+wherestr+") as dhic";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4053,%' and " + wherestr + ") as jm, ";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4058,%' and " + wherestr + ") as zb,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4063,%' and " + wherestr + ") as ic,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4054,%' and " + wherestr + ") as yc,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid != '2' and f_sblxid='100' and " + wherestr + ") as dhjx,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid != '2' and ',' || k.f_khfzid || ',' like '%,4063,%' and " + wherestr + ") as dhic";
                     sql += " from dual";
                     DataTable dt = _iAccessData.Query(sql).Tables[0];
                     //居民新增赋值
@@ -4054,7 +4054,7 @@ namespace sara.dd.ldsw.service
                     reportdt.Rows[5][type + i] = dt.Rows[0]["dhjx"].ToString();
                     reportdt.Rows[6][type + i] = dt.Rows[0]["dhic"].ToString();
                 }
-                   
+
 
 
             }
@@ -4090,10 +4090,10 @@ namespace sara.dd.ldsw.service
                     string wherestr = GetWhereInValuesSql("k.f_khbh", khidlist, 900);
                     //居民新立户统计
                     string sql = "select";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4058,%' and "+ wherestr + ") as zb,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4063,%' and "+ wherestr + ") as ic,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4054,%' and "+ wherestr + ") as yc,";
-                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4053,%' and "+ wherestr + ") as jm ";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4058,%' and " + wherestr + ") as zb,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4063,%' and " + wherestr + ") as ic,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4054,%' and " + wherestr + ") as yc,";
+                    sql += "(select count(*) from tbl_ld_khb k where k.f_yslxid = '2' and ',' || k.f_khfzid || ',' like '%,4053,%' and " + wherestr + ") as jm ";
                     sql += "from dual";
                     DataTable dt = _iAccessData.Query(sql).Tables[0];
                     //居民新增赋值
@@ -4104,7 +4104,7 @@ namespace sara.dd.ldsw.service
 
                     //大用户新立户统计
 
-                    sql = "select f_qy,count(f_qy) as count from tbl_ld_khb k where  k.f_yslxid != '2' and k.f_qy is not null and "+ wherestr + " group by f_qy";
+                    sql = "select f_qy,count(f_qy) as count from tbl_ld_khb k where  k.f_yslxid != '2' and k.f_qy is not null and " + wherestr + " group by f_qy";
                     dhdt = _iAccessData.Query(sql).Tables[0];
                     reportdt.Rows[5][type + i] = "0";
                     reportdt.Rows[6][type + i] = "0";
@@ -4148,7 +4148,7 @@ namespace sara.dd.ldsw.service
                     reportdt.Rows[13][type + i] = "0";
                     reportdt.Rows[14][type + i] = "0";
                 }
-                
+
 
                 for (int k = 0; k < dhdt.Rows.Count; k++)
                 {
@@ -4380,7 +4380,7 @@ namespace sara.dd.ldsw.service
                 sql += "     (select sum(f_sf)                                                         ";
                 sql += "        from tbl_ld_ickss                                                      ";
                 sql += "       where f_yslxid = '2'                                                    ";
-                sql += "         and f_xiekrq  " + czsjwhere+ ") as sssf,";
+                sql += "         and f_xiekrq  " + czsjwhere + ") as sssf,";
                 sql += "     (select sum(f_pwf)                                                        ";
                 sql += "        from tbl_ld_ickss                                                      ";
                 sql += "       where f_yslxid = '2'                                                    ";
@@ -4621,7 +4621,7 @@ namespace sara.dd.ldsw.service
                     switch (dhysicdt.Rows[a]["f_qy"].ToString())
                     {
                         case "A":
-                            reportdt.Rows[5]["yssf" + i] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["yssf" + i].ToString()) +Eva.Library.Text.NumberTool.Parse(dhysicdt.Rows[a]["yssf"].ToString())),2);
+                            reportdt.Rows[5]["yssf" + i] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["yssf" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(dhysicdt.Rows[a]["yssf"].ToString())), 2);
                             reportdt.Rows[5]["yspwf" + i] = Eva.Library.Text.NumberTool.GetNumberByLength((Eva.Library.Text.NumberTool.Parse(reportdt.Rows[5]["yspwf" + i].ToString()) + Eva.Library.Text.NumberTool.Parse(dhysicdt.Rows[a]["yspwf"].ToString())), 2);
                             break;
                         case "B":
@@ -5725,7 +5725,7 @@ namespace sara.dd.ldsw.service
         /// <param name="userid"></param>
         /// <param name="_iAccessData"></param>
         /// <returns></returns>
-        private DataTable Get08110001(string userid, DateTime zbsj,string khfzid, Eva.Library.Data.AccessData.IAccessData _iAccessData)
+        private DataTable Get08110001(string userid, DateTime zbsj, string khfzid, Eva.Library.Data.AccessData.IAccessData _iAccessData)
         {
 
             string sql = "";
@@ -5786,7 +5786,7 @@ namespace sara.dd.ldsw.service
 
 
 
-            if ((","+khfzid+",").IndexOf(",4063,") != -1)
+            if (("," + khfzid + ",").IndexOf(",4063,") != -1)
             {
                 sql += "         union all ";
                 sql += "         select f_sfjl, ";
@@ -6102,12 +6102,12 @@ namespace sara.dd.ldsw.service
             double d_dj_sfpwf = d_dj_sf + d_dj_pwf;
 
             string dj_sfpwf = Eva.Library.Text.NumberTool.GetNumberByLength(d_dj_sfpwf, 2);
-            if(dj_sfpwf == "5.55")
+            if (dj_sfpwf == "5.55")
             {
                 dj_sfpwf = dj_sfpwf + "_" + d_dj_sf;
             }
             DataRow[] drs = dt_target.Select("sj = '" + dj_sfpwf + "'");
-            if (drs.Length > 0 )
+            if (drs.Length > 0)
             {
                 double dd_sf = Eva.Library.Text.NumberTool.Parse(drs[0]["sf"].ToString());
                 double dd_sl = Eva.Library.Text.NumberTool.Parse(drs[0]["sl"].ToString());
@@ -6595,7 +6595,7 @@ namespace sara.dd.ldsw.service
                 {
                     sara.dd.ldsw.model.tbl_ld_report m = modelist[0];
                     DataTable dt = null;
-                    if(m.f_content != null && m.f_content != "" && m.f_content != "[]")
+                    if (m.f_content != null && m.f_content != "" && m.f_content != "[]")
                     {
                         switch (m.f_bblxid)
                         {
@@ -6767,8 +6767,8 @@ namespace sara.dd.ldsw.service
                                 dr0011[0] = m.f_zbr;
                                 dr0011[1] = "审核人:";
                                 dr0011[3] = "审定人:";
-                                dr0011[6] ="报表统计日期：" + (DateTime.Parse(m.f_zbsj.ToString())).ToString("yyyy-MM-dd");
-                                dt.Rows.Add(dr0011);    
+                                dr0011[6] = "报表统计日期：" + (DateTime.Parse(m.f_zbsj.ToString())).ToString("yyyy-MM-dd");
+                                dt.Rows.Add(dr0011);
                                 file = tt.Report_yfxsqktjb(dt);
                                 resultDic["result"] = "true";
                                 resultDic["message"] = file;
@@ -6777,7 +6777,7 @@ namespace sara.dd.ldsw.service
                                 dt = Eva.Library.Format.FormatEntityTool.FormatJsonToDataTable(m.f_content);
                                 DataRow dr0012 = null;
                                 dr0012 = dt.NewRow();
-                                dr0012[0] = "制表人:"+m.f_zbr;
+                                dr0012[0] = "制表人:" + m.f_zbr;
                                 dr0012[3] = "审核人:";
                                 dr0012[6] = "审定人:";
                                 dr0012[9] = "报表统计日期：" + (DateTime.Parse(m.f_zbsj.ToString())).ToString("yyyy-MM-dd");
@@ -6859,10 +6859,12 @@ namespace sara.dd.ldsw.service
 
         //自动报表引导
         [WebMethod]
-        public string autoReport(string userid,DateTime zbsj, string reporttype,string reporttypeid)
+        public string autoReport(string userid, DateTime zbsj, string reporttype, string reporttypeid)
         {
+            //获取月底时间
             try
             {
+                zbsj = zbsj.AddDays(-1);
                 _iAccessData = sara.dd.ldsw.commonclass.commonclass.CreateIAccessData();
                 DataTable dt = new DataTable();
                 switch (reporttype)
@@ -6928,14 +6930,14 @@ namespace sara.dd.ldsw.service
 
 
         //报表数据自动生成
-        
-        public void reportdbCreate(DataTable dt,string userid,DateTime zbsj,string reporttype,string reporttypeid)
+
+        public void reportdbCreate(DataTable dt, string userid, DateTime zbsj, string reporttype, string reporttypeid)
         {
             try
             {
                 //获取制表人详情
                 _iAccessData = sara.dd.ldsw.commonclass.commonclass.CreateIAccessData();
-                string sql = "select username,t.u_organid as organid,(select o_fullname from t_organ where o_id=t.u_organid) as organ from (select U_CODE as username,U_ORGANID FROM t_user where U_ID='"+userid+"') t";
+                string sql = "select username,t.u_organid as organid,(select o_fullname from t_organ where o_id=t.u_organid) as organ from (select U_CODE as username,U_ORGANID FROM t_user where U_ID='" + userid + "') t";
                 DataTable userdt = _iAccessData.Query(sql).Tables[0];
                 if (userdt.Rows.Count == 1)
                 {
@@ -6953,7 +6955,7 @@ namespace sara.dd.ldsw.service
                     model.sys_delflag = "0";
                     model.f_value1 = organid;
                     model.f_value2 = organ;
-                    model.f_bbmc = "新建"+organ+reporttype+"_"+Eva.Library.Text.NumberTool.GetNoRepeatNumber();
+                    model.f_bbmc = "新建" + organ + reporttype + "_" + Eva.Library.Text.NumberTool.GetNoRepeatNumber();
                     model.f_bblx = reporttype;
                     model.f_bblxid = reporttypeid;
                     model.f_zbr = username;
@@ -6971,7 +6973,7 @@ namespace sara.dd.ldsw.service
                 }
 
 
-                
+
 
 
 
@@ -6983,7 +6985,7 @@ namespace sara.dd.ldsw.service
             {
                 throw ex;
             }
-           
+
         }
 
         /**
@@ -6994,13 +6996,13 @@ namespace sara.dd.ldsw.service
      * @param num         数量
      * @return where in语句
      */
-    String GetWhereInValuesSql(String column, List<String> values, int num)
+        String GetWhereInValuesSql(String column, List<String> values, int num)
         {
             // sql语句
             String sql = "(";
             // 值的个数
             int valueSize = values.Count();
-            
+
             // 批次数
             int batchSize = valueSize / num + (valueSize % num == 0 ? 0 : 1);
             for (int i = 0; i < batchSize; i++)

@@ -1262,7 +1262,7 @@ namespace sara.dd.ldsw.service
             try
             {
                 object[] args = { f_khbh };
-                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://ewater.actionlive.cn/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
+                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://ewater.actionlive.cn/sara.dd.actionwx.ld/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
 
                 resultDic["result"] = "true";
                 resultDic["message"] = result;
@@ -1342,7 +1342,7 @@ namespace sara.dd.ldsw.service
                     if (gridselectids != null && gridselectids.Length > 0)
                     {
                         //存在勾选，只对勾选项用户发送短信息
-                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("sys_id in (" + gridselectids.Replace('^', ',') + ")", "", "f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
+                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("sys_id in (" + gridselectids.Replace('^', ',') + ")", "", "f_khbh,f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
                         //循环发送信息
                         for (int i = 0; i < khmodellist.Count; i++)
                         {
@@ -1353,7 +1353,7 @@ namespace sara.dd.ldsw.service
                             {
                                 Thread.Sleep(10);
                                 //存在电话发送短信
-                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh, khmodel.f_dz, khmodel.f_ljqf);
+                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh,khmodel.f_khbh, khmodel.f_dz, khmodel.f_ljqf);
                                 sendcount = i.ToString();
 
                             }
@@ -1370,7 +1370,7 @@ namespace sara.dd.ldsw.service
                     {
                         //不存在勾选项，按照wherestirng查询信息获取用户电话
 
-                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList(wherestring, "", "f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
+                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList(wherestring, "", "f_khbh,f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
                         //循环发送信息
                         for (int i = 0; i < khmodellist.Count; i++)
                         {
@@ -1380,14 +1380,13 @@ namespace sara.dd.ldsw.service
                             if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
                             {
                                 //存在电话发送短信
-                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh, khmodel.f_dz, khmodel.f_ljqf);
-                                sendcount = i.ToString();
+                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh,khmodel.f_khbh, khmodel.f_dz, khmodel.f_ljqf);
+                            sendcount = i.ToString();
                             }
                             else
                             {
                                 //没有电话跳到下一位
-                                sendcount = i.ToString();
-
+                            sendcount = i.ToString();
                             }
                         }
                         sendcount = khmodellist.Count.ToString();
@@ -1411,7 +1410,31 @@ namespace sara.dd.ldsw.service
             }
 
         }
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void MultiMessage()
+        {
+            sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
+            List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("length(f_dh)=11 and f_dh like '1%'", "", "f_dh", "", "", null);
+            //List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("f_dh='13920294833'", "", "f_dh", "", "", null);
 
+            List<string> phoneNumbers = new List<string>();
+            //循环发送信息
+            for (int i = 0; i < khmodellist.Count; i++)
+            {
+                sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
+                //判断客户是否存在电话
+                if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
+                {
+                    //存在电话放入数组
+                    phoneNumbers.Add(khmodel.f_dh);
+                    
+                }
+
+            }
+
+            sara.dd.ldsw.commonclass.duanxinclass.sendMessage(phoneNumbers);
+        }
 
     }
 }

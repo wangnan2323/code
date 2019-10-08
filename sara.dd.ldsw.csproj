@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -485,7 +486,6 @@
     <Content Include="service\service_tbl_ld_yhb.asmx" />
     <Content Include="service\service_tbl_notice.asmx" />
     <Content Include="service\service_tbl_resource.asmx" />
-    <Content Include="service\service_tbl_spgl.asmx" />
     <Content Include="service\service_tbl_task.asmx" />
     <Content Include="ui\commonselectuser\commonselectuser_part.css" />
     <Content Include="ui\commonselectuser\commonselectuser_part.html" />
@@ -1554,10 +1554,6 @@
     </Compile>
     <Compile Include="service\service_tbl_resource.asmx.cs">
       <DependentUpon>service_tbl_resource.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="service\service_tbl_spgl.asmx.cs">
-      <DependentUpon>service_tbl_spgl.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="service\service_tbl_task.asmx.cs">

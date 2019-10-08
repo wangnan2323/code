@@ -4428,7 +4428,7 @@ var tbl_ld_jfb_list_Obj = (function ()
                                     {
                                         if ( that._pr_isadmin != "1")
                                         {
-                                            if ( row.f_lyid != '08080007' && row.f_lyid != '08080008' )
+                                            if (row.f_lyid != '08080008')
                                             {
                                                 return [
                                                     '<a class="rollback ml10" href="javascript:void(0)" title="回滚">',

@@ -434,6 +434,7 @@ namespace sara.dd.ldsw.service
             resultDic["message"] = "";
             Eva.Library.Data.AccessDataTrans.IAccessDataTrans t = null;
             string sql = "";
+            string khbhids = "";
             try
             {
                 IDictionary<string, string> clientInfoDic = Eva.Library.Format.FormatEntityTool.FormatJsonToDic(clientInf);
@@ -494,10 +495,12 @@ namespace sara.dd.ldsw.service
                         double hjsf = 0.0;
                         for (int k = 0; k < drs.Length; k++)
                         {
+                            
                             hjsf += Eva.Library.Text.NumberTool.Parse(drs[k]["f_bqje"].ToString());
                         }
                         if (drs.Length > 0 && hjsf>0)
                         {
+                                khbhids += "'"+ drs[0]["f_khbh"] + "',";
                             sumsf += hjsf;
                             for (int j = 0; j < v_nrarr.Length; j++)
                             {
@@ -577,7 +580,17 @@ namespace sara.dd.ldsw.service
 
                     bool result = sara.dd.ldsw.commonclass.zipclass.Zip(zippath, zipname);
                     System.IO.Directory.Delete(zippath, true);
-                    
+
+                    khbhids = khbhids.TrimEnd(',');
+                    //更新邮储划扣标志
+                    if (khbhids.Length > 0)
+                    {
+                        string updatesql = "update TBL_LD_KHB set F_VALUE5='1' where SYS_ID in ("+ khbhids + ")";
+                        t.ExecuteSql(Eva.Library.Format.FormatTextTool.FormatSqlStrWidthIn1000(updatesql));
+                    }
+
+                    t.getTrans().commit();
+
                     //返回文件名
                     resultDic["result"] = "true";
                     resultDic["message"] = Eva.Library.Configuration.ConfigurationManager.AppSettings["ExportYCHKRootPath"] + filename + ".zip";
@@ -893,6 +906,9 @@ namespace sara.dd.ldsw.service
                         t.BatchUpdate("tbl_ld_khb", "sys_id", result2);
                         khlist = new List<ldsw.model.tbl_ld_khb>();
                     }
+
+                    string updatesql = "update TBL_LD_KHB set F_VALUE5='' where F_VALUE5='1'";
+                    t.ExecuteSql(updatesql);
 
                     sara.dd.ldsw.commonclass.FileOperation.writeFile(Eva.Library.Global.AppRootPath + "ychk" + model.sys_id + ".txt", maxtime.ToString() + "/" + maxtime.ToString());
                     t.getTrans().commit();

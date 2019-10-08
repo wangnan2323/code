@@ -1454,19 +1454,19 @@ namespace sara.dd.ldsw.commonclass
                 case "CB":
                     {
                         #region 抄表
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_cbiao')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_cbiao'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_cbiao')";
+                        sqlString += " where f_tablename  = 'tbl_ld_cbiao'";
                       
-                        //if (t == null)
-                        //{
-                        //     ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}    
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_cbiao'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_cbiao'";
 
                         object o = null;
                         if (t == null)
@@ -1509,20 +1509,20 @@ namespace sara.dd.ldsw.commonclass
                 case "IC":
                     {
                         #region IC 卡销售
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ickss')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_ickss'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ickss')";
+                        sqlString += " where f_tablename  = 'tbl_ld_ickss'";
                    
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ickss'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ickss'";
 
                         object o = null;
                         if (t == null)
@@ -1565,22 +1565,22 @@ namespace sara.dd.ldsw.commonclass
                 case "HB":
                     {
                         #region 换表补发
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ichbbk')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_ichbbk'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ichbbk')";
+                        sqlString += " where f_tablename  = 'tbl_ld_ichbbk'";
                     
                     
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ichbbk'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ichbbk'";
 
                         object o = null;
                         if (t == null)
@@ -1624,21 +1624,21 @@ namespace sara.dd.ldsw.commonclass
                 case "JF":
                     {
                         #region 缴费
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_jfb')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_jfb'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_jfb')";
+                        sqlString += " where f_tablename  = 'tbl_ld_jfb'";
                       
                     
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_jfb'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_jfb'";
 
                         object o = null;
                         if (t == null)
@@ -1680,22 +1680,22 @@ namespace sara.dd.ldsw.commonclass
                 case "PG":
                     {
                         #region 算费
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_pgb')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_pgb'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_pgb')";
+                        sqlString += " where f_tablename  = 'tbl_ld_pgb'";
           
                       
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_pgb'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_pgb'";
 
                         object o = null;
                         if (t == null)
@@ -1737,20 +1737,20 @@ namespace sara.dd.ldsw.commonclass
                 case "JM":
                     {
                         #region 减免
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_jmb')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_jmb'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_jmb')";
+                        sqlString += " where f_tablename  = 'tbl_ld_jmb'";
                        
                    
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_jmb'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_jmb'";
 
                         object o = null;
                         if (t == null)
@@ -1792,20 +1792,20 @@ namespace sara.dd.ldsw.commonclass
                 case "XJ":
                     {
                         #region IC 卡销售
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ickxj')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_ickxj'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ickxj')";
+                        sqlString += " where f_tablename  = 'tbl_ld_ickxj'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ickxj'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ickxj'";
 
                         object o = null;
                         if (t == null)
@@ -1848,20 +1848,20 @@ namespace sara.dd.ldsw.commonclass
                 case "LH":
                     {
                         #region 批量立户
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_pllhlb')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_pllhlb'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_pllhlb')";
+                        sqlString += " where f_tablename  = 'tbl_ld_pllhlb'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_pllhlb'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_pllhlb'";
                         object o = null;
                         if (t == null)
                         {
@@ -1901,20 +1901,20 @@ namespace sara.dd.ldsw.commonclass
                 case "GHSB":
                     {
                         #region 更换水表
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ghsb')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_ghsb'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ghsb')";
+                        sqlString += " where f_tablename  = 'tbl_ld_ghsb'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ghsb'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ghsb'";
 
                         object o = null;
                         if (t == null)
@@ -1957,20 +1957,20 @@ namespace sara.dd.ldsw.commonclass
                 case "XZSB":
                     {
                         #region 新增水表
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_xzsb')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_xzsb'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_xzsb')";
+                        sqlString += " where f_tablename  = 'tbl_ld_xzsb'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_xzsb'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_xzsb'";
 
                         object o = null;
                         if (t == null)
@@ -2013,20 +2013,20 @@ namespace sara.dd.ldsw.commonclass
                 case "DHLH":
                     {
                         #region 大客户立户
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_dyhlh')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_dyhlh'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_dyhlh')";
+                        sqlString += " where f_tablename  = 'tbl_ld_dyhlh'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_dyhlh'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_dyhlh'";
 
                         object o = null;
                         if (t == null)
@@ -2069,20 +2069,20 @@ namespace sara.dd.ldsw.commonclass
                 case "XHBT":
                     {
                         #region 销户报停
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_xhhbt')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_xhhbt'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_xhhbt')";
+                        sqlString += " where f_tablename  = 'tbl_ld_xhhbt'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_xhhbt'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_xhhbt'";
 
                         object o = null;
                         if (t == null)
@@ -2125,20 +2125,20 @@ namespace sara.dd.ldsw.commonclass
                 case "QFTS":
                     {
                         #region 欠费停水
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_qfts')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_qfts'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_qfts')";
+                        sqlString += " where f_tablename  = 'tbl_ld_qfts'";
 
 
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_qfts'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_qfts'";
 
                         object o = null;
                         if (t == null)
@@ -2181,18 +2181,18 @@ namespace sara.dd.ldsw.commonclass
                 case "XGSBDS":
                     {
                         #region 修改水表底数
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_xgsbds')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_xgsbds'";
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_xgsbds'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_xgsbds')";
+                        sqlString += " where f_tablename  = 'tbl_ld_xgsbds'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_xgsbds'";
                         object o = null;
                         if (t == null)
                         {
@@ -2230,18 +2230,18 @@ namespace sara.dd.ldsw.commonclass
                 case "YCBGL":
                     {
                         #region 远传表管理
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ycbgl')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_ycbgl'";
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ycbgl'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_ycbgl')";
+                        sqlString += " where f_tablename  = 'tbl_ld_ycbgl'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_ycbgl'";
                         object o = null;
                         if (t == null)
                         {
@@ -2279,18 +2279,18 @@ namespace sara.dd.ldsw.commonclass
                 case "DX":
                     {
                         #region 短信催收
-                        //string sqlString = "update tbl_num set f_tablesys_id = ";
-                        //sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_dxcs')";
-                        //sqlString += " where f_tablename  = 'tbl_ld_dxcs'";
-                        //if (t == null)
-                        //{
-                        //    ia.ExecuteSql(sqlString);
-                        //}
-                        //else
-                        //{
-                        //    t.ExecuteSql(sqlString);
-                        //}
-                        string sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_dxcs'";
+                        string sqlString = "update tbl_num set f_tablesys_id = ";
+                        sqlString += " (select to_number(f_tablesys_id)+1 from tbl_num where f_tablename  = 'tbl_ld_dxcs')";
+                        sqlString += " where f_tablename  = 'tbl_ld_dxcs'";
+                        if (t == null)
+                        {
+                            ia.ExecuteSql(sqlString);
+                        }
+                        else
+                        {
+                            t.ExecuteSql(sqlString);
+                        }
+                        sqlString = "select f_tablesys_id from tbl_num where f_tablename  = 'tbl_ld_dxcs'";
                         object o = null;
                         if (t == null)
                         {

@@ -2817,7 +2817,7 @@ namespace sara.dd.ldsw.service
                     #region 更新微信余额
                     double new_wxye = Eva.Library.Text.NumberTool.Parse(f_wxye) - Eva.Library.Text.NumberTool.Parse(jfmodel.f_shys);
                     object[] args = { Eva.Library.Text.NumberTool.GetNumberByLength(new_wxye,2),model.f_khbh };
-                    wxresult = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://ewater.actionlive.cn/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "setWeixinyue", args).ToString();
+                    wxresult = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://ewater.actionlive.cn/sara.dd.actionwx.ld/service/service_tbl_wx_khb.asmx", "setWeixinyue", args).ToString();
 
                     #endregion
 
