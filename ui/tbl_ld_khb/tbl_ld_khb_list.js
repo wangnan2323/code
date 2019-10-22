@@ -18,8 +18,8 @@ var tbl_ld_khb_list_Obj = (function ()
     //                                      私有属性 
     //=================================================================================
 
-    var _serviceUrl = '//longda.actiontj.cn/sara.dd.ldsw/service/service_tbl_ld_khb.asmx/',
-                _servicecommonUrl = '//longda.actiontj.cn/sara.dd.ldsw/service/service_common.asmx/',
+    var _serviceUrl = '//127.0.0.1/sara.dd.ldsw/service/service_tbl_ld_khb.asmx/',
+    _servicecommonUrl = '//127.0.0.1/sara.dd.ldsw/service/service_common.asmx/',
     //Grid控件的分页参数，设置为空即可实现不分页
     _pageSize = '20',
         _isPage = true,
@@ -1529,6 +1529,69 @@ var tbl_ld_khb_list_Obj = (function ()
 
 
             }
+            columnsarray.push({
+                field: '', title: '开关阀',
+                align: 'center', valign: 'middle', sortable: false, clickToSelect: false,
+                formatter: function (value, row, index)
+                {
+                    if (row.f_ljqf != null && row.f_ljqf != "" && row.f_sblxid == "32")
+                    {
+                        return [
+                            '<a class="rw ml10" href="javascript:void(0)" title="开关阀">',
+                            '<i class="glyphicon glyphicon-wrench"></i>',
+                            '</a>'
+                        ].join('');
+                    }
+
+
+                },
+                events: {
+                    'click .rw': function (e, value, row, index)
+                    {
+                        var url = '../tbl_ld_rwb/tbl_ld_rwb_list.html';
+                        url += '?khbh=' + row.f_khbh;
+
+
+                        url += '&listtype=' + that._pr_listtype + '&uid=' + basePageObj._userInfoJson.sys_userid;
+
+
+                        commonObj.changeUrl(url, 'right-show');
+                    },
+
+                }
+                //field: '', title: "操作",
+                //align: 'center', valign: 'middle', sortable: false, clickToSelect: false,
+                //formatter: function (value, row, index)
+                //{
+                //    switch (that._pr_listtype)
+                //    {
+                //        case "1":
+                //            return [
+                //            '<a class="edit ml10" href=" " title="编辑">',
+                //            '<i class="glyphicon glyphicon-edit"></i>',
+                //            '</ a>'
+                //            ].join('');
+                //            break;
+                //        case "2":
+                //            return [
+                //            '<a class="view ml10" href="javascript:void(0)" title="浏览">',
+                //            '<i class="glyphicon glyphicon-eye-open"></i>',
+                //            '</ a>'
+                //            ].join('');
+                //            break;
+                //    }
+                //},
+                //events: {
+                //    'click .view': function (e, value, row, index)
+                //    {
+                //        transToDetailPage(row.sys_id, '2');
+                //    },
+                //    'click .edit': function (e, value, row, index)
+                //    {
+                //        transToDetailPage(row.sys_id, '1');
+                //    }
+                //}
+            });
             columnsarray.push({
                 field: '', title: '操作',
                 align: 'center', valign: 'middle', sortable: false, clickToSelect: false,

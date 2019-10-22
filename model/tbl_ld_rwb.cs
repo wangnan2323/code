@@ -13,11 +13,11 @@ namespace sara.dd.ldsw.model
 {
     [Serializable]
     /// <summary>
-    /// 实体类tbl_ld_sbb 。(属性说明自动提取数据库字段的描述信息)
+    /// 实体类tbl_ld_rwb 。(属性说明自动提取数据库字段的描述信息)
     /// </summary>
-    public class tbl_ld_sbb
+    public class tbl_ld_rwb
     {
-    	public tbl_ld_sbb()
+    	public tbl_ld_rwb()
 		{}
 		#region Model
                 
@@ -65,77 +65,65 @@ namespace sara.dd.ldsw.model
                 
 		private string _f_value10;
                 
-		private string _f_sbbh;
-                
-		private string _f_ztsbh;
-                
-		private string _f_lxth;
-                
-		private string _f_sbfz;
-                
-		private string _f_sbfzid;
-                
-		private string _f_sbpp;
-                
-		private string _f_mph;
-                
-		private string _f_sbdz;
-                
 		private string _f_khbh;
                 
-		private string _f_rs;
+		private string _f_khbhid;
                 
-		private string _f_sbkj;
+		private string _f_yhbh;
                 
-		private string _f_sbkjid;
+		private string _f_yhbhid;
+                
+		private string _f_yhm;
+                
+		private string _f_dh;
+                
+		private string _f_ljqf;
+                
+		private string _f_dz;
+                
+		private string _f_khfz;
+                
+		private string _f_khfzid;
+                
+		private string _f_cbbh;
+                
+		private string _f_cbbhid;
+                
+		private string _f_cbmc;
+                
+		private string _f_sbbh;
+                
+		private string _f_sbbhid;
                 
 		private string _f_sblx;
                 
 		private string _f_sblxid;
                 
-		private string _f_jllx;
+		private string _f_rwid;
                 
-		private string _f_jllxid;
+		private string _f_rwmc;
                 
-		private string _f_cszm;
+		private string _f_sm;
                 
-		private string _f_bqzm;
+		private DateTime _f_yjzxsj;
                 
-		private string _f_sqzm;
+		private DateTime _f_sjzxsj;
                 
-		private string _f_sqsl;
-
-        private string _f_bqsl;
-
-        private string _f_ljgl;
+		private string _f_ml;
                 
-		private string _f_qsqpjsl;
-                
-		private string _f_qlqpjsl;
+		private string _f_mlid;
                 
 		private string _f_zt;
                 
 		private string _f_ztid;
                 
 		private string _f_bz;
-
-        private string _f_bjzt;
-
-        private string _f_bjztid;
-
-        private string _f_bjnr;
-
-        private string _f_nljgl;
                 
-        private DateTime _f_azrq;
                 
-        private string _f_qfzt;
-        private string _f_fj;
-        private string _f_synx;
-        /// <summary>
-        /// 主键
-        /// </summary>
-        public int sys_id
+		/// <summary>
+		/// 主键
+		/// </summary>
+		public int sys_id
 		{
 			get{return _sys_id;}
 			set{ _sys_id=value;}
@@ -331,78 +319,6 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 水表编号
-		/// </summary>
-		public string f_sbbh
-		{
-			get{return _f_sbbh;}
-			set{ _f_sbbh=value;}
-		}
-                
-		/// <summary>
-		/// 旧水表号
-		/// </summary>
-		public string f_ztsbh
-		{
-			get{return _f_ztsbh;}
-			set{ _f_ztsbh=value;}
-		}
-                
-		/// <summary>
-		/// 老系统号
-		/// </summary>
-		public string f_lxth
-		{
-			get{return _f_lxth;}
-			set{ _f_lxth=value;}
-		}
-                
-		/// <summary>
-		/// 水表分组
-		/// </summary>
-		public string f_sbfz
-		{
-			get{return _f_sbfz;}
-			set{ _f_sbfz=value;}
-		}
-                
-		/// <summary>
-		/// 水表分组id
-		/// </summary>
-		public string f_sbfzid
-		{
-			get{return _f_sbfzid;}
-			set{ _f_sbfzid=value;}
-		}
-                
-		/// <summary>
-		/// 水表品牌
-		/// </summary>
-		public string f_sbpp
-		{
-			get{return _f_sbpp;}
-			set{ _f_sbpp=value;}
-		}
-                
-		/// <summary>
-		/// 铭牌号
-		/// </summary>
-		public string f_mph
-		{
-			get{return _f_mph;}
-			set{ _f_mph=value;}
-		}
-                
-		/// <summary>
-		/// 水表地址
-		/// </summary>
-		public string f_sbdz
-		{
-			get{return _f_sbdz;}
-			set{ _f_sbdz=value;}
-		}
-                
-		/// <summary>
 		/// 客户编号
 		/// </summary>
 		public string f_khbh
@@ -412,30 +328,129 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 人数
+		/// 客户编号id
 		/// </summary>
-		public string f_rs
+		public string f_khbhid
 		{
-			get{return _f_rs;}
-			set{ _f_rs=value;}
+			get{return _f_khbhid;}
+			set{ _f_khbhid=value;}
 		}
                 
 		/// <summary>
-		/// 水表口径
+		/// 用户编号
 		/// </summary>
-		public string f_sbkj
+		public string f_yhbh
 		{
-			get{return _f_sbkj;}
-			set{ _f_sbkj=value;}
+			get{return _f_yhbh;}
+			set{ _f_yhbh=value;}
 		}
                 
 		/// <summary>
-		/// 水表口径id
+		/// 用户编号id
 		/// </summary>
-		public string f_sbkjid
+		public string f_yhbhid
 		{
-			get{return _f_sbkjid;}
-			set{ _f_sbkjid=value;}
+			get{return _f_yhbhid;}
+			set{ _f_yhbhid=value;}
+		}
+                
+		/// <summary>
+		/// 用户名
+		/// </summary>
+		public string f_yhm
+		{
+			get{return _f_yhm;}
+			set{ _f_yhm=value;}
+		}
+                
+		/// <summary>
+		/// 电话
+		/// </summary>
+		public string f_dh
+		{
+			get{return _f_dh;}
+			set{ _f_dh=value;}
+		}
+                
+		/// <summary>
+		/// 累计欠费
+		/// </summary>
+		public string f_ljqf
+		{
+			get{return _f_ljqf;}
+			set{ _f_ljqf=value;}
+		}
+                
+		/// <summary>
+		/// 地址
+		/// </summary>
+		public string f_dz
+		{
+			get{return _f_dz;}
+			set{ _f_dz=value;}
+		}
+                
+		/// <summary>
+		/// 客户分组
+		/// </summary>
+		public string f_khfz
+		{
+			get{return _f_khfz;}
+			set{ _f_khfz=value;}
+		}
+                
+		/// <summary>
+		/// 客户分组id
+		/// </summary>
+		public string f_khfzid
+		{
+			get{return _f_khfzid;}
+			set{ _f_khfzid=value;}
+		}
+                
+		/// <summary>
+		/// 抄本编号
+		/// </summary>
+		public string f_cbbh
+		{
+			get{return _f_cbbh;}
+			set{ _f_cbbh=value;}
+		}
+                
+		/// <summary>
+		/// 抄本编号id
+		/// </summary>
+		public string f_cbbhid
+		{
+			get{return _f_cbbhid;}
+			set{ _f_cbbhid=value;}
+		}
+                
+		/// <summary>
+		/// 抄本名称
+		/// </summary>
+		public string f_cbmc
+		{
+			get{return _f_cbmc;}
+			set{ _f_cbmc=value;}
+		}
+                
+		/// <summary>
+		/// 水表编号
+		/// </summary>
+		public string f_sbbh
+		{
+			get{return _f_sbbh;}
+			set{ _f_sbbh=value;}
+		}
+                
+		/// <summary>
+		/// 水表编号id
+		/// </summary>
+		public string f_sbbhid
+		{
+			get{return _f_sbbhid;}
+			set{ _f_sbbhid=value;}
 		}
                 
 		/// <summary>
@@ -457,92 +472,66 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 计量类型
+		/// 水表数据中心任务sys_id
 		/// </summary>
-		public string f_jllx
+		public string f_rwid
 		{
-			get{return _f_jllx;}
-			set{ _f_jllx=value;}
+			get{return _f_rwid;}
+			set{ _f_rwid=value;}
 		}
                 
 		/// <summary>
-		/// 计量类型id
+		/// 任务名称
 		/// </summary>
-		public string f_jllxid
+		public string f_rwmc
 		{
-			get{return _f_jllxid;}
-			set{ _f_jllxid=value;}
+			get{return _f_rwmc;}
+			set{ _f_rwmc=value;}
 		}
                 
 		/// <summary>
-		/// 初始止码
+		/// 说明
 		/// </summary>
-		public string f_cszm
+		public string f_sm
 		{
-			get{return _f_cszm;}
-			set{ _f_cszm=value;}
+			get{return _f_sm;}
+			set{ _f_sm=value;}
 		}
                 
 		/// <summary>
-		/// 本期止码
+		/// 预计执行时间
 		/// </summary>
-		public string f_bqzm
+		public DateTime f_yjzxsj
 		{
-			get{return _f_bqzm;}
-			set{ _f_bqzm=value;}
+			get{return _f_yjzxsj;}
+			set{ _f_yjzxsj=value;}
 		}
                 
 		/// <summary>
-		/// 止期止码
+		/// 实际执行时间
 		/// </summary>
-		public string f_sqzm
+		public DateTime f_sjzxsj
 		{
-			get{return _f_sqzm;}
-			set{ _f_sqzm=value;}
+			get{return _f_sjzxsj;}
+			set{ _f_sjzxsj=value;}
 		}
                 
 		/// <summary>
-		/// 上期水量
+		/// 命令
 		/// </summary>
-		public string f_sqsl
+		public string f_ml
 		{
-			get{return _f_sqsl;}
-			set{ _f_sqsl=value;}
-		}
-        /// <summary>
-        /// 本期水量
-        /// </summary>
-        public string f_bqsl
-        {
-            get { return _f_bqsl; }
-            set { _f_bqsl = value; }
-        }
-
-        /// <summary>
-        /// 累计购量
-        /// </summary>
-        public string f_ljgl
-		{
-			get{return _f_ljgl;}
-			set{ _f_ljgl=value;}
+			get{return _f_ml;}
+			set{ _f_ml=value;}
 		}
                 
 		/// <summary>
-		/// 前三月平均水量
+		/// 命令id
 		/// </summary>
-		public string f_qsqpjsl
+		public string f_mlid
 		{
-			get{return _f_qsqpjsl;}
-			set{ _f_qsqpjsl=value;}
-		}
-                
-		/// <summary>
-		/// 前六月平均水量
-		/// </summary>
-		public string f_qlqpjsl
-		{
-			get{return _f_qlqpjsl;}
-			set{ _f_qlqpjsl=value;}
+			get{return _f_mlid;}
+			set{ _f_mlid=value;}
 		}
                 
 		/// <summary>
@@ -571,74 +560,8 @@ namespace sara.dd.ldsw.model
 			get{return _f_bz;}
 			set{ _f_bz=value;}
 		}
-
-        /// <summary>
-        /// 报警状态
-        /// </summary>
-        public string f_bjzt
-        {
-            get { return _f_bjzt; }
-            set { _f_bjzt = value; }
-        }
-
-        /// <summary>
-        /// 报警状态id
-        /// </summary>
-        public string f_bjztid
-        {
-            get { return _f_bjztid; }
-            set { _f_bjztid = value; }
-        }
-
-        /// <summary>
-        /// 报警内容
-        /// </summary>
-        public string f_bjnr
-        {
-            get { return _f_bjnr; }
-            set { _f_bjnr = value; }
-        }
-
-
-        public string f_nljgl
-		{
-			get{return _f_nljgl;}
-			set{ _f_nljgl=value;}
-		}
-        /// <summary>
-        /// 安装日期
-        /// </summary>
-        public DateTime f_azrq
-        {
-            get { return _f_azrq; }
-            set { _f_azrq = value; }
-        }
-        /// <summary>
-        /// 铅封状态
-        /// </summary>
-        public string f_qfzt
-        {
-            get { return _f_qfzt; }
-            set { _f_qfzt = value; }
-        }
-        /// <summary>
-        /// 附件
-        /// </summary>
-        public string f_fj
-        {
-            get { return _f_fj; }
-            set { _f_fj = value; }
-        }
-
-        /// <summary>
-        /// 使用年限
-        /// </summary>
-        public string f_synx
-        {
-            get { return _f_synx; }
-            set { _f_synx = value; }
-        }
-        #endregion Model
+                
+		#endregion Model
     }
 }
 

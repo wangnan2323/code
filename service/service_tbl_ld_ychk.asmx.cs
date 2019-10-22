@@ -545,8 +545,18 @@ namespace sara.dd.ldsw.service
 
                             if(exptextrowindex > 5000)
                             {
-                                //满5000导出文件
-                                string total = Eva.Library.Text.NumberTool.GetNumberByLength(sumsf, 2);
+
+                                    khbhids = khbhids.TrimEnd(',');
+                                    //更新邮储划扣标志
+                                    if (khbhids.Length > 0)
+                                    {
+                                        string updatesql = "update TBL_LD_KHB set F_VALUE5='1' where SYS_ID in (" + khbhids + ")";
+                                        updatesql = Eva.Library.Format.FormatTextTool.FormatSqlStrWidthIn1000(updatesql);
+                                        t.ExecuteSql(updatesql);
+                                    }
+                                    khbhids = "";
+                                    //满5000导出文件
+                                    string total = Eva.Library.Text.NumberTool.GetNumberByLength(sumsf, 2);
                                     if (total.IndexOf('.') == -1)
                                     {
                                     total = total + ".00";
@@ -586,7 +596,8 @@ namespace sara.dd.ldsw.service
                     if (khbhids.Length > 0)
                     {
                         string updatesql = "update TBL_LD_KHB set F_VALUE5='1' where SYS_ID in ("+ khbhids + ")";
-                        t.ExecuteSql(Eva.Library.Format.FormatTextTool.FormatSqlStrWidthIn1000(updatesql));
+                        updatesql = Eva.Library.Format.FormatTextTool.FormatSqlStrWidthIn1000(updatesql);
+                        t.ExecuteSql(updatesql);
                     }
 
                     t.getTrans().commit();

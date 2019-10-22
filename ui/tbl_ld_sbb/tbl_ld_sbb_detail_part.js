@@ -38,6 +38,8 @@ var tbl_ld_sbb_detail_Obj = (function () {
 
         codeServiceId += "0526^";
 
+        codeServiceId += "0822^";
+
 
         codeServiceId = codeServiceId.trimEnd('^');
         commonObj.getCodeServiceJson(codeServiceId, {
@@ -54,6 +56,8 @@ var tbl_ld_sbb_detail_Obj = (function () {
                     _baseCodeHashMap.put('codeservice_0525', resultArray['0525']);
 
                     _baseCodeHashMap.put('codeservice_0526', resultArray['0526']);
+
+                    _baseCodeHashMap.put('codeservice_0822', resultArray['0822']);
 
                     var sqlJson = {
                         "tbl_ldbm_sbfz": "select sys_id as id, f_fzmc as text,decode(f_ztid,'0','false','true') as disabled from tbl_ldbm_sbfz where sys_delflag='0'  order by sys_id",
@@ -105,6 +109,8 @@ var tbl_ld_sbb_detail_Obj = (function () {
 
             var codeService_0526 = _baseCodeHashMap.get('codeservice_0526');
 
+            var codeService_0822 = _baseCodeHashMap.get('codeservice_0822');
+
             controlObj.multidropdownlistinit('detail_f_sbfz_tbl_ld_sbb_detail', codeService_0522, f_sbfz_onchange);
 
             controlObj.singledropdownlistinit('detail_f_sbkj_tbl_ld_sbb_detail', codeService_0523, f_sbkj_onchange);
@@ -114,6 +120,8 @@ var tbl_ld_sbb_detail_Obj = (function () {
             controlObj.singledropdownlistinit('detail_f_jllx_tbl_ld_sbb_detail', codeService_0525, f_jllx_onchange);
 
             controlObj.singledropdownlistinit('detail_f_zt_tbl_ld_sbb_detail', codeService_0526, f_zt_onchange);
+            
+            controlObj.singledropdownlistinit('detail_f_bjzt_tbl_ld_sbb_detail', codeService_0822, '');
 
             controlObj.datetimeinit('detail_f_azrq_tbl_ld_sbb_detail_date', 'detail_f_azrq_tbl_ld_sbb_detail_date');
             controlObj.toggleinit('detail_f_qfzt_tbl_ld_sbb_detail');
@@ -180,6 +188,9 @@ var tbl_ld_sbb_detail_Obj = (function () {
 
             controlObj.textdisable('detail_f_bqsl_tbl_ld_sbb_detail', isDisable);
             controlObj.singledropdownlistdisable('detail_f_zt_tbl_ld_sbb_detail', isDisable);
+
+            controlObj.singledropdownlistdisable('detail_f_bjzt_tbl_ld_sbb_detail', isDisable);
+            controlObj.textdisable('detail_f_bjnr_tbl_ld_sbb_detail', isDisable);
 
             controlObj.textdisable('detail_f_bz_tbl_ld_sbb_detail', isDisable);
             controlObj.datetimedisable('detail_f_azrq_tbl_ld_sbb_detail_date', 'detail_f_azrq_tbl_ld_sbb_detail_date', isDisable);
@@ -277,6 +288,10 @@ var tbl_ld_sbb_detail_Obj = (function () {
             controlObj.text('detail_f_qlqpjsl_tbl_ld_sbb_detail', tbl_ld_sbb_detail.f_qlqpjsl);
 
             controlObj.singledropdownlistid('detail_f_zt_tbl_ld_sbb_detail', tbl_ld_sbb_detail.f_ztid);
+
+            controlObj.text('detail_f_bjnr_tbl_ld_sbb_detail', tbl_ld_sbb_detail.f_bjnr);
+
+            controlObj.singledropdownlistid('detail_f_bjzt_tbl_ld_sbb_detail', tbl_ld_sbb_detail.f_bjztid);
 
             controlObj.text('detail_f_bz_tbl_ld_sbb_detail', tbl_ld_sbb_detail.f_bz.returnStringRN());
             controlObj.datetime('detail_f_azrq_tbl_ld_sbb_detail_date', 'detail_f_azrq_tbl_ld_sbb_detail_date', tbl_ld_sbb_detail.f_azrq);
@@ -394,6 +409,11 @@ var tbl_ld_sbb_detail_Obj = (function () {
 
             tbl_ld_sbb_detail.f_zt = controlObj.singledropdownlist('detail_f_zt_tbl_ld_sbb_detail');
             tbl_ld_sbb_detail.f_ztid = controlObj.singledropdownlistid('detail_f_zt_tbl_ld_sbb_detail');
+
+            tbl_ld_sbb_detail.f_bjnr = controlObj.text('detail_f_bjnr_tbl_ld_sbb_detail');
+
+            tbl_ld_sbb_detail.f_bjzt = controlObj.singledropdownlist('detail_f_bjzt_tbl_ld_sbb_detail');
+            tbl_ld_sbb_detail.f_bjztid = controlObj.singledropdownlistid('detail_f_bjzt_tbl_ld_sbb_detail');
 
 
             tbl_ld_sbb_detail.f_bz = controlObj.text('detail_f_bz_tbl_ld_sbb_detail');
@@ -644,6 +664,21 @@ var tbl_ld_sbb_detail_Obj = (function () {
                 errorMessageHansMap.put('detail_f_zt_tbl_ld_sbb_detail', '长度不能小于<a style="color:red">1</a>个字');
             }
 
+            if (tbl_ld_sbb_detail.f_bjnr.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_bjnr_tbl_ld_sbb_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+
+            if (tbl_ld_sbb_detail.f_bjzt.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_bjzt_tbl_ld_sbb_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+
+            if (tbl_ld_sbb_detail.f_bjzt.length < 1)
+            {
+                errorMessageHansMap.put('detail_f_bjzt_tbl_ld_sbb_detail', '长度不能小于<a style="color:red">1</a>个字');
+            }
+
 
             if (tbl_ld_sbb_detail.f_bz.length > 4000) {
                 errorMessageHansMap.put('detail_f_bz_tbl_ld_sbb_detail', '长度不能超过<a style="color:red">4000</a>个字');
@@ -677,7 +712,7 @@ var tbl_ld_sbb_detail_Obj = (function () {
         getData = function (callbackFunction) {
             var whereClause = ' sys_id = \'' + that._pr_sys_id + '\'';
             var orderByString = '';
-            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_sbbh^f_ztsbh^f_lxth^f_sbfz^f_sbfzid^f_sbpp^f_mph^f_sbdz^f_rs^f_sbkj^f_sbkjid^f_sblx^f_sblxid^f_jllx^f_jllxid^f_cszm^f_bqzm^f_sqzm^f_sqsl^f_bqsl^f_ljgl^f_nljgl^f_qsqpjsl^f_qlqpjsl^f_zt^f_ztid^f_azrq^f_fj^f_qfzt^f_bz^sys_id';
+            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_sbbh^f_ztsbh^f_lxth^f_sbfz^f_sbfzid^f_sbpp^f_mph^f_sbdz^f_rs^f_sbkj^f_sbkjid^f_sblx^f_sblxid^f_jllx^f_jllxid^f_cszm^f_bqzm^f_sqzm^f_sqsl^f_bqsl^f_ljgl^f_nljgl^f_qsqpjsl^f_qlqpjsl^f_zt^f_ztid^f_azrq^f_fj^f_qfzt^f_bz^sys_id^f_bjzt^f_bjztid^f_bjnr';
             var pageSizeString = '';
             var pageIndexString = '';
             var data = {
@@ -708,7 +743,7 @@ var tbl_ld_sbb_detail_Obj = (function () {
         updateData = function (tbl_ld_sbb_detail, callbackFunction) {
 
             var d = new Date();
-            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_sbbh^f_ztsbh^f_lxth^f_sbfz^f_sbfzid^f_sbpp^f_mph^f_sbdz^f_rs^f_sbkj^f_sbkjid^f_sblx^f_sblxid^f_jllx^f_jllxid^f_cszm^f_bqzm^f_sqzm^f_sqsl^f_bqsl^f_ljgl^f_nljgl^f_qsqpjsl^f_qlqpjsl^f_zt^f_ztid^f_bz^f_azrq^f_fj^f_qfzt^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate';
+            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_sbbh^f_ztsbh^f_lxth^f_sbfz^f_sbfzid^f_sbpp^f_mph^f_sbdz^f_rs^f_sbkj^f_sbkjid^f_sblx^f_sblxid^f_jllx^f_jllxid^f_cszm^f_bqzm^f_sqzm^f_sqsl^f_bqsl^f_ljgl^f_nljgl^f_qsqpjsl^f_qlqpjsl^f_zt^f_ztid^f_bz^f_azrq^f_fj^f_qfzt^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_bjzt^f_bjztid^f_bjnr';
             var json = {
                 sys_id: that._pr_sys_id,
 
@@ -779,6 +814,12 @@ var tbl_ld_sbb_detail_Obj = (function () {
 
                 f_zt: tbl_ld_sbb_detail.f_zt,
                 f_ztid: tbl_ld_sbb_detail.f_ztid,
+
+
+                f_bjnr: tbl_ld_sbb_detail.f_bjnr,
+
+                f_bjzt: tbl_ld_sbb_detail.f_bjzt,
+                f_bjztid: tbl_ld_sbb_detail.f_bjztid,
 
                 f_bz: tbl_ld_sbb_detail.f_bz.formatStringRN(),
 

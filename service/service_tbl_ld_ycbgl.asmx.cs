@@ -36,6 +36,7 @@ namespace sara.dd.ldsw.service
         private sara.dd.ldsw.idal.Itbl_ld_ycbglzb _idal_tbl_ld_ycbglzb = new sara.dd.ldsw.dal.tbl_ld_ycbglzb();
         private sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
         private sara.dd.ldsw.idal.Itbl_ld_cbiao _idal_tbl_ld_cbiao = new sara.dd.ldsw.dal.tbl_ld_cbiao();
+        private sara.dd.ldsw.idal.Itbl_ld_sbb _idal_tbl_ld_sbb = new sara.dd.ldsw.dal.tbl_ld_sbb();
         private Eva.Library.Data.AccessData.IAccessData _iAccessData = null;
         private sara.dd.ldsw.reportclass.tbl_ld_ycbdc report_ycbdc = new sara.dd.ldsw.reportclass.tbl_ld_ycbdc();
 
@@ -521,9 +522,9 @@ namespace sara.dd.ldsw.service
                 string file = report_ycbdc.ReportExcel(dt, "f_khbh,f_yhm,f_dz,f_dh,f_sqzm,f_sbbh,a,b", "客户编号,用户名,地址,电话,上期止码,上期抄表时间,水表编号,本期止码,本期抄表时间");
                 //127.0.0.1/sara.dd.ldsw.file/files/fileuploadpath/远传表导出201811291104226881.csv
                 string filename = file.Substring(file.LastIndexOf('/') + 1);
-                string suffix = "."+filename.Split('.')[1];
+                string suffix = "." + filename.Split('.')[1];
                 //保存附件
-                string filesql = "INSERT INTO tbl_file_content VALUES (tbl_file_content_sequence.nextval,'"+model.f_bcfj+"','"+filename+"','"+filename+"','0','"+suffix+"',to_date('"+model.f_dcsj+"','yyyy-mm-dd hh24:mi:ss'),to_date('1900-01-01','yyyy-mm-dd'),'0')";
+                string filesql = "INSERT INTO tbl_file_content VALUES (tbl_file_content_sequence.nextval,'" + model.f_bcfj + "','" + filename + "','" + filename + "','0','" + suffix + "',to_date('" + model.f_dcsj + "','yyyy-mm-dd hh24:mi:ss'),to_date('1900-01-01','yyyy-mm-dd'),'0')";
                 _iAccessData.ExecuteSql(filesql);
                 resultDic["result"] = "true";
                 resultDic["message"] = file;
@@ -660,7 +661,7 @@ namespace sara.dd.ldsw.service
                 FileUpLoadRootPath = Eva.Library.Format.FormatTextTool.GetMapPath(FileUpLoadRootPath, HttpContext.Current.Server);
 
                 //获取附件名称
-                
+
                 string sqlString = "";
 
                 sqlString = "SELECT fileuploadname FROM tbl_file_content WHERE menuid='" + model.f_drwj + "'";
@@ -699,441 +700,441 @@ namespace sara.dd.ldsw.service
                             DataRow drzb = drs[i];
                             if (Eva.Library.Text.NumberTool.Parse(drzb[7].ToString()) > Eva.Library.Text.NumberTool.Parse(drzb[4].ToString()))
                             {
-                            DataRow[] kharray = khdt.Select("f_khbh='" + drzb[0].ToString().Replace("\t", "").PadLeft(10, '0') + "'");
-                            DataTable khtemp = this.ToDataTable(kharray);
-                            if (kharray.Length == 1)
-                            {
-
-                                DataRow khdr = kharray[0];
-                                if (Eva.Library.Text.NumberTool.Parse(drzb[4].ToString().Replace("\t", "")) == Eva.Library.Text.NumberTool.Parse(khdr["f_bqzm"].ToString()))
+                                DataRow[] kharray = khdt.Select("f_khbh='" + drzb[0].ToString().Replace("\t", "").PadLeft(10, '0') + "'");
+                                DataTable khtemp = this.ToDataTable(kharray);
+                                if (kharray.Length == 1)
                                 {
-                                    //保存客户编号用于
 
-                                    DataRow[] zbdr = zbdt.Select("f_khbh='" + drzb[0].ToString().Replace("\t", "").PadLeft(10, '0') + "'");
-                                    DataTable zbtemp = this.ToDataTable(zbdr);
-                                    List<sara.dd.ldsw.model.tbl_ld_ycbglzb> zbml = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_ycbglzb>(zbtemp);
-                                    //更新远传表子表
-                                    if (zbml.Count > 0)
+                                    DataRow khdr = kharray[0];
+                                    if (Eva.Library.Text.NumberTool.Parse(drzb[4].ToString().Replace("\t", "")) == Eva.Library.Text.NumberTool.Parse(khdr["f_bqzm"].ToString()))
                                     {
-                                        zbml[0].f_bqzm = drzb[7].ToString().Replace("\t", "");
-                                        zbml[0].f_cbsj = Convert.ToDateTime(drzb[8].ToString().Replace("\t", ""), dtFormat2);
-                                        ycbglzblist.Add(zbml[0]);
-                                    }
+                                        //保存客户编号用于
 
-
-
-                                    sara.dd.ldsw.model.tbl_ld_cbiao cbmodel = new model.tbl_ld_cbiao();
-
-                                    double bqsl = Eva.Library.Text.NumberTool.Parse(drzb[7].ToString().Replace("\t", "")) - Eva.Library.Text.NumberTool.Parse(drzb[4].ToString().Replace("\t", ""));
-
-                                    #region 计算水费
-                                    string sql = "select f_waterrent('" + khdr["sys_id"].ToString() + "'," + bqsl + ",'2') as sf from dual";
-                                    DataRow dr = _iAccessData.Query(sql).Tables[0].Rows[0];
-                                    int start = dr["sf"].ToString().IndexOf("|") + 1;
-                                    //预算费记录
-                                    cbmodel.f_sfjl = dr["sf"].ToString().Split('|')[1];
-                                    string sfstr = dr["sf"].ToString().Split('|')[0];
-                                    string sf = sfstr.Split('^')[0];
-                                    cbmodel.f_sf = sf;
-                                    string pwf = sfstr.Split('^')[1];
-                                    cbmodel.f_pwf = pwf;
-                                    double bqje = Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf);
-                                    cbmodel.f_bqje = Eva.Library.Text.NumberTool.GetNumberByLength(bqje, 2);
-                                    
-                                    
-                                    #endregion
-
-                                    #region 将客户基础信息放入抄表model
-                                    cbmodel.sys_id = int.Parse(_idal_tbl_ld_cbiao.GetMaxId(null));
-                                    cbmodel.sys_creatuserid = userInfDic["userid"].ToString();
-                                    cbmodel.sys_creatusername = userInfDic["username"].ToString();
-                                    cbmodel.sys_creatdate = currentTime;
-                                    cbmodel.sys_lastedituserid = userInfDic["userid"].ToString();
-                                    cbmodel.sys_lasteditusername = userInfDic["username"].ToString();
-                                    cbmodel.sys_lasteditdate = currentTime;
-                                    cbmodel.sys_deldate = blankTime;
-                                    cbmodel.sys_delflag = "0";
-                                    cbmodel.f_cb_cbbh = commonclass.commonclass.getBusinessNum("CB", "", null);
-                                    cbmodel.f_khbh = khdr["f_khbh"].ToString();
-                                    cbmodel.f_khbhid = khdr["sys_id"].ToString();
-                                    cbmodel.f_sqzm = drzb[4].ToString().Replace("\t", "");
-                                    cbmodel.f_bqzm = drzb[7].ToString().Replace("\t", "");
-                                    cbmodel.f_bqsl = Eva.Library.Text.NumberTool.GetNumberByLength(bqsl, 0);
-                                    cbmodel.f_sqsl = khdr["f_bqsl"].ToString();
-                                    cbmodel.f_cbyid = userInfDic["userid"].ToString();
-                                    cbmodel.f_cbyname = userInfDic["username"].ToString();
-                                    cbmodel.f_cbsj = currentTime;
-                                    cbmodel.f_bk = "正常";
-                                    cbmodel.f_bkid = "05430001";
-                                    cbmodel.f_zt = "已算费";
-                                    cbmodel.f_ztid = "2";
-                                    cbmodel.f_ly = "远传表自动计算";
-                                    cbmodel.f_lyid = "05450004";
-                                    cbmodel.f_sbbh = khdr["f_sbbh"].ToString();
-                                    cbmodel.f_sbbhid = khdr["f_sbbhid"].ToString();
-                                    cbmodel.f_sblx = khdr["f_sblx"].ToString();
-                                    cbmodel.f_sblxid = khdr["f_sblxid"].ToString();
-                                    cbmodel.f_yslx = khdr["f_yslx"].ToString();
-                                    cbmodel.f_yslxid = khdr["f_yslxid"].ToString();
-                                    cbmodel.f_lxtkhh = khdr["f_lxth"].ToString();
-                                    cbmodel.f_cbbh = khdr["f_cbbh"].ToString();
-                                    cbmodel.f_cbbhid = khdr["f_cbbhid"].ToString();
-                                    cbmodel.f_cbmc = khdr["f_cbmc"].ToString();
-                                    cbmodel.f_yhbh = khdr["f_yhbh"].ToString();
-                                    cbmodel.f_yhbhid = khdr["f_yhbhid"].ToString();
-                                    cbmodel.f_yhm = khdr["f_yhm"].ToString();
-                                    cbmodel.f_jfm = khdr["f_jfm"].ToString();
-                                    cbmodel.f_dh = khdr["f_dh"].ToString();
-                                    cbmodel.f_dz = khdr["f_dz"].ToString();
-                                    cbmodel.f_dy = khdr["f_dy"].ToString();
-                                    cbmodel.f_dyid = khdr["f_dyid"].ToString();
-                                    cbmodel.f_sc = khdr["f_sc"].ToString();
-                                    cbmodel.f_scid = khdr["f_scid"].ToString();
-                                    cbmodel.f_qy = khdr["f_qy"].ToString();
-                                    cbmodel.f_qyid = khdr["f_qyid"].ToString();
-                                    cbmodel.f_pq = khdr["f_pq"].ToString();
-                                    cbmodel.f_pqid = khdr["f_pqid"].ToString();
-                                    cbmodel.f_kj = khdr["f_sbkj"].ToString();
-                                    cbmodel.f_kjid = khdr["f_sbkjid"].ToString();
-                                    cbmodel.f_ztkhh = khdr["f_ztkhh"].ToString();
-                                    cbmodel.f_ztsbh = khdr["f_ztsbh"].ToString();
-                                    cbmodel.f_ztyhh = khdr["f_ztyhh"].ToString();
-                                    cbmodel.f_rs = khdr["f_rs"].ToString();
-                                    cbmodel.f_khfz = khdr["f_khfz"].ToString();
-                                    cbmodel.f_khfzid = khdr["f_khfzid"].ToString();
-                                    cbmodel.f_sjljsyl = khdr["f_nljgl"].ToString();
-                                    cbmodel.f_pgsj = blankTime;
-                                    cbmodel.f_jfsj = blankTime;
-                                    //写入抄表表瞬间累积欠费字段
-                                    double ljqf = Eva.Library.Text.NumberTool.Parse( khdr["f_ljqf"].ToString());
-                                    cbmodel.f_value3 = Eva.Library.Text.NumberTool.GetNumberByLength(ljqf+bqje, 2);
-
-
-
-
-                                    #endregion
-
-                                    #region 进行“是否算费提示”的计算，振幅在范围内为false，范围外为true
-                                    {
-                                        double qsqpjsl = Eva.Library.Text.NumberTool.Parse(khdr["f_qsqpjsl"].ToString());
-
-                                        double zf = 0;
-                                        if (qsqpjsl != 0)
+                                        DataRow[] zbdr = zbdt.Select("f_khbh='" + drzb[0].ToString().Replace("\t", "").PadLeft(10, '0') + "'");
+                                        DataTable zbtemp = this.ToDataTable(zbdr);
+                                        List<sara.dd.ldsw.model.tbl_ld_ycbglzb> zbml = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_ycbglzb>(zbtemp);
+                                        //更新远传表子表
+                                        if (zbml.Count > 0)
                                         {
-                                            zf = (bqsl - qsqpjsl) / qsqpjsl;
+                                            zbml[0].f_bqzm = drzb[7].ToString().Replace("\t", "");
+                                            zbml[0].f_cbsj = Convert.ToDateTime(drzb[8].ToString().Replace("\t", ""), dtFormat2);
+                                            ycbglzblist.Add(zbml[0]);
                                         }
 
-                                        DataRow[] jtsjdr = jtsjdt.Select("f_yslxid='" + khdr["f_yslxid"].ToString() + "'");
-                                        double yqzf = Eva.Library.Text.NumberTool.Parse(jtsjdr[0]["f_zfbl"].ToString()) / 100;
 
 
-                                        bool sftx = true;
+                                        sara.dd.ldsw.model.tbl_ld_cbiao cbmodel = new model.tbl_ld_cbiao();
 
-                                        if (-yqzf <= zf)
+                                        double bqsl = Eva.Library.Text.NumberTool.Parse(drzb[7].ToString().Replace("\t", "")) - Eva.Library.Text.NumberTool.Parse(drzb[4].ToString().Replace("\t", ""));
+
+                                        #region 计算水费
+                                        string sql = "select f_waterrent('" + khdr["sys_id"].ToString() + "'," + bqsl + ",'2') as sf from dual";
+                                        DataRow dr = _iAccessData.Query(sql).Tables[0].Rows[0];
+                                        int start = dr["sf"].ToString().IndexOf("|") + 1;
+                                        //预算费记录
+                                        cbmodel.f_sfjl = dr["sf"].ToString().Split('|')[1];
+                                        string sfstr = dr["sf"].ToString().Split('|')[0];
+                                        string sf = sfstr.Split('^')[0];
+                                        cbmodel.f_sf = sf;
+                                        string pwf = sfstr.Split('^')[1];
+                                        cbmodel.f_pwf = pwf;
+                                        double bqje = Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf);
+                                        cbmodel.f_bqje = Eva.Library.Text.NumberTool.GetNumberByLength(bqje, 2);
+
+
+                                        #endregion
+
+                                        #region 将客户基础信息放入抄表model
+                                        cbmodel.sys_id = int.Parse(_idal_tbl_ld_cbiao.GetMaxId(null));
+                                        cbmodel.sys_creatuserid = userInfDic["userid"].ToString();
+                                        cbmodel.sys_creatusername = userInfDic["username"].ToString();
+                                        cbmodel.sys_creatdate = currentTime;
+                                        cbmodel.sys_lastedituserid = userInfDic["userid"].ToString();
+                                        cbmodel.sys_lasteditusername = userInfDic["username"].ToString();
+                                        cbmodel.sys_lasteditdate = currentTime;
+                                        cbmodel.sys_deldate = blankTime;
+                                        cbmodel.sys_delflag = "0";
+                                        cbmodel.f_cb_cbbh = commonclass.commonclass.getBusinessNum("CB", "", null);
+                                        cbmodel.f_khbh = khdr["f_khbh"].ToString();
+                                        cbmodel.f_khbhid = khdr["sys_id"].ToString();
+                                        cbmodel.f_sqzm = drzb[4].ToString().Replace("\t", "");
+                                        cbmodel.f_bqzm = drzb[7].ToString().Replace("\t", "");
+                                        cbmodel.f_bqsl = Eva.Library.Text.NumberTool.GetNumberByLength(bqsl, 0);
+                                        cbmodel.f_sqsl = khdr["f_bqsl"].ToString();
+                                        cbmodel.f_cbyid = userInfDic["userid"].ToString();
+                                        cbmodel.f_cbyname = userInfDic["username"].ToString();
+                                        cbmodel.f_cbsj = currentTime;
+                                        cbmodel.f_bk = "正常";
+                                        cbmodel.f_bkid = "05430001";
+                                        cbmodel.f_zt = "已算费";
+                                        cbmodel.f_ztid = "2";
+                                        cbmodel.f_ly = "远传表自动计算";
+                                        cbmodel.f_lyid = "05450004";
+                                        cbmodel.f_sbbh = khdr["f_sbbh"].ToString();
+                                        cbmodel.f_sbbhid = khdr["f_sbbhid"].ToString();
+                                        cbmodel.f_sblx = khdr["f_sblx"].ToString();
+                                        cbmodel.f_sblxid = khdr["f_sblxid"].ToString();
+                                        cbmodel.f_yslx = khdr["f_yslx"].ToString();
+                                        cbmodel.f_yslxid = khdr["f_yslxid"].ToString();
+                                        cbmodel.f_lxtkhh = khdr["f_lxth"].ToString();
+                                        cbmodel.f_cbbh = khdr["f_cbbh"].ToString();
+                                        cbmodel.f_cbbhid = khdr["f_cbbhid"].ToString();
+                                        cbmodel.f_cbmc = khdr["f_cbmc"].ToString();
+                                        cbmodel.f_yhbh = khdr["f_yhbh"].ToString();
+                                        cbmodel.f_yhbhid = khdr["f_yhbhid"].ToString();
+                                        cbmodel.f_yhm = khdr["f_yhm"].ToString();
+                                        cbmodel.f_jfm = khdr["f_jfm"].ToString();
+                                        cbmodel.f_dh = khdr["f_dh"].ToString();
+                                        cbmodel.f_dz = khdr["f_dz"].ToString();
+                                        cbmodel.f_dy = khdr["f_dy"].ToString();
+                                        cbmodel.f_dyid = khdr["f_dyid"].ToString();
+                                        cbmodel.f_sc = khdr["f_sc"].ToString();
+                                        cbmodel.f_scid = khdr["f_scid"].ToString();
+                                        cbmodel.f_qy = khdr["f_qy"].ToString();
+                                        cbmodel.f_qyid = khdr["f_qyid"].ToString();
+                                        cbmodel.f_pq = khdr["f_pq"].ToString();
+                                        cbmodel.f_pqid = khdr["f_pqid"].ToString();
+                                        cbmodel.f_kj = khdr["f_sbkj"].ToString();
+                                        cbmodel.f_kjid = khdr["f_sbkjid"].ToString();
+                                        cbmodel.f_ztkhh = khdr["f_ztkhh"].ToString();
+                                        cbmodel.f_ztsbh = khdr["f_ztsbh"].ToString();
+                                        cbmodel.f_ztyhh = khdr["f_ztyhh"].ToString();
+                                        cbmodel.f_rs = khdr["f_rs"].ToString();
+                                        cbmodel.f_khfz = khdr["f_khfz"].ToString();
+                                        cbmodel.f_khfzid = khdr["f_khfzid"].ToString();
+                                        cbmodel.f_sjljsyl = khdr["f_nljgl"].ToString();
+                                        cbmodel.f_pgsj = blankTime;
+                                        cbmodel.f_jfsj = blankTime;
+                                        //写入抄表表瞬间累积欠费字段
+                                        double ljqf = Eva.Library.Text.NumberTool.Parse(khdr["f_ljqf"].ToString());
+                                        cbmodel.f_value3 = Eva.Library.Text.NumberTool.GetNumberByLength(ljqf + bqje, 2);
+
+
+
+
+                                        #endregion
+
+                                        #region 进行“是否算费提示”的计算，振幅在范围内为false，范围外为true
                                         {
-                                            if (zf <= yqzf)
+                                            double qsqpjsl = Eva.Library.Text.NumberTool.Parse(khdr["f_qsqpjsl"].ToString());
+
+                                            double zf = 0;
+                                            if (qsqpjsl != 0)
                                             {
-                                                sftx = false;
+                                                zf = (bqsl - qsqpjsl) / qsqpjsl;
+                                            }
+
+                                            DataRow[] jtsjdr = jtsjdt.Select("f_yslxid='" + khdr["f_yslxid"].ToString() + "'");
+                                            double yqzf = Eva.Library.Text.NumberTool.Parse(jtsjdr[0]["f_zfbl"].ToString()) / 100;
+
+
+                                            bool sftx = true;
+
+                                            if (-yqzf <= zf)
+                                            {
+                                                if (zf <= yqzf)
+                                                {
+                                                    sftx = false;
+                                                }
+                                            }
+
+                                            if (sftx)
+                                            {
+                                                cbmodel.f_sfsfts = "true";
+                                            }
+                                            else
+                                            {
+                                                cbmodel.f_sfsfts = "false";
                                             }
                                         }
+                                        cblist.Add(cbmodel);
+                                        #endregion
 
-                                        if (sftx)
+
+                                        #region 最新平均水量
+
+                                        //【前三期平均水量】【前六期平均水量】
+
+                                        string f_qsqpjsl = "";
+                                        string f_qlqpjsl = "";
+                                        CountPJSL(int.Parse(khdr["sys_id"].ToString()), ref f_qsqpjsl, ref f_qlqpjsl, bqsl.ToString(), khdt, null);
+                                        #endregion
+
+                                        #region 推送数据到客户表
+                                        //【最后抄表时间】【最后抄表表底数】【年累计购量】【累计购量】
+                                        //【前三期平均水量】【前六期平均水量】(最新三或六期)
+                                        //【累计欠费】
+
+                                        List<sara.dd.ldsw.model.tbl_ld_khb> khml = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_khb>(khtemp);
+
+                                        sara.dd.ldsw.model.tbl_ld_khb model_tbl_ld_khb = khml[0];
+
+                                        #region 记录旧值
+                                        string f_zhcbrq_old = model_tbl_ld_khb.f_zhcbrq.ToString("yyyy-MM-dd");
+                                        string f_sqzm_old = model_tbl_ld_khb.f_sqzm;
+                                        string f_bqzm_old = model_tbl_ld_khb.f_bqzm;
+                                        string f_nljgl_old = model_tbl_ld_khb.f_nljgl;
+                                        string f_ljgl_old = model_tbl_ld_khb.f_ljgl;
+                                        string f_qlqpjsl_old = model_tbl_ld_khb.f_qlqpjsl;
+                                        string f_qsqpjsl_old = model_tbl_ld_khb.f_qsqpjsl;
+                                        string f_sqsl_old = model_tbl_ld_khb.f_sqsl;
+                                        string f_bqsl_old = model_tbl_ld_khb.f_bqsl;
+                                        string f_ljqf_old = model_tbl_ld_khb.f_ljqf;
+                                        #endregion
+                                        //计算新的抄表周期
+                                        DateTime cbsj;
+                                        DateTime today = DateTime.Now.Date;
+                                        cbsj = Convert.ToDateTime(model_tbl_ld_khb.f_zhcbrq, dtFormat);
+
+                                        int cbzq = 0;
+                                        if (int.TryParse(model_tbl_ld_khb.f_cbzq, out cbzq))
                                         {
-                                            cbmodel.f_sfsfts = "true";
+
                                         }
                                         else
                                         {
-                                            cbmodel.f_sfsfts = "false";
+                                            cbzq = 1;
+                                        }
+                                        int sbyear = cbsj.Year;
+                                        int sbmonth = cbsj.Month + cbzq + 1;
+
+                                        if (sbmonth > 12)
+                                        {
+                                            sbyear++;
+                                            sbmonth = sbmonth - 12;
+                                        }
+
+                                        cbsj = new DateTime(sbyear, sbmonth, 1);
+                                        cbsj = cbsj.AddDays(-1);
+                                        while (cbsj < today)
+                                        {
+                                            cbsj = cbsj.AddMonths(cbzq);
+                                        }
+                                        model_tbl_ld_khb.f_zhcbrq = cbsj;
+                                        model_tbl_ld_khb.f_sqzm = model_tbl_ld_khb.f_bqzm;
+                                        model_tbl_ld_khb.f_bqzm = drzb[7].ToString().Replace("\t", "");
+
+                                        double yz = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_nljgl);
+                                        double xz = yz + bqsl;
+                                        model_tbl_ld_khb.f_nljgl = Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2);
+
+                                        double ljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_ljgl);
+                                        double new_ljgl = ljgl + bqsl;
+                                        model_tbl_ld_khb.f_ljgl = Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2);
+
+                                        model_tbl_ld_khb.f_qsqpjsl = f_qsqpjsl;
+                                        model_tbl_ld_khb.f_qlqpjsl = f_qlqpjsl;
+
+                                        model_tbl_ld_khb.f_sqsl = model_tbl_ld_khb.f_bqsl;
+                                        model_tbl_ld_khb.f_bqsl = bqsl.ToString();
+
+                                        ljqf = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_ljqf);
+                                        double new_ljqf = ljqf + bqje;
+                                        model_tbl_ld_khb.f_ljqf = Eva.Library.Text.NumberTool.GetNumberByLength(new_ljqf, 2);
+
+                                        khlist.Add(model_tbl_ld_khb);
+
+
+
+                                        if (logflag)
+                                        {
+                                            #region 写日志
+                                            List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
+                                            IDictionary<string, string> temp = new Dictionary<string, string>();
+                                            temp.Add("key", "f_zhcbrq");
+                                            temp.Add("oldvalue", f_zhcbrq_old);
+                                            temp.Add("newvalue", cbsj.ToString("yyyy-MM-dd"));
+                                            temp.Add("name", "最后抄表日期");
+                                            array.Add(temp);
+                                            IDictionary<string, string> f_bqzm = new Dictionary<string, string>();
+                                            f_bqzm.Add("key", "f_bqzm");
+                                            f_bqzm.Add("oldvalue", f_bqzm_old);
+                                            f_bqzm.Add("newvalue", drzb[7].ToString().Replace("\t", ""));
+                                            f_bqzm.Add("name", "本期止码 ");
+                                            array.Add(f_bqzm);
+                                            IDictionary<string, string> f_sqzm = new Dictionary<string, string>();
+                                            f_sqzm.Add("key", "f_sqzm");
+                                            f_sqzm.Add("oldvalue", f_sqzm_old);
+                                            f_sqzm.Add("newvalue", drzb[4].ToString().Replace("\t", ""));
+                                            f_sqzm.Add("name", "上期止码 ");
+                                            array.Add(f_sqzm);
+                                            IDictionary<string, string> f_nljgl = new Dictionary<string, string>();
+                                            f_nljgl.Add("key", "f_nljgl");
+                                            f_nljgl.Add("oldvalue", f_nljgl_old);
+                                            f_nljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2));
+                                            f_nljgl.Add("name", "年累计购量");
+                                            array.Add(f_nljgl);
+                                            IDictionary<string, string> f_ljgl = new Dictionary<string, string>();
+                                            f_ljgl.Add("key", "f_ljgl");
+                                            f_ljgl.Add("oldvalue", f_ljgl_old);
+                                            f_ljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2));
+                                            f_ljgl.Add("name", "累计购量");
+                                            array.Add(f_ljgl);
+                                            IDictionary<string, string> qsqpjsl_dic = new Dictionary<string, string>();
+                                            qsqpjsl_dic.Add("key", "qsqpjsl");
+                                            qsqpjsl_dic.Add("oldvalue", f_qsqpjsl_old);
+                                            qsqpjsl_dic.Add("newvalue", f_qsqpjsl);
+                                            qsqpjsl_dic.Add("name", "前三期平均水量");
+                                            array.Add(qsqpjsl_dic);
+                                            IDictionary<string, string> qlqpjsl_dic = new Dictionary<string, string>();
+                                            qlqpjsl_dic.Add("key", "qlqpjsl");
+                                            qlqpjsl_dic.Add("oldvalue", f_qlqpjsl_old);
+                                            qlqpjsl_dic.Add("newvalue", f_qlqpjsl);
+                                            qlqpjsl_dic.Add("name", "前六期平均水量");
+                                            array.Add(qlqpjsl_dic);
+                                            IDictionary<string, string> f_bqsl = new Dictionary<string, string>();
+                                            f_bqsl.Add("key", "f_bqsl");
+                                            f_bqsl.Add("oldvalue", f_bqsl_old);
+                                            f_bqsl.Add("newvalue", bqsl.ToString());
+                                            f_bqsl.Add("name", "本期水量 ");
+                                            array.Add(f_bqsl);
+                                            IDictionary<string, string> f_sqsl = new Dictionary<string, string>();
+                                            f_sqsl.Add("key", "f_bqsl");
+                                            f_sqsl.Add("oldvalue", f_sqsl_old);
+                                            f_sqsl.Add("newvalue", khdr["f_bqsl"].ToString());
+                                            f_sqsl.Add("name", "上期水量");
+                                            array.Add(f_sqsl);
+
+                                            sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_khb", khdr["sys_id"].ToString(), "tbl_ld_ycbgl_detail", "远传表自动抄表", array, clientInf, null);
+                                            #endregion
+                                        }
+
+                                        #endregion
+
+                                        #region 推送数据到水表表
+                                        //【年累计购量】【累计购量】 
+                                        //【前三期平均水量】【前六期平均水量】
+                                        DataRow[] sbdr = sbdt.Select("sys_id='" + khdr["f_sbbhid"].ToString() + "'");
+                                        List<sara.dd.ldsw.model.tbl_ld_sbb> sbtemp = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_sbb>(this.ToDataTable(sbdr));
+                                        sara.dd.ldsw.model.tbl_ld_sbb model_tbl_ld_sbb = sbtemp[0];
+
+                                        string sb_f_bqzm_old = model_tbl_ld_sbb.f_bqzm;
+                                        string sb_f_sqzm_old = model_tbl_ld_sbb.f_sqzm;
+                                        string sb_f_bqsl_old = model_tbl_ld_sbb.f_bqsl;
+                                        string sb_f_sqsl_old = model_tbl_ld_sbb.f_sqsl;
+                                        string sb_f_nljgl_old = model_tbl_ld_sbb.f_nljgl;
+                                        string sb_f_ljgl_old = model_tbl_ld_sbb.f_ljgl;
+                                        string sb_f_qsqpjsl_old = model_tbl_ld_sbb.f_qsqpjsl;
+                                        string sb_f_qlqpjsl_old = model_tbl_ld_sbb.f_qlqpjsl;
+
+
+                                        double sb_ljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_ljgl);
+                                        double now_ljgl = sb_ljgl + bqsl;
+                                        model_tbl_ld_sbb.f_ljgl = Eva.Library.Text.NumberTool.GetNumberByLength(now_ljgl, 2);
+
+                                        double sb_nljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_nljgl);
+                                        double now_nljgl = sb_nljgl + bqsl;
+                                        model_tbl_ld_sbb.f_nljgl = Eva.Library.Text.NumberTool.GetNumberByLength(now_nljgl, 2);
+
+                                        double sb_qsqpjsl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_qsqpjsl);
+                                        model_tbl_ld_sbb.f_qsqpjsl = f_qsqpjsl;
+
+                                        double sb_qlqpjsl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_qlqpjsl);
+                                        model_tbl_ld_sbb.f_qlqpjsl = f_qlqpjsl;
+                                        model_tbl_ld_sbb.f_sqzm = model_tbl_ld_sbb.f_bqzm;
+                                        model_tbl_ld_sbb.f_bqzm = drzb[7].ToString().Replace("\t", "");
+                                        model_tbl_ld_sbb.f_sqsl = model_tbl_ld_sbb.f_bqsl;
+                                        model_tbl_ld_sbb.f_bqsl = Eva.Library.Text.NumberTool.GetNumberByLength(bqsl, 0);
+
+                                        sblist.Add(model_tbl_ld_sbb);
+                                        #endregion
+                                        if (logflag)
+                                        {
+                                            #region 写日志
+
+                                            List<IDictionary<string, string>> list = new List<IDictionary<string, string>>();
+
+
+                                            IDictionary<string, string> sb_f_nljgl = new Dictionary<string, string>();
+                                            sb_f_nljgl.Add("key", "f_nljgl");
+                                            sb_f_nljgl.Add("oldvalue", sb_f_nljgl_old);
+                                            sb_f_nljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2));
+                                            sb_f_nljgl.Add("name", "年累计购量");
+                                            list.Add(sb_f_nljgl);
+
+                                            IDictionary<string, string> sb_f_ljgl = new Dictionary<string, string>();
+                                            sb_f_ljgl.Add("key", "f_ljgl");
+                                            sb_f_ljgl.Add("oldvalue", sb_f_ljgl_old);
+                                            sb_f_ljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2));
+                                            sb_f_ljgl.Add("name", "累计购量");
+                                            list.Add(sb_f_ljgl);
+
+                                            IDictionary<string, string> sb_f_qsqpjsl = new Dictionary<string, string>();
+                                            sb_f_qsqpjsl.Add("key", "f_qsqpjsl");
+                                            sb_f_qsqpjsl.Add("oldvalue", sb_f_qsqpjsl_old);
+                                            sb_f_qsqpjsl.Add("newvalue", f_qsqpjsl);
+                                            sb_f_qsqpjsl.Add("name", "前三期平均水量");
+                                            list.Add(sb_f_qsqpjsl);
+
+                                            IDictionary<string, string> sb_f_qlqpjsl = new Dictionary<string, string>();
+                                            sb_f_qlqpjsl.Add("key", "f_qlqpjsl");
+                                            sb_f_qlqpjsl.Add("oldvalue", sb_f_qlqpjsl_old);
+                                            sb_f_qlqpjsl.Add("newvalue", f_qlqpjsl);
+                                            sb_f_qlqpjsl.Add("name", "前六期平均水量");
+                                            list.Add(sb_f_qlqpjsl);
+
+                                            IDictionary<string, string> sb_f_bqzm = new Dictionary<string, string>();
+                                            sb_f_bqzm.Add("key", "f_bqzm");
+                                            sb_f_bqzm.Add("oldvalue", sb_f_bqzm_old);
+                                            sb_f_bqzm.Add("newvalue", drzb[7].ToString().Replace("\t", ""));
+                                            sb_f_bqzm.Add("name", "本期止码");
+                                            list.Add(sb_f_bqzm);
+                                            IDictionary<string, string> sb_f_sqzm = new Dictionary<string, string>();
+                                            sb_f_sqzm.Add("key", "f_sqzm");
+                                            sb_f_sqzm.Add("oldvalue", sb_f_sqzm_old);
+                                            sb_f_sqzm.Add("newvalue", drzb[4].ToString().Replace("\t", ""));
+                                            sb_f_sqzm.Add("name", "上期止码");
+                                            list.Add(sb_f_sqzm);
+                                            IDictionary<string, string> sb_f_bqsl = new Dictionary<string, string>();
+                                            sb_f_bqsl.Add("key", "f_bqsl");
+                                            sb_f_bqsl.Add("oldvalue", sb_f_bqsl_old);
+                                            sb_f_bqsl.Add("newvalue", bqsl.ToString());
+                                            sb_f_bqsl.Add("name", "本期水量");
+                                            list.Add(sb_f_bqsl);
+                                            IDictionary<string, string> sb_f_sqsl = new Dictionary<string, string>();
+                                            sb_f_sqsl.Add("key", "f_sqsl");
+                                            sb_f_sqsl.Add("oldvalue", sb_f_sqsl_old);
+                                            sb_f_sqsl.Add("newvalue", khdr["f_bqsl"].ToString());
+                                            sb_f_sqsl.Add("name", "上期水量");
+                                            list.Add(sb_f_sqsl);
+                                            sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_sbb", khdr["f_sbbhid"].ToString(), "tbl_ld_ycbgl_detail", "远传表自动抄表", list, clientInf, null);
+                                            #endregion
+                                        }
+
+                                        count++;
+                                        if (count % step == 0)
+                                        {
+                                            //批量建立抄表记录并清空list
+                                            Dictionary<string, object[]> result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_cbiao>(cblist);
+                                            t.BatchInsert("tbl_ld_cbiao", result);
+
+                                            cblist = new List<ldsw.model.tbl_ld_cbiao>();
+
+                                            //批量更新远传表
+                                            result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_ycbglzb>(ycbglzblist);
+                                            t.BatchUpdate("tbl_ld_ycbglzb", "sys_id", result);
+
+                                            ycbglzblist = new List<ldsw.model.tbl_ld_ycbglzb>();
+
+                                            //批量更新客户表
+                                            result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_khb>(khlist);
+                                            t.BatchUpdate("tbl_ld_khb", "sys_id", result);
+                                            khlist = new List<ldsw.model.tbl_ld_khb>();
+
+                                            //批量更新水表表
+                                            result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_sbb>(sblist);
+                                            t.BatchUpdate("tbl_ld_sbb", "sys_id", result);
+                                            sblist = new List<ldsw.model.tbl_ld_sbb>();
+
+
+                                            t.getTrans().commit();
+                                            t = new Eva.Library.Data.AccessOracleLargDataTrans.AccessDataTrans(Eva.Library.Configuration.ConfigurationManager.AppSettings["AccessOracleLargConnectionString"].ToString());
+                                            t.getTrans().begin();
+                                            sara.dd.ldsw.commonclass.FileOperation.writeFile(Eva.Library.Global.AppRootPath + "ycb" + model.sys_id + ".txt", (count / step).ToString() + "/" + maxtime.ToString());
                                         }
                                     }
-                                    cblist.Add(cbmodel);
-                                    #endregion
-
-
-                                    #region 最新平均水量
-
-                                    //【前三期平均水量】【前六期平均水量】
-
-                                    string f_qsqpjsl = "";
-                                    string f_qlqpjsl = "";
-                                    CountPJSL(int.Parse(khdr["sys_id"].ToString()), ref f_qsqpjsl, ref f_qlqpjsl, bqsl.ToString(), khdt, null);
-                                    #endregion
-
-                                    #region 推送数据到客户表
-                                    //【最后抄表时间】【最后抄表表底数】【年累计购量】【累计购量】
-                                    //【前三期平均水量】【前六期平均水量】(最新三或六期)
-                                    //【累计欠费】
-
-                                    List<sara.dd.ldsw.model.tbl_ld_khb> khml = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_khb>(khtemp);
-
-                                    sara.dd.ldsw.model.tbl_ld_khb model_tbl_ld_khb = khml[0];
-
-                                    #region 记录旧值
-                                    string f_zhcbrq_old = model_tbl_ld_khb.f_zhcbrq.ToString("yyyy-MM-dd");
-                                    string f_sqzm_old = model_tbl_ld_khb.f_sqzm;
-                                    string f_bqzm_old = model_tbl_ld_khb.f_bqzm;
-                                    string f_nljgl_old = model_tbl_ld_khb.f_nljgl;
-                                    string f_ljgl_old = model_tbl_ld_khb.f_ljgl;
-                                    string f_qlqpjsl_old = model_tbl_ld_khb.f_qlqpjsl;
-                                    string f_qsqpjsl_old = model_tbl_ld_khb.f_qsqpjsl;
-                                    string f_sqsl_old = model_tbl_ld_khb.f_sqsl;
-                                    string f_bqsl_old = model_tbl_ld_khb.f_bqsl;
-                                    string f_ljqf_old = model_tbl_ld_khb.f_ljqf;
-                                    #endregion
-                                    //计算新的抄表周期
-                                    DateTime cbsj;
-                                    DateTime today = DateTime.Now.Date;
-                                    cbsj = Convert.ToDateTime(model_tbl_ld_khb.f_zhcbrq, dtFormat);
-
-                                    int cbzq = 0;
-                                    if (int.TryParse(model_tbl_ld_khb.f_cbzq, out cbzq))
-                                    {
-
-                                    }
-                                    else
-                                    {
-                                        cbzq = 1;
-                                    }
-                                    int sbyear = cbsj.Year;
-                                    int sbmonth = cbsj.Month + cbzq + 1;
-
-                                    if (sbmonth > 12)
-                                    {
-                                        sbyear++;
-                                        sbmonth = sbmonth - 12;
-                                    }
-
-                                    cbsj = new DateTime(sbyear, sbmonth, 1);
-                                    cbsj = cbsj.AddDays(-1);
-                                    while (cbsj < today)
-                                    {
-                                        cbsj = cbsj.AddMonths(cbzq);
-                                    }
-                                    model_tbl_ld_khb.f_zhcbrq = cbsj;
-                                    model_tbl_ld_khb.f_sqzm = model_tbl_ld_khb.f_bqzm;
-                                    model_tbl_ld_khb.f_bqzm = drzb[7].ToString().Replace("\t", "");
-
-                                    double yz = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_nljgl);
-                                    double xz = yz + bqsl;
-                                    model_tbl_ld_khb.f_nljgl = Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2);
-
-                                    double ljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_ljgl);
-                                    double new_ljgl = ljgl + bqsl;
-                                    model_tbl_ld_khb.f_ljgl = Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2);
-
-                                    model_tbl_ld_khb.f_qsqpjsl = f_qsqpjsl;
-                                    model_tbl_ld_khb.f_qlqpjsl = f_qlqpjsl;
-
-                                    model_tbl_ld_khb.f_sqsl = model_tbl_ld_khb.f_bqsl;
-                                    model_tbl_ld_khb.f_bqsl = bqsl.ToString();
-
-                                    ljqf = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_ljqf);
-                                    double new_ljqf = ljqf + bqje;
-                                    model_tbl_ld_khb.f_ljqf = Eva.Library.Text.NumberTool.GetNumberByLength(new_ljqf, 2);
-
-                                    khlist.Add(model_tbl_ld_khb);
-
-
-                                    
-                                    if (logflag)
-                                    {
-                                        #region 写日志
-                                        List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
-                                        IDictionary<string, string> temp = new Dictionary<string, string>();
-                                        temp.Add("key", "f_zhcbrq");
-                                        temp.Add("oldvalue", f_zhcbrq_old);
-                                        temp.Add("newvalue", cbsj.ToString("yyyy-MM-dd"));
-                                        temp.Add("name", "最后抄表日期");
-                                        array.Add(temp);
-                                        IDictionary<string, string> f_bqzm = new Dictionary<string, string>();
-                                        f_bqzm.Add("key", "f_bqzm");
-                                        f_bqzm.Add("oldvalue", f_bqzm_old);
-                                        f_bqzm.Add("newvalue", drzb[7].ToString().Replace("\t", ""));
-                                        f_bqzm.Add("name", "本期止码 ");
-                                        array.Add(f_bqzm);
-                                        IDictionary<string, string> f_sqzm = new Dictionary<string, string>();
-                                        f_sqzm.Add("key", "f_sqzm");
-                                        f_sqzm.Add("oldvalue", f_sqzm_old);
-                                        f_sqzm.Add("newvalue", drzb[4].ToString().Replace("\t", ""));
-                                        f_sqzm.Add("name", "上期止码 ");
-                                        array.Add(f_sqzm);
-                                        IDictionary<string, string> f_nljgl = new Dictionary<string, string>();
-                                        f_nljgl.Add("key", "f_nljgl");
-                                        f_nljgl.Add("oldvalue", f_nljgl_old);
-                                        f_nljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2));
-                                        f_nljgl.Add("name", "年累计购量");
-                                        array.Add(f_nljgl);
-                                        IDictionary<string, string> f_ljgl = new Dictionary<string, string>();
-                                        f_ljgl.Add("key", "f_ljgl");
-                                        f_ljgl.Add("oldvalue", f_ljgl_old);
-                                        f_ljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2));
-                                        f_ljgl.Add("name", "累计购量");
-                                        array.Add(f_ljgl);
-                                        IDictionary<string, string> qsqpjsl_dic = new Dictionary<string, string>();
-                                        qsqpjsl_dic.Add("key", "qsqpjsl");
-                                        qsqpjsl_dic.Add("oldvalue", f_qsqpjsl_old);
-                                        qsqpjsl_dic.Add("newvalue", f_qsqpjsl);
-                                        qsqpjsl_dic.Add("name", "前三期平均水量");
-                                        array.Add(qsqpjsl_dic);
-                                        IDictionary<string, string> qlqpjsl_dic = new Dictionary<string, string>();
-                                        qlqpjsl_dic.Add("key", "qlqpjsl");
-                                        qlqpjsl_dic.Add("oldvalue", f_qlqpjsl_old);
-                                        qlqpjsl_dic.Add("newvalue", f_qlqpjsl);
-                                        qlqpjsl_dic.Add("name", "前六期平均水量");
-                                        array.Add(qlqpjsl_dic);
-                                        IDictionary<string, string> f_bqsl = new Dictionary<string, string>();
-                                        f_bqsl.Add("key", "f_bqsl");
-                                        f_bqsl.Add("oldvalue", f_bqsl_old);
-                                        f_bqsl.Add("newvalue", bqsl.ToString());
-                                        f_bqsl.Add("name", "本期水量 ");
-                                        array.Add(f_bqsl);
-                                        IDictionary<string, string> f_sqsl = new Dictionary<string, string>();
-                                        f_sqsl.Add("key", "f_bqsl");
-                                        f_sqsl.Add("oldvalue", f_sqsl_old);
-                                        f_sqsl.Add("newvalue", khdr["f_bqsl"].ToString());
-                                        f_sqsl.Add("name", "上期水量");
-                                        array.Add(f_sqsl);
-
-                                        sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_khb", khdr["sys_id"].ToString(), "tbl_ld_ycbgl_detail", "远传表自动抄表", array, clientInf, null);
-                                        #endregion
-                                    }
-
-                                    #endregion
-
-                                    #region 推送数据到水表表
-                                    //【年累计购量】【累计购量】 
-                                    //【前三期平均水量】【前六期平均水量】
-                                    DataRow[] sbdr = sbdt.Select("sys_id='" + khdr["f_sbbhid"].ToString() + "'");
-                                    List<sara.dd.ldsw.model.tbl_ld_sbb> sbtemp = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_sbb>(this.ToDataTable(sbdr));
-                                    sara.dd.ldsw.model.tbl_ld_sbb model_tbl_ld_sbb = sbtemp[0];
-                                    
-                                    string sb_f_bqzm_old = model_tbl_ld_sbb.f_bqzm;
-                                    string sb_f_sqzm_old = model_tbl_ld_sbb.f_sqzm;
-                                    string sb_f_bqsl_old = model_tbl_ld_sbb.f_bqsl;
-                                    string sb_f_sqsl_old = model_tbl_ld_sbb.f_sqsl;
-                                    string sb_f_nljgl_old = model_tbl_ld_sbb.f_nljgl;
-                                    string sb_f_ljgl_old = model_tbl_ld_sbb.f_ljgl;
-                                    string sb_f_qsqpjsl_old = model_tbl_ld_sbb.f_qsqpjsl;
-                                    string sb_f_qlqpjsl_old = model_tbl_ld_sbb.f_qlqpjsl;
-
-
-                                    double sb_ljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_ljgl);
-                                    double now_ljgl = sb_ljgl + bqsl;
-                                    model_tbl_ld_sbb.f_ljgl = Eva.Library.Text.NumberTool.GetNumberByLength(now_ljgl, 2);
-
-                                    double sb_nljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_nljgl);
-                                    double now_nljgl = sb_nljgl + bqsl;
-                                    model_tbl_ld_sbb.f_nljgl = Eva.Library.Text.NumberTool.GetNumberByLength(now_nljgl, 2);
-
-                                    double sb_qsqpjsl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_qsqpjsl);
-                                    model_tbl_ld_sbb.f_qsqpjsl = f_qsqpjsl;
-
-                                    double sb_qlqpjsl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_qlqpjsl);
-
-                                    model_tbl_ld_sbb.f_sqzm = model_tbl_ld_sbb.f_bqzm;
-                                    model_tbl_ld_sbb.f_bqzm = drzb[7].ToString().Replace("\t", "");
-                                    model_tbl_ld_sbb.f_sqsl = model_tbl_ld_sbb.f_bqsl;
-                                    model_tbl_ld_sbb.f_bqsl = Eva.Library.Text.NumberTool.GetNumberByLength(bqsl, 0);
-
-                                    sblist.Add(model_tbl_ld_sbb);
-                                    #endregion
-                                    if (logflag)
-                                    {
-                                        #region 写日志
-
-                                        List<IDictionary<string, string>> list = new List<IDictionary<string, string>>();
-
-
-                                        IDictionary<string, string> sb_f_nljgl = new Dictionary<string, string>();
-                                        sb_f_nljgl.Add("key", "f_nljgl");
-                                        sb_f_nljgl.Add("oldvalue", sb_f_nljgl_old);
-                                        sb_f_nljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2));
-                                        sb_f_nljgl.Add("name", "年累计购量");
-                                        list.Add(sb_f_nljgl);
-
-                                        IDictionary<string, string> sb_f_ljgl = new Dictionary<string, string>();
-                                        sb_f_ljgl.Add("key", "f_ljgl");
-                                        sb_f_ljgl.Add("oldvalue", sb_f_ljgl_old);
-                                        sb_f_ljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2));
-                                        sb_f_ljgl.Add("name", "累计购量");
-                                        list.Add(sb_f_ljgl);
-
-                                        IDictionary<string, string> sb_f_qsqpjsl = new Dictionary<string, string>();
-                                        sb_f_qsqpjsl.Add("key", "f_qsqpjsl");
-                                        sb_f_qsqpjsl.Add("oldvalue", sb_f_qsqpjsl_old);
-                                        sb_f_qsqpjsl.Add("newvalue", f_qsqpjsl);
-                                        sb_f_qsqpjsl.Add("name", "前三期平均水量");
-                                        list.Add(sb_f_qsqpjsl);
-
-                                        IDictionary<string, string> sb_f_qlqpjsl = new Dictionary<string, string>();
-                                        sb_f_qlqpjsl.Add("key", "f_qlqpjsl");
-                                        sb_f_qlqpjsl.Add("oldvalue", sb_f_qlqpjsl_old);
-                                        sb_f_qlqpjsl.Add("newvalue", f_qlqpjsl);
-                                        sb_f_qlqpjsl.Add("name", "前六期平均水量");
-                                        list.Add(sb_f_qlqpjsl);
-
-                                        IDictionary<string, string> sb_f_bqzm = new Dictionary<string, string>();
-                                        sb_f_bqzm.Add("key", "f_bqzm");
-                                        sb_f_bqzm.Add("oldvalue", sb_f_bqzm_old);
-                                        sb_f_bqzm.Add("newvalue", drzb[7].ToString().Replace("\t", ""));
-                                        sb_f_bqzm.Add("name", "本期止码");
-                                        list.Add(sb_f_bqzm);
-                                        IDictionary<string, string> sb_f_sqzm = new Dictionary<string, string>();
-                                        sb_f_sqzm.Add("key", "f_sqzm");
-                                        sb_f_sqzm.Add("oldvalue", sb_f_sqzm_old);
-                                        sb_f_sqzm.Add("newvalue", drzb[4].ToString().Replace("\t", ""));
-                                        sb_f_sqzm.Add("name", "上期止码");
-                                        list.Add(sb_f_sqzm);
-                                        IDictionary<string, string> sb_f_bqsl = new Dictionary<string, string>();
-                                        sb_f_bqsl.Add("key", "f_bqsl");
-                                        sb_f_bqsl.Add("oldvalue", sb_f_bqsl_old);
-                                        sb_f_bqsl.Add("newvalue", bqsl.ToString());
-                                        sb_f_bqsl.Add("name", "本期水量");
-                                        list.Add(sb_f_bqsl);
-                                        IDictionary<string, string> sb_f_sqsl = new Dictionary<string, string>();
-                                        sb_f_sqsl.Add("key", "f_sqsl");
-                                        sb_f_sqsl.Add("oldvalue", sb_f_sqsl_old);
-                                        sb_f_sqsl.Add("newvalue", khdr["f_bqsl"].ToString());
-                                        sb_f_sqsl.Add("name", "上期水量");
-                                        list.Add(sb_f_sqsl);
-                                        sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_sbb", khdr["f_sbbhid"].ToString(), "tbl_ld_ycbgl_detail", "远传表自动抄表", list, clientInf, null);
-                                        #endregion
-                                    }
-
-                                    count++;
-                                    if (count % step == 0)
-                                    {
-                                        //批量建立抄表记录并清空list
-                                        Dictionary<string, object[]> result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_cbiao>(cblist);
-                                        t.BatchInsert("tbl_ld_cbiao", result);
-
-                                        cblist = new List<ldsw.model.tbl_ld_cbiao>();
-
-                                        //批量更新远传表
-                                        result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_ycbglzb>(ycbglzblist);
-                                        t.BatchUpdate("tbl_ld_ycbglzb", "sys_id", result);
-
-                                        ycbglzblist = new List<ldsw.model.tbl_ld_ycbglzb>();
-
-                                        //批量更新客户表
-                                        result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_khb>(khlist);
-                                        t.BatchUpdate("tbl_ld_khb", "sys_id", result);
-                                        khlist = new List<ldsw.model.tbl_ld_khb>();
-
-                                        //批量更新水表表
-                                        result = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_sbb>(sblist);
-                                        t.BatchUpdate("tbl_ld_sbb", "sys_id", result);
-                                        sblist = new List<ldsw.model.tbl_ld_sbb>();
-
-
-                                        t.getTrans().commit();
-                                        t = new Eva.Library.Data.AccessOracleLargDataTrans.AccessDataTrans(Eva.Library.Configuration.ConfigurationManager.AppSettings["AccessOracleLargConnectionString"].ToString());
-                                        t.getTrans().begin();
-                                        sara.dd.ldsw.commonclass.FileOperation.writeFile(Eva.Library.Global.AppRootPath + "ycb" + model.sys_id + ".txt", (count / step).ToString() + "/" + maxtime.ToString());
-                                    }
                                 }
-                            }
-                           
+
                             }
                         }
                         Dictionary<string, object[]> result2 = null;
@@ -1146,7 +1147,7 @@ namespace sara.dd.ldsw.service
                             cblist = new List<ldsw.model.tbl_ld_cbiao>();
                         }
 
-                        if(ycbglzblist.Count > 0)
+                        if (ycbglzblist.Count > 0)
                         {
                             //批量更新远传表
                             result2 = t.GetRowDataByModelList<sara.dd.ldsw.model.tbl_ld_ycbglzb>(ycbglzblist);
@@ -1217,7 +1218,7 @@ namespace sara.dd.ldsw.service
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string CreateDL(string json, string columns, string clientInf, string countstr,string cjcbsj)
+        public string CreateDL(string json, string columns, string clientInf, string countstr, string cjcbsj)
         {
             //首先保存数据
             string result1 = this.Update(json, columns, clientInf);
@@ -1308,30 +1309,30 @@ namespace sara.dd.ldsw.service
                                 {
 
                                     //循环创建子表对象
-                                        sara.dd.ldsw.model.tbl_ld_ycbglzb ycbglzbmodel = new sara.dd.ldsw.model.tbl_ld_ycbglzb();
+                                    sara.dd.ldsw.model.tbl_ld_ycbglzb ycbglzbmodel = new sara.dd.ldsw.model.tbl_ld_ycbglzb();
 
-                                        ycbglzbmodel.sys_id = int.Parse(_idal_tbl_ld_ycbglzb.GetMaxId(null));
-                                        ycbglzbmodel.sys_creatuserid = userInfDic["userid"].ToString();
-                                        ycbglzbmodel.sys_creatusername = userInfDic["username"].ToString();
-                                        ycbglzbmodel.sys_creatdate = currentTime;
-                                        ycbglzbmodel.sys_lastedituserid = userInfDic["userid"].ToString();
-                                        ycbglzbmodel.sys_lasteditusername = userInfDic["username"].ToString();
-                                        ycbglzbmodel.sys_lasteditdate = currentTime;
-                                        ycbglzbmodel.sys_deldate = blankTime;
-                                        ycbglzbmodel.sys_delflag = "0";
+                                    ycbglzbmodel.sys_id = int.Parse(_idal_tbl_ld_ycbglzb.GetMaxId(null));
+                                    ycbglzbmodel.sys_creatuserid = userInfDic["userid"].ToString();
+                                    ycbglzbmodel.sys_creatusername = userInfDic["username"].ToString();
+                                    ycbglzbmodel.sys_creatdate = currentTime;
+                                    ycbglzbmodel.sys_lastedituserid = userInfDic["userid"].ToString();
+                                    ycbglzbmodel.sys_lasteditusername = userInfDic["username"].ToString();
+                                    ycbglzbmodel.sys_lasteditdate = currentTime;
+                                    ycbglzbmodel.sys_deldate = blankTime;
+                                    ycbglzbmodel.sys_delflag = "0";
 
-                                        ycbglzbmodel.fk_tbl_ld_ycbgl_sys_id = model.sys_id.ToString();
-                                        ycbglzbmodel.f_khbh = khdr["f_khbh"].ToString();
-                                        ycbglzbmodel.f_yhm = khdr["f_yhm"].ToString();
-                                        ycbglzbmodel.f_sbbh = khdr["f_sbbh"].ToString();
-                                        ycbglzbmodel.f_dz = khdr["f_dz"].ToString();
-                                        ycbglzbmodel.f_dh = khdr["f_dh"].ToString();
-                                        ycbglzbmodel.f_sqzm = khdr["f_bqzm"].ToString();
-                                        ycbglzbmodel.f_bqzm = drzb[3].ToString().Replace("\t", "");
-                                        ycbglzbmodel.f_cbsj = cbsjtime;
-                                        ycbglzbmodel.f_zhcbrq = Convert.ToDateTime(khdr["f_zhcbrq"].ToString(), dtFormat); 
+                                    ycbglzbmodel.fk_tbl_ld_ycbgl_sys_id = model.sys_id.ToString();
+                                    ycbglzbmodel.f_khbh = khdr["f_khbh"].ToString();
+                                    ycbglzbmodel.f_yhm = khdr["f_yhm"].ToString();
+                                    ycbglzbmodel.f_sbbh = khdr["f_sbbh"].ToString();
+                                    ycbglzbmodel.f_dz = khdr["f_dz"].ToString();
+                                    ycbglzbmodel.f_dh = khdr["f_dh"].ToString();
+                                    ycbglzbmodel.f_sqzm = khdr["f_bqzm"].ToString();
+                                    ycbglzbmodel.f_bqzm = drzb[3].ToString().Replace("\t", "");
+                                    ycbglzbmodel.f_cbsj = cbsjtime;
+                                    ycbglzbmodel.f_zhcbrq = Convert.ToDateTime(khdr["f_zhcbrq"].ToString(), dtFormat);
 
-                                        ycbglzblist.Add(ycbglzbmodel);
+                                    ycbglzblist.Add(ycbglzbmodel);
 
 
 
@@ -1644,6 +1645,7 @@ namespace sara.dd.ldsw.service
                                     model_tbl_ld_sbb.f_qsqpjsl = f_qsqpjsl;
 
                                     double sb_qlqpjsl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_qlqpjsl);
+                                    model_tbl_ld_sbb.f_qlqpjsl = f_qlqpjsl;
 
                                     model_tbl_ld_sbb.f_sqzm = model_tbl_ld_sbb.f_bqzm;
                                     model_tbl_ld_sbb.f_bqzm = drzb[3].ToString().Replace("\t", "");
@@ -1832,6 +1834,446 @@ namespace sara.dd.ldsw.service
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string CreateNB(string sbbh, string bqzm, string sqzm, string bqsl, DateTime zhcbsj)
+        {
+            //首先保存数据
+            Dictionary<string, string> resultDic = new Dictionary<string, string>();
+            resultDic["result"] = "";
+            resultDic["message"] = "";
+            Eva.Library.Data.AccessDataTrans.IAccessDataTrans t = commonclass.commonclass.CreateIAccessDataTrans();
+            try
+            {
+                //循环信息以及事务开启
+                t.getTrans().begin();
+
+                //获取所有阶梯水价
+                string jtsjquerysql = "SELECT * FROM tbl_ldbm_jtsj";
+                DataTable jtsjdt = t.Query(jtsjquerysql).Tables[0];
+                //时间信息
+                DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                DateTimeFormatInfo dtFormat2 = new DateTimeFormatInfo();
+                dtFormat.ShortDatePattern = "yyyy/MM/dd";
+                dtFormat2.ShortDatePattern = "yyyy/MM/dd HH:mm:ss";
+                DateTime currentTime = new System.DateTime();
+                currentTime = System.DateTime.Now;
+
+                DateTime blankTime = DateTime.Parse("1900-01-01");
+
+
+
+
+
+                //客户modellist
+                List<sara.dd.ldsw.model.tbl_ld_khb> khlist = new List<sara.dd.ldsw.model.tbl_ld_khb>();
+
+                //日志开关
+                bool logflag = true;
+                //获取客户信息
+                khlist = _idal_tbl_ld_khb.GetList("f_sbbh='" + sbbh + "'", "", "*", "", "", t);
+
+                if (khlist.Count == 1)
+                {
+                    sara.dd.ldsw.model.tbl_ld_khb khmodel = khlist[0];
+
+                        //创建抄表记录
+                        sara.dd.ldsw.model.tbl_ld_cbiao cbmodel = new model.tbl_ld_cbiao();
+
+                        #region 计算水费
+                        string sql = "select f_waterrent('" + khmodel.sys_id + "'," + bqsl + ",'2') as sf from dual";
+                        DataRow dr = t.Query(sql).Tables[0].Rows[0];
+                        int start = dr["sf"].ToString().IndexOf("|") + 1;
+                        //预算费记录
+                        cbmodel.f_sfjl = dr["sf"].ToString().Split('|')[1];
+                        string sfstr = dr["sf"].ToString().Split('|')[0];
+                        string sf = sfstr.Split('^')[0];
+                        cbmodel.f_sf = sf;
+                        string pwf = sfstr.Split('^')[1];
+                        cbmodel.f_pwf = pwf;
+                        double bqje = Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf);
+                        cbmodel.f_bqje = Eva.Library.Text.NumberTool.GetNumberByLength(bqje, 2);
+
+
+                        #endregion
+
+                        #region 将客户基础信息放入抄表model
+                        cbmodel.sys_creatuserid = "1570";
+                        cbmodel.sys_creatusername = "NB远传自动抄表";
+                        cbmodel.sys_creatdate = currentTime;
+                        cbmodel.sys_lastedituserid = "1570";
+                        cbmodel.sys_lasteditusername = "NB远传自动抄表";
+                        cbmodel.sys_lasteditdate = currentTime;
+                        cbmodel.sys_deldate = blankTime;
+                        cbmodel.sys_delflag = "0";
+                        cbmodel.f_cb_cbbh = commonclass.commonclass.getBusinessNum("CB", "", null);
+                        cbmodel.f_khbh = khmodel.f_khbh;
+                        cbmodel.f_khbhid = khmodel.sys_id.ToString();
+                        cbmodel.f_sqzm = sqzm;
+                        cbmodel.f_bqzm = bqzm;
+                        cbmodel.f_bqsl = bqsl;
+                        cbmodel.f_sqsl = khmodel.f_bqsl;
+                        cbmodel.f_cbyid = "1570";
+                        cbmodel.f_cbyname = "NB远传自动抄表";
+                        cbmodel.f_cbsj = zhcbsj;
+                        cbmodel.f_bk = "正常";
+                        cbmodel.f_bkid = "05430001";
+                        cbmodel.f_zt = "已算费";
+                        cbmodel.f_ztid = "2";
+                        cbmodel.f_ly = "远传表自动计算";
+                        cbmodel.f_lyid = "05450004";
+                        cbmodel.f_sbbh = khmodel.f_sbbh;
+                        cbmodel.f_sbbhid = khmodel.f_sbbhid;
+                        cbmodel.f_sblx = khmodel.f_sblx;
+                        cbmodel.f_sblxid = khmodel.f_sblxid;
+                        cbmodel.f_yslx = khmodel.f_yslx;
+                        cbmodel.f_yslxid = khmodel.f_yslxid;
+                        cbmodel.f_lxtkhh = khmodel.f_lxth;
+                        cbmodel.f_cbbh = khmodel.f_cbbh;
+                        cbmodel.f_cbbhid = khmodel.f_cbbhid;
+                        cbmodel.f_cbmc = khmodel.f_cbmc;
+                        cbmodel.f_yhbh = khmodel.f_yhbh;
+                        cbmodel.f_yhbhid = khmodel.f_yhbhid;
+                        cbmodel.f_yhm = khmodel.f_yhm;
+                        cbmodel.f_jfm = khmodel.f_jfm;
+                        cbmodel.f_dh = khmodel.f_dh;
+                        cbmodel.f_dz = khmodel.f_dz;
+                        cbmodel.f_dy = khmodel.f_dy;
+                        cbmodel.f_dyid = khmodel.f_dyid;
+                        cbmodel.f_sc = khmodel.f_sc;
+                        cbmodel.f_scid = khmodel.f_scid;
+                        cbmodel.f_qy = khmodel.f_qy;
+                        cbmodel.f_qyid = khmodel.f_qyid;
+                        cbmodel.f_pq = khmodel.f_pq;
+                        cbmodel.f_pqid = khmodel.f_pqid;
+                        cbmodel.f_kj = khmodel.f_sbkj;
+                        cbmodel.f_kjid = khmodel.f_sbkjid;
+                        cbmodel.f_ztkhh = khmodel.f_ztkhh;
+                        cbmodel.f_ztsbh = khmodel.f_ztsbh;
+                        cbmodel.f_ztyhh = khmodel.f_ztyhh;
+                        cbmodel.f_rs = khmodel.f_rs;
+                        cbmodel.f_khfz = khmodel.f_khfz;
+                        cbmodel.f_khfzid = khmodel.f_khfzid;
+                        cbmodel.f_sjljsyl = khmodel.f_nljgl;
+                        cbmodel.f_pgsj = blankTime;
+                        cbmodel.f_jfsj = blankTime;
+                        //写入抄表表瞬间累积欠费字段
+                        double ljqf = Eva.Library.Text.NumberTool.Parse(khmodel.f_ljqf);
+                        cbmodel.f_value3 = Eva.Library.Text.NumberTool.GetNumberByLength(ljqf + bqje, 2);
+
+
+
+
+                        #endregion
+
+                        #region 进行“是否算费提示”的计算，振幅在范围内为false，范围外为true
+                        {
+                            double qsqpjsl = Eva.Library.Text.NumberTool.Parse(khmodel.f_qsqpjsl);
+
+                            double zf = 0;
+                            if (qsqpjsl != 0)
+                            {
+                                zf = (Eva.Library.Text.NumberTool.Parse(bqsl) - qsqpjsl) / qsqpjsl;
+                            }
+
+                            DataRow[] jtsjdr = jtsjdt.Select("f_yslxid='" + khmodel.f_yslxid + "'");
+                            double yqzf = Eva.Library.Text.NumberTool.Parse(jtsjdr[0]["f_zfbl"].ToString()) / 100;
+
+
+                            bool sftx = true;
+
+                            if (-yqzf <= zf)
+                            {
+                                if (zf <= yqzf)
+                                {
+                                    sftx = false;
+                                }
+                            }
+
+                            if (sftx)
+                            {
+                                cbmodel.f_sfsfts = "true";
+                            }
+                            else
+                            {
+                                cbmodel.f_sfsfts = "false";
+                            }
+                        }
+                        _idal_tbl_ld_cbiao.Add(cbmodel, t);
+                        #endregion
+
+
+                        #region 最新平均水量
+
+                        //【前三期平均水量】【前六期平均水量】
+
+                        string f_qsqpjsl = "";
+                        string f_qlqpjsl = "";
+                        CountPJSL(khmodel.sys_id, ref f_qsqpjsl, ref f_qlqpjsl, bqsl, null);
+                        #endregion
+
+                        #region 推送数据到客户表
+                        //【最后抄表时间】【最后抄表表底数】【年累计购量】【累计购量】
+                        //【前三期平均水量】【前六期平均水量】(最新三或六期)
+                        //【累计欠费】
+
+                        #region 记录旧值
+                        string f_zhcbrq_old = khmodel.f_zhcbrq.ToString("yyyy-MM-dd");
+                        string f_sqzm_old = khmodel.f_sqzm;
+                        string f_bqzm_old = khmodel.f_bqzm;
+                        string f_nljgl_old = khmodel.f_nljgl;
+                        string f_ljgl_old = khmodel.f_ljgl;
+                        string f_qlqpjsl_old = khmodel.f_qlqpjsl;
+                        string f_qsqpjsl_old = khmodel.f_qsqpjsl;
+                        string f_sqsl_old = khmodel.f_sqsl;
+                        string f_bqsl_old = khmodel.f_bqsl;
+                        string f_ljqf_old = khmodel.f_ljqf;
+                        #endregion
+                        //计算新的抄表周期
+                        DateTime cbsj;
+                        DateTime today = DateTime.Now.Date;
+                        cbsj = Convert.ToDateTime(khmodel.f_zhcbrq, dtFormat);
+
+                        int cbzq = 0;
+                        if (int.TryParse(khmodel.f_cbzq, out cbzq))
+                        {
+
+                        }
+                        else
+                        {
+                            cbzq = 1;
+                        }
+                        int sbyear = cbsj.Year;
+                        int sbmonth = cbsj.Month + cbzq + 1;
+
+                        if (sbmonth > 12)
+                        {
+                            sbyear++;
+                            sbmonth = sbmonth - 12;
+                        }
+
+                        cbsj = new DateTime(sbyear, sbmonth, 1);
+                        cbsj = cbsj.AddDays(-1);
+                        while (cbsj < today)
+                        {
+                            cbsj = cbsj.AddMonths(cbzq);
+                        }
+                        khmodel.f_zhcbrq = cbsj;
+                        khmodel.f_sqzm = khmodel.f_bqzm;
+                        khmodel.f_bqzm = bqzm;
+
+                        double yz = Eva.Library.Text.NumberTool.Parse(khmodel.f_nljgl);
+                        double xz = yz + Eva.Library.Text.NumberTool.Parse(bqsl);
+                        khmodel.f_nljgl = Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2);
+
+                        double ljgl = Eva.Library.Text.NumberTool.Parse(khmodel.f_ljgl);
+                        double new_ljgl = ljgl + Eva.Library.Text.NumberTool.Parse(bqsl);
+                        khmodel.f_ljgl = Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2);
+
+                        khmodel.f_qsqpjsl = f_qsqpjsl;
+                        khmodel.f_qlqpjsl = f_qlqpjsl;
+
+                        khmodel.f_sqsl = khmodel.f_bqsl;
+                        khmodel.f_bqsl = bqsl.ToString();
+
+                        ljqf = Eva.Library.Text.NumberTool.Parse(khmodel.f_ljqf);
+                        double new_ljqf = ljqf + bqje;
+                        khmodel.f_ljqf = Eva.Library.Text.NumberTool.GetNumberByLength(new_ljqf, 2);
+
+                    _idal_tbl_ld_khb.Update(khmodel, "f_zhcbrq,f_sqzm,f_bqzm,f_nljgl,f_ljgl,f_qsqpjsl,f_qlqpjsl,f_sqsl,f_bqsl,f_ljqf", t);
+
+                        
+
+
+
+                        if (logflag)
+                        {
+                            #region 写日志
+                            List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
+                            IDictionary<string, string> temp = new Dictionary<string, string>();
+                            temp.Add("key", "f_zhcbrq");
+                            temp.Add("oldvalue", f_zhcbrq_old);
+                            temp.Add("newvalue", cbsj.ToString("yyyy-MM-dd"));
+                            temp.Add("name", "最后抄表日期");
+                            array.Add(temp);
+                            IDictionary<string, string> f_bqzm = new Dictionary<string, string>();
+                            f_bqzm.Add("key", "f_bqzm");
+                            f_bqzm.Add("oldvalue", f_bqzm_old);
+                            f_bqzm.Add("newvalue", bqzm);
+                            f_bqzm.Add("name", "本期止码 ");
+                            array.Add(f_bqzm);
+                            IDictionary<string, string> f_sqzm = new Dictionary<string, string>();
+                            f_sqzm.Add("key", "f_sqzm");
+                            f_sqzm.Add("oldvalue", f_sqzm_old);
+                            f_sqzm.Add("newvalue", khmodel.f_bqzm);
+                            f_sqzm.Add("name", "上期止码 ");
+                            array.Add(f_sqzm);
+                            IDictionary<string, string> f_nljgl = new Dictionary<string, string>();
+                            f_nljgl.Add("key", "f_nljgl");
+                            f_nljgl.Add("oldvalue", f_nljgl_old);
+                            f_nljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2));
+                            f_nljgl.Add("name", "年累计购量");
+                            array.Add(f_nljgl);
+                            IDictionary<string, string> f_ljgl = new Dictionary<string, string>();
+                            f_ljgl.Add("key", "f_ljgl");
+                            f_ljgl.Add("oldvalue", f_ljgl_old);
+                            f_ljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2));
+                            f_ljgl.Add("name", "累计购量");
+                            array.Add(f_ljgl);
+                            IDictionary<string, string> qsqpjsl_dic = new Dictionary<string, string>();
+                            qsqpjsl_dic.Add("key", "qsqpjsl");
+                            qsqpjsl_dic.Add("oldvalue", f_qsqpjsl_old);
+                            qsqpjsl_dic.Add("newvalue", f_qsqpjsl);
+                            qsqpjsl_dic.Add("name", "前三期平均水量");
+                            array.Add(qsqpjsl_dic);
+                            IDictionary<string, string> qlqpjsl_dic = new Dictionary<string, string>();
+                            qlqpjsl_dic.Add("key", "qlqpjsl");
+                            qlqpjsl_dic.Add("oldvalue", f_qlqpjsl_old);
+                            qlqpjsl_dic.Add("newvalue", f_qlqpjsl);
+                            qlqpjsl_dic.Add("name", "前六期平均水量");
+                            array.Add(qlqpjsl_dic);
+                            IDictionary<string, string> f_bqsl = new Dictionary<string, string>();
+                            f_bqsl.Add("key", "f_bqsl");
+                            f_bqsl.Add("oldvalue", f_bqsl_old);
+                            f_bqsl.Add("newvalue", bqsl.ToString());
+                            f_bqsl.Add("name", "本期水量 ");
+                            array.Add(f_bqsl);
+                            IDictionary<string, string> f_sqsl = new Dictionary<string, string>();
+                            f_sqsl.Add("key", "f_bqsl");
+                            f_sqsl.Add("oldvalue", f_sqsl_old);
+                            f_sqsl.Add("newvalue", khmodel.f_bqsl);
+                            f_sqsl.Add("name", "上期水量");
+                            array.Add(f_sqsl);
+
+                            sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_khb", khmodel.sys_id.ToString(), "WaterDataCenterService", "NB远传表自动抄表", array, "", null);
+                            #endregion
+                        }
+
+                    #endregion
+
+                    #region 推送数据到水表表
+                    //【年累计购量】【累计购量】 
+                    //【前三期平均水量】【前六期平均水量】
+                    List<sara.dd.ldsw.model.tbl_ld_sbb> sbtemp = _idal_tbl_ld_sbb.GetList("f_sbbh='" + sbbh + "'", "", "*", "", "", t);
+                    if (sbtemp.Count == 1)
+                    {
+                        sara.dd.ldsw.model.tbl_ld_sbb model_tbl_ld_sbb = sbtemp[0];
+
+                        string sb_f_bqzm_old = model_tbl_ld_sbb.f_bqzm;
+                        string sb_f_sqzm_old = model_tbl_ld_sbb.f_sqzm;
+                        string sb_f_bqsl_old = model_tbl_ld_sbb.f_bqsl;
+                        string sb_f_sqsl_old = model_tbl_ld_sbb.f_sqsl;
+                        string sb_f_nljgl_old = model_tbl_ld_sbb.f_nljgl;
+                        string sb_f_ljgl_old = model_tbl_ld_sbb.f_ljgl;
+                        string sb_f_qsqpjsl_old = model_tbl_ld_sbb.f_qsqpjsl;
+                        string sb_f_qlqpjsl_old = model_tbl_ld_sbb.f_qlqpjsl;
+
+
+                        double sb_ljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_ljgl);
+                        double now_ljgl = sb_ljgl + Eva.Library.Text.NumberTool.Parse(bqsl);
+                        model_tbl_ld_sbb.f_ljgl = Eva.Library.Text.NumberTool.GetNumberByLength(now_ljgl, 2);
+
+                        double sb_nljgl = Eva.Library.Text.NumberTool.Parse(model_tbl_ld_sbb.f_nljgl);
+                        double now_nljgl = sb_nljgl + Eva.Library.Text.NumberTool.Parse(bqsl);
+                        model_tbl_ld_sbb.f_nljgl = Eva.Library.Text.NumberTool.GetNumberByLength(now_nljgl, 2);
+
+
+                        model_tbl_ld_sbb.f_qsqpjsl = f_qsqpjsl;
+                        model_tbl_ld_sbb.f_qlqpjsl = f_qlqpjsl;
+
+
+                        model_tbl_ld_sbb.f_sqzm = model_tbl_ld_sbb.f_bqzm;
+                        model_tbl_ld_sbb.f_bqzm = bqzm;
+                        model_tbl_ld_sbb.f_sqsl = model_tbl_ld_sbb.f_bqsl;
+                        model_tbl_ld_sbb.f_bqsl = Eva.Library.Text.NumberTool.GetNumberByLength(bqsl, 0);
+
+                        _idal_tbl_ld_sbb.Update(model_tbl_ld_sbb, "f_ljgl,f_nljgl,f_qsqpjsl,f_qlqpjsl,f_sqzm,f_bqzm,f_sqsl,f_bqsl", t);
+                        #endregion
+                        if (logflag)
+                        {
+                            #region 写日志
+
+                            List<IDictionary<string, string>> list = new List<IDictionary<string, string>>();
+
+
+                            IDictionary<string, string> sb_f_nljgl = new Dictionary<string, string>();
+                            sb_f_nljgl.Add("key", "f_nljgl");
+                            sb_f_nljgl.Add("oldvalue", sb_f_nljgl_old);
+                            sb_f_nljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(xz.ToString(), 2));
+                            sb_f_nljgl.Add("name", "年累计购量");
+                            list.Add(sb_f_nljgl);
+
+                            IDictionary<string, string> sb_f_ljgl = new Dictionary<string, string>();
+                            sb_f_ljgl.Add("key", "f_ljgl");
+                            sb_f_ljgl.Add("oldvalue", sb_f_ljgl_old);
+                            sb_f_ljgl.Add("newvalue", Eva.Library.Text.NumberTool.GetNumberByLength(new_ljgl, 2));
+                            sb_f_ljgl.Add("name", "累计购量");
+                            list.Add(sb_f_ljgl);
+
+                            IDictionary<string, string> sb_f_qsqpjsl = new Dictionary<string, string>();
+                            sb_f_qsqpjsl.Add("key", "f_qsqpjsl");
+                            sb_f_qsqpjsl.Add("oldvalue", sb_f_qsqpjsl_old);
+                            sb_f_qsqpjsl.Add("newvalue", f_qsqpjsl);
+                            sb_f_qsqpjsl.Add("name", "前三期平均水量");
+                            list.Add(sb_f_qsqpjsl);
+
+                            IDictionary<string, string> sb_f_qlqpjsl = new Dictionary<string, string>();
+                            sb_f_qlqpjsl.Add("key", "f_qlqpjsl");
+                            sb_f_qlqpjsl.Add("oldvalue", sb_f_qlqpjsl_old);
+                            sb_f_qlqpjsl.Add("newvalue", f_qlqpjsl);
+                            sb_f_qlqpjsl.Add("name", "前六期平均水量");
+                            list.Add(sb_f_qlqpjsl);
+
+                            IDictionary<string, string> sb_f_bqzm = new Dictionary<string, string>();
+                            sb_f_bqzm.Add("key", "f_bqzm");
+                            sb_f_bqzm.Add("oldvalue", sb_f_bqzm_old);
+                            sb_f_bqzm.Add("newvalue", bqzm);
+                            sb_f_bqzm.Add("name", "本期止码");
+                            list.Add(sb_f_bqzm);
+                            IDictionary<string, string> sb_f_sqzm = new Dictionary<string, string>();
+                            sb_f_sqzm.Add("key", "f_sqzm");
+                            sb_f_sqzm.Add("oldvalue", sb_f_sqzm_old);
+                            sb_f_sqzm.Add("newvalue", model_tbl_ld_sbb.f_sqzm);
+                            sb_f_sqzm.Add("name", "上期止码");
+                            list.Add(sb_f_sqzm);
+                            IDictionary<string, string> sb_f_bqsl = new Dictionary<string, string>();
+                            sb_f_bqsl.Add("key", "f_bqsl");
+                            sb_f_bqsl.Add("oldvalue", sb_f_bqsl_old);
+                            sb_f_bqsl.Add("newvalue", bqsl.ToString());
+                            sb_f_bqsl.Add("name", "本期水量");
+                            list.Add(sb_f_bqsl);
+                            IDictionary<string, string> sb_f_sqsl = new Dictionary<string, string>();
+                            sb_f_sqsl.Add("key", "f_sqsl");
+                            sb_f_sqsl.Add("oldvalue", sb_f_sqsl_old);
+                            sb_f_sqsl.Add("newvalue", model_tbl_ld_sbb.f_bqsl);
+                            sb_f_sqsl.Add("name", "上期水量");
+                            list.Add(sb_f_sqsl);
+                            sara.dd.ldsw.commonclass.commonclass.addUpdateLog("tbl_ld_sbb", model_tbl_ld_sbb.sys_id.ToString(), "WaterDataCenterService", "NB远传表自动抄表", list, "", null);
+                            #endregion
+                        }
+
+
+                    }
+                        
+                    
+                }
+                t.getTrans().commit();
+
+            }
+            catch (Exception ex)
+            {
+                if (t != null)
+                {
+                    t.getTrans().rollback();
+                }
+                return Eva.Library.Format.FormatTextTool.ErrorMessageFormat(ex.Message + ex.StackTrace);
+
+            }
+            return "true";
+
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string RollBack(string json, string columns, string clientInf, string type)
         {
             //首先保存数据
@@ -1844,34 +2286,34 @@ namespace sara.dd.ldsw.service
             {
                 _iAccessData = sara.dd.ldsw.commonclass.commonclass.CreateIAccessData();
                 sara.dd.ldsw.model.tbl_ld_ycbgl model = Eva.Library.Format.FormatEntityTool.FormatJsonToModel<sara.dd.ldsw.model.tbl_ld_ycbgl>(json);
-                
+
 
                 //判断是否为最后一条可回滚数据
-                string sql = "SELECT max(sys_id) FROM TBL_LD_YCBGL WHERE f_value1='"+type+"'";
+                string sql = "SELECT max(sys_id) FROM TBL_LD_YCBGL WHERE f_value1='" + type + "'";
                 string maxid = _iAccessData.GetSingle(sql).ToString();
-                if(maxid == model.sys_id.ToString())
+                if (maxid == model.sys_id.ToString())
                 {
                     //创建导入进程0/100
                     sara.dd.ldsw.commonclass.FileOperation.writeFile(Eva.Library.Global.AppRootPath + "ycbhg" + model.sys_id + ".txt", "0/100");
 
                     //对应抄本编号id
                     string cbbhid = "";
-                        if (type == "0")
-                            {
+                    if (type == "0")
+                    {
                         cbbhid = "4736";
-                            }
-                        else
-                            {
+                    }
+                    else
+                    {
                         cbbhid = "4796";
-                            }
+                    }
                     //获取远传表的的所有用户
-                    string khquerysql = "SELECT * FROM tbl_ld_khb WHERE f_cbbhid = '"+cbbhid+"' and f_ztid in ('0','4') and sys_delflag='0'";
+                    string khquerysql = "SELECT * FROM tbl_ld_khb WHERE f_cbbhid = '" + cbbhid + "' and f_ztid in ('0','4') and sys_delflag='0'";
                     DataTable khdt = _iAccessData.Query(khquerysql).Tables[0];
                     //获取远传表用户的所有水表
-                    string sbquerysql = "SELECT * FROM tbl_ld_sbb WHERE sys_id in (select f_sbbhid from tbl_ld_khb where f_cbbhid = '"+cbbhid+"' and f_ztid in ('0','4') and sys_delflag='0') and f_ztid in ('0','4') and sys_delflag='0'";
+                    string sbquerysql = "SELECT * FROM tbl_ld_sbb WHERE sys_id in (select f_sbbhid from tbl_ld_khb where f_cbbhid = '" + cbbhid + "' and f_ztid in ('0','4') and sys_delflag='0') and f_ztid in ('0','4') and sys_delflag='0'";
                     DataTable sbdt = _iAccessData.Query(sbquerysql).Tables[0];
                     //获取远传表用户所有已算费的数据
-                    string cbquerysql = "SELECT * FROM tbl_ld_cbiao WHERE f_cbbhid = '"+cbbhid+"' order by sys_id desc";
+                    string cbquerysql = "SELECT * FROM tbl_ld_cbiao WHERE f_cbbhid = '" + cbbhid + "' order by sys_id desc";
                     DataTable cbdt = _iAccessData.Query(cbquerysql).Tables[0];
                     //获取所有抄表的子表信息
                     string zbquerysql = "SELECT * FROM tbl_ld_ycbglzb WHERE FK_TBL_LD_YCBGL_SYS_ID='" + model.sys_id + "' AND f_bqzm is not null";
@@ -1905,7 +2347,7 @@ namespace sara.dd.ldsw.service
                         DataRow[] cbdrs = cbdt.Select("f_khbh='" + dr["f_khbh"].ToString() + "' and f_sqzm='" + dr["f_sqzm"].ToString() + "' and f_bqzm='" + dr["f_bqzm"].ToString() + "' and f_ztid='2'", "sys_id desc");
                         DataRow[] khdrs = khdt.Select("f_khbh='" + dr["f_khbh"].ToString() + "'");
                         DataRow[] sbdrs = sbdt.Select("f_khbh='" + dr["f_khbh"].ToString() + "'");
-                        if (cbdrs.Length > 0 && khdrs.Length>0 && sbdrs.Length>0)
+                        if (cbdrs.Length > 0 && khdrs.Length > 0 && sbdrs.Length > 0)
                         {
                             //记录待删抄表sys_id
                             cbsysid += cbdrs[0]["sys_id"].ToString() + ",";
@@ -1915,7 +2357,7 @@ namespace sara.dd.ldsw.service
                             #region 回滚客户表数据
 
                             //上一条抄表记录
-                            DataRow[] dt_sytcbjl = cbdt.Select("f_khbh='" + dr["f_khbh"].ToString() + "' and f_ztid <> '0' and sys_id <> '"+ cbdrs[0]["sys_id"].ToString() + "'", "f_cbsj desc");
+                            DataRow[] dt_sytcbjl = cbdt.Select("f_khbh='" + dr["f_khbh"].ToString() + "' and f_ztid <> '0' and sys_id <> '" + cbdrs[0]["sys_id"].ToString() + "'", "f_cbsj desc");
 
 
                             List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = Eva.Library.Format.FormatEntityTool.FormatDataTableToModelList<sara.dd.ldsw.model.tbl_ld_khb>(this.ToDataTable(khdrs));
@@ -2033,7 +2475,7 @@ namespace sara.dd.ldsw.service
                             #endregion
                         }
 
-                        if((i+1)%501 == 0)
+                        if ((i + 1) % 501 == 0)
                         {
 
 
@@ -2108,7 +2550,7 @@ namespace sara.dd.ldsw.service
                         sblist = new List<ldsw.model.tbl_ld_sbb>();
                     }
 
-                    
+
 
 
 
@@ -2351,7 +2793,46 @@ namespace sara.dd.ldsw.service
             sara.dd.ldsw.Global._ilog.NewLog(lcm);
         }
 
-        private void CountPJSL(int khbhid, ref string f_qsqpjsl, ref string f_qlqpjsl, string bqsl,DataTable khdt, Eva.Library.Data.AccessDataTrans.IAccessDataTrans t)
+        private void CountPJSL(int khbhid, ref string f_qsqpjsl, ref string f_qlqpjsl, string bqsl, DataTable khdt, Eva.Library.Data.AccessDataTrans.IAccessDataTrans t)
+        {
+            DataTable dt_pjsl = null;
+
+            if (t == null)
+            {
+                _iAccessData = Eva.Library.Data.AccessData.AccessDataFactory.CreateDataAccess(DataBaseType.oracledal, Eva.Library.Configuration.ConfigurationManager.AppSettings["DataBaseConnectionString"].ToString());
+                dt_pjsl = _iAccessData.Query("select f_bqsl,rownum from ( select f_bqsl from tbl_ld_cbiao where f_khbhid='" + khbhid + "' and f_ztid <> '0' and f_ztid <> '9'  order by f_cbsj desc) t where rownum<6").Tables[0];
+            }
+            else
+            {
+                dt_pjsl = t.Query("select f_bqsl,rownum from ( select f_bqsl from tbl_ld_cbiao where f_khbhid='" + khbhid + "' and f_ztid <> '0' and f_ztid <> '9' order by f_cbsj desc) t where rownum<6").Tables[0];
+            }
+
+            double qsqpjsl = double.Parse(bqsl); int count_qs = 1;
+            double qlqpjsl = double.Parse(bqsl); int count_ql = 1;
+
+            for (int i = 0; i < dt_pjsl.Rows.Count; i++)
+            {
+                if (i < 2)
+                {
+                    qsqpjsl += Eva.Library.Text.NumberTool.Parse(dt_pjsl.Rows[i]["f_bqsl"].ToString());
+                    count_qs++;
+                }
+                qlqpjsl += Eva.Library.Text.NumberTool.Parse(dt_pjsl.Rows[i]["f_bqsl"].ToString());
+                count_ql++;
+            }
+            if (count_qs != 0)
+            {
+                qsqpjsl = qsqpjsl / count_qs;
+            }
+            if (count_ql != 0)
+            {
+                qlqpjsl = qlqpjsl / count_ql;
+            }
+            f_qsqpjsl = Eva.Library.Text.NumberTool.GetNumberByLength(qsqpjsl, 2);
+            f_qlqpjsl = Eva.Library.Text.NumberTool.GetNumberByLength(qlqpjsl, 2);
+        }
+
+        private void CountPJSL(int khbhid, ref string f_qsqpjsl, ref string f_qlqpjsl, string bqsl, Eva.Library.Data.AccessDataTrans.IAccessDataTrans t)
         {
             DataTable dt_pjsl = null;
 

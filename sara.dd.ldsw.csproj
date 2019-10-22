@@ -472,7 +472,9 @@
     <Content Include="service\service_tbl_ld_qfts.asmx" />
     <Content Include="service\service_tbl_ld_qftsyl.asmx" />
     <Content Include="service\service_tbl_ld_report.asmx" />
+    <Content Include="service\service_tbl_ld_rwb.asmx" />
     <Content Include="service\service_tbl_ld_sbb.asmx" />
+    <Content Include="service\service_tbl_ld_sbbj.asmx" />
     <Content Include="service\service_tbl_ld_xgsbds.asmx" />
     <Content Include="service\service_tbl_ld_xgsbdszb.asmx" />
     <Content Include="service\service_tbl_ld_xhhbt.asmx" />
@@ -702,6 +704,9 @@
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.css" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.html" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4rw.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4rw.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4rw.js" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_plxglist.css" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_plxglist.html" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_plxglist.js" />
@@ -756,6 +761,17 @@
     <Content Include="ui\tbl_ld_report\tbl_ld_report_modallist.css" />
     <Content Include="ui\tbl_ld_report\tbl_ld_report_modallist.html" />
     <Content Include="ui\tbl_ld_report\tbl_ld_report_modallist.js" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_detail.css" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_detail.html" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_detail.js" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_detail.min.css" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_list.css" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_list.html" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_list.js" />
+    <Content Include="ui\tbl_ld_rwb\tbl_ld_rwb_list.min.css" />
+    <Content Include="ui\tbl_ld_sbbj\tbl_ld_sbbj_list.css" />
+    <Content Include="ui\tbl_ld_sbbj\tbl_ld_sbbj_list.html" />
+    <Content Include="ui\tbl_ld_sbbj\tbl_ld_sbbj_list.js" />
     <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail.css" />
     <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail.html" />
     <Content Include="ui\tbl_ld_sbb\tbl_ld_sbb_detail.js" />
@@ -1101,6 +1117,8 @@
     <Compile Include="dal\tbl_ld_qftsyl_oracle.cs" />
     <Compile Include="dal\tbl_ld_qfts_oracle.cs" />
     <Compile Include="dal\tbl_ld_report_oracle.cs" />
+    <Compile Include="dal\tbl_ld_rwb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_sbbj_oracle.cs" />
     <Compile Include="dal\tbl_ld_sbb_oracle.cs" />
     <Compile Include="dal\tbl_ld_xgsbdszb_oracle.cs" />
     <Compile Include="dal\tbl_ld_xgsbds_oracle.cs" />
@@ -1162,7 +1180,9 @@
     <Compile Include="idal\tbl_ld_qfts.cs" />
     <Compile Include="idal\tbl_ld_qftsyl.cs" />
     <Compile Include="idal\tbl_ld_report.cs" />
+    <Compile Include="idal\tbl_ld_rwb.cs" />
     <Compile Include="idal\tbl_ld_sbb.cs" />
+    <Compile Include="idal\tbl_ld_sbbj.cs" />
     <Compile Include="idal\tbl_ld_xgsbds.cs" />
     <Compile Include="idal\tbl_ld_xgsbdszb.cs" />
     <Compile Include="idal\tbl_ld_xhhbt.cs" />
@@ -1220,7 +1240,9 @@
     <Compile Include="model\tbl_ld_qfts.cs" />
     <Compile Include="model\tbl_ld_qftsyl.cs" />
     <Compile Include="model\tbl_ld_report.cs" />
+    <Compile Include="model\tbl_ld_rwb.cs" />
     <Compile Include="model\tbl_ld_sbb.cs" />
+    <Compile Include="model\tbl_ld_sbbj.cs" />
     <Compile Include="model\tbl_ld_xgsbds.cs" />
     <Compile Include="model\tbl_ld_xgsbdszb.cs" />
     <Compile Include="model\tbl_ld_xhhbt.cs" />
@@ -1492,8 +1514,16 @@
       <DependentUpon>service_tbl_ld_report.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="service\service_tbl_ld_rwb.asmx.cs">
+      <DependentUpon>service_tbl_ld_rwb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="service\service_tbl_ld_sbb.asmx.cs">
       <DependentUpon>service_tbl_ld_sbb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_sbbj.asmx.cs">
+      <DependentUpon>service_tbl_ld_sbbj.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="service\service_tbl_ld_xgsbds.asmx.cs">

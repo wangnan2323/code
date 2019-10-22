@@ -1262,7 +1262,7 @@ namespace sara.dd.ldsw.service
             try
             {
                 object[] args = { f_khbh };
-                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://ewater.actionlive.cn/sara.dd.actionwx.ld/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
+                string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://162.16.166.1/sara.dd.actionwx/service/service_tbl_wx_khb.asmx", "getWeixinyue", args).ToString();
 
                 resultDic["result"] = "true";
                 resultDic["message"] = result;

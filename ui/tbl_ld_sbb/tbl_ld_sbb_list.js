@@ -198,13 +198,14 @@ var tbl_ld_sbb_list_Obj = (function ()
 
         codeServiceId += "0526^";
 
+        codeServiceId += "0822^";
+
         codeServiceId = codeServiceId.trimEnd('^');
         commonObj.getCodeServiceJson(codeServiceId, {
             success: function (resultArray)
             {
                 try
                 {
-                  
                     _baseCodeHashMap = new hashMap();
 
                     //_baseCodeHashMap.put('codeservice_0522', resultArray['0522']);
@@ -216,6 +217,9 @@ var tbl_ld_sbb_list_Obj = (function ()
                     _baseCodeHashMap.put('codeservice_0525', resultArray['0525']);
 
                     _baseCodeHashMap.put('codeservice_0526', resultArray['0526']);
+
+                    _baseCodeHashMap.put('codeservice_0822', resultArray['0822']);
+
                     var columnsArray = [
                     { "id": "f_sbbh", "text": "水表编号" },
                     { "id": "f_ztsbh", "text": "旧水表号" },
@@ -223,7 +227,7 @@ var tbl_ld_sbb_list_Obj = (function ()
                     { "id": "f_khbh", "text": "客户编号" },
                     { "id": "f_sbfz", "text": "水表分组" },
                     { "id": "f_sbpp", "text": "水表品牌" },
-                    { "id": "f_mph", "text": "铭牌号" },
+                    { "id": "f_mph", "text": "铭牌号" },   
                     { "id": "f_sbdz", "text": "水表地址" },
                     { "id": "f_rs", "text": "人数" },
                     { "id": "f_qsqpjsl", "text": "前三期平均水量" },
@@ -240,7 +244,9 @@ var tbl_ld_sbb_list_Obj = (function ()
                     { "id": "f_nljgl", "text": "年累计购量" },
                     { "id": "f_azrq", "text": "安装日期" },
                     { "id": "f_qfzt", "text": "铅封状态" },
-                    { "id": "f_zt", "text": "状态" },
+                        { "id": "f_zt", "text": "状态" },
+                        { "id": "f_bjzt", "text": "报警状态" },
+                        { "id": "f_bjnr", "text": "报警内容" },
                     { "id": "f_bz", "text": "备注" }
                     //{ "id": "f_fj", "text": "附件" }
                     //{ "id": "f_jllxid  ", "text": "计量类型id" },
@@ -299,6 +305,8 @@ var tbl_ld_sbb_list_Obj = (function ()
 
             var codeService_0526 = _baseCodeHashMap.get('codeservice_0526');
 
+            var codeService_0822 = _baseCodeHashMap.get('codeservice_0822');
+
             controlObj.multidropdownlistinit('search_f_sbfz_tbl_ld_sbb_list', codeService_0522);
 
             controlObj.multidropdownlistinit('search_f_sbkj_tbl_ld_sbb_list', codeService_0523);
@@ -308,6 +316,8 @@ var tbl_ld_sbb_list_Obj = (function ()
             controlObj.multidropdownlistinit('search_f_jllx_tbl_ld_sbb_list', codeService_0525);
 
             controlObj.multidropdownlistinit('search_f_zt_tbl_ld_sbb_list', codeService_0526);
+
+            controlObj.multidropdownlistinit('search_f_bjzt_tbl_ld_sbb_list', codeService_0822);
 
             controlObj.datetimeinit('search_f_azrq_tbl_ld_sbb_list_datefrom', 'search_f_azrq_tbl_ld_sbb_list_timefrom');
             controlObj.datetimeinit('search_f_azrq_tbl_ld_sbb_list_dateto', 'search_f_azrq_tbl_ld_sbb_list_timeto');
@@ -423,6 +433,10 @@ var tbl_ld_sbb_list_Obj = (function ()
                         controlObj.text('search_f_qlqpjsl_tbl_ld_sbb_list', tbl_ld_sbb_list.f_qlqpjsl);
 
                         controlObj.multidropdownlistid('search_f_zt_tbl_ld_sbb_list', tbl_ld_sbb_list.f_ztid);
+
+                        controlObj.text('search_f_bjnr_tbl_ld_sbb_list', tbl_ld_sbb_list.f_bjnr);
+
+                        controlObj.multidropdownlistid('search_f_bjzt_tbl_ld_sbb_list', tbl_ld_sbb_list.f_bjztid);
 
                         controlObj.text('search_f_bz_tbl_ld_sbb_list', tbl_ld_sbb_list.f_bz);
 
@@ -560,6 +574,12 @@ var tbl_ld_sbb_list_Obj = (function ()
 
 
                     tbl_ld_sbb_list.f_bz = controlObj.text('search_f_bz_tbl_ld_sbb_list');
+
+
+                    tbl_ld_sbb_list.f_bjztid = controlObj.multidropdownlistid('search_f_bjzt_tbl_ld_sbb_list');
+
+
+                    tbl_ld_sbb_list.f_bjnr = controlObj.text('search_f_bjnr_tbl_ld_sbb_list');
 
                     tbl_ld_sbb_list.f_azrqfrom = controlObj.datetime('search_f_azrq_tbl_ld_sbb_list_datefrom', 'search_f_azrq_tbl_ld_sbb_list_timefrom'); // datefrom + ' ' + timefrom;
                     tbl_ld_sbb_list.f_azrqto = controlObj.datetime('search_f_azrq_tbl_ld_sbb_list_dateto', 'search_f_azrq_tbl_ld_sbb_list_timeto'); //dateto + ' ' + timeto;                 
@@ -844,7 +864,18 @@ var tbl_ld_sbb_list_Obj = (function ()
                 errorMessageHansMap.put('search_f_zt_tbl_ld_sbb_list', '长度不能超过<a style="color:red">200</a>个字');
             }
 
+            if (tbl_ld_sbb_list.f_bjnr.length > 200)
+            {
+                errorMessageHansMap.put('search_f_bjnr_tbl_ld_sbb_list', '长度不能超过<a style="color:red">200</a>个字');
+            }
 
+
+
+
+            if (tbl_ld_sbb_list.f_bjztid.length > 200)
+            {
+                errorMessageHansMap.put('search_f_bjzt_tbl_ld_sbb_list', '长度不能超过<a style="color:red">200</a>个字');
+            }
 
 
             if (tbl_ld_sbb_list.f_qfztid.length > 200)
@@ -1019,6 +1050,12 @@ var tbl_ld_sbb_list_Obj = (function ()
                 controlObj.multidropdownlistid('search_f_zt_tbl_ld_sbb_list', that._pr_searchcontent.type2.f_ztid);
 
 
+                that._pr_searchcontent.type2.f_bjnr = '';
+                controlObj.text('search_f_bjnr_tbl_ld_sbb_list', that._pr_searchcontent.type2.f_bjnr);
+
+
+                that._pr_searchcontent.type2.f_bjztid = '';
+                controlObj.multidropdownlistid('search_f_bjzt_tbl_ld_sbb_list', that._pr_searchcontent.type2.f_bjztid);
 
                 that._pr_searchcontent.type2.f_azrqfrom = ('1900-01-01 00:00:00');
                 that._pr_searchcontent.type2.f_azrqto = ('1900-01-01 00:00:00');
@@ -1378,6 +1415,31 @@ var tbl_ld_sbb_list_Obj = (function ()
 
                             });
                             whereClause += ') and ';
+                        }
+
+                        if (tbl_ld_sbb_list.f_bjztid.length > 0)
+                        {
+                            var elementArray = tbl_ld_sbb_list.f_bjztid.split(',');
+                            whereClause += '(';
+                            $.each(elementArray, function (i, u)
+                            {
+                                if (i == 0)
+                                {
+                                    whereClause += ' ';
+                                }
+                                else
+                                {
+                                    whereClause += ' or ';
+                                }
+                                whereClause += "((','||f_bjztid||',') like ('%,'||'" + elementArray[i] + "'||',%')) ";
+
+                            });
+                            whereClause += ') and ';
+                        }
+
+                        if (tbl_ld_sbb_list.f_bjnr.length > 0)
+                        {
+                            whereClause += " f_bjnr like '%" + tbl_ld_sbb_list.f_bjnr + "%' and ";
                         }
 
 
@@ -1968,6 +2030,52 @@ var tbl_ld_sbb_list_Obj = (function ()
                     return resultStr;
                 }
             });
+            columnHashMap.put('f_bjzt', {
+                field: 'f_bjzt',
+                title: '报警状态',
+                "class": '',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+
+                    if (resultStr.length > 10)
+                    {
+                        resultStr = resultStr.substr(0, 10) + '...';
+                    }
+
+                    return resultStr;
+                }
+            });
+            columnHashMap.put('f_bjztid', {
+                field: 'f_bjztid',
+                title: '报警状态id',
+                "class": 'hidden',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+
+                    return resultStr;
+                }
+            });
+            columnHashMap.put('f_bjnr', {
+                field: 'f_bjnr',
+                title: '报警内容',
+                "class": '',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+
+                    if (resultStr.length > 10)
+                    {
+                        resultStr = resultStr.substr(0, 10) + '...';
+                    }
+
+                    return resultStr;
+                }
+            });
             columnHashMap.put('f_bz', {
                 field: 'f_bz',
                 title: '备注',
@@ -2358,6 +2466,10 @@ var tbl_ld_sbb_list_Obj = (function ()
 
             f_bz: '',
 
+            f_bjzt: '正常',
+            f_bjztid: '1',
+            f_bjnr:'',
+
             f_azrq: d.Format("yyyy-MM-dd"),
 
             sys_delflag: '0',
@@ -2583,7 +2695,7 @@ var tbl_ld_sbb_list_Obj = (function ()
                     whereClause += " f_ztid in ('" + that._pr_ztids.replaceAll(',', '\',\'') + "')";
                 }
                 var orderByString = ' sys_id desc';
-                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_sbbh^f_ztsbh^f_lxth^f_sbfz^f_sbfzid^f_sbpp^f_mph^f_sbdz^f_rs^f_sbkj^f_sbkjid^f_sblx^f_sblxid^f_jllx^f_jllxid^f_cszm^f_bqzm^f_sqzm^f_sqsl^f_bqsl^f_ljgl^f_nljgl^f_qsqpjsl^f_qlqpjsl^f_zt^f_ztid^f_bz^f_azrq^f_qfzt^sys_id';
+                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_sbbh^f_ztsbh^f_lxth^f_sbfz^f_sbfzid^f_sbpp^f_mph^f_sbdz^f_rs^f_sbkj^f_sbkjid^f_sblx^f_sblxid^f_jllx^f_jllxid^f_cszm^f_bqzm^f_sqzm^f_sqsl^f_bqsl^f_ljgl^f_nljgl^f_qsqpjsl^f_qlqpjsl^f_zt^f_ztid^f_bz^f_azrq^f_qfzt^sys_id^f_bjzt^f_bjztid^f_bjnr';
 
                 var data = {
                     whereString: whereClause,
