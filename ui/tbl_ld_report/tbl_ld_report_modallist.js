@@ -2201,11 +2201,15 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "  <th style='text-align:center'>水价</th>    ";
                     html += "  <th style='text-align:center'>水费</th>    ";
                     html += "  <th style='text-align:center'>水量</th>    ";
-                    html += "  <th style='text-align:center'>排污费</th>  ";
+                    html += "  <th style='text-align:center'>污水处理费</th>  ";
                     html += "  <th style='text-align:center'>应收金额</th>";
                     html += "  <th style='text-align:center'>折让金额</th>";
                     html += "  <th style='text-align:center'>调价结转抵消</th>";
                     html += "  <th style='text-align:center'>绿化表押金抵消</th>";
+                    html += "  <th style='text-align:center'>余额抵消</th>";
+                    html += "  <th style='text-align:center'>余额充值</th>";
+                    html += "  <th style='text-align:center'>疫情减免水费</th>";
+                    html += "  <th style='text-align:center'>疫情减免污水处理费</th>";
                     html += "  <th style='text-align:center'>实收金额</th>";
                     html += "</tr>              ";
                     for (var i = 0; i < tableobj.length; i++)
@@ -2220,6 +2224,10 @@ var tbl_ld_report_modallist_Obj = (function ()
                         html += "  <td style='text-align:center'>" + tableobj[i].zrje + "</td>";
                         html += "  <td style='text-align:center'>" + tableobj[i].ycdx + "</td>";
                         html += "  <td style='text-align:center'>" + tableobj[i].xzyc + "</td>";
+                        html += "  <td style='text-align:center'>" + tableobj[i].yedk + "</td>";
+                        html += "  <td style='text-align:center'>" + tableobj[i].yecz + "</td>";
+                        html += "  <td style='text-align:center'>" + tableobj[i].yqjmsf + "</td>";
+                        html += "  <td style='text-align:center'>" + tableobj[i].yqjmpwf + "</td>";
                         html += "  <td style='text-align:center'>" + tableobj[i].ssje + "</td>";
                         html += "</tr>                          ";
                     }
@@ -2240,17 +2248,17 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<td>水费单价</td>";
                     html += "<td>水量</td>";
                     html += "<td>水费</td>";
-                    html += "<td>排污费单价</td>";
-                    html += "<td>排污费</td>";
+                    html += "<td>污水处理费单价</td>";
+                    html += "<td>污水处理费</td>";
                     html += "<td>水量</td>";
                     html += "<td>水费</td>";
-                    html += "<td>排污费</td>";
+                    html += "<td>污水处理费</td>";
                     html += "<td>水量</td>";
                     html += "<td>水费</td>";
-                    html += "<td>排污费</td>";
+                    html += "<td>污水处理费</td>";
                     html += "<td>水量</td>";
                     html += "<td>水费</td>";
-                    html += "<td>排污费</td>";
+                    html += "<td>污水处理费</td>";
                     html += "<td>总计</td>";
                     html += "</tr>";
                     for (var i = 0; i < tableobj.length; i++)
@@ -2282,10 +2290,16 @@ var tbl_ld_report_modallist_Obj = (function ()
                             html += "<td>" + tableobj[i].zjsl + "</td>";
                             html += "</tr>";
                         }
-                        else if (tableobj[i].lx == "追缴水费" || (tableobj[i].lx == "居民用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "商业邮储代收" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡邮储代收" && tableobj[i + 1].lx == ""))
+                        else if (tableobj[i].lx == "追缴水费" || (tableobj[i].lx == "居民用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡用户" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "商业邮储代收" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "IC卡邮储代收" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "超阶梯水费" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "光大自助缴费" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "旅游区" && tableobj[i + 1].lx == "") || (tableobj[i].lx == "E水公众号缴费" && tableobj[i + 1].lx == ""))
                         {
+                            var ii = 1;
+                            while (tableobj[i + ii].lx == "")
+                            {
+                                ii++;
+                            }
+                            
                             html += "<tr>";
-                            html += "<td rowspan=\"2\">" + tableobj[i].lx + "</td>";
+                            html += "<td rowspan=\""+ii+"\">" + tableobj[i].lx + "</td>";
                             html += "<td>" + tableobj[i].dysfpwfdj + "</td>";
                             html += "<td>" + tableobj[i].dysfdj + "</td>";
                             html += "<td>" + tableobj[i].dysl + "</td>";
@@ -3721,8 +3735,32 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "  <td width=\"100px\">" + tableobj[14].je + "</td>  ";
                     html += "</tr>";
                     html += "<tr> ";
-                    html += "  <td width=\"100px\"> 合计 </td>  ";
+                    html += "  <td width=\"100px\"> 余额使用 </td>  ";
                     html += "  <td width=\"100px\">" + tableobj[15].je + "</td>  ";
+                    html += "</tr>";
+                    html += "<tr> ";
+                    html += "  <td width=\"100px\"> 余额预存 </td>  ";
+                    html += "  <td width=\"100px\">" + tableobj[16].je + "</td>  ";
+                    html += "</tr>";
+                    html += "<tr> ";
+                    html += "  <td width=\"100px\"> e水余额使用 </td>  ";
+                    html += "  <td width=\"100px\">" + tableobj[17].je + "</td>  ";
+                    html += "</tr>";
+                    html += "<tr> ";
+                    html += "  <td width=\"100px\"> e水余额预存 </td>  ";
+                    html += "  <td width=\"100px\">" + tableobj[18].je + "</td>  ";
+                    html += "</tr>";
+                    html += "<tr> ";
+                    html += "  <td width=\"100px\"> 缴费机余额使用 </td>  ";
+                    html += "  <td width=\"100px\">" + tableobj[19].je + "</td>  ";
+                    html += "</tr>";
+                    html += "<tr> ";
+                    html += "  <td width=\"100px\"> 缴费机余额预存 </td>  ";
+                    html += "  <td width=\"100px\">" + tableobj[20].je + "</td>  ";
+                    html += "</tr>";
+                    html += "<tr> ";
+                    html += "  <td width=\"100px\"> 合计 </td>  ";
+                    html += "  <td width=\"100px\">" + tableobj[21].je + "</td>  ";
                     html += "</tr>";
                 }
 
@@ -3779,7 +3817,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<td style=\"width:80px\" rowspan=\"11\">自来水售水量</td>";
                     html += "<td style=\"width:80px\" rowspan=\"3\">类别/项目</td>";
                     html += "<td style=\"width:80px\" rowspan=\"3\">实收水费金额(元)</td>";
-                    html += "<td style=\"width:80px\" rowspan=\"3\">不含排污费实收水费(元)</td>";
+                    html += "<td style=\"width:80px\" rowspan=\"3\">不含污水处理费实收水费(元)</td>";
                     html += "<td style=\"width:80px\" colspan=\"6\">当月实收情况</td>";
                     html += "<td style=\"width:80px\" colspan=\"3\">当月污水处理费</td>";
                     html += "<td style=\"width:80px\" colspan=\"4\">收回欠费情况</td>";
@@ -3788,9 +3826,9 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<td style=\"width:80px\" colspan=\"2\">应收数</td>";
                     html += "<td style=\"width:80px\" colspan=\"2\">实收数</td>";
                     html += "<td style=\"width:80px\" colspan=\"2\">欠收数</td>";
-                    html += "<td style=\"width:80px\" rowspan=\"2\">实收排污费(元)</td>";
-                    html += "<td style=\"width:80px\" rowspan=\"2\">欠收排污费(元)</td>";
-                    html += "<td style=\"width:80px\" rowspan=\"2\">排污费合计(元)</td>";
+                    html += "<td style=\"width:80px\" rowspan=\"2\">实收污水处理费(元)</td>";
+                    html += "<td style=\"width:80px\" rowspan=\"2\">欠收污水处理费(元)</td>";
+                    html += "<td style=\"width:80px\" rowspan=\"2\">污水处理费合计(元)</td>";
                     html += "<td style=\"width:80px\" colspan=\"2\">本年度</td>";
                     html += "<td style=\"width:80px\" colspan=\"2\">上年度</td>";
                     html += "</tr>";
@@ -3881,9 +3919,9 @@ var tbl_ld_report_modallist_Obj = (function ()
                                 html += "<td style=\"width:80px\" colspan=\"2\">应收数</td>";
                                 html += "<td style=\"width:80px\" colspan=\"2\">实收数</td>";
                                 html += "<td style=\"width:80px\" colspan=\"2\">欠收数</td>";
-                                html += "<td style=\"width:80px\" rowspan=\"2\">实收排污费(元)</td>";
-                                html += "<td style=\"width:80px\" rowspan=\"2\">欠收排污费(元)</td>";
-                                html += "<td style=\"width:80px\" rowspan=\"2\">排污费合计(元)</td>";
+                                html += "<td style=\"width:80px\" rowspan=\"2\">实收污水处理费(元)</td>";
+                                html += "<td style=\"width:80px\" rowspan=\"2\">欠收污水处理费(元)</td>";
+                                html += "<td style=\"width:80px\" rowspan=\"2\">污水处理费合计(元)</td>";
                                 html += "<td style=\"width:80px\" colspan=\"2\">本年度</td>";
                                 html += "<td style=\"width:80px\" colspan=\"2\">上年度</td>";
                                 break;
@@ -3930,7 +3968,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<tr>";
                     html += "<td colspan=\"2\">用水类别/月份</td>";
                     html += "<td>水费</td>";
-                    html += "<td>排污费</td>";
+                    html += "<td>污水处理费</td>";
                     html += "<td>单价</td>";
                     html += "<td>1月水量</td>";
                     html += "<td>所占比率</td>";
@@ -4187,7 +4225,7 @@ var tbl_ld_report_modallist_Obj = (function ()
                     html += "<tr>";
                     html += "<td colspan=\"2\">用水类别/月份</td>";
                     html += "<td>水费</td>";
-                    html += "<td>排污费</td>";
+                    html += "<td>污水处理费</td>";
                     html += "<td>单价</td>";
                     html += "<td>1月水量</td>";
                     html += "<td>所占比率</td>";

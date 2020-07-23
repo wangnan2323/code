@@ -20,6 +20,9 @@ using System.Data;
 using Eva.Library.Data;
 using System.Text;
 using System.Threading;
+using System.IO;
+using System.Net;
+using System.Diagnostics;
 
 namespace sara.dd.ldsw.service
 {
@@ -36,11 +39,13 @@ namespace sara.dd.ldsw.service
         static string sendcount = "";
         static string onrunsysid = "";
         private sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
+        private sara.dd.ldsw.idal.Itbl_ld_cbiao _idal_tbl_ld_cbiao = new sara.dd.ldsw.dal.tbl_ld_cbiao();
+        private sara.dd.ldsw.idal.Itbl_ld_ickss _idal_tbl_ld_ickss = new sara.dd.ldsw.dal.tbl_ld_ickss();
         private Eva.Library.Data.AccessData.IAccessData _iAccessData = null;
         private sara.dd.ldsw.reportclass.tbl_ld_khb re = new sara.dd.ldsw.reportclass.tbl_ld_khb();
         private sara.dd.ldsw.reportclass.tbl_ld_khbzdy report = new sara.dd.ldsw.reportclass.tbl_ld_khbzdy();
         private sara.dd.ldsw.reportclass.tbl_ld_khxx report_khxx = new sara.dd.ldsw.reportclass.tbl_ld_khxx();
-        
+
         //public service_tbl_ld_khb()
         //{
         //    _iAccessData = Eva.Library.Data.AccessData.AccessDataFactory.CreateDataAccess(DataBaseType.oracledal, Eva.Library.Configuration.ConfigurationManager.AppSettings["DataBaseConnectionString"].ToString());
@@ -895,7 +900,7 @@ namespace sara.dd.ldsw.service
                 columns += "^" + "f_dz";
 
                 columns += "^" + "f_sbdz";
-
+                columns += "^" + "f_ye";
                 columns += "^" + "f_dh";
 
                 columns += "^" + "f_dy";
@@ -960,6 +965,9 @@ namespace sara.dd.ldsw.service
                 columns += "^" + "f_jhysl";
                 columns += "^" + "f_ickljgl";
 
+
+                columns += "^" + "f_sfdxcs";
+                columns += "^" + "f_dxcsyy";
 
             }
             return columns.TrimStart('^');
@@ -1277,17 +1285,85 @@ namespace sara.dd.ldsw.service
 
             return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
         }
-        
+        //缴费及查询接口
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string jfjQuery(string f_khbh, string type)
+        {
+            Dictionary<string, string> resultDic = new Dictionary<string, string>();
+            resultDic["result"] = "";
+            resultDic["message"] = "";
+            resultDic["cbdt"] = "";
+            try
+            {
+                List<model.tbl_ld_khb> modellist = _idal_tbl_ld_khb.GetList(" f_khbh='" + f_khbh + "'", " sys_id desc", "*", "", "", null);
+                DataTable dt = null;
+
+
+                if (modellist.Count == 1)
+                {
+                    //判断是否属于IC卡用户
+                    if (modellist[0].f_khfzid.IndexOf("4063") != -1)
+                    {
+                        //属于IC卡用户
+
+                        dt = _idal_tbl_ld_ickss.GetDataTableForPC(" f_khbh='" + f_khbh + "' and to_char(f_xiekrq,'yyyy')=to_char(sysdate,'yyyy') and f_ztid='2'", "false", " f_xiekrq desc", "f_xiekrq as 写卡日期,f_sl as 当期购水量,f_ysje as 当期金额,f_sf as 水费,f_pwf as 污水处理费,f_sblx as 水表类型,f_ly as 来源", "", "", null);
+                        //dt = _idal_tbl_ld_ickss.GetDataTableForPC(" f_khbh='" + f_khbh + "' and (to_char(f_xiekrq,'yyyy')=to_char(sysdate,'yyyy') or to_char(f_xiekrq,'yyyy')=to_char(add_months(sysdate,-12),'yyyy')) and f_ztid='2'", "false", " f_xiekrq desc", "f_xiekrq as 写卡日期,f_sl as 当期购水量,f_ysje as 当期金额,f_sf as 水费,f_pwf as 污水处理费,f_sblx as 水表类型,f_ly as 来源", "", "", null);
+
+
+                    }
+                    else
+                    {
+                        //非IC卡用户
+                        if (type == "query")
+                        {
+                            dt = _idal_tbl_ld_cbiao.GetDataTableForPC(" f_khbh='" + f_khbh + "' and to_char(f_cbsj,'yyyy')=to_char(sysdate,'yyyy')", "false", " f_cbsj desc", "f_cbsj as 抄表时间,f_bqsl as 当月水量,f_bqje as 当期金额,f_sf as 水费,f_pwf as 污水处理费,REPLACE(f_zt,'已算费','未缴费') as 缴费状态,f_dyjtsl as 一阶梯水量,f_dyjtsf as 一阶梯水费,f_dejtsl as 二阶梯水量,f_dejtsf as 二阶梯水费,f_dsjtsl as 三阶梯水量,f_dsjtsf as 三阶梯水费", "", "", null);
+                            //dt = _idal_tbl_ld_cbiao.GetDataTableForPC(" f_khbh='" + f_khbh + "' and (to_char(f_cbsj,'yyyy')=to_char(sysdate,'yyyy') or to_char(f_cbsj,'yyyy')=to_char(add_months(sysdate,-12),'yyyy'))", "false", " f_cbsj desc", "f_cbsj as 抄表时间,f_bqsl as 当月水量,f_bqje as 当期金额,f_sf as 水费,f_pwf as 污水处理费,REPLACE(f_zt,'已算费','未缴费') as 缴费状态,f_dyjtsl as 一阶梯水量,f_dyjtsf as 一阶梯水费,f_dejtsl as 二阶梯水量,f_dejtsf as 二阶梯水费,f_dsjtsl as 三阶梯水量,f_dsjtsf as 三阶梯水费", "", "", null);
+
+                        }
+                        else
+                        {
+                            dt = _idal_tbl_ld_cbiao.GetDataTableForPC(" f_khbh='" + f_khbh + "' and to_char(f_cbsj,'yyyy')=to_char(sysdate,'yyyy') and f_ztid='2'", "false", " f_cbsj desc", "f_cbsj as 抄表时间,f_bqsl as 当月水量,f_bqje as 当期金额,f_sf as 水费,f_pwf as 污水处理费,REPLACE(f_zt,'已算费','未缴费') as 缴费状态,f_dyjtsl as 一阶梯水量,f_dyjtsf as 一阶梯水费,f_dejtsl as 二阶梯水量,f_dejtsf as 二阶梯水费,f_dsjtsl as 三阶梯水量,f_dsjtsf as 三阶梯水费", "", "", null);
+                            //dt = _idal_tbl_ld_cbiao.GetDataTableForPC(" f_khbh='" + f_khbh + "' and (to_char(f_cbsj,'yyyy')=to_char(sysdate,'yyyy') or to_char(f_cbsj,'yyyy')=to_char(add_months(sysdate,-12),'yyyy')) and f_ztid='2'", "false", " f_cbsj desc", "f_cbsj as 抄表时间,f_bqsl as 当月水量,f_bqje as 当期金额,f_sf as 水费,f_pwf as 污水处理费,REPLACE(f_zt,'已算费','未缴费') as 缴费状态,f_dyjtsl as 一阶梯水量,f_dyjtsf as 一阶梯水费,f_dejtsl as 二阶梯水量,f_dejtsf as 二阶梯水费,f_dsjtsl as 三阶梯水量,f_dsjtsf as 三阶梯水费", "", "", null);
+
+                        }
+                    }
+
+
+                    resultDic["result"] = "true";
+                    resultDic["message"] = Eva.Library.Format.FormatEntityTool.FormatModelToJson(modellist[0]);
+                    if (dt.Rows.Count > 0)
+                    {
+                        resultDic["cbdt"] = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
+                    }
+                }
+                else
+                {
+                    resultDic["result"] = "false";
+                    resultDic["message"] = "客户编号不存在";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                resultDic["result"] = "false";
+                resultDic["message"] = ex.ToString();
+            }
+
+            return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
+        }
+
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string SendMessage(string time,string wherestring,string gridselectids,string sysid)
+        public string SendMessage(string time, string wherestring, string gridselectids, string sysid)
         {
-                
-                Dictionary<string, string> resultDic = new Dictionary<string, string>();
-                resultDic["result"] = "true";
-                resultDic["message"] = "";
-            if(onrunsysid == "" ||　onrunsysid == sysid)
+
+            Dictionary<string, string> resultDic = new Dictionary<string, string>();
+            resultDic["result"] = "true";
+            resultDic["message"] = "";
+            if (onrunsysid == "" || onrunsysid == sysid)
             {
                 if (time == "0")
                 {
@@ -1323,8 +1399,8 @@ namespace sara.dd.ldsw.service
             }
 
 
-                return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
-            
+            return Eva.Library.Format.FormatEntityTool.FormatDicToJson(resultDic);
+
         }
         class DoSendWork
         {
@@ -1336,80 +1412,89 @@ namespace sara.dd.ldsw.service
             public void DoWork()
             {
 
-                    sara.dd.ldsw.idal.Itbl_ld_dxcs _idal_tbl_ld_dxcs = new sara.dd.ldsw.dal.tbl_ld_dxcs();
-                    sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
-                    //判断是否存在勾选项
-                    if (gridselectids != null && gridselectids.Length > 0)
+                sara.dd.ldsw.idal.Itbl_ld_dxcs _idal_tbl_ld_dxcs = new sara.dd.ldsw.dal.tbl_ld_dxcs();
+                sara.dd.ldsw.idal.Itbl_ld_khb _idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
+                //判断是否存在勾选项
+                if (gridselectids != null && gridselectids.Length > 0)
+                {
+                    //存在勾选，只对勾选项用户发送短信息
+                    List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("sys_id in (" + gridselectids.Replace('^', ',') + ") and f_sfdxcs='true'", "", "f_khbh,f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
+                    //循环发送信息
+                    for (int i = 0; i < khmodellist.Count; i++)
                     {
-                        //存在勾选，只对勾选项用户发送短信息
-                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList("sys_id in (" + gridselectids.Replace('^', ',') + ")", "", "f_khbh,f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
-                        //循环发送信息
-                        for (int i = 0; i < khmodellist.Count; i++)
+
+                        sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
+                        //判断客户是否存在电话
+                        if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
                         {
+                            Thread.Sleep(10);
+                            //存在电话发送短信
+                            sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh, khmodel.f_khbh, khmodel.f_dz, khmodel.f_ljqf);
+                            sendcount = i.ToString();
 
-                            sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
-                            //判断客户是否存在电话
-                            if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
-                            {
-                                Thread.Sleep(10);
-                                //存在电话发送短信
-                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh,khmodel.f_khbh, khmodel.f_dz, khmodel.f_ljqf);
-                                sendcount = i.ToString();
-
-                            }
-                            else
-                            {
-                                //没有电话跳到下一位
-                                sendcount = i.ToString();
-                            }
                         }
+                        else
+                        {
+                            //没有电话跳到下一位
+                            sendcount = i.ToString();
+                        }
+                    }
 
-                        sendcount = khmodellist.Count.ToString();
+                    sendcount = khmodellist.Count.ToString();
+                }
+                else
+                {
+                    //不存在勾选项，按照wherestirng查询信息获取用户电话
+                    if (wherestring.Length > 0)
+                    {
+                        wherestring = wherestring + " and f_sfdxcs='true'";
                     }
                     else
                     {
-                        //不存在勾选项，按照wherestirng查询信息获取用户电话
-
-                        List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList(wherestring, "", "f_khbh,f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
-                        //循环发送信息
-                        for (int i = 0; i < khmodellist.Count; i++)
-                        {
-                            Thread.Sleep(10);
-                            sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
-                            //判断客户是否存在电话
-                            if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
-                            {
-                                //存在电话发送短信
-                                sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh,khmodel.f_khbh, khmodel.f_dz, khmodel.f_ljqf);
-                            sendcount = i.ToString();
-                            }
-                            else
-                            {
-                                //没有电话跳到下一位
-                            sendcount = i.ToString();
-                            }
-                        }
-                        sendcount = khmodellist.Count.ToString();
+                        wherestring = " f_sfdxcs='true'";
                     }
-
-
-                    //短信发送完成更新发送状态
-                    List<sara.dd.ldsw.model.tbl_ld_dxcs> modellist = _idal_tbl_ld_dxcs.GetList("sys_id='" + this.sysid + "'", "", "*", "", "", null);
-
-                    if (modellist.Count == 1)
+                    List<sara.dd.ldsw.model.tbl_ld_khb> khmodellist = _idal_tbl_ld_khb.GetList(wherestring, "", "f_khbh,f_dh,f_yhm,f_ljqf,f_dz", "", "", null);
+                    //循环发送信息
+                    for (int i = 0; i < khmodellist.Count; i++)
                     {
-                        sara.dd.ldsw.model.tbl_ld_dxcs model = modellist[0];
-
-                        model.f_fsztid = "2";
-                        model.f_fszt = "已发送";
-
-                        _idal_tbl_ld_dxcs.Update(model, "f_fsztid,f_fszt", null);
+                        Thread.Sleep(10);
+                        sara.dd.ldsw.model.tbl_ld_khb khmodel = khmodellist[i];
+                        //判断客户是否存在电话
+                        if (khmodel.f_dh != null && khmodel.f_dh.Length > 10)
+                        {
+                            //存在电话发送短信
+                            sara.dd.ldsw.commonclass.duanxinclass.sendDuanxin(khmodel.f_dh, khmodel.f_khbh, khmodel.f_dz, khmodel.f_ljqf);
+                            sendcount = i.ToString();
+                        }
+                        else
+                        {
+                            //没有电话跳到下一位
+                            sendcount = i.ToString();
+                        }
                     }
+                    sendcount = khmodellist.Count.ToString();
+                }
+
+
+                //短信发送完成更新发送状态
+                List<sara.dd.ldsw.model.tbl_ld_dxcs> modellist = _idal_tbl_ld_dxcs.GetList("sys_id='" + this.sysid + "'", "", "*", "", "", null);
+
+                if (modellist.Count == 1)
+                {
+                    sara.dd.ldsw.model.tbl_ld_dxcs model = modellist[0];
+
+                    model.f_fsztid = "2";
+                    model.f_fszt = "已发送";
+
+                    _idal_tbl_ld_dxcs.Update(model, "f_fsztid,f_fszt", null);
+                }
 
                 onrunsysid = "";
             }
 
         }
+
+        //以下均为实验
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void MultiMessage()
@@ -1428,13 +1513,345 @@ namespace sara.dd.ldsw.service
                 {
                     //存在电话放入数组
                     phoneNumbers.Add(khmodel.f_dh);
-                    
+
                 }
 
             }
 
             sara.dd.ldsw.commonclass.duanxinclass.sendMessage(phoneNumbers);
         }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void SubmitServer(string type)
+        {
+            try
+            {
+                string url = "";
+                com.bocom.pay.BocomClient client = new com.bocom.pay.BocomClient();
+                client.initialize(Eva.Library.Global.AppRootPath + "bocommjava/ini/BocompayMerchant.xml");
+                string senddata = "";
+                string rsasign = "";
+                DateTime dt = DateTime.Now;
+                string str = dt.ToString("yyyyMMddHHmmss");
+                switch (type)
+                {
+                    case "1":
+                        url = "http://pbanktest.95559.com.cn/mapiTRL/pay";
+                        //微信
+                        senddata = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document><Head><MerPtcId>301140853999579</MerPtcId><ReqTime>" + str + "</ReqTime><TranCode>MAPIPY5114</TranCode><Version>1.1.20181206</Version></Head><Body><PayMerTranNo>" + Eva.Library.Text.NumberTool.GetNoRepeatNumber() + "</PayMerTranNo><Location>ONLINE</Location><TranScene>B2C-JSAPI-WECHAT</TranScene><Amount>0.01</Amount><Currency>CNY</Currency><TranContent>aaa</TranContent><MerMemo>bbb</MerMemo><TranOptions></TranOptions><ValidPeriod>20201221235959</ValidPeriod><NotifyURL>https://162.16.166.1//sara.dd.ldsw/service/service_jiaohang_response.ashx</NotifyURL></Body></Document>";
+                        //支付宝
+                        //senddata = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document><Head><MerPtcId>301140853999579</MerPtcId><ReqTime>" + str + "</ReqTime><TranCode>MAPIPY5114</TranCode><Version>1.1.20181206</Version></Head><Body><PayMerTranNo>" + Eva.Library.Text.NumberTool.GetNoRepeatNumber() + "</PayMerTranNo><Location>ONLINE</Location><TranScene>B2C-JSAPI-ALIPAY</TranScene><Amount>0.01</Amount><Currency>CNY</Currency><TranContent>aaa</TranContent><MerMemo>bbb</MerMemo><TranOptions></TranOptions><ValidPeriod>20191221235959</ValidPeriod><NotifyURL>https://162.16.166.1//sara.dd.ldsw/service/service_jiaohang_response.ashx</NotifyURL></Body></Document>";
+
+                        rsasign = client.AttachedSign("301140880629503", senddata);
+                        var post = new sara.dd.ldsw.commonclass.RemotePost();
+                        post.Add("RSASignData", rsasign.Replace("\n", "").Replace("\r", ""));
+                        post.Submit(url);
+                        //后台通知
+                        //<? xml version = '1.0' encoding = 'UTF-8' ?>< Document >< Head >< TranCode > MAPIPY5196 </ TranCode >< MerPtcId > 301140853999579 </ MerPtcId >< ReqTime > 20191206110259 </ ReqTime >< Version > 1.0.20181206 </ Version ></ Head >< Body >< TranType > PAY </ TranType >< MerTranNo > 201912061102509360 </ MerTranNo >< TranState > SUCCESS </ TranState >< TranStateCode ></ TranStateCode >< TranStateMsg ></ TranStateMsg >< BatchNo > 20191206 </ BatchNo >< FinalTime > 20191206110239 </ FinalTime >< Amount > 0.01 </ Amount >< Currency > CNY </ Currency >< TranContent > aaa </ TranContent >< MerMemo > bbb </ MerMemo ></ Body ></ Document >
+                        //   string message = "MIIGnAYJKoZIhvcNAQcCoIIGjTCCBokCAQExCzAJBgUrDgMCGgUAMIICJwYJKoZIhvcNAQcBoIICGASCAhQ8P3htbCB2ZXJzaW9uPScxLjAnIGVuY29kaW5nPSdVVEYtOCc%2FPjxEb2N1bWVudD48SGVhZD48VHJhbkNvZGU%2BTUFQSVBZNTE5NjwvVHJhbkNvZGU%2BPE1lclB0Y0lkPjMwMTE0MDg1Mzk5OTU3OTwvTWVyUHRjSWQ%2BPFJlcVRpbWU%2BMjAxOTEyMDYxMTAyNTk8L1JlcVRpbWU%2BPFZlcnNpb24%2BMS4wLjIwMTgxMjA2PC9WZXJzaW9uPjwvSGVhZD48Qm9keT48VHJhblR5cGU%2BUEFZPC9UcmFuVHlwZT48TWVyVHJhbk5vPjIwMTkxMjA2MTEwMjUwOTM2MDwvTWVyVHJhbk5vPjxUcmFuU3RhdGU%2BU1VDQ0VTUzwvVHJhblN0YXRlPjxUcmFuU3RhdGVDb2RlPjwvVHJhblN0YXRlQ29kZT48VHJhblN0YXRlTXNnPjwvVHJhblN0YXRlTXNnPjxCYXRjaE5vPjIwMTkxMjA2PC9CYXRjaE5vPjxGaW5hbFRpbWU%2BMjAxOTEyMDYxMTAyMzk8L0ZpbmFsVGltZT48QW1vdW50PjAuMDE8L0Ftb3VudD48Q3VycmVuY3k%2BQ05ZPC9DdXJyZW5jeT48VHJhbkNvbnRlbnQ%2BYWFhPC9UcmFuQ29udGVudD48TWVyTWVtbz5iYmI8L01lck1lbW8%2BPC9Cb2R5PjwvRG9jdW1lbnQ%2BoIIC5zCCAuMwggJMoAMCAQICATkwDQYJKoZIhvcNAQEFBQAwMzELMAkGA1UEBhMCQ04xEDAOBgNVBAoTB0JPQ1Rlc3QxEjAQBgNVBAMTCUJPQ1Rlc3RDQTAeFw0xNTEwMTQwNzU5NTRaFw0yNTEwMTEwNzU5NTRaMFwxCzAJBgNVBAYTAkNOMRAwDgYDVQQK";
+                        //message += "EwdCT0NUZXN0MREwDwYDVQQLEwhCQU5LQ09NTTESMBAGA1UECxMJTWVyY2hhbnRzMRQwEgYDVQQDEwtCb2NvbU5ldFBheTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOOPTJvVLWObz4ynjtV2GCCSr1CsowDJKXidJ8jIASg7zmQEOXtDtKm9iKYjXvAfbrwW % 2BrheIfsYq % 2F % 2F1BUdOvhkdEbXvq7DxgiS0lR % 2BtVkhbtQRznhP8TdW304af0FLYIFVHvixx9HGFu1CRvgM2E9vy7fG % 2Bep73HtsOhobaKrbFJrqhxBSsWV1xBs2nsUHQqkdFmTyGgzichVeoJ6IeY4biOahxot8 % 2FfD7EZQ3 % 2Bsj0uba5h3snd2ZyMPXNK % 2Fn % 2BVulx % 2FhNmg3XDbRhCQprSTF2Pg % 2F6SirGC71gWe8 % 2FhGJi0cJP1OFm9 % 2FpPfT3O4gsG8abzbIxqV % 2FubNWldJjZuXNYmECAwEAAaNaMFgwCQYDVR0TBAIwADAsBglghkgBhvhCAQ0EHxYdT3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYEFIFJUd7iiM % 2FEhU4AdIYORLGUUBMLMA0GCSqGSIb3DQEBBQUAA4GBAF1cFJQLvTqJvaLNLlncJWs2Ke1dm % 2B % 2Br1jpUQm % 2B2mMioviupeMMH9dZ7nZNt2br4DQq4R % 2FDLQWUhysevueXYf0IR76wBuyNrfoIkmUjZjAcTgDFL0qLHv9aIqcx1GmHJS % 2FWSL6 % 2FOBkEqFhcU25Th0ZtP % 2BiQpJ4CsxrVXE8D6TCYaMYIBXzCCAVsCAQEwODAzMQswCQYDVQQGEwJDTjEQMA4GA1UEChMHQk9DVGVzdDESMBAGA1UEAxMJQk9DVGVzdENBAgE5MAkGBSsOAwIaBQAwDQYJKoZIhvcNAQEBBQAEggEAzNr3uiRKH7sNJAcZbVmTgPKcEMuYhfUEx3qEVLQaQk49R";
+                        //                   message+=" % 2B7gpQ10n6yNeOeadsZ9mYVzTttU8WSoOuOpwcER5Diy0NndYD % 2FUkQ % 2FGVEOC2s5smvpnq3QPbltU8qyCZKkjR3 % 2FDxXPtI6RouTTsYy1LkHl3 % 2BbQ % 2BlNIO48CU0GcFeUc0U2d3AmhhHIeNk2MvdqPcG % 2BtDxMvnSY9SLCv % 2Br98oPreLEMl8uLE4491o % 2FoET7rQuo24BXms % 2BRZv86uPeKXXdZADL7FBQHlG2ZX % 2Bizfj9u2I % 2F4DTa4pG5ONxgaoFDXL77zjH9tYghMj % 2Fzte6v4k0lSFbcbByxhSDe % 2Bmk3ErFvIw % 3D % 3D";
+
+                        //message = message.Replace("\n", "").Replace("\r", "").Replace(" ", "");
+                        //message = System.Web.HttpUtility.UrlDecode(message, System.Text.Encoding.UTF8);
+                        //string ll = client.AttachedVerify(message);
+                        break;
+                    case "2":
+                        url = "http://pbanktest.95559.com.cn/mapiTRL/interface";
+                        senddata = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document><Head><MerPtcId>301140853999579</MerPtcId><ReqTime>" + str + "</ReqTime><TranCode>MAPIPY5112</TranCode><Version>1.1.20181206</Version></Head><Body><PayMerTranNo>" + Eva.Library.Text.NumberTool.GetNoRepeatNumber() + "</PayMerTranNo><Location>ONLINE</Location><TranScene>B2C-API-DISPLAYCODE</TranScene><Amount>0.01</Amount><Currency>CNY</Currency><TranContent>aaa</TranContent><MerMemo>bbb</MerMemo><TranOptions></TranOptions><ValidPeriod>20201221235959</ValidPeriod><NotifyURL>https://162.16.166.1//sara.dd.ldsw/service/service_jiaohang_response.ashx</NotifyURL></Body></Document>";
+                        rsasign = client.AttachedSign("301140880629503", senddata);
+                        rsasign = System.Web.HttpUtility.UrlEncode(rsasign, System.Text.Encoding.UTF8);
+
+                        #region post请求2
+                        string result = "";
+                        HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                        req.Method = "POST";
+                        req.ContentType = "application/x-www-form-urlencoded;charset=UTF-8";
+                        StringBuilder builder = new StringBuilder();
+                        builder.AppendFormat("{0}={1}", "RSASignData", rsasign.Replace("\n", "").Replace("\r", ""));
+                        byte[] data = Encoding.UTF8.GetBytes(builder.ToString());
+                        req.ContentLength = data.Length;
+                        using (Stream reqStream = req.GetRequestStream())
+                        {
+                            reqStream.Write(data, 0, data.Length);
+                            reqStream.Close();
+                        }
+                        HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                        Stream stream = resp.GetResponseStream();
+                        //获取响应内容
+                        using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                        {
+                            result = reader.ReadToEnd();
+                            string xmlstr = client.AttachedVerify(result);
+                        }
+                        #endregion
+                        //var post2 = new sara.dd.ldsw.commonclass.RemotePost();
+                        //post2.Add("RSASignData", rsasign.Replace("\n", "").Replace("\r", ""));
+                        //post2.Submit(url);
+                        break;
+                    case "3":
+                        url = "http://pbanktest.95559.com.cn/mapiTRL/interface";
+                        senddata = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document><Head><MerPtcId>301140853999579</MerPtcId><ReqTime>" + str + "</ReqTime><TranCode>MAPIPY5197</TranCode><Version>1.1.20181206</Version></Head><Body><BatchNo>20190106</BatchNo></Body></Document>";
+                        rsasign = client.AttachedSign("301140880629503", senddata);
+                        rsasign = System.Web.HttpUtility.UrlEncode(rsasign, System.Text.Encoding.UTF8);
+
+                        #region post请求2
+                        string result2 = "";
+                        HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create(url);
+                        req2.Method = "POST";
+                        req2.ContentType = "application/x-www-form-urlencoded;charset=UTF-8";
+                        StringBuilder builder2 = new StringBuilder();
+                        builder2.AppendFormat("{0}={1}", "RSASignData", rsasign.Replace("\n", "").Replace("\r", ""));
+                        byte[] data2 = Encoding.UTF8.GetBytes(builder2.ToString());
+                        req2.ContentLength = data2.Length;
+                        using (Stream reqStream = req2.GetRequestStream())
+                        {
+                            reqStream.Write(data2, 0, data2.Length);
+                            reqStream.Close();
+                        }
+                        HttpWebResponse resp2 = (HttpWebResponse)req2.GetResponse();
+                        Stream stream2 = resp2.GetResponseStream();
+                        //获取响应内容
+                        using (StreamReader reader = new StreamReader(stream2, Encoding.UTF8))
+                        {
+                            result = reader.ReadToEnd();
+                            string xmlstr = client.AttachedVerify(result);
+                        }
+                        #endregion
+                        //var post2 = new sara.dd.ldsw.commonclass.RemotePost();
+                        //post2.Add("RSASignData", rsasign.Replace("\n", "").Replace("\r", ""));
+                        //post2.Submit(url);
+                        break;
+                    case "4":
+                        url = "http://pbanktest.95559.com.cn/mapiTRL/interface";
+                        senddata = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document><Head><MerPtcId>301140853999579</MerPtcId><ReqTime>" + str + "</ReqTime><TranCode>MAPIPY5192</TranCode><Version>1.1.20181206</Version></Head><Body><TranType>PAY</TranType><MerTranNo>202001031522355518</MerTranNo></Body></Document>";
+                        rsasign = client.AttachedSign("301140880629503", senddata);
+                        rsasign = System.Web.HttpUtility.UrlEncode(rsasign, System.Text.Encoding.UTF8);
+
+                        #region post请求2
+                        string result3 = "";
+                        HttpWebRequest req3 = (HttpWebRequest)WebRequest.Create(url);
+                        req3.Method = "POST";
+                        req3.ContentType = "application/x-www-form-urlencoded;charset=UTF-8";
+                        StringBuilder builder3 = new StringBuilder();
+                        builder3.AppendFormat("{0}={1}", "RSASignData", rsasign.Replace("\n", "").Replace("\r", ""));
+                        byte[] data3 = Encoding.UTF8.GetBytes(builder3.ToString());
+                        req3.ContentLength = data3.Length;
+                        using (Stream reqStream = req3.GetRequestStream())
+                        {
+                            reqStream.Write(data3, 0, data3.Length);
+                            reqStream.Close();
+                        }
+                        HttpWebResponse resp3 = (HttpWebResponse)req3.GetResponse();
+                        Stream stream3 = resp3.GetResponseStream();
+                        //获取响应内容
+                        using (StreamReader reader = new StreamReader(stream3, Encoding.UTF8))
+                        {
+                            result = reader.ReadToEnd();
+                            string xmlstr = client.AttachedVerify(result);
+                        }
+                        #endregion
+
+                        break;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string tcsServer(string url, string type)
+        {
+            try
+            {
+
+                switch (type)
+                {
+                    case "data":
+                        string senddata = "{\"appid\":\"76\",\"json\":{\"txzhid\":\"\",\"xmmc\":\"111111\",\"xzqy\":\"北辰区\",\"mbzbx\":\"2000国家大地坐标系大地坐标\",\"zhyt\":\"征转报部数据\",\"sydw\":\"55222\",\"fjsm\":\"4422\",\"bz\":\"33\",\"cjr\":\"22\"}}";
+
+                        #region post请求2
+                        string result = "";
+                        HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                        req.Method = "POST";
+                        req.ContentType = "application/json;charset=UTF-8";
+
+                        byte[] data = Encoding.UTF8.GetBytes(senddata);
+                        req.ContentLength = data.Length;
+                        using (Stream reqStream = req.GetRequestStream())
+                        {
+                            reqStream.Write(data, 0, data.Length);
+                            reqStream.Close();
+                        }
+                        HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                        Stream stream = resp.GetResponseStream();
+                        //获取响应内容
+                        using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                        {
+                            result = reader.ReadToEnd();
+                        }
+                        return result;
+                        #endregion
+
+                        break;
+                    case "file":
+                        string filePath = @"D:/测试.prj";
+                        string filename = "测试.prj";
+                        string fileuploadname = "";
+                        string result2 = sendFileToServer(url, filePath, filename, fileuploadname, 40960, 0, "2606", "76");
+                        return result2;
+                        break;
+                    default:
+                        return "";
+                        break;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void videotest(string para)
+        {
+            try
+            {
+         
+                Process process = new Process();
+
+                process.StartInfo.FileName = "C:\\inetpub\\esa\\ffmpeg.cmd";
+
+                process.StartInfo.UseShellExecute = true;
+                process.StartInfo.CreateNoWindow = false;//不创建窗口 
+                
+                                                         //这里相当于传参数 
+                process.StartInfo.Arguments = para;
+                process.Start();
+
+                //测试同步执行 
+                process.WaitForExit();
+
+
+            }
+            catch (Exception ex)
+            {
+               
+            }
+
+        }
+
+        private string sendFileToServer(string url, string filePath, string filename, string fileuploadname, int filestep, int fileoffset, string txzhid, string appid)
+        {
+            try
+            {
+                Random random = new Random();
+
+                #region 将文件转成二进制
+
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                byte[] fileContentByte = new byte[fs.Length]; // 二进制文件
+                fs.Read(fileContentByte, 0, Convert.ToInt32(fs.Length));
+                fs.Close();
+                int filesize = fileContentByte.Length;
+
+                #endregion
+
+
+                string result = "";
+                string resultMessage = "";
+                while (fileoffset < filesize)
+                {
+                    if ((filesize - fileoffset) < filestep)
+                    {
+                        filestep = (filesize - fileoffset);
+                    }
+                    string fileguid = random.Next(11111, 99999).ToString();
+                    string urlString = url;
+                    urlString += "&filesize=" + filesize;
+                    urlString += "&filename=" + filename;
+                    urlString += "&fileuploadname=" + fileuploadname;
+                    urlString += "&fileoffset=" + fileoffset;
+                    urlString += "&fileguid=" + fileguid;
+                    urlString += "&filestep=" + filestep;
+                    urlString += "&txzhid=" + txzhid;
+                    urlString += "&appid=" + appid;
+
+
+
+                    #region post请求
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlString);
+                    request.Method = "POST";
+                    request.ContentType = "application/octet-stream;";
+                    using (Stream reqStream = request.GetRequestStream())
+                    {
+                        reqStream.Write(fileContentByte, fileoffset, filestep);
+                        reqStream.Close();
+                    }
+
+                    HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
+                    Stream stream = resp.GetResponseStream();
+                    //获取响应内容
+                    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                    {
+                        result = reader.ReadToEnd();
+                        ResultJson dic = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultJson>(result);
+
+                        string guid = dic.message.Split('^')[0];
+                        if (guid == fileguid)
+                        {
+                            if (dic.result == "true")
+                            {
+                                fileoffset = fileoffset + filestep;
+                                fileuploadname = dic.message.Split('^')[1];
+                                resultMessage = filename + "^" + fileuploadname;
+                            }
+                            else
+                            {
+                                resultMessage = filename + "^" + fileuploadname + "^" + dic.message.Split('^')[1];
+                                break;
+                            }
+                        }
+
+                    }
+                    #endregion
+
+                }
+                return resultMessage;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        /// <summary>
+        /// 返回值的实体对象
+        /// </summary>
+        private class ResultJson
+        {
+            public string result { get; set; }
+            public string message { get; set; }
+        }
+
+
+
+
+
+
 
     }
 }

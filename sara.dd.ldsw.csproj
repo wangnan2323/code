@@ -54,6 +54,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="IKVM.OpenJDK.Core">
+      <HintPath>..\..\..\..\ikvmbin-7.2.4630.5\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ikvmbin-7.2.4630.5\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime">
+      <HintPath>..\..\..\..\ikvmbin-7.2.4630.5\ikvm-7.2.4630.5\bin\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI">
+      <HintPath>..\..\..\..\ikvmbin-7.2.4630.5\ikvm-7.2.4630.5\bin\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
     <Reference Include="MagickNet">
       <HintPath>lib\MagickNet.dll</HintPath>
     </Reference>
@@ -82,17 +95,17 @@
     <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.WebRequest, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\sara.dd.actionwx.mysql\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
@@ -114,8 +127,12 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="tool">
+      <HintPath>..\..\..\..\ikvmbin-7.2.4630.5\ikvm-7.2.4630.5\bin\tool.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bocommjava\ini\BocompayMerchant.xml" />
     <Content Include="commonjs\exportjs\Blob.js" />
     <Content Include="commonjs\exportjs\Blob.min.js" />
     <Content Include="commonjs\exportjs\FileSaver.js" />
@@ -453,6 +470,7 @@
     <Content Include="service\service_tbl_ldbm_sbfz.asmx" />
     <Content Include="service\service_tbl_ldbm_yhfz.asmx" />
     <Content Include="service\service_tbl_ld_cben.asmx" />
+    <Content Include="service\service_tbl_ld_cbreport.asmx" />
     <Content Include="service\service_tbl_ld_cbiao.asmx" />
     <Content Include="service\service_tbl_ld_dxcs.asmx" />
     <Content Include="service\service_tbl_ld_dyhlh.asmx" />
@@ -486,6 +504,7 @@
     <Content Include="service\service_tbl_ld_ycbglzb.asmx" />
     <Content Include="service\service_tbl_ld_ychk.asmx" />
     <Content Include="service\service_tbl_ld_yhb.asmx" />
+    <Content Include="service\service_tbl_ld_yqjm.asmx" />
     <Content Include="service\service_tbl_notice.asmx" />
     <Content Include="service\service_tbl_resource.asmx" />
     <Content Include="service\service_tbl_task.asmx" />
@@ -680,6 +699,9 @@
     <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list_part.css" />
     <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list_part.html" />
     <Content Include="ui\tbl_ld_jfb\tbl_ld_jfb_list_part.js" />
+    <Content Include="ui\tbl_ld_jhdz\tbl_ld_jhdz_list.css" />
+    <Content Include="ui\tbl_ld_jhdz\tbl_ld_jhdz_list.html" />
+    <Content Include="ui\tbl_ld_jhdz\tbl_ld_jhdz_list.js" />
     <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_detail.css" />
     <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_detail.html" />
     <Content Include="ui\tbl_ld_jmb\tbl_ld_jmb_detail.js" />
@@ -704,6 +726,9 @@
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.css" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.html" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4jf.js" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4yqjm.css" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4yqjm.html" />
+    <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4yqjm.js" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4rw.css" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4rw.html" />
     <Content Include="ui\tbl_ld_khb\tbl_ld_khb_list_part4rw.js" />
@@ -750,6 +775,9 @@
     <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_list.css" />
     <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_list.html" />
     <Content Include="ui\tbl_ld_qfts\tbl_ld_qfts_list.js" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_cbreport_list.css" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_cbreport_list.html" />
+    <Content Include="ui\tbl_ld_report\tbl_ld_cbreport_list.js" />
     <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.css" />
     <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.html" />
     <Content Include="ui\tbl_ld_report\tbl_ld_hsjlcardreport_list.js" />
@@ -857,6 +885,11 @@
     <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_list.css" />
     <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_list.html" />
     <Content Include="ui\tbl_ld_yhb\tbl_ld_yhb_list.js" />
+    <Content Include="ui\tbl_ld_yqjm\tbl_ld_yqjm_detail_part.css" />
+    <Content Include="ui\tbl_ld_yqjm\tbl_ld_yqjm_detail_part.html" />
+    <Content Include="ui\tbl_ld_yqjm\tbl_ld_yqjm_detail_part.js" />
+    <Content Include="ui\tbl_ld_yqjm\tbl_ld_yqjm_detail_part.min.css" />
+    <Content Include="ui\tbl_ld_yqjm\tbl_ld_yqjm_detail_part.min.js" />
     <Content Include="ui\tbl_notice\tbl_notice_detail.css" />
     <Content Include="ui\tbl_notice\tbl_notice_detail.html" />
     <Content Include="ui\tbl_notice\tbl_notice_detail.js" />
@@ -899,6 +932,11 @@
     <Content Include="service\service_guangda_bj01.ashx" />
     <Content Include="service\service_guangda_bj02.ashx" />
     <Content Include="ui\tbl_spgl\lib\.DS_Store" />
+    <Content Include="bocommjava\merCerts\301140880629503.pfx" />
+    <Content Include="bocommjava\rootCert\pro_root.cer" />
+    <Content Include="bocommjava\rootCert\test_root.cer" />
+    <Content Include="service\service_jiaohang_response.ashx" />
+    <Content Include="service\service_machine_response.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1027,6 +1065,7 @@
     <Compile Include="commonclass\assemblyfunction.cs" />
     <Compile Include="commonclass\assemblyfunction10.cs" />
     <Compile Include="commonclass\assemblyfunction11.cs" />
+    <Compile Include="commonclass\assemblyfunction13.cs" />
     <Compile Include="commonclass\assemblyfunction12.cs" />
     <Compile Include="commonclass\assemblyfunction3.cs" />
     <Compile Include="commonclass\assemblyfunction4.cs" />
@@ -1074,6 +1113,7 @@
     <Compile Include="commonclass\filecontrol.cs" />
     <Compile Include="commonclass\handleitemclass.cs" />
     <Compile Include="commonclass\langueclass.cs" />
+    <Compile Include="commonclass\RemotePost.cs" />
     <Compile Include="commonclass\RequestHelper.cs" />
     <Compile Include="commonclass\webserviceadapter.cs" />
     <Compile Include="dal\tbl_app_codefactory.cs" />
@@ -1098,6 +1138,7 @@
     <Compile Include="dal\tbl_ldbm_sbfz_oracle.cs" />
     <Compile Include="dal\tbl_ldbm_yhfz_oracle.cs" />
     <Compile Include="dal\tbl_ld_cben_oracle.cs" />
+    <Compile Include="dal\tbl_ld_cbreport_oracle.cs" />
     <Compile Include="dal\tbl_ld_cbiao_oracle.cs" />
     <Compile Include="dal\tbl_ld_dxcs_oracle.cs" />
     <Compile Include="dal\tbl_ld_dyhlh_oracle.cs" />
@@ -1131,6 +1172,7 @@
     <Compile Include="dal\tbl_ld_ycbgl_oracle.cs" />
     <Compile Include="dal\tbl_ld_ychk_oracle.cs" />
     <Compile Include="dal\tbl_ld_yhb_oracle.cs" />
+    <Compile Include="dal\tbl_ld_yqjm_oracle.cs" />
     <Compile Include="dal\tbl_maintable.cs" />
     <Compile Include="dal\tbl_notice.cs" />
     <Compile Include="dal\tbl_resource.cs" />
@@ -1161,6 +1203,7 @@
     <Compile Include="idal\tbl_ldbm_sbfz.cs" />
     <Compile Include="idal\tbl_ldbm_yhfz.cs" />
     <Compile Include="idal\tbl_ld_cben.cs" />
+    <Compile Include="idal\tbl_ld_cbreport.cs" />
     <Compile Include="idal\tbl_ld_cbiao.cs" />
     <Compile Include="idal\tbl_ld_dxcs.cs" />
     <Compile Include="idal\tbl_ld_dyhlh.cs" />
@@ -1194,6 +1237,7 @@
     <Compile Include="idal\tbl_ld_ycbglzb.cs" />
     <Compile Include="idal\tbl_ld_ychk.cs" />
     <Compile Include="idal\tbl_ld_yhb.cs" />
+    <Compile Include="idal\tbl_ld_yqjm.cs" />
     <Compile Include="idal\tbl_maintable.cs" />
     <Compile Include="idal\tbl_notice.cs" />
     <Compile Include="idal\tbl_resource.cs" />
@@ -1221,6 +1265,7 @@
     <Compile Include="model\tbl_ldbm_sbfz.cs" />
     <Compile Include="model\tbl_ldbm_yhfz.cs" />
     <Compile Include="model\tbl_ld_cben.cs" />
+    <Compile Include="model\tbl_ld_cbreport.cs" />
     <Compile Include="model\tbl_ld_cbiao.cs" />
     <Compile Include="model\tbl_ld_dxcs.cs" />
     <Compile Include="model\tbl_ld_dyhlh.cs" />
@@ -1231,6 +1276,7 @@
     <Compile Include="model\tbl_ld_ickxj.cs" />
     <Compile Include="model\tbl_ld_jfb.cs" />
     <Compile Include="model\tbl_ld_jfbimp.cs" />
+    <Compile Include="model\tbl_ld_jhdz.cs" />
     <Compile Include="model\tbl_ld_jmb.cs" />
     <Compile Include="model\tbl_ld_khb.cs" />
     <Compile Include="model\tbl_ld_log.cs" />
@@ -1254,6 +1300,7 @@
     <Compile Include="model\tbl_ld_ycbglzb.cs" />
     <Compile Include="model\tbl_ld_ychk.cs" />
     <Compile Include="model\tbl_ld_yhb.cs" />
+    <Compile Include="model\tbl_ld_yqjm.cs" />
     <Compile Include="model\tbl_maintable.cs" />
     <Compile Include="model\tbl_notice.cs" />
     <Compile Include="model\tbl_resource.cs" />
@@ -1346,6 +1393,12 @@
       <DependentUpon>service_guangda_test.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="service\service_machine_response.ashx.cs">
+      <DependentUpon>service_machine_response.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="service\service_jiaohang_response.ashx.cs">
+      <DependentUpon>service_jiaohang_response.ashx</DependentUpon>
+    </Compile>
     <Compile Include="service\service_login.asmx.cs">
       <DependentUpon>service_login.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1436,6 +1489,10 @@
     </Compile>
     <Compile Include="service\service_tbl_ld_cben.asmx.cs">
       <DependentUpon>service_tbl_ld_cben.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="service\service_tbl_ld_cbreport.asmx.cs">
+      <DependentUpon>service_tbl_ld_cbreport.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="service\service_tbl_ld_cbiao.asmx.cs">
@@ -1570,6 +1627,10 @@
       <DependentUpon>service_tbl_ld_yhb.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="service\service_tbl_ld_yqjm.asmx.cs">
+      <DependentUpon>service_tbl_ld_yqjm.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="service\service_tbl_maintable.asmx.cs">
       <DependentUpon>service_tbl_maintable.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1598,6 +1659,9 @@
       <DependentUpon>tokentest.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bocommjava\log\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

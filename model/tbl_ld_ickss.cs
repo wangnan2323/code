@@ -919,7 +919,7 @@ private string _f_dyid;
 		}
                 
 		/// <summary>
-		/// 排污费
+		/// 污水处理费
 		/// </summary>
 		public string f_pwf
 		{
@@ -955,7 +955,7 @@ private string _f_dyid;
 		}
                 
 		/// <summary>
-		/// 客户原调价结转排污费
+		/// 客户原调价结转污水处理费
 		/// </summary>
 		public string f_khytjjzpwf
 		{
@@ -982,7 +982,7 @@ private string _f_dyid;
 		}
                 
 		/// <summary>
-		/// 使用调价结转排污费
+		/// 使用调价结转污水处理费
 		/// </summary>
 		public string f_sytjjzpwf
 		{
@@ -1000,7 +1000,7 @@ private string _f_dyid;
 		}
                 
 		/// <summary>
-		/// 使用后调价结转排污费
+		/// 使用后调价结转污水处理费
 		/// </summary>
 		public string f_syhtjjzpwf
 		{

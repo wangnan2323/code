@@ -209,6 +209,11 @@ namespace sara.dd.ldsw.model
         private string _f_jhysl;
         private string _f_ickljgl;
         private string _f_sbdz;
+        private string _f_ye;
+        private string _f_sfdxcs;
+        private string _f_dxcsyy;
+        private string _f_yqjmsf;
+        private string _f_yqjmpwf;
         /// <summary>
         /// 主键
         /// </summary>
@@ -1019,7 +1024,41 @@ namespace sara.dd.ldsw.model
             get { return _f_sbdz; }
             set { _f_sbdz = value; }
         }
+        public string f_ye
+        {
+            get { return _f_ye; }
+            set { _f_ye = value; }
+        }
 
+        /// <summary>
+        /// 是否短信催收
+        /// </summary>
+        public string f_sfdxcs
+        {
+            get { return _f_sfdxcs; }
+            set { _f_sfdxcs = value; }
+        }
+
+        /// <summary>
+        /// 短信催收原因
+        /// </summary>
+        public string f_dxcsyy
+        {
+            get { return _f_dxcsyy; }
+            set { _f_dxcsyy = value; }
+        }
+
+        public string f_yqjmsf
+        {
+            get { return _f_yqjmsf; }
+            set { _f_yqjmsf = value; }
+        }
+
+        public string f_yqjmpwf
+        {
+            get { return _f_yqjmpwf; }
+            set { _f_yqjmpwf = value; }
+        }
         #endregion Model
     }
 }

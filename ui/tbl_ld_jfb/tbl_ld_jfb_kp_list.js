@@ -2654,7 +2654,7 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
                 },
                 {
                     field: 'f_pwflj',
-                    title: '排污费累计',
+                    title: '污水处理费累计',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -2676,7 +2676,7 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
                 },
                 {
                     field: 'f_sytjjzpwf',
-                    title: '使用调价结转排污费',
+                    title: '使用调价结转污水处理费',
                     "class": 'hidden',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -2688,6 +2688,127 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
                 {
                     field: 'f_syye',
                     title: '使用绿化表押金',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dyjtsl',
+                    title: '第一阶梯水量',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dyjtsf',
+                    title: '第一阶梯水费',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dejtsl',
+                    title: '第二阶梯水量',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dejtsf',
+                    title: '第二阶梯水费',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dsjtsl',
+                    title: '第三阶梯水量',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dsjtsf',
+                    title: '第三阶梯水费',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_khyycje',
+                    title: '客户原余额',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_sfsyycje',
+                    title: '是否使用余额',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_syycje',
+                    title: '使用余额',
+                    "class": '',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_yhycje',
+                    title: '用后余额',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                },
+                {
+                    field: 'f_dszycje',
+                    title: '多收转预存金额',
                     "class": 'hidden',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -3466,7 +3587,7 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
                 },
                 {
                     field: 'f_khytjjzpwf',
-                    title: '客户原调价结转排污费',
+                    title: '客户原调价结转污水处理费',
                     "class": 'hidden',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -3624,7 +3745,7 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
                 },
                 {
                     field: 'f_syhtjjzpwf',
-                    title: '调价结转调价排污费',
+                    title: '调价结转调价污水处理费',
                     "class": 'hidden',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -3947,6 +4068,26 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
             f_syhtjjzpwf: '',
             f_jmje: '',
             
+            f_dyjtsl: '',
+            f_dyjtsf: '',
+
+            f_dejtsl: '',
+
+            f_dejtsf: '',
+
+            f_dsjtsl: '',
+
+            f_dsjtsf: '',
+
+            f_khyycje: '',
+
+            f_sfsyycje: '',
+
+            f_syycje: '',
+
+            f_yhycje: '',
+
+            f_dszycje: '',
 
 
 
@@ -4291,7 +4432,7 @@ var tbl_ld_jfb_kp_list_Obj = (function ()
                     _whereClause += "f_sfykfp='false' and f_ztid='2'";
 
                 var orderByString = ' sys_id desc';
-                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_jmjelj^f_ly^f_lyid^sys_id';
+                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf^f_khyycje^f_sfsyycje^f_syycje^f_yhycje^f_dszycje^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_jmjelj^f_ly^f_lyid^sys_id';
               //  columnsString += '^ROUND(TO_NUMBER(CURRENT_DATE - f_jfrq  ) * 24) as edittime';
                 var data = {
                     whereString: _whereClause,

@@ -1017,7 +1017,7 @@ var tbl_ld_khb_plxglist_Obj = (function ()
 
                 {
                     field: 'f_tjjzpwf',
-                    title: "调价结转排污费",
+                    title: "调价结转污水处理费",
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)

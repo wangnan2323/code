@@ -599,7 +599,7 @@ namespace sara.dd.ldsw.service
                         double sf = Eva.Library.Text.NumberTool.Parse(model.f_sf);
                         double pwf = Eva.Library.Text.NumberTool.Parse(model.f_pwf);
                         result.Add("waterfee", Eva.Library.Text.NumberTool.GetNumberByLength(sf/sl,2));//水费单价
-                        result.Add("wpafee", Eva.Library.Text.NumberTool.GetNumberByLength(pwf / sl, 2));//排污费单价
+                        result.Add("wpafee", Eva.Library.Text.NumberTool.GetNumberByLength(pwf / sl, 2));//污水处理费单价
                         result.Add("watertype", khmodel.f_yslx);//用水类型
                         result.Add("lastcode", model.f_dkljgl);//读卡累积购量
                         result.Add("currcode", model.f_xkljgl);//写卡累积购量

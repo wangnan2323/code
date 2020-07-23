@@ -228,7 +228,7 @@ var tbl_ld_rwb_detail_Obj = (function ()
 
             controlObj.textdisable('detail_f_sm_tbl_ld_rwb_detail', isDisable);
 
-            controlObj.datetimedisable('detail_f_yjzxsj_tbl_ld_rwb_detail_date', 'detail_f_yjzxsj_tbl_ld_rwb_detail_time', isDisable);
+            controlObj.datetimedisable('detail_f_yjzxsj_tbl_ld_rwb_detail_date', 'detail_f_yjzxsj_tbl_ld_rwb_detail_time', true);
 
             controlObj.datetimedisable('detail_f_sjzxsj_tbl_ld_rwb_detail_date', 'detail_f_sjzxsj_tbl_ld_rwb_detail_time', true);
 
@@ -758,11 +758,11 @@ var tbl_ld_rwb_detail_Obj = (function ()
 
 
 
-            if (tbl_ld_rwb_detail.f_yjzxsj == "1900-01-01 00:00:00")
-            {
-                errorMessageHansMap.put('detail_f_yjzxsj_tbl_ld_rwb_detail_date', '预计执行时间不能为空');
+            //if (tbl_ld_rwb_detail.f_yjzxsj == "1900-01-01 00:00:00")
+            //{
+            //    errorMessageHansMap.put('detail_f_yjzxsj_tbl_ld_rwb_detail_date', '预计执行时间不能为空');
 
-            }
+            //}
 
 
 
@@ -920,6 +920,8 @@ var tbl_ld_rwb_detail_Obj = (function ()
                 }
 
 
+
+
                 if (tbl_ld_rwb_detail.f_khbhid.length > 200)
                 {
                     errorMessageHansMap.put('detail_f_khbhid_tbl_ld_rwb_detail', '长度不能超过<a style="color:red">200</a>个字');
@@ -1075,11 +1077,11 @@ var tbl_ld_rwb_detail_Obj = (function ()
 
 
 
-                if (tbl_ld_rwb_detail.f_yjzxsj == "1900-01-01 00:00:00")
-                {
-                    errorMessageHansMap.put('detail_f_yjzxsj_tbl_ld_rwb_detail_date', '预计执行时间不能为空');
+                //if (tbl_ld_rwb_detail.f_yjzxsj == "1900-01-01 00:00:00")
+                //{
+                //    errorMessageHansMap.put('detail_f_yjzxsj_tbl_ld_rwb_detail_date', '预计执行时间不能为空');
 
-                }
+                //}
 
 
 
@@ -1111,18 +1113,38 @@ var tbl_ld_rwb_detail_Obj = (function ()
                 {
                     errorMessageHansMap.put('detail_f_bz_tbl_ld_rwb_detail', '长度不能超过<a style="color:red">4000</a>个字');
                 }
+                var sqlJson = {
+                    "rwcount": "select count(f_khbh) as count from tbl_ld_rwb where f_khbh= '" + tbl_ld_rwb_detail.f_khbh+"' and (f_ztid ='1' or f_ztid = '2')"
+                }
+                commonObj.querySqls(sqlJson, {
+
+                    success: function (messageJson)
+                    {
+                        var count = messageJson["rwcount"];
+                        if (parseInt(count[0].count) > 0)
+                        {
+                            errorMessageHansMap.put('detail_f_khbh_tbl_ld_rwb_detail', '该客户存在未完成任务');
+                        }
+
+                        if (errorMessageHansMap.keys().length > 0)
+                        {
+                            _validatestartMessage.show(errorMessageHansMap, errorMessagePlacementHansMap, true);
+                            callBackFunction.fail('');
+                        }
+                        else
+                        {
+                            _validatestartMessage.hidden();
+                            callBackFunction.success(tbl_ld_rwb_detail);
+                        }
+
+                    },
+                    fail: function (message)
+                    {
+                        _blockMessage.show('querySqls<br/>' + message, 'fail');
+                    }
+                })
 
 
-                if (errorMessageHansMap.keys().length > 0)
-                {
-                    _validatestartMessage.show(errorMessageHansMap, errorMessagePlacementHansMap, true);
-                    callBackFunction.fail('');
-                }
-                else
-                {
-                    _validatestartMessage.hidden();
-                    callBackFunction.success(tbl_ld_rwb_detail);
-                }
             }
             catch (ex)
             {

@@ -724,7 +724,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                 },
                 {
                     field: 'f_pwf',
-                    title: '排污费',
+                    title: '污水处理费',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index) {
@@ -902,9 +902,97 @@ var tbl_ld_cbiao_list_Obj = (function ()
 
                         return resultStr;
                     }
-                },
+                    },
+
+                    {
+                        field: 'f_dyjtsl',
+                        title: '第一阶梯水量',
+                        "class": '',
+                        align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                        formatter: function (value, row, index)
+                        {
+                            var resultStr = value;
 
 
+
+                            return resultStr;
+                        }
+                    },
+
+                    {
+                        field: 'f_dyjtsf',
+                        title: '第一阶梯水费',
+                        "class": '',
+                        align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                        formatter: function (value, row, index)
+                        {
+                            var resultStr = value;
+
+
+
+                            return resultStr;
+                        }
+                    },
+
+                    {
+                        field: 'f_dejtsl',
+                        title: '第二阶梯水量',
+                        "class": '',
+                        align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                        formatter: function (value, row, index)
+                        {
+                            var resultStr = value;
+
+
+
+                            return resultStr;
+                        }
+                    },
+
+                    {
+                        field: 'f_dejtsf',
+                        title: '第二阶梯水费',
+                        "class": '',
+                        align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                        formatter: function (value, row, index)
+                        {
+                            var resultStr = value;
+
+
+
+                            return resultStr;
+                        }
+                    },
+
+                    {
+                        field: 'f_dsjtsl',
+                        title: '第三阶梯水量',
+                        "class": '',
+                        align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                        formatter: function (value, row, index)
+                        {
+                            var resultStr = value;
+
+
+
+                            return resultStr;
+                        }
+                    },
+
+                    {
+                        field: 'f_dsjtsf',
+                        title: '第三阶梯水费',
+                        "class": '',
+                        align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                        formatter: function (value, row, index)
+                        {
+                            var resultStr = value;
+
+
+
+                            return resultStr;
+                        }
+                    },
 
 
 
@@ -1548,7 +1636,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     //F_CB_CBBH	VARCHAR2(200)	Y			抄表编号
 
                     //F_SF	VARCHAR2(200)	Y			水费
-                    //F_PWF	VARCHAR2(200)	Y			排污费
+                    //F_PWF	VARCHAR2(200)	Y			污水处理费
                     //F_BQJE	VARCHAR2(200)	Y			本期金额
                     //F_BQSL	VARCHAR2(200)	Y			本期水量
                     //F_JMJE	VARCHAR2(200)	Y			减免金额
@@ -1563,6 +1651,12 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     that._pr_set_pwf += Number(row.f_pwf);
                     that._pr_set_bqje += Number(row.f_bqje);
                     that._pr_set_jmje += Number(row.f_jmje);
+                    that._pr_set_dyjtsl += Number(row.f_dyjtsl);
+                    that._pr_set_dyjtsf += Number(row.f_dyjtsf);
+                    that._pr_set_dejtsl += Number(row.f_dejtsl);
+                    that._pr_set_dejtsf += Number(row.f_dejtsf);
+                    that._pr_set_dsjtsl += Number(row.f_dsjtsl);
+                    that._pr_set_dsjtsf += Number(row.f_dsjtsf);
 
                     that.onGridSelecteChanged(that._pr_set_cbhhids, that._pr_set_cbhhs,
                         that._pr_set_bqsl, 
@@ -1570,7 +1664,13 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         that._pr_set_pwf, 
                         that._pr_set_bqje, 
                         that._pr_set_jmje,
-                        that._pr_set_sfjl
+                        that._pr_set_sfjl,
+                        that._pr_set_dyjtsl,
+                        that._pr_set_dyjtsf,
+                        that._pr_set_dejtsl,
+                        that._pr_set_dejtsf,
+                        that._pr_set_dsjtsl,
+                        that._pr_set_dsjtsf
                         );
                     gridSelectedChange();
                 },
@@ -1616,6 +1716,12 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     that._pr_set_pwf -= Number(row.f_pwf);
                     that._pr_set_bqje -= Number(row.f_bqje);
                     that._pr_set_jmje -= Number(row.f_jmje);
+                    that._pr_set_dyjtsl -= Number(row.f_dyjtsl);
+                    that._pr_set_dyjtsf -= Number(row.f_dyjtsf);
+                    that._pr_set_dejtsl -= Number(row.f_dejtsl);
+                    that._pr_set_dejtsf -= Number(row.f_dejtsf);
+                    that._pr_set_dsjtsl -= Number(row.f_dsjtsl);
+                    that._pr_set_dsjtsf -= Number(row.f_dsjtsf);
 
                     if (that._pr_set_bqsl < 0)
                     {
@@ -1638,6 +1744,31 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         that._pr_set_jmje = 0;
                     }
 
+                    if (that._pr_set_dyjtsl < 0)
+                    {
+                        that._pr_set_dyjtsl=0;
+                    }
+                    if (that._pr_set_dyjtsf < 0)
+                    {
+                        that._pr_set_dyjtsf = 0;
+                    }
+                    if (that._pr_set_dejtsl < 0)
+                    {
+                        that._pr_set_dejtsl = 0;
+                    }
+                    if (that._pr_set_dejtsf < 0)
+                    {
+                        that._pr_set_dejtsf = 0;
+                    }
+                    if (that._pr_set_dsjtsl < 0)
+                    {
+                        that._pr_set_dsjtsl = 0;
+                    }
+                    if (that._pr_set_dsjtsf < 0)
+                    {
+                        that._pr_set_dsjtsf = 0;
+                    }
+
 
                     that.onGridSelecteChanged(that._pr_set_cbhhids, that._pr_set_cbhhs,
                        that._pr_set_bqsl, 
@@ -1645,7 +1776,13 @@ var tbl_ld_cbiao_list_Obj = (function ()
                        that._pr_set_pwf, 
                        that._pr_set_bqje, 
                        that._pr_set_jmje,
-                       that._pr_set_sfjl
+                        that._pr_set_sfjl,
+                        that._pr_set_dyjtsl,
+                        that._pr_set_dyjtsf,
+                        that._pr_set_dejtsl,
+                        that._pr_set_dejtsf,
+                        that._pr_set_dsjtsl,
+                        that._pr_set_dsjtsf
                        );
                     gridSelectedChange();
                 },
@@ -1705,7 +1842,13 @@ var tbl_ld_cbiao_list_Obj = (function ()
         _pr_set_sf:0,
         _pr_set_pwf:0,
         _pr_set_bqje:0,
-        _pr_set_jmje:0,
+        _pr_set_jmje: 0,
+        _pr_set_dyjtsl: 0,
+        _pr_set_dyjtsf: 0,
+        _pr_set_dejtsl: 0,
+        _pr_set_dejtsf: 0,
+        _pr_set_dsjtsl: 0,
+        _pr_set_dsjtsf:0,
         //设置选中的抄表算法记录
         _pr_set_sfjl:'',
         
@@ -1714,7 +1857,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
 
 
 
-        onGridSelecteChanged: function (gridselectid, cbbh, ysje, cbbhid, bqsl, bqje,sfjl)
+        onGridSelecteChanged: function (gridselectid, cbbh, ysje, cbbhid, bqsl, bqje,sfjl,dyjtsl,dyjtsf,dejtsl,dejtsf,dsjtsl,dsjtsf)
         {
 
         },
@@ -1800,7 +1943,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         whereClause += ' and f_ztid = \'2\'';
                     }
                     var orderByString = ' f_cbsj asc';
-                    var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_yhbh^f_yhbhid^f_sfjl^sys_id';
+                    var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_yhbh^f_yhbhid^f_sfjl^sys_id^NVL(f_dyjtsl,0) as f_dyjtsl^NVL(f_dyjtsf,0) as f_dyjtsf^NVL(f_dejtsl,0) as f_dejtsl^NVL(f_dejtsf,0) as f_dejtsf^NVL(f_dsjtsl,0) as f_dsjtsl^NVL(f_dsjtsf,0) as f_dsjtsf';
 
                     var data = {
                         whereString: whereClause,
@@ -1837,6 +1980,18 @@ var tbl_ld_cbiao_list_Obj = (function ()
             
         },
 
+        destorygGrid: function (callBackFunction)
+        {
+            $('#table_grid_tbl_ld_cbiao_list').bootstrapTable('destroy');
+            initGrid({
+                success: function ()
+                {
+
+                    callBackFunction.success();
+
+                }
+            });
+        },
 
         
         end: function ()

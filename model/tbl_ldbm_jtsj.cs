@@ -353,7 +353,7 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 排污费
+		/// 污水处理费
 		/// </summary>
 		public string f_pwf
 		{

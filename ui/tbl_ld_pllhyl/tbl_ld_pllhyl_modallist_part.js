@@ -3478,7 +3478,7 @@ var tbl_ld_pllhyl_modallist_Obj = (function ()
 
                 {
                     field: 'f_djjzpwf',
-                    title: '调价结转排污费',
+                    title: '调价结转污水处理费',
                     "class": 'hidden',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)

@@ -570,7 +570,11 @@ namespace sara.dd.ldsw.commonclass
                     sql = " update tbl_ld_xgsbds set f_zt = '审核中' , f_ztid ='1' where fk_tbl_maintable_sys_id ='" + sys_id + "'";
                     _iAccessData.ExecuteSql(sql);
                     break;
-                //asdfasd
+                case "540013"://申请疫情减免
+                    sql = " update tbl_ld_yqjm set f_zt = '审核中' , f_ztid ='1' where fk_tbl_maintable_sys_id ='" + sys_id + "'";
+                    _iAccessData.ExecuteSql(sql);
+                    break;
+                    //asdfasd
             }
             #endregion
 
@@ -654,6 +658,10 @@ namespace sara.dd.ldsw.commonclass
                     break;
                 case "540012"://修改水表底数大客户
                     sql = " update tbl_ld_xgsbds set f_zt = '新建' , f_ztid ='0' where fk_tbl_maintable_sys_id ='" + sys_id + "'";
+                    _iAccessData.ExecuteSql(sql);
+                    break;
+                case "540013"://申请疫情减免
+                    sql = " update tbl_ld_yqjm set f_zt = '新建' , f_ztid ='0' where fk_tbl_maintable_sys_id ='" + sys_id + "'";
                     _iAccessData.ExecuteSql(sql);
                     break;
 

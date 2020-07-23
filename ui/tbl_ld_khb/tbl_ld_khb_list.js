@@ -287,12 +287,17 @@ var tbl_ld_khb_list_Obj = (function ()
  { "id": "f_yhm", "text": "用户名" },
  { "id": "f_zhcbrq", "text": "最后抄表日期" },
  { "id": "f_ljqf", "text": "累计欠费" },
- { "id": "f_tjjzpwf", "text": "调价结转排污费" },
+ { "id": "f_tjjzpwf", "text": "调价结转污水处理费" },
  { "id": "f_tjjzsf", "text": "调价结转水费" },
  { "id": "f_nljgl", "text": "年累计购量" },
  { "id": "f_sqysl", "text": "申请用水量" },
  { "id": "f_jhysl", "text": "计划用水量" },
  { "id": "f_ickljgl", "text": "ic卡累计购量" },
+                        { "id": "f_ye", "text": "余额" },
+                        { "id": "f_sfdxcs", "text": "是否短信催收" },
+                        { "id": "f_dxcsyy", "text": "短信催收原因" },
+                        { "id": "f_yqjmsf", "text": "疫情减免水费" },
+                        { "id": "f_yqjmpwf", "text": "疫情减免污水处理费" },
  { "id": "f_qfqm", "text": "欠费起码" }
                     ];
                     _baseCodeHashMap.put('codeservice_0814', columnsArray);
@@ -815,7 +820,7 @@ var tbl_ld_khb_list_Obj = (function ()
 
             columnHashMap.put('f_tjjzpwf', {
                 field: 'f_tjjzpwf',
-                title: "调价结转排污费",
+                title: "调价结转污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
@@ -874,7 +879,18 @@ var tbl_ld_khb_list_Obj = (function ()
                     return resultStr;
                 }
             });
+            columnHashMap.put('f_ye', {
+                field: 'f_ye',
+                title: "余额",
+                "class": '',
+                align: 'left', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
 
+                    return resultStr;
+                }
+            });
             columnHashMap.put('f_dy', {
                 field: 'f_dy',
                 title: "地域",
@@ -1441,6 +1457,67 @@ var tbl_ld_khb_list_Obj = (function ()
                 }
             });
 
+            columnHashMap.put('f_sfdxcs', {
+                field: 'f_sfdxcs',
+                title: '是否短信催收',
+                "class": '',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    if (value == "true")
+                    {
+                        value = '是';
+                    }
+                    else
+                    {
+                        value = '否';
+                    }
+                    var resultStr = value;
+
+                    if (resultStr.length > 10)
+                    {
+                        resultStr = resultStr.substr(0, 10) + '...';
+                    }
+
+                    "";
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_yqjmsf', {
+                field: 'f_yqjmsf',
+                title: '疫情减免水费',
+                "class": '',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    if (resultStr.length > 10)
+                    {
+                        resultStr = resultStr.substr(0, 10) + '...';
+                    }
+
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_yqjmpwf', {
+                field: 'f_yqjmpwf',
+                title: '疫情减免污水处理费',
+                "class": '',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    if (resultStr.length > 10)
+                    {
+                        resultStr = resultStr.substr(0, 10) + '...';
+                    }
+
+                    return resultStr;
+                }
+            });
+
             var column = getCookie("tbl_ld_khb_list_column");
 
             if (column != null && column != 'undefined' && column != "")
@@ -1505,6 +1582,9 @@ var tbl_ld_khb_list_Obj = (function ()
                 columnObj.class = '';
                 columnsarray.push(columnObj);
 
+                columnObj = columnHashMap.get('f_ye');
+                columnObj.class = '';
+                columnsarray.push(columnObj);
 
                 columnObj = columnHashMap.get('f_qy');
                 columnObj.class = '';
@@ -1867,6 +1947,7 @@ var tbl_ld_khb_list_Obj = (function ()
 
             f_sbdz: '',
 
+            f_ye: '',
             f_dh: '',
 
             f_ljqf: '0',
@@ -1979,6 +2060,12 @@ var tbl_ld_khb_list_Obj = (function ()
             f_sqysl: '0',
             f_jhysl: '0',
             f_ickljgl: '0',
+
+            f_sfdxcs: 'true',
+            f_dxcsyy: '',
+
+            f_yqjmsf: '0',
+            f_yqjmpwf: '0',
 
             f_zhcbrq: endDate.Format('yyyy-MM-dd'),
 
@@ -2284,7 +2371,7 @@ var tbl_ld_khb_list_Obj = (function ()
                 {
                     var orderByString = ' sys_id desc';
                 }
-                var columnsString = "f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_ztkhh^f_khfz^f_khfzid^f_ycje^f_yslx^f_yslxid^f_tbbh^f_sfjlbjf^f_zt^f_ztid^f_bz^f_cbbh^f_cbbhid^f_cbxh^f_cbyxm^f_cbyid^f_cbzq^f_cbmc^f_yhbh^f_yhbhid^f_jfm^f_yhfz^f_yhfzid^f_dz^f_sbdz^f_dh^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_tsyxzh^f_hth^f_sfzh^f_khrq^f_sbbh^f_sbbhid^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_bqzm^f_sqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_ljgl^f_lxth^f_sblx^f_sblxid^f_jllx^f_jllxid^f_tssbbh^f_ztsbh^f_rs^f_sbkj^f_sbkjid^f_sbfz^f_sbfzid^f_ztyhh^f_wxwybz^f_zfbwybz^f_gdyhwybz^f_yhm^f_zhcbrq^f_sqysl^f_jhysl^f_ickljgl^sys_id^(select min(f_sqzm) from tbl_ld_cbiao where f_khbh=b.f_khbh and f_ztid='2') as f_qfqm";
+                var columnsString = "f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_ztkhh^f_khfz^f_khfzid^f_ycje^f_yslx^f_yslxid^f_tbbh^f_sfjlbjf^f_zt^f_ztid^f_bz^f_cbbh^f_cbbhid^f_cbxh^f_cbyxm^f_cbyid^f_cbzq^f_cbmc^f_yhbh^f_yhbhid^f_jfm^f_yhfz^f_yhfzid^f_dz^f_sbdz^f_ye^f_dh^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_tsyxzh^f_hth^f_sfzh^f_khrq^f_sbbh^f_sbbhid^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_bqzm^f_sqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_ljgl^f_lxth^f_sblx^f_sblxid^f_jllx^f_jllxid^f_tssbbh^f_ztsbh^f_rs^f_sbkj^f_sbkjid^f_sbfz^f_sbfzid^f_ztyhh^f_wxwybz^f_zfbwybz^f_gdyhwybz^f_yhm^f_zhcbrq^f_sqysl^f_jhysl^f_ickljgl^f_sfdxcs^f_dxcsyy^f_yqjmsf^f_yqjmpwf^sys_id^(select min(f_sqzm) from tbl_ld_cbiao where f_khbh=b.f_khbh and f_ztid='2') as f_qfqm";
 
                 var data = {
                     whereString: whereClause,
@@ -2555,9 +2642,9 @@ var tbl_ld_khb_list_Obj = (function ()
             }
             else
             {
-                var columnsString = "f_khbh,f_ycje,f_yslx,f_sblx,f_cbmc,f_yhm,f_dz,f_dh,f_nljgl,f_ljqf,f_qy,f_pq,f_zt,f_value1,f_bz,(select min(to_number(f_sqzm)) from tbl_ld_cbiao where f_khbh=b.f_khbh and f_ztid='2') as f_qfqm,f_bqzm,f_value10";
+                var columnsString = "f_khbh,f_ycje,f_yslx,f_sblx,f_cbmc,f_yhm,f_dz,f_dh,f_nljgl,f_ljqf,f_ye,f_qy,f_pq,f_zt,f_value1,f_bz,(select min(to_number(f_sqzm)) from tbl_ld_cbiao where f_khbh=b.f_khbh and f_ztid='2') as f_qfqm,f_bqzm,f_value10";
 
-                var colunmsName = '客户编号,绿化水表押金,用水类型,水表类型,抄本名称,用户名,地址,电话,年累计购量,累计欠费,区域,片区,状态,操作类型,备注,欠费起码,本期止码,银行账号';
+                var colunmsName = '客户编号,绿化水表押金,用水类型,水表类型,抄本名称,用户名,地址,电话,年累计购量,累计欠费,余额,区域,片区,状态,操作类型,备注,欠费起码,本期止码,银行账号';
 
             }
             var data = {

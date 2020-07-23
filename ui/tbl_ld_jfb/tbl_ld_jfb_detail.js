@@ -110,6 +110,18 @@ var tbl_ld_jfb_detail_Obj = (function ()
                         _baseCodeHashMap.put('codeservice_0798', resultArray['0798']);
                         _baseCodeHashMap.put('codeservice_0808', resultArray['0808']);
 
+                        var jmsfArray = [
+                            { "id": "0", "text": "0%" },
+                            { "id": "10", "text": "10%" }];
+
+
+                        var jmpwfArray = [
+                            { "id": "0", "text": "0%" },
+                            { "id": "100", "text": "100%" }];
+
+                        _baseCodeHashMap.put('codeservice_jmsf', jmsfArray);
+                        _baseCodeHashMap.put('codeservice_jmpwf', jmpwfArray);
+
                         callBackFunction.success();
                     }
                     catch (ex)
@@ -131,6 +143,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
         {
             try
             {
+               
 
                 var codeService_0574 = _baseCodeHashMap.get('codeservice_0574');
 
@@ -141,6 +154,9 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 var codeService_0798 = _baseCodeHashMap.get('codeservice_0798');
                 var codeService_0808 = _baseCodeHashMap.get('codeservice_0808');
 
+                var codeService_jmsf = _baseCodeHashMap.get('codeservice_jmsf');
+                var codeService_jmpwf = _baseCodeHashMap.get('codeservice_jmpwf');
+
                 controlObj.datetimeinit('detail_f_jfrq_tbl_ld_jfb_detail_date', 'detail_f_jfrq_tbl_ld_jfb_detail_time', f_jfrq_date_onchange, f_jfrq_time_onchange);
 
                 controlObj.singledropdownlistinit('detail_f_jffs_tbl_ld_jfb_detail', codeService_0574, f_jffs_onchange);
@@ -150,7 +166,11 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                 controlObj.singledropdownlistinit('detail_f_jcfs_tbl_ld_jfb_detail', codeService_0575, f_jcfs_onchange);
 
+                controlObj.singledropdownlistinit('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', codeService_jmsf, "");
+                controlObj.singledropdownlistinit('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', codeService_jmpwf, "");
 
+                controlObj.singledropdownlistinit('detail_f_yqjmsf_tbl_ld_jfb_detail', codeService_jmsf, "");
+                controlObj.singledropdownlistinit('detail_f_yqjmpwf_tbl_ld_jfb_detail', codeService_jmpwf, "");
 
 
                 controlObj.datetimeinit('detail_f_czsj_tbl_ld_jfb_detail_date', 'detail_f_czsj_tbl_ld_jfb_detail_time', f_czsj_date_onchange, f_czsj_time_onchange);
@@ -162,9 +182,15 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                 //新增
                 controlObj.singledropdownlistinit('detail_f_kplb_tbl_ld_jfb_detail', codeService_0798, f_kplb_onchange);
-                controlObj.toggleinit('detail_f_sfsytjjz_tbl_ld_jfb_detail', f_sfsytjjz_onchange);//是否使用调价结转
-                controlObj.toggleinit('detail_f_sfsyye_tbl_ld_jfb_detail', f_sfsyye_onchange);//是否使用余额
+
                 controlObj.singledropdownlistinit('detail_f_ly_tbl_ld_jfb_detail', codeService_0808);
+
+
+                    controlObj.toggleinit('detail_f_sfsytjjz_tbl_ld_jfb_detail', f_sfsytjjz_onchange);//是否使用调价结转
+                    controlObj.toggleinit('detail_f_sfsyye_tbl_ld_jfb_detail', f_sfsyye_onchange);//是否使用绿化表押金
+
+                    controlObj.toggleinit('detail_f_sfsyycje_tbl_ld_jfb_detail', f_sfsyycje_onchange);//是否使用余额
+                
 
                 //模态窗口
                 $('#div_search_modal_tbl_ld_jfb_detail').modal({
@@ -195,7 +221,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
                             {
                                 tbl_ld_cbiao_list_Obj._pr_listtype = that._pr_pagetype;
 
-                                tbl_ld_cbiao_list_Obj.onGridSelecteChanged = function (cbbhids, cbbhs, bqsl, sf, pwf, bqje, jmje, sfjl)
+                                tbl_ld_cbiao_list_Obj.onGridSelecteChanged = function (cbbhids, cbbhs, bqsl, sf, pwf, bqje, jmje, sfjl,dyjtsl,dyjtsf,dejtsl,dejtsf,dsjtsl,dsjtsf)
                                 {
                                     controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', sfjl);
                                     //清空计算信息
@@ -211,15 +237,31 @@ var tbl_ld_jfb_detail_Obj = (function ()
                                     controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');
                                     controlObj.toggle('detail_f_sfsyye_tbl_ld_jfb_detail', 'false');
                                     controlObj.toggle('detail_f_sfsytjjz_tbl_ld_jfb_detail', 'false');
+                                    controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', 'false');
                                     controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', '');
 
                                     controlObj.text('detail_f_cbbh_tbl_ld_jfb_detail', cbbhs);
                                     controlObj.text('detail_f_cbbhid_tbl_ld_jfb_detail', cbbhids);
                                     controlObj.text('detail_f_sflj_tbl_ld_jfb_detail', sf.toFixed(2));//水费累计
-                                    controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail', pwf.toFixed(2));//排污费累计
+                                    controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail', pwf.toFixed(2));//污水处理费累计
                                     controlObj.text('detail_f_jmjelj_tbl_ld_jfb_detail', jmje);//减免金额累计
                                     controlObj.text('detail_f_sllj_tbl_ld_jfb_detail', bqsl);//本期水量
                                     controlObj.text('detail_f_cbyslj_tbl_ld_jfb_detail', bqje.toFixed(2));//抄表应收累计
+
+                                    //阶梯水价
+                                    controlObj.text('detail_f_dyjtsl_tbl_ld_jfb_detail', dyjtsl.toFixed(0));
+                                    controlObj.text('detail_f_dyjtsf_tbl_ld_jfb_detail', dyjtsf.toFixed(2));
+                                    controlObj.text('detail_f_dejtsl_tbl_ld_jfb_detail', dejtsl.toFixed(0));
+                                    controlObj.text('detail_f_dejtsf_tbl_ld_jfb_detail', dejtsf.toFixed(2));
+                                    controlObj.text('detail_f_dsjtsl_tbl_ld_jfb_detail', dsjtsl.toFixed(0));
+                                    controlObj.text('detail_f_dsjtsf_tbl_ld_jfb_detail', dsjtsf.toFixed(2));
+
+                                    //疫情减免归0
+                                    controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '0');
+                                    controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '0');
+                                    controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '');
+                                    controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '');
+
                                     if (parseInt(bqsl) == 0)
                                     {
                                         controlObj.text('detail_f_dj_tbl_ld_jfb_detail', "0");//单价
@@ -230,7 +272,9 @@ var tbl_ld_jfb_detail_Obj = (function ()
                                     }
 
                                     controlObj.text('detail_f_jmhyslj_tbl_ld_jfb_detail', (parseFloat(bqje) - parseFloat(jmje)).toFixed(2));//减免后应收累计
-                                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', 0);//算后应收
+                                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(bqje) - parseFloat(jmje)).toFixed(2));//算后应收
+
+
                                     that.btn_command_receivable_onclick();
                                 };
 
@@ -399,6 +443,8 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 controlObj.datetimedisable('detail_f_jfrq_tbl_ld_jfb_detail_date', 'detail_f_jfrq_tbl_ld_jfb_detail_time', true);
                 controlObj.datetimedisable('detail_f_czsj_tbl_ld_jfb_detail_date', 'detail_f_czsj_tbl_ld_jfb_detail_time', true);
                 controlObj.singledropdownlistdisable('detail_f_zt_tbl_ld_jfb_detail', true);
+                controlObj.singledropdownlistdisable('detail_f_yqjmsf_tbl_ld_jfb_detail', true);
+                controlObj.singledropdownlistdisable('detail_f_yqjmpwf_tbl_ld_jfb_detail', true);
                 controlObj.textdisable('detail_f_yyt_tbl_ld_jfb_detail', true);
 
                 controlObj.textdisable('detail_f_sytjjzpwf_tbl_ld_jfb_detail', true);
@@ -414,8 +460,13 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 controlObj.toggledisable('detail_f_sfsytjjz_tbl_ld_jfb_detail', true);
                 controlObj.singledropdownlistdisable('detail_f_jffs_tbl_ld_jfb_detail', isDisable);
                 controlObj.singledropdownlistdisable('detail_f_jcfs_tbl_ld_jfb_detail', isDisable);
+                controlObj.singledropdownlistdisable('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', isDisable);
+                controlObj.singledropdownlistdisable('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', isDisable);
 
                 controlObj.textdisable('detail_f_yyyid_tbl_ld_jfb_detail', isDisable);
+
+                controlObj.textdisable('detail_f_yqjmsfje_tbl_ld_jfb_detail', true);
+                controlObj.textdisable('detail_f_yqjmpwfje_tbl_ld_jfb_detail', true);
 
 
                 controlObj.toggledisable('detail_f_sfsyye_tbl_ld_jfb_detail', isDisable);
@@ -461,10 +512,14 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 if (isDisable)
                 {
                     $('#btn_detail_f_shssdx_tbl_ld_jfb_detail').attr('disabled', 'disabled');
+                    $('#btn_detail_f_yqjmsfbfb_tbl_ld_jfb_detail').attr('disabled', 'disabled');
+                    $('#btn_detail_f_yqjmpwfbfb_tbl_ld_jfb_detail').attr('disabled', 'disabled');
                 }
                 else
                 {
                     $('#btn_detail_f_shssdx_tbl_ld_jfb_detail').removeAttr('disabled');
+                    $('#btn_detail_f_yqjmsfbfb_tbl_ld_jfb_detail').removeAttr('disabled');
+                    $('#btn_detail_f_yqjmpwfbfb_tbl_ld_jfb_detail').removeAttr('disabled');
                 }
 
                 controlObj.textdisable('detail_f_khbhid_tbl_ld_jfb_detail', isDisable);
@@ -509,6 +564,17 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                 controlObj.textdisable('detail_f_kplb_tbl_ld_jfb_detail', isDisable);
 
+            controlObj.textdisable('detail_f_dyjtsl_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_dyjtsf_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_dejtsl_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_dejtsf_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_dsjtsl_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_dsjtsf_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_khyycje_tbl_ld_jfb_detail', true);
+            controlObj.toggledisable('detail_f_sfsyycje_tbl_ld_jfb_detail', isDisable);
+            controlObj.textdisable('detail_f_syycje_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_yhycje_tbl_ld_jfb_detail', true);
+            controlObj.textdisable('detail_f_dszycje_tbl_ld_jfb_detail', true);
 
 
                 if (isDisable == true)
@@ -637,11 +703,25 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
                 controlObj.singledropdownlistid('detail_f_jcfs_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_jcfsid);
 
+                controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yqjmsfbfb);
+
+
+                controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yqjmpwfbfb);
+
+                controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yqjmsf);
+
+
+                controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yqjmpwf);
+
 
 
                 controlObj.text('detail_f_yyy_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yyy);
 
                 controlObj.text('detail_f_yyyid_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yyyid);
+
+                controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yqjmsfje);
+
+                controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yqjmpwfje);
 
 
 
@@ -756,6 +836,19 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 controlObj.singledropdownlistid('detail_f_kplb_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_kplbid);
                 controlObj.text('detail_f_khyye_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_khyye);
                 controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_syhtjjzpwf);
+                //阶梯水价
+            controlObj.text('detail_f_dyjtsl_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dyjtsl);
+            controlObj.text('detail_f_dyjtsf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dyjtsf);
+            controlObj.text('detail_f_dejtsl_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dejtsl);
+            controlObj.text('detail_f_dejtsf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dejtsf);
+            controlObj.text('detail_f_dsjtsl_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dsjtsl);
+                controlObj.text('detail_f_dsjtsf_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dsjtsf);
+                //余额
+            controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_khyycje);
+            controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_sfsyycje);
+            controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_syycje);
+            controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_yhycje);
+            controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_dszycje);
                 controlObj.singledropdownlistid('detail_f_ly_tbl_ld_jfb_detail', tbl_ld_jfb_detail.f_lyid);
                 if (tbl_ld_jfb_detail.f_lyid != '08080002')
                 {
@@ -835,7 +928,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
                         //controlObj.singledropdownlistid('detail_f_jffs_tbl_ld_jfb_detail', '05740001');
 
 
-                        controlObj.singledropdownlistid('detail_f_jcfs_tbl_ld_jfb_detail', '05750001');
+                        controlObj.singledropdownlistid('detail_f_jcfs_tbl_ld_jfb_detail', '05750002');
 
 
 
@@ -851,9 +944,16 @@ var tbl_ld_jfb_detail_Obj = (function ()
                         controlObj.toggle('detail_f_sfykfp_tbl_ld_jfb_detail', 'false');
 
                         controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_jfb_detail', '0');
 
                         controlObj.text('detail_f_yyt_tbl_ld_jfb_detail', basePageObj._userInfoJson.sys_toporganname);
                         controlObj.text('detail_f_yytid_tbl_ld_jfb_detail', basePageObj._userInfoJson.sys_toporgan);
+
+                        controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '0');
 
                         controlObj.text('detail_f_dj_tbl_ld_jfb_detail', '0');
                         controlObj.text('detail_f_cbyslj_tbl_ld_jfb_detail', '0');
@@ -875,6 +975,17 @@ var tbl_ld_jfb_detail_Obj = (function ()
                         controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', '0');
                         controlObj.text('detail_f_syye_tbl_ld_jfb_detail', '0');
                         controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dyjtsl_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dyjtsf_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dejtsl_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dejtsf_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dsjtsl_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dsjtsf_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', '0');
+                    controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', 'false');
+                    controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', '0');
+                    controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail', '0');
 
                         controlObj.singledropdownlistid('detail_f_ly_tbl_ld_jfb_detail', '08080003');
 
@@ -1057,8 +1168,25 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 controlObj.text('detail_f_khyye_tbl_ld_jfb_detail', '');
                 controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', '');
                 controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail', '0');
+                controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '0');
+                controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '0');
+                controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_jfb_detail', '0');
+                controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_jfb_detail', '0');
 
+                controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '');
+                controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '');
                 controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dyjtsl_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dyjtsf_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dejtsl_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dejtsf_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dsjtsl_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dsjtsf_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', '');
+            controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', '');
+            controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail', '');
                 //part程序，,让传入khbhid = -1, bindGrid
                 //清空part程序的其他参数
                 tbl_ld_cbiao_list_Obj._pr_set_jfrq = '';
@@ -1088,161 +1216,174 @@ var tbl_ld_jfb_detail_Obj = (function ()
         {
             try
             {
-
-                controlObj.text('detail_f_value1_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value2_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value3_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value4_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value5_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value6_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value7_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value8_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value9_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_value10_tbl_ld_jfb_detail', '');
-
-
-
-                controlObj.text('detail_f_sjbh_tbl_ld_jfb_detail', '');
-
-
-
-
-
-
-
-
-                controlObj.text('detail_f_bz_tbl_ld_jfb_detail', '');
-
-
-                controlObj.text('detail_f_khbhid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_yhbh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_yhbhid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_yhm_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_jfm_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_dz_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_dh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_dy_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_dyid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_sc_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_scid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_qy_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_qyid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_pq_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_pqid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_sbbh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_sbbhid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_yslx_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_yslxid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_lxtkhh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_sblx_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_sblxid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_rs_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_cbbh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_cbbhid_tbl_ld_jfb_detail', '');
-
-
-
-
-
-                controlObj.text('detail_f_znjbh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_znjbhid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_znjje_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_fjbh_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_fjbhid_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_fjje_tbl_ld_jfb_detail', '');
-
-
-                //新增
-
-                controlObj.text('detail_f_dj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_cbyslj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_sllj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_sflj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_jmhyslj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_jmjelj_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_khytjjzsf_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_khytjjzpwf_tbl_ld_jfb_detail', '0');
-
-                controlObj.toggle('detail_f_sfsytjjz_tbl_ld_jfb_detail', '');
-
-                controlObj.text('detail_f_sytjjzsf_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_syhtjjzsf_tbl_ld_jfb_detail', '0');
-                controlObj.toggle('detail_f_sfsyye_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_syye_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_shss_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_shys_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_hszl_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_khfz_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_khfzid_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_cbenbh_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_cbenbhid_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_ljqf_tbl_ld_jfb_detail', '0');
-
-
-                controlObj.text('detail_f_khyye_tbl_ld_jfb_detail', '0');
-                controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', '0');
-                controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail', '0');
-                controlObj.singledropdownlistid('detail_f_kplb_tbl_ld_jfb_detail', '');
-                controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', '');
-                //part程序，,让传入khbhid = -1, bindGrid
-                //清空part程序的其他参数
-                tbl_ld_cbiao_list_Obj._pr_set_jfrq = '';
-                tbl_ld_cbiao_list_Obj._pr_set_khbhid = "-1";
-                tbl_ld_cbiao_list_Obj.bindGrid({
+                tbl_ld_cbiao_list_Obj.destorygGrid({
                     success: function ()
                     {
-                    }, fail: function (message)
+                        controlObj.text('detail_f_value1_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value2_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value3_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value4_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value5_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value6_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value7_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value8_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value9_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_value10_tbl_ld_jfb_detail', '');
+
+
+
+                        controlObj.text('detail_f_sjbh_tbl_ld_jfb_detail', '');
+
+
+
+
+
+
+
+
+                        controlObj.text('detail_f_bz_tbl_ld_jfb_detail', '');
+
+
+                        controlObj.text('detail_f_khbhid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_yhbh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_yhbhid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_yhm_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_jfm_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_dz_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_dh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_dy_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_dyid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_sc_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_scid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_qy_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_qyid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_pq_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_pqid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_sbbh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_sbbhid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_yslx_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_yslxid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_lxtkhh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_sblx_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_sblxid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_rs_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_cbbh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_cbbhid_tbl_ld_jfb_detail', '');
+
+
+
+
+
+                        controlObj.text('detail_f_znjbh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_znjbhid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_znjje_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_fjbh_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_fjbhid_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_fjje_tbl_ld_jfb_detail', '');
+
+
+                        //新增
+
+                        controlObj.text('detail_f_dj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_cbyslj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_sllj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_sflj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_jmhyslj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_jmjelj_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_khytjjzsf_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_khytjjzpwf_tbl_ld_jfb_detail', '0');
+
+                        controlObj.toggle('detail_f_sfsytjjz_tbl_ld_jfb_detail', '');
+
+                        controlObj.text('detail_f_sytjjzsf_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_syhtjjzsf_tbl_ld_jfb_detail', '0');
+                        controlObj.toggle('detail_f_sfsyye_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_syye_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_shss_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_hszl_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_khfz_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_khfzid_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_cbenbh_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_cbenbhid_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_ljqf_tbl_ld_jfb_detail', '0');
+
+
+                        controlObj.text('detail_f_khyye_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '');
+                        controlObj.singledropdownlistid('detail_f_kplb_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_dyjtsl_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_dyjtsf_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_dejtsl_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_dejtsf_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_dsjtsl_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_dsjtsf_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', '0');
+                        controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', '');
+                        controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', '0');
+                        controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail', '0');
+
+                        $("#div_detail_f_jhts_tbl_ld_jfb_detail").addClass("hidden");
+                        _validateMessage_save.hidden();
+                        _validateMessage_printsubmit0.hidden();
+                        _validateMessage_printsubmit1.hidden();
+                    },
+                    fail: function (message)
                     {
-                        _alertMessage.show('清空抄表信息失败', 'fail');
+                        _alertMessage.show('重载抄表表失败<br/>', 'fail');
                     }
                 });
 
-                $("#div_detail_f_jhts_tbl_ld_jfb_detail").addClass("hidden");
-                _validateMessage_save.hidden();
-                _validateMessage_printsubmit0.hidden();
-                _validateMessage_printsubmit1.hidden();
+                
 
             }
             catch (ex)
@@ -1330,6 +1471,14 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 tbl_ld_jfb_detail.f_zt = controlObj.singledropdownlist('detail_f_zt_tbl_ld_jfb_detail');
                 tbl_ld_jfb_detail.f_ztid = controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail');
 
+                tbl_ld_jfb_detail.f_yqjmsfbfb = controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail');
+                tbl_ld_jfb_detail.f_yqjmpwfbfb = controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail');
+
+                tbl_ld_jfb_detail.f_yqjmsf = controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_jfb_detail');
+                tbl_ld_jfb_detail.f_yqjmpwf = controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_jfb_detail');
+
+                tbl_ld_jfb_detail.f_yqjmsfje = controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail');
+                tbl_ld_jfb_detail.f_yqjmpwfje = controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail');
 
                 tbl_ld_jfb_detail.f_bz = controlObj.text('detail_f_bz_tbl_ld_jfb_detail');
 
@@ -1473,6 +1622,17 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 tbl_ld_jfb_detail.f_lyid = controlObj.singledropdownlistid('detail_f_ly_tbl_ld_jfb_detail');
                 tbl_ld_jfb_detail.f_ly = controlObj.singledropdownlist('detail_f_ly_tbl_ld_jfb_detail');
                 tbl_ld_jfb_detail.f_sfjl = controlObj.text('detail_f_sfjl_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dyjtsl = controlObj.text('detail_f_dyjtsl_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dyjtsf = controlObj.text('detail_f_dyjtsf_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dejtsl = controlObj.text('detail_f_dejtsl_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dejtsf = controlObj.text('detail_f_dejtsf_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dsjtsl = controlObj.text('detail_f_dsjtsl_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dsjtsf = controlObj.text('detail_f_dsjtsf_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_khyycje = controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_sfsyycje = controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_syycje = controlObj.text('detail_f_syycje_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_yhycje = controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail');
+            tbl_ld_jfb_detail.f_dszycje = controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail');
                 callBackFunction.success(tbl_ld_jfb_detail);
             }
             catch (ex)
@@ -1910,6 +2070,62 @@ var tbl_ld_jfb_detail_Obj = (function ()
                     errorMessageHansMap.put('detail_f_fjje_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
                 }
 
+                if (tbl_ld_jfb_detail.f_dyjtsl.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dyjtsl_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_dyjtsf.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dyjtsf_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_dejtsl.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dejtsl_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_dejtsf.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dejtsf_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_dsjtsl.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dsjtsl_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_dsjtsf.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dsjtsf_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_khyycje.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_khyycje_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+
+                if (tbl_ld_jfb_detail.f_sfsyycje.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_sfsyycje_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_syycje.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_syycje_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_yhycje.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_yhycje_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
+                if (tbl_ld_jfb_detail.f_dszycje.length > 200)
+                {
+                    errorMessageHansMap.put('detail_f_dszycje_tbl_ld_jfb_detail', '长度不能超过<a style="color:red">200</a>个字');
+                }
+
 
                 if (errorMessageHansMap.keys().length > 0)
                 {
@@ -1952,16 +2168,79 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 {
                     errorMessageHansMap.put('detail_f_khbh_tbl_ld_jfb_detail', '长度不能少于<a style="color:red">1</a>个字');
                 }
-
-                if (tbl_ld_jfb_detail.f_cbbh.length < 1)
+                if (tbl_ld_jfb_detail.f_yqjmsf == null || tbl_ld_jfb_detail.f_yqjmsf == "")
                 {
-                    errorMessageHansMap.put('detail_f_cbbh_tbl_ld_jfb_detail', '长度不能少于<a style="color:red">1</a>个字');
+                    tbl_ld_jfb_detail.f_yqjmsf = "0";
                 }
 
-
-                if ((parseFloat(tbl_ld_jfb_detail.f_shys) + parseFloat(tbl_ld_jfb_detail.f_hszl)).toFixed(2) != parseFloat(tbl_ld_jfb_detail.f_shss).toFixed(2))
+                if (tbl_ld_jfb_detail.f_yqjmsfbfb == null || tbl_ld_jfb_detail.f_yqjmsfbfb == "")
                 {
-                    errorMessageHansMap.put('detail_f_hszl_tbl_ld_jfb_detail', '算后找零未进行计算');
+                    tbl_ld_jfb_detail.f_yqjmsfbfb = "0";
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwf == null || tbl_ld_jfb_detail.f_yqjmpwf == "")
+                {
+                    tbl_ld_jfb_detail.f_yqjmpwf = "0";
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwfbfb == null || tbl_ld_jfb_detail.f_yqjmpwfbfb == "")
+                {
+                    tbl_ld_jfb_detail.f_yqjmpwfbfb = "0";
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmsf !=  tbl_ld_jfb_detail.f_yqjmsfbfb)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsf_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwf != tbl_ld_jfb_detail.f_yqjmpwfbfb)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwf_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmsfbfb != '0' && tbl_ld_jfb_detail.f_yqjmsfje.length < 1)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwfbfb != '0' && tbl_ld_jfb_detail.f_yqjmpwfje.length < 1)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmsfje == null || tbl_ld_jfb_detail.f_yqjmsfje == "" || tbl_ld_jfb_detail.f_yqjmsfje == "0") && tbl_ld_jfb_detail.f_yqjmsfbfb != '0')
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmsfje != null && tbl_ld_jfb_detail.f_yqjmsfje != "" && tbl_ld_jfb_detail.f_yqjmsfje != "0") && (tbl_ld_jfb_detail.f_yqjmsfbfb == '0' || tbl_ld_jfb_detail.f_yqjmsfbfb == ''))
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmpwfje == null || tbl_ld_jfb_detail.f_yqjmpwfje == "" || tbl_ld_jfb_detail.f_yqjmpwfje == "0") && tbl_ld_jfb_detail.f_yqjmpwfbfb != '0')
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmpwfje != null && tbl_ld_jfb_detail.f_yqjmpwfje != "" && tbl_ld_jfb_detail.f_yqjmpwfje != "0") && (tbl_ld_jfb_detail.f_yqjmpwfbfb == '0' || tbl_ld_jfb_detail.f_yqjmpwfbfb == ''))
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                //if (tbl_ld_jfb_detail.f_cbbh.length < 1)
+                //{
+                //    errorMessageHansMap.put('detail_f_cbbh_tbl_ld_jfb_detail', '长度不能少于<a style="color:red">1</a>个字');
+                //}
+
+                if (parseFloat(tbl_ld_jfb_detail.f_jmhyslj) < parseFloat(tbl_ld_jfb_detail.f_shys))
+                {
+                    errorMessageHansMap.put('detail_f_shys_tbl_ld_jfb_detail', '未进行算后应收计算');
+                }
+
+                if ((parseFloat(tbl_ld_jfb_detail.f_shys) + parseFloat(tbl_ld_jfb_detail.f_dszycje)).toFixed(2) != parseFloat(tbl_ld_jfb_detail.f_shss).toFixed(2))
+                {
+                    errorMessageHansMap.put('detail_f_shss_tbl_ld_jfb_detail', '多收转余额未进行算后实收计算');
                 }
 
                 if (tbl_ld_jfb_detail.f_shssdx.length < 1)
@@ -2011,16 +2290,75 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 {
                     errorMessageHansMap.put('detail_f_khbh_tbl_ld_jfb_detail', '长度不能少于<a style="color:red">1</a>个字');
                 }
-
-                if (tbl_ld_jfb_detail.f_cbbh.length < 1)
+                if (tbl_ld_jfb_detail.f_yqjmsf == null || tbl_ld_jfb_detail.f_yqjmsf == "")
                 {
-                    errorMessageHansMap.put('detail_f_cbbh_tbl_ld_jfb_detail', '长度不能少于<a style="color:red">1</a>个字');
+                    tbl_ld_jfb_detail.f_yqjmsf = "0";
                 }
 
-
-                if ((parseFloat(tbl_ld_jfb_detail.f_shys) + parseFloat(tbl_ld_jfb_detail.f_hszl)).toFixed(2) != parseFloat(tbl_ld_jfb_detail.f_shss).toFixed(2))
+                if (tbl_ld_jfb_detail.f_yqjmsfbfb == null || tbl_ld_jfb_detail.f_yqjmsfbfb == "")
                 {
-                    errorMessageHansMap.put('detail_f_hszl_tbl_ld_jfb_detail', '算后找零未进行计算');
+                    tbl_ld_jfb_detail.f_yqjmsfbfb = "0";
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwf == null || tbl_ld_jfb_detail.f_yqjmpwf == "")
+                {
+                    tbl_ld_jfb_detail.f_yqjmpwf = "0";
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwfbfb == null || tbl_ld_jfb_detail.f_yqjmpwfbfb == "")
+                {
+                    tbl_ld_jfb_detail.f_yqjmpwfbfb = "0";
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmsf != tbl_ld_jfb_detail.f_yqjmsfbfb)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsf_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwf != tbl_ld_jfb_detail.f_yqjmpwfbfb)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwf_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmsfbfb != '0' && tbl_ld_jfb_detail.f_yqjmsfje.length < 1)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if (tbl_ld_jfb_detail.f_yqjmpwfbfb != '0' && tbl_ld_jfb_detail.f_yqjmpwfje.length < 1)
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmsfje == null || tbl_ld_jfb_detail.f_yqjmsfje == "" || tbl_ld_jfb_detail.f_yqjmsfje == "0") && tbl_ld_jfb_detail.f_yqjmsfbfb != '0')
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmsfje != null && tbl_ld_jfb_detail.f_yqjmsfje != "" && tbl_ld_jfb_detail.f_yqjmsfje != "0") && (tbl_ld_jfb_detail.f_yqjmsfbfb == '0' || tbl_ld_jfb_detail.f_yqjmsfbfb == ''))
+                {
+                    errorMessageHansMap.put('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmpwfje == null || tbl_ld_jfb_detail.f_yqjmpwfje == "" || tbl_ld_jfb_detail.f_yqjmpwfje == "0") && tbl_ld_jfb_detail.f_yqjmpwfbfb != '0')
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                if ((tbl_ld_jfb_detail.f_yqjmpwfje != null && tbl_ld_jfb_detail.f_yqjmpwfje != "" && tbl_ld_jfb_detail.f_yqjmpwfje != "0") && (tbl_ld_jfb_detail.f_yqjmpwfbfb == '0' || tbl_ld_jfb_detail.f_yqjmpwfbfb == ''))
+                {
+                    errorMessageHansMap.put('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '未进行疫情减免计算');
+                }
+
+                //if (tbl_ld_jfb_detail.f_cbbh.length < 1)
+                //{
+                //    errorMessageHansMap.put('detail_f_cbbh_tbl_ld_jfb_detail', '长度不能少于<a style="color:red">1</a>个字');
+                //}
+
+
+                if ((parseFloat(tbl_ld_jfb_detail.f_shys) + parseFloat(tbl_ld_jfb_detail.f_dszycje)).toFixed(2) != parseFloat(tbl_ld_jfb_detail.f_shss).toFixed(2))
+                {
+                    errorMessageHansMap.put('detail_f_hszl_tbl_ld_jfb_detail', '多收转余额未进行计算');
                 }
 
                 if (tbl_ld_jfb_detail.f_shssdx.length < 1)
@@ -2099,7 +2437,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
         {
             var whereClause = ' sys_id = \'' + that._pr_sys_id + '\'';
             var orderByString = '';
-        var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl^sys_id';
+            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl^sys_id^f_khyycje^f_sfsyycje^f_syycje^f_yhycje^f_dszycje^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf^f_yqjmsfbfb^f_yqjmpwfbfb^f_yqjmsfje^f_yqjmpwfje^f_yqjmsf^f_yqjmpwf';
             var pageSizeString = '';
             var pageIndexString = '';
             var data = {
@@ -2134,7 +2472,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
         {
             ////;
             var d = new Date();
-        var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl';
+            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_yyy^f_yyyid^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_yslx^f_yslxid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_czsj^f_sfykfp^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_yyt^f_yytid^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmjelj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_syhtjjzpwf^f_ly^f_lyid^f_sfjl^f_khyycje^f_sfsyycje^f_syycje^f_yhycje^f_dszycje^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf^f_yqjmsfbfb^f_yqjmpwfbfb^f_yqjmsfje^f_yqjepwfje^f_yqjmsf^f_yqjepwf';
             var json = {
                 sys_id: that._pr_sys_id,
 
@@ -2256,6 +2594,8 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 f_fjje: tbl_ld_jfb_detail.f_fjje,
                 f_sfjl: tbl_ld_jfb_detail.f_sfjl,
 
+
+
                 sys_lasteditusername: basePageObj._userInfoJson.sys_username,
                 sys_lastedituserid: basePageObj._userInfoJson.sys_userid,
                 sys_lasteditdate: d.Format('yyyy-MM-dd hh:mm:ss'),
@@ -2293,7 +2633,29 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 f_syhtjjzsf: tbl_ld_jfb_detail.f_syhtjjzsf,
                 f_syhtjjzpwf: tbl_ld_jfb_detail.f_syhtjjzpwf,
                 f_ly: tbl_ld_jfb_detail.f_ly,
-                f_lyid: tbl_ld_jfb_detail.f_lyid
+                f_lyid: tbl_ld_jfb_detail.f_lyid,
+
+                //阶梯水价
+                f_dyjtsl: tbl_ld_jfb_detail.f_dyjtsl,
+                f_dyjtsf: tbl_ld_jfb_detail.f_dyjtsf,
+                f_dejtsl: tbl_ld_jfb_detail.f_dejtsl,
+                f_dejtsf: tbl_ld_jfb_detail.f_dejtsf,
+                f_dsjtsl: tbl_ld_jfb_detail.f_dsjtsl,
+                f_dsjtsf: tbl_ld_jfb_detail.f_dsjtsf,
+                //余额
+                f_khyycje: tbl_ld_jfb_detail.f_khyycje,
+                f_sfsyycje: tbl_ld_jfb_detail.f_sfsyycje,
+                f_syycje: tbl_ld_jfb_detail.f_syycje,
+                f_yhycje: tbl_ld_jfb_detail.f_yhycje,
+                f_dszycje: tbl_ld_jfb_detail.f_dszycje,
+
+                //疫情减免
+                f_yqjmsf: tbl_ld_jfb_detail.f_yqjmsf,
+                f_yqjmpwf: tbl_ld_jfb_detail.f_yqjmpwf,
+                f_yqjmsfbfb: tbl_ld_jfb_detail.f_yqjmsfbfb,
+                f_yqjmpwfbfb: tbl_ld_jfb_detail.f_yqjmpwfbfb,
+                f_yqjmsfje: tbl_ld_jfb_detail.f_yqjmsfje,
+                f_yqjmpwfje: tbl_ld_jfb_detail.f_yqjmpwfje
             };
 
             var data = {
@@ -2327,6 +2689,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
     */
         addDetailData = function (tbl_ld_jfb_detail, type, callBackFunction)
         {
+            
             var d = new Date();
 
             var json = {
@@ -2497,7 +2860,30 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 f_syhtjjzsf: tbl_ld_jfb_detail.f_syhtjjzsf,
                 f_syhtjjzpwf: tbl_ld_jfb_detail.f_syhtjjzpwf,
                 f_ly: tbl_ld_jfb_detail.f_ly,
-                f_lyid: tbl_ld_jfb_detail.f_lyid
+                f_lyid: tbl_ld_jfb_detail.f_lyid,
+                //阶梯水价
+                f_dyjtsl: tbl_ld_jfb_detail.f_dyjtsl,
+                f_dyjtsf: tbl_ld_jfb_detail.f_dyjtsf,
+                f_dejtsl: tbl_ld_jfb_detail.f_dejtsl,
+                f_dejtsf: tbl_ld_jfb_detail.f_dejtsf,
+                f_dsjtsl: tbl_ld_jfb_detail.f_dsjtsl,
+                f_dsjtsf: tbl_ld_jfb_detail.f_dsjtsf,
+                //余额
+                f_khyycje: tbl_ld_jfb_detail.f_khyycje,
+                f_sfsyycje: tbl_ld_jfb_detail.f_sfsyycje,
+                f_syycje: tbl_ld_jfb_detail.f_syycje,
+                f_yhycje: tbl_ld_jfb_detail.f_yhycje,
+                f_dszycje: tbl_ld_jfb_detail.f_dszycje,
+
+                //疫情减免
+                f_yqjmsf: tbl_ld_jfb_detail.f_yqjmsf,
+                f_yqjmpwf: tbl_ld_jfb_detail.f_yqjmpwf,
+                f_yqjmsfbfb: tbl_ld_jfb_detail.f_yqjmsfbfb,
+                f_yqjmpwfbfb: tbl_ld_jfb_detail.f_yqjmpwfbfb,
+                f_yqjmsfje: tbl_ld_jfb_detail.f_yqjmsfje,
+                f_yqjmpwfje: tbl_ld_jfb_detail.f_yqjmpwfje
+
+                
             };
 
             var data = {
@@ -2696,70 +3082,154 @@ var tbl_ld_jfb_detail_Obj = (function ()
         *  
         *  方法:f_sfsyye_onchange
         *  参数:event, state
-        *  是否使用余额切换事件
+        *  是否使用绿化表押金切换事件
         */
         f_sfsyye_onchange = function (event, state)
         {
-
-            //原绿化表押金
-            var yycje = controlObj.text('detail_f_khyye_tbl_ld_jfb_detail');
-            //使用绿化表押金
-            var syycje = controlObj.text('detail_f_syye_tbl_ld_jfb_detail');
-            //用后绿化表押金
-            var yhycje = controlObj.text('detail_f_yhye_tbl_ld_jfb_detail');
-            if (state)
+            var ztid = controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail');
+            if (ztid != '2')
             {
-                //改为使用 绿化表押金
-                //绿化表押金部分，默认使用绿化表押金
-                //2.判断是否存在绿化表押金
-                if (yycje != null && yycje !== "" && parseFloat(yycje) > 0)
+                //原绿化表押金
+                var yycje = controlObj.text('detail_f_khyye_tbl_ld_jfb_detail');
+                //使用绿化表押金
+                var syycje = controlObj.text('detail_f_syye_tbl_ld_jfb_detail');
+                //用后绿化表押金
+                var yhycje = controlObj.text('detail_f_yhye_tbl_ld_jfb_detail');
+                if (state)
                 {
-                    //2.1存在绿化表押金情况
-                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
-                    //2.2判断绿化表押金是否大于算后应收
-                    if (parseFloat(yycje) > parseFloat(shys))
+                    //改为使用 绿化表押金
+                    //绿化表押金部分，默认使用绿化表押金
+                    //2.判断是否存在绿化表押金
+                    if (yycje != null && yycje !== "" && parseFloat(yycje) > 0)
                     {
-                        //2.2.1使用算后金额
-                        var syycje = parseFloat(shys).toFixed(2);
-                        controlObj.text('detail_f_syye_tbl_ld_jfb_detail', syycje);//使用绿化表押金
-                        controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', (parseFloat(yycje) - parseFloat(syycje)).toFixed(2));//使用后绿化表押金
-                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', '0'); //算后应收更新
+                        //2.1存在绿化表押金情况
+                        var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                        //2.2判断绿化表押金是否大于算后应收
+                        if (parseFloat(yycje) > parseFloat(shys))
+                        {
+                            //2.2.1使用算后金额
+                            var syycje = parseFloat(shys).toFixed(2);
+                            controlObj.text('detail_f_syye_tbl_ld_jfb_detail', syycje);//使用绿化表押金
+                            controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', (parseFloat(yycje) - parseFloat(syycje)).toFixed(2));//使用后绿化表押金
+                            controlObj.text('detail_f_shys_tbl_ld_jfb_detail', '0'); //算后应收更新
 
 
+
+                        }
+                        else
+                        {
+                            //2.2.2使用绿化表押金
+                            var syycje = parseFloat(yycje).toFixed(2);
+                            controlObj.text('detail_f_syye_tbl_ld_jfb_detail', syycje);//使用绿化表押金
+                            controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');//使用后调价结转水费
+                            controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(shys) - parseFloat(syycje)).toFixed(2)); //算后应收更新
+
+                        }
 
                     }
-                    else
+
+
+                }
+                else
+                {
+                    //改为不使用绿化表押金
+                    //判断是否使用了绿化表押金
+                    if (syycje != null && syycje !== "" && parseFloat(syycje) > 0)
                     {
-                        //2.2.2使用绿化表押金
-                        var syycje = parseFloat(yycje).toFixed(2);
-                        controlObj.text('detail_f_syye_tbl_ld_jfb_detail', syycje);//使用绿化表押金
-                        controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');//使用后调价结转水费
-                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(shys) - parseFloat(syycje)).toFixed(2)); //算后应收更新
+                        var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(shys) + parseFloat(syycje)).toFixed(2)); //算后应收更新
+                        controlObj.text('detail_f_syye_tbl_ld_jfb_detail', '0');//使用绿化表押金
+                        controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', yycje);//使用后调价结转水费
+
 
                     }
 
                 }
-
-
+                //算后应收大写转中文
+                var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                controlObj.text('detail_f_shss_tbl_ld_jfb_detail', shys);
+                //controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', autoChinese(shys));
             }
-            else
+        },
+
+        /* 
+*  
+*  方法:f_sfsyycje_onchange
+*  参数:event, state
+*  是否使用余额切换事件
+*/
+        f_sfsyycje_onchange = function (event, state)
+        {
+            var ztid = controlObj.singledropdownlistid('detail_f_zt_tbl_ld_jfb_detail');
+            if (ztid != '2')
             {
-                //改为不使用绿化表押金
-                //判断是否使用了绿化表押金
-                if (syycje != null && syycje !== "" && parseFloat(syycje) > 0)
+                //原余额
+                var yye = controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail');
+                //使用余额
+                var syye = controlObj.text('detail_f_syycje_tbl_ld_jfb_detail');
+                //用后余额
+                var yhye = controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail');
+                //多收转余额
+                var dszye = controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail');
+                if (state)
                 {
-                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
-                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(shys) + parseFloat(syycje)).toFixed(2)); //算后应收更新
-                    controlObj.text('detail_f_syye_tbl_ld_jfb_detail', '0');//使用绿化表押金
-                    controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', yycje);//使用后调价结转水费
+                    //改为使用 绿化表押金
+                    //绿化表押金部分，默认使用绿化表押金
+                    //2.判断是否存在余额
+                    if (yye != null && yye !== "" && parseFloat(yye) > 0)
+                    {
+                        //2.1存在绿化表押金情况
+                        var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                        //2.2判断绿化表押金是否大于算后应收
+                        if (parseFloat(yye) > parseFloat(shys))
+                        {
+                            //2.2.1使用算后金额
+                            var syye = parseFloat(shys).toFixed(2);
+                            controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', syye);//使用余额
+                            controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', (parseFloat(yye) - parseFloat(syye) + parseFloat(dszye)).toFixed(2));//使用后余额
+                            controlObj.text('detail_f_shys_tbl_ld_jfb_detail', '0'); //算后应收更新
+
+
+
+                        }
+                        else
+                        {
+                            //2.2.2使用绿化表押金
+                            var syye = parseFloat(yye).toFixed(2);
+                            controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', syye);//使用余额
+                            controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', parseFloat(dszye));//使用后余额
+                            controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(shys) - parseFloat(syye)).toFixed(2)); //算后应收更新
+
+                        }
+
+                    }
 
 
                 }
+                else
+                {
+                    //改为不使用绿化表押金
+                    //判断是否使用了绿化表押金
+                    if (syye != null && syye !== "" && parseFloat(syye) > 0)
+                    {
+                        var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(shys) + parseFloat(syye)).toFixed(2)); //算后应收更新
+                        controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', '0');//使用余额
+                        controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', yye);//使用后余额
 
+
+                    }
+
+
+                }
+                //算后应收大写转中文
+                var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                controlObj.text('detail_f_shss_tbl_ld_jfb_detail', shys);
+                that.btn_command_receipt_onclick();
+            //controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', autoChinese(shys));
             }
-            //算后应收大写转中文
-            var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
-            controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', autoChinese(shys));
+            
+
         },
 
         //金额小写转大写
@@ -2852,7 +3322,9 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
         quickSearch = function ()
         {
+
             clearJs();
+
             var khbh = controlObj.text('detail_f_khbh_tbl_ld_jfb_detail');
 
             if (khbh != null && khbh != "")
@@ -2936,6 +3408,20 @@ var tbl_ld_jfb_detail_Obj = (function ()
                                 controlObj.text('detail_f_khfzid_tbl_ld_jfb_detail', resultJson["f_khfzid"]);
                                 controlObj.text('detail_f_cbenbh_tbl_ld_jfb_detail', resultJson["f_cbbh"]);
                                 controlObj.text('detail_f_cbenbhid_tbl_ld_jfb_detail', resultJson["f_cbbhid"]);
+
+                                controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_jfb_detail', resultJson["f_yqjmsf"]);
+                                controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_jfb_detail', resultJson["f_yqjmpwf"]);
+
+                                //余额
+                                if (resultJson["f_ye"] != null && resultJson["f_ye"] != "")
+                                {
+                                    controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', resultJson["f_ye"]);
+                                }
+                                else
+                                {
+                                    controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', "0");
+                                }
+                                
 
                                 if (resultJson["f_value4"] != null && resultJson["f_value4"] != "")
                                 {
@@ -3023,35 +3509,53 @@ var tbl_ld_jfb_detail_Obj = (function ()
                                 tbl_ld_cbiao_list_Obj._pr_set_pwf = 0;
                                 tbl_ld_cbiao_list_Obj._pr_set_bqje = 0;
                                 tbl_ld_cbiao_list_Obj._pr_set_jmje = 0;
+                                tbl_ld_cbiao_list_Obj._pr_set_dyjtsl = 0;
+                                tbl_ld_cbiao_list_Obj._pr_set_dyjtsf = 0;
+                                tbl_ld_cbiao_list_Obj._pr_set_dejtsl = 0;
+                                tbl_ld_cbiao_list_Obj._pr_set_dejtsf = 0;
+                                tbl_ld_cbiao_list_Obj._pr_set_dsjtsl = 0;
+                                tbl_ld_cbiao_list_Obj._pr_set_dsjtsf = 0;
+
+
                                 tbl_ld_cbiao_list_Obj._pr_set_sfjl = '';
 
 
-                                tbl_ld_cbiao_list_Obj.bindGrid({
-                                    success: function ()
-                                    {
+
+                                        tbl_ld_cbiao_list_Obj.bindGrid({
+                                            success: function ()
+                                            {
+
+                                                var f_khbh = resultJson["f_khbh"];
+                                                var querysql = {
+                                                    "tbl_ld_jfb": "select count(*) count from TBL_LD_JFB  where f_lyid='08080002' and f_ztid='0' and f_khbh='" + f_khbh + "'"
+                                                };
+                                                commonObj.querySqls(querysql, {
+                                                    success: function (count)
+                                                    {
+                                                        controlObj.text('detail_f_shss_tbl_ld_jfb_detail', '0');
+                                                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', '0');
+                                                        controlObj.text('detail_f_hszl_tbl_ld_jfb_detail', '0');
+                                                        controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', '');
+                                                        var k = count["tbl_ld_jfb"][0];
+                                                        if (k["count"] > 0)
+                                                        {
+                                                            $("#div_detail_f_jhts_tbl_ld_jfb_detail").removeClass("hidden");
+                                                        }
+                                                    }
+                                                });
+
+
+                                            },
+                                            fail: function (message)
+                                            {
+                                                _alertMessage.show('获取抄表信息失败<br/>', 'fail');
+                                            }
+                                        });
 
 
 
 
-                                    }, fail: function (message)
-                                    {
-                                        _alertMessage.show('获取抄表信息失败<br/>', 'fail');
-                                    }
-                                });
-                                var f_khbh = resultJson["f_khbh"];
-                                var querysql = {
-                                    "tbl_ld_jfb": "select count(*) count from TBL_LD_JFB  where f_lyid='08080002' and f_ztid='0' and f_khbh='" + f_khbh + "'"
-                                };
-                                commonObj.querySqls(querysql, {
-                                    success: function (count)
-                                    {
-                                        var k = count["tbl_ld_jfb"][0];
-                                        if (k["count"] > 0)
-                                        {
-                                            $("#div_detail_f_jhts_tbl_ld_jfb_detail").removeClass("hidden");
-                                        }
-                                    }
-                                });
+
 
 
                             } else
@@ -3412,6 +3916,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
             tbl_ld_khb_list_Obj.openSearch({
                 success: function ()
                 {
+
                 },
                 fail: function (message)
                 {
@@ -3508,6 +4013,20 @@ var tbl_ld_jfb_detail_Obj = (function ()
                             controlObj.text('detail_f_cbenbh_tbl_ld_jfb_detail', resultJson["f_cbbh"]);
                             controlObj.text('detail_f_cbenbhid_tbl_ld_jfb_detail', resultJson["f_cbbhid"]);
 
+                            controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_jfb_detail', resultJson["f_yqjmsf"]);
+                            controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_jfb_detail', resultJson["f_yqjmpwf"]);
+
+                            //余额
+                            if (resultJson["f_ye"] != null && resultJson["f_ye"] != "")
+                            {
+                                controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', resultJson["f_ye"]);
+                            }
+                            else
+                            {
+                                controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail', "0");
+                            }
+                            
+
                             if (resultJson["f_value4"] != null && resultJson["f_value4"] != "")
                             {
                                 controlObj.singledropdownlistid('detail_f_jffs_tbl_ld_jfb_detail', resultJson["f_value4"]);//缴费方式
@@ -3597,32 +4116,46 @@ var tbl_ld_jfb_detail_Obj = (function ()
                             tbl_ld_cbiao_list_Obj._pr_set_sfjl = '';
 
 
-                            tbl_ld_cbiao_list_Obj.bindGrid({
+                            tbl_ld_cbiao_list_Obj.destorygGrid({
                                 success: function ()
                                 {
-                                    $('#div_search_modal_tbl_ld_jfb_detail').modal('hide');
+
+                                    tbl_ld_cbiao_list_Obj.bindGrid({
+                                        success: function ()
+                                        {
+                                            $('#div_search_modal_tbl_ld_jfb_detail').modal('hide');
+
+                                            var f_khbh = resultJson["f_khbh"];
+                                            var querysql = {
+                                                "tbl_ld_jfb": "select count(*) count from TBL_LD_JFB  where f_lyid='08080002' and f_ztid='0' and f_khbh='" + f_khbh + "'"
+                                            };
+                                            commonObj.querySqls(querysql, {
+                                                success: function (count)
+                                                {
+                                                    var k = count["tbl_ld_jfb"][0];
+                                                    if (k["count"] > 0)
+                                                    {
+                                                        $("#div_detail_f_jhts_tbl_ld_jfb_detail").removeClass("hidden");
+                                                    }
+                                                }
+                                            });
+
+                                        }, fail: function (message)
+                                        {
+                                            _alertMessage.show('获取抄表信息失败<br/>', 'fail');
+                                        }
+                                    });
 
 
-
-                                }, fail: function (message)
+                                },
+                                fail: function (message)
                                 {
-                                    _alertMessage.show('获取抄表信息失败<br/>', 'fail');
+                                    _alertMessage.show('重载抄表表失败<br/>', 'fail');
                                 }
                             });
-                            var f_khbh = resultJson["f_khbh"];
-                            var querysql = {
-                                "tbl_ld_jfb": "select count(*) count from TBL_LD_JFB  where f_lyid='08080002' and f_ztid='0' and f_khbh='" + f_khbh + "'"
-                            };
-                            commonObj.querySqls(querysql, {
-                                success: function (count)
-                                {
-                                    var k = count["tbl_ld_jfb"][0];
-                                    if (k["count"] > 0)
-                                    {
-                                        $("#div_detail_f_jhts_tbl_ld_jfb_detail").removeClass("hidden");
-                                    }
-                                }
-                            });
+
+
+
 
 
                         } else
@@ -3667,17 +4200,25 @@ var tbl_ld_jfb_detail_Obj = (function ()
             controlObj.text('detail_f_yhye_tbl_ld_jfb_detail', '0');
             controlObj.toggle('detail_f_sfsyye_tbl_ld_jfb_detail', 'false');
             controlObj.toggle('detail_f_sfsytjjz_tbl_ld_jfb_detail', 'false');
+            //余额
+            
+            controlObj.text('detail_f_syycje_tbl_ld_jfb_detail', '0');
+            controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail', '0');
+            controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail', '0');
+            controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', 'false');
+
+
             var sf = controlObj.text('detail_f_sflj_tbl_ld_jfb_detail');//水费累积
-            var pwf = controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail');//排污费累积
+            var pwf = controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail');//污水处理费累积
 
             var jmhys = controlObj.text('detail_f_jmhyslj_tbl_ld_jfb_detail');//减免后应收
 
             //1.判断是否可以调价
             var tjsf = controlObj.text('detail_f_khytjjzsf_tbl_ld_jfb_detail'); //客户原调价水费
-            var tjpwf = controlObj.text('detail_f_khytjjzpwf_tbl_ld_jfb_detail'); //客户原调价排污费
+            var tjpwf = controlObj.text('detail_f_khytjjzpwf_tbl_ld_jfb_detail'); //客户原调价污水处理费
             var jmjelj = controlObj.text('detail_f_jmjelj_tbl_ld_jfb_detail'); //减免金额累计
             var sytjsf = 0;//使用调价水费
-            var sytjpwf = 0; //使用调价排污费
+            var sytjpwf = 0; //使用调价污水处理费
             if (tjsf != null && tjsf !== "" && parseFloat(tjsf) > 0 && (jmjelj == null || jmjelj == "" || parseFloat(jmjelj) == 0))
             {
                 //1.1存在调价水费
@@ -3702,14 +4243,14 @@ var tbl_ld_jfb_detail_Obj = (function ()
             }
             if (tjpwf != null && tjpwf !== "" && parseFloat(tjpwf) > 0 && (jmjelj == null || jmjelj == "" || parseFloat(jmjelj) == 0))
             {
-                //1.2存在调价排污费
+                //1.2存在调价污水处理费
                 controlObj.toggle('detail_f_sfsytjjz_tbl_ld_jfb_detail', 'true');
                 if (parseFloat(tjpwf) > parseFloat(pwf))
                 {
-                    //1.2.1调价排污费比排污费费多使用排污费费
+                    //1.2.1调价污水处理费比污水处理费费多使用污水处理费费
                     sytjpwf = parseFloat(pwf).toFixed(2);
-                    controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail', sytjpwf);//使用调价排污费
-                    controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', (parseFloat(tjpwf) - parseFloat(sytjpwf)).toFixed(2));//使用后调价结转排污费
+                    controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail', sytjpwf);//使用调价污水处理费
+                    controlObj.text('detail_f_syhtjjzpwf_tbl_ld_jfb_detail', (parseFloat(tjpwf) - parseFloat(sytjpwf)).toFixed(2));//使用后调价结转污水处理费
                     jmhys = (parseFloat(jmhys) - parseFloat(sytjpwf)).toFixed(2)
                 }
                 else
@@ -3733,6 +4274,19 @@ var tbl_ld_jfb_detail_Obj = (function ()
 
 
                 controlObj.toggle('detail_f_sfsyye_tbl_ld_jfb_detail', 'true');
+
+
+            }
+
+            //3.判断是否存在余额
+            var ye = controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail'); //余额
+            if (ye != null && ye !== "" && parseFloat(ye) > 0 && parseFloat(jmhys) > 0)
+            {
+                //3.1存在余额打开开关
+                
+
+
+                controlObj.toggle('detail_f_sfsyycje_tbl_ld_jfb_detail', 'true');
 
 
             }
@@ -3762,10 +4316,23 @@ var tbl_ld_jfb_detail_Obj = (function ()
             }
             else
             {
-                var num = new Number((parseFloat(shss) - parseFloat(shys)).toFixed(2));
-                var res = num.toLocaleString();
-                res = res.replaceAll(",", "");
-                controlObj.text("detail_f_hszl_tbl_ld_jfb_detail", res);
+
+                var yye = controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail');//客户原余额
+                var syye = controlObj.text('detail_f_syycje_tbl_ld_jfb_detail');//使用余额
+                var dszye = (parseFloat(shss) - parseFloat(shys)).toFixed(2); //多收转余额
+                //多收转余额
+                controlObj.text("detail_f_dszycje_tbl_ld_jfb_detail", dszye);
+                //用后余额
+                controlObj.text("detail_f_yhycje_tbl_ld_jfb_detail", (parseFloat(yye) - parseFloat(syye) + parseFloat(dszye)).toFixed(2));
+                //算后实收大写
+                controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail', autoChinese(shss));
+
+
+
+                //var num = new Number((parseFloat(shss) - parseFloat(shys)).toFixed(2));
+                //var res = num.toLocaleString();
+                //res = res.replaceAll(",", "");
+                //controlObj.text("detail_f_hszl_tbl_ld_jfb_detail", res);
             }
         },
         //NumToChinese方法实现数字转中文
@@ -3820,14 +4387,28 @@ var tbl_ld_jfb_detail_Obj = (function ()
                                                                         {
                                                                             that._pr_sys_id = '';
                                                                             clearModel();
-                                                                            setModelDirect({
+
+                                                                            tbl_ld_cbiao_list_Obj.destorygGrid({
                                                                                 success: function ()
                                                                                 {
-                                                                                    setDisable();
+                                                                                    setModelDirect({
+                                                                                        success: function ()
+                                                                                        {
+                                                                                            setDisable();
+                                                                                            _ladda_btn_command_printsubmit0.stop();
+                                                                                            _alertMessage.show('提交成功', 'success');
+                                                                                        }
+                                                                                    });
+
+
+                                                                                },
+                                                                                fail: function (message)
+                                                                                {
+                                                                                    _alertMessage.show('重载失败<br/>', 'fail');
                                                                                 }
                                                                             });
-                                                                            _ladda_btn_command_printsubmit0.stop();
-                                                                            _alertMessage.show('提交成功', 'success');
+
+                                                                           
                                                                         }
                                                                     });
 
@@ -3918,13 +4499,27 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 _confirmMessage.show('重载确认？', confirmContent, {
                     confirm: function ()
                     {
+                        controlObj.textdisable('detail_f_khbh_tbl_ld_jfb_detail', true);
                         clearModel();
-                        setModelDirect({
+
+                        tbl_ld_cbiao_list_Obj.destorygGrid({
                             success: function ()
                             {
-                                setDisable();
+                                setModelDirect({
+                                    success: function ()
+                                    {
+                                        setDisable();
+                                    }
+                                });
+
+
+                            },
+                            fail: function (message)
+                            {
+                                _alertMessage.show('获取抄表信息失败<br/>', 'fail');
                             }
                         });
+
                     },
                     cancle: function ()
                     {
@@ -3982,8 +4577,27 @@ var tbl_ld_jfb_detail_Obj = (function ()
                                                                     that.btn_command_print_onclick("1", {
                                                                         success: function ()
                                                                         {
-                                                                            setDisable();
-                                                                            _alertMessage.show('提交成功', 'success');
+                                                                            clearModel();
+
+                                                                            tbl_ld_cbiao_list_Obj.destorygGrid({
+                                                                                success: function ()
+                                                                                {
+                                                                                    setModelDirect({
+                                                                                        success: function ()
+                                                                                        {
+                                                                                            setDisable();
+                                                                                            _alertMessage.show('提交成功', 'success');
+                                                                                        }
+                                                                                    });
+
+
+                                                                                },
+                                                                                fail: function (message)
+                                                                                {
+                                                                                    _alertMessage.show('重载失败<br/>', 'fail');
+                                                                                }
+                                                                            });
+
                                                                         }
                                                                     });
 
@@ -4071,13 +4685,28 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 var sl = controlObj.text('detail_f_sllj_tbl_ld_jfb_detail');//实收水量
                 var jm = controlObj.text('detail_f_jmjelj_tbl_ld_jfb_detail');//减免
                 var sytjjzsf = controlObj.text('detail_f_sytjjzsf_tbl_ld_jfb_detail');//使用调价结转水费
-                var sytjjzpwf = controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail');//使用调价结转排污费
+                var sytjjzpwf = controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail');//使用调价结转污水处理费
                 var syye = controlObj.text('detail_f_syye_tbl_ld_jfb_detail');//使用绿化表押金
                 var dx = controlObj.text('detail_f_shssdx_tbl_ld_jfb_detail');//大写
-                var xx = controlObj.text('detail_f_shys_tbl_ld_jfb_detail');//小写               
+                var xx = controlObj.text('detail_f_shss_tbl_ld_jfb_detail');//小写               
                 var kpr = controlObj.text('detail_f_yyy_tbl_ld_jfb_detail');//开票人
-
+                var syycje = controlObj.text('detail_f_syycje_tbl_ld_jfb_detail');//使用余额
+                var yycje = controlObj.text('detail_f_khyycje_tbl_ld_jfb_detail');//原余额
+                var yhycje = controlObj.text('detail_f_yhycje_tbl_ld_jfb_detail');//用后余额
+                var dszycje = controlObj.text('detail_f_dszycje_tbl_ld_jfb_detail'); //多收转余额
                 var yhlb = controlObj.text('detail_f_yslx_tbl_ld_jfb_detail');
+
+                var yqjmsf = controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail');//疫情减免水费
+                var yqjmpwf = controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail');//疫情减免污水处理费
+
+                if (yqjmsf == null || yqjmsf == "")
+                {
+                    yqjmsf = "0";
+                }
+                if (yqjmpwf == null || yqjmpwf == "")
+                {
+                    yqjmpwf = "0";
+                }
 
                 switch (yhlb)
                 {
@@ -4123,36 +4752,44 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 var sqzm = '';
                 var bqzm = '';
 
-                $.each(cbiaolist, function (i, u)
+                if (cbiaolist.length > 0 && $(cbiaolist[0]).attr("class") != "no-records-found")
                 {
-                    if ($(u).find('.bs-checkbox>input')[0].checked == true)
+                    $.each(cbiaolist, function (i, u)
                     {
-                        var rowid = u.id;
-                        var tdid = ''
-                        if (sqzm == '')
+                        if ($(u).find('.bs-checkbox>input')[0].checked == true)
                         {
-                            tdid = rowid + '_td_34_f_sqzm';
-                            sqzm = $('#' + tdid).text();
+                            var rowid = u.id;
+                            var tdid = ''
+                            if (sqzm == '')
+                            {
+                                tdid = rowid + '_td_34_f_sqzm';
+                                sqzm = $('#' + tdid).text();
+                            }
+                            tdid = rowid + '_td_35_f_bqzm';
+                            bqzm = $('#' + tdid).text();
                         }
-                        tdid = rowid + '_td_35_f_bqzm';
-                        bqzm = $('#' + tdid).text();
-                    }
-                });
-
-
+                    });
+                }
 
                 var sfjl_hashmap = new hashMap();
-                //去重复
-                $.each(sfjls, function (i, u)
+
+                if (sfjls != null && sfjls != "")
                 {
-                    var key = sfjls[i].split('^')[0] + "^" + sfjls[i].split('^')[1];
-                    var value = sfjls[i].split('^')[2];
-                    if (sfjl_hashmap.containsKey(key))
+                    
+                    //去重复
+                    $.each(sfjls, function (i, u)
                     {
-                        value = parseFloat(value) + parseFloat(sfjl_hashmap.get(key));
-                    }
-                    sfjl_hashmap.put(key, value);
-                });
+                        var key = sfjls[i].split('^')[0] + "^" + sfjls[i].split('^')[1];
+                        var value = sfjls[i].split('^')[2];
+                        if (sfjl_hashmap.containsKey(key))
+                        {
+                            value = parseFloat(value) + parseFloat(sfjl_hashmap.get(key));
+                        }
+                        sfjl_hashmap.put(key, value);
+                    });
+                }
+
+
 
 
 
@@ -4193,40 +4830,43 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 html += '<td colspan="3"  style="text-align:left;padding-left:10px;width:650px;height:75px; " >';
                 html += '<table  style="height:75px;border:0px #000000 solid;margin-right:0px" cellpadding="0" cellspacing="0" >';
                 html += '<tr>';
-                html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:120px;height:35px;">水费/排污费单价<br/>（元/吨）</td>';
+                html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:120px;height:35px;">水费/污水处理费单价<br/>（元/吨）</td>';
                 html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:60px;height:35px;">水量<br/>（吨）</td>';
                 html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:35px;">水费合计<br/>（元）</td>';
-                html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:35px;">排污费合计<br/>（元）</td>';
+                html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:35px;">污水处理费合计<br/>（元）</td>';
                 html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:80px;height:35px;">金额<br/>（元）</td>';
                 html += '</tr>';
 
-                //拼接html
-                var keysArray = sfjl_hashmap.keys();
-                var rowheight = 40 / keysArray.lenght;
-                $.each(keysArray, function (i, u)
+                if (sfjls != null && sfjls != "")
                 {
-                    var key = keysArray[i];
-
-                    var sfdj = parseFloat(key.split('^')[0]);
-                    var pwfdj = parseFloat(key.split('^')[1]);
-                    if (sfdj == 7 && pwfdj == 0)
+                    //拼接html
+                    var keysArray = sfjl_hashmap.keys();
+                    var rowheight = 40 / keysArray.lenght;
+                    $.each(keysArray, function (i, u)
                     {
-                        sfdj = 6.996;
-                    }
-                    var sl = parseFloat(sfjl_hashmap.get(key));
-                    var je = ((sfdj + pwfdj) * sl).toFixed(2);
+                        var key = keysArray[i];
 
-                    var sfhj = (sfdj * sl).toFixed(2);
-                    var pwfhj = (pwfdj * sl).toFixed(2);
-                    html += '<tr >';
-                    html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + sfdj + '/' + pwfdj + '</td>';
+                        var sfdj = parseFloat(key.split('^')[0]);
+                        var pwfdj = parseFloat(key.split('^')[1]);
+                        if (sfdj == 7 && pwfdj == 0)
+                        {
+                            sfdj = 6.996;
+                        }
+                        var sl = parseFloat(sfjl_hashmap.get(key));
+                        var je = ((sfdj + pwfdj) * sl).toFixed(2);
 
-                    html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + sl + '</td>';
-                    html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + sfhj + '</td>';
-                    html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + pwfhj + '</td>';
-                    html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + je + '</td>';
-                    html += '</tr>';
-                });
+                        var sfhj = (sfdj * sl).toFixed(2);
+                        var pwfhj = (pwfdj * sl).toFixed(2);
+                        html += '<tr >';
+                        html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + sfdj + '/' + pwfdj + '</td>';
+
+                        html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + sl + '</td>';
+                        html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + sfhj + '</td>';
+                        html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + pwfhj + '</td>';
+                        html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;height:' + rowheight + 'px;">' + je + '</td>';
+                        html += '</tr>';
+                    });
+                }
 
                 html += '</table>';
                 html += '</td>';
@@ -4238,20 +4878,49 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 html += '</tr>';
                 html += '<tr>';
 
+                if (syycje != '0' || dszycje != '0')
+                {
+                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:180px;padding-left:10px;height:15px;">客户原余额（元）：' + yycje + '</td>';
+                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:230px;left;padding-left:0px;height:15px;">使用余额（元）：' + syycje + '</td>';
+                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:240px;padding-left:0px;height:15px;">使用后余额（元）：' + yhycje + '</td>';
+                    html += '</tr>';
+                    html += '<tr>';
+                }
 
-                if (jm == '0')
+
+                if (jm == '0' && yqjmsf == '0' && yqjmpwf == '0')
                 {
                     html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:180px;padding-left:10px;height:15px;">&nbsp;&nbsp;&nbsp;&nbsp;</td>';
                 }
                 else
                 {
-                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:180px;padding-left:10px;height:15px;">使用减免（元）：' + jm + '</td>';
+                    var str = "";
+                    if (jm != "0")
+                    {
+                        str += "使用减免（元）：" + jm + ",<br/>";
+                    }
+                    if (yqjmsf != "0")
+                    {
+                        str += "疫情减免水费（元）：" + yqjmsf + ",<br/>";
+                    }
+
+
+                    str = str.trimEnd(">").trimEnd("/").trimEnd("r").trimEnd("b").trimEnd("<").trimEnd(",");
+                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:180px;padding-left:10px;height:15px;">' + str + '</td>';
                 }
 
 
                 if (sytjjzsf == '0')
                 {
-                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:230px;left;padding-left:0px;height:15px;">&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+                    if (yqjmpwf != "0")
+                    {
+                        html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:230px;left;padding-left:0px;height:15px;">疫情减免污水处理费（元）：' + yqjmpwf + '</td>';
+                    }
+                    else
+                    {
+                        html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:230px;left;padding-left:0px;height:15px;">&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+                    }
+                    
 
                 }
                 else
@@ -4267,7 +4936,7 @@ var tbl_ld_jfb_detail_Obj = (function ()
                 }
                 else
                 {
-                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:240px;padding-left:0px;height:15px;">使用调价结转排污费（元）：' + sytjjzpwf + '</td>';
+                    html += '<td style="font-size:{fontsize}px;font-weight:bold;text-align:left;width:240px;padding-left:0px;height:15px;">使用调价结转污水处理费（元）：' + sytjjzpwf + '</td>';
 
                 }
 
@@ -4382,6 +5051,156 @@ var tbl_ld_jfb_detail_Obj = (function ()
             });
         },
 
+        //计算疫情减免水费
+        btn_command_yqjmsf_onclick: function ()
+        {
+            debugger
+            var yqjmsf = controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail');//疫情减免水费百分比
+            var sf = controlObj.text('detail_f_sflj_tbl_ld_jfb_detail');//水费累积
+            if (yqjmsf == "0")
+            {
+                //减免0%
+                var currentyqjmsfje = controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail');
+                if (currentyqjmsfje != null && currentyqjmsfje != "" && currentyqjmsfje != "0")
+                {
+                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(currentyqjmsfje) + parseFloat(shys)).toFixed(2));
+                    controlObj.text('detail_f_shss_tbl_ld_jfb_detail', (parseFloat(currentyqjmsfje) + parseFloat(shys)).toFixed(2));
+                    that.btn_command_receipt_onclick();
+                }
+
+                    controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '0');
+                
+                
+                
+
+            }
+            else if (yqjmsf == "10")
+            {
+                var currentyqjmsfje = controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail');
+                if (currentyqjmsfje == null || currentyqjmsfje == "" || currentyqjmsfje == "0")
+                {
+                    //减免10%
+                    var jmsfje = (parseFloat(sf) * 0.1).toFixed(2);
+                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                    var tjjzsf = controlObj.text('detail_f_sytjjzsf_tbl_ld_jfb_detail'); //调价结转水费
+                    if (tjjzsf == null || tjjzsf == "")
+                    {
+                        tjjzsf = "0";
+                    }
+
+                    if (parseFloat(shys) - parseFloat(tjjzsf) - parseFloat(jmsfje) >= 0)
+                    {
+                        controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', jmsfje);
+
+                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(parseFloat(shys) - jmsfje).toFixed(2)));
+                        controlObj.text('detail_f_shss_tbl_ld_jfb_detail', (parseFloat(parseFloat(shys) - jmsfje).toFixed(2)));
+                        that.btn_command_receipt_onclick();
+                    }
+                    else
+                    {
+                        controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmsfbfb_tbl_ld_jfb_detail', '0');
+                        _alertMessage.show('疫情减免金额大于应收金额', 'fail');
+                    }
+
+
+                }
+
+            }
+            else
+            {
+                var currentyqjmsfje = controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail');
+                if (currentyqjmsfje != null && currentyqjmsfje != "" && currentyqjmsfje != "0")
+                {
+                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(currentyqjmsfje) + parseFloat(shys)).toFixed(2));
+                    controlObj.text('detail_f_shss_tbl_ld_jfb_detail', (parseFloat(currentyqjmsfje) + parseFloat(shys)).toFixed(2));
+                    that.btn_command_receipt_onclick();
+                }
+
+                    controlObj.text('detail_f_yqjmsfje_tbl_ld_jfb_detail', '');
+                
+                
+            }
+
+        },
+
+        //计算疫情减免污水处理费
+        btn_command_yqjmpwf_onclick: function ()
+        {
+            debugger
+            var yqjmpwf = controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail');//疫情减免污水处理费百分比
+            var pwf = controlObj.text('detail_f_pwflj_tbl_ld_jfb_detail');//污水处理费累积
+            if (yqjmpwf == "0")
+            {
+
+                //减免0%
+                var currentyqjmpwfje = controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail');
+                if (currentyqjmpwfje != null && currentyqjmpwfje != "" && currentyqjmpwfje != "0")
+                {
+                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(currentyqjmpwfje) + parseFloat(shys)).toFixed(2));
+                    controlObj.text('detail_f_shss_tbl_ld_jfb_detail', (parseFloat(currentyqjmpwfje) + parseFloat(shys)).toFixed(2));
+                    that.btn_command_receipt_onclick();
+                }
+
+                    controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '0');
+                
+
+            }
+            else if (yqjmpwf == "100")
+            {
+                //减免100%
+                var currentyqjmpwfje = controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail');
+                if (currentyqjmpwfje == null || currentyqjmpwfje == "" || currentyqjmpwfje == "0")
+                {
+                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                    var tjjzpwf = controlObj.text('detail_f_sytjjzpwf_tbl_ld_jfb_detail'); //调价结转污水处理费
+
+                    if (tjjzpwf == null || tjjzpwf == "")
+                    {
+                        tjjzpwf = "0";
+                    }
+
+                    if (parseFloat(shys) - parseFloat(tjjzpwf) - parseFloat(pwf) >= 0)
+                    {
+                        controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', pwf);
+
+                        controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(parseFloat(shys) - parseFloat(pwf)).toFixed(2)));
+                        controlObj.text('detail_f_shss_tbl_ld_jfb_detail', (parseFloat(parseFloat(shys) - parseFloat(pwf)).toFixed(2)));
+                        that.btn_command_receipt_onclick();
+                    }
+                    else
+                    {
+                        controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '0');
+                        controlObj.singledropdownlistid('detail_f_yqjmpwfbfb_tbl_ld_jfb_detail', '0');
+                        _alertMessage.show('疫情减免金额大于应收金额', 'fail');
+                    }
+
+
+                }
+                
+                
+            }
+            else
+            {
+                var currentyqjmpwfje = controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail');
+                if (currentyqjmpwfje != null && currentyqjmpwfje != "" && currentyqjmpwfje != "0")
+                {
+                    var shys = controlObj.text('detail_f_shys_tbl_ld_jfb_detail'); //算后应收
+                    controlObj.text('detail_f_shys_tbl_ld_jfb_detail', (parseFloat(currentyqjmpwfje) + parseFloat(shys)).toFixed(2));
+                    controlObj.text('detail_f_shss_tbl_ld_jfb_detail', (parseFloat(currentyqjmpwfje) + parseFloat(shys)).toFixed(2));
+                    that.btn_command_receipt_onclick();
+                }
+
+                    controlObj.text('detail_f_yqjmpwfje_tbl_ld_jfb_detail', '');
+                
+            }
+
+        },
+
+
         //回滚按钮事件
         //btn_command_rollback_onclick: function ()
         //{
@@ -4406,7 +5225,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
         //                        that.saveData(tbl_ld_jfb_detail, "hg", {
         //                            success: function (name, message)
         //                            {
-
         //                                setDisable();
         //                                _ladda_btn_command_rollback.stop();
         //                                _alertMessage.show('回滚成功', 'success');
@@ -4430,11 +5248,6 @@ var tbl_ld_jfb_detail_Obj = (function ()
         //                        _resultMessage.show(message);
         //                    }
         //                });
-
-
-
-
-
         //            },
         //            cancle: function ()
         //            {

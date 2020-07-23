@@ -140,7 +140,7 @@ namespace sara.dd.ldsw.service
                     {
                         if (tempDataTable.Rows[i]["f_yhm"].ToString() == "玖龙纸业(天津)有限公司")
                         {
-                            sql = "select d.*,'6.996' as dj,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' and f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + ") as sszje from (select '" + (i + 1) + "' as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + " group by f_yhm) t) d";
+                            sql = "select d.*,'6.36' as dj,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' and f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + ") as sszje from (select '" + (i + 1) + "' as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + " group by f_yhm) t) d";
                             DataTable dt1 = _iAccessData.Query(sql).Tables[0];
 
                             DataRow newrow1 = dt1.Rows[0];
@@ -251,7 +251,7 @@ namespace sara.dd.ldsw.service
                     {
                         if (tempDataTable.Rows[i]["f_yhm"].ToString() == "玖龙纸业(天津)有限公司")
                         {
-                            sql = "select d.rn,d.f_yhm,'6.996' as dj,d.yszje,d.yspwf,d.yssf,d.yssl,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' and f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + ") as sszje from (select '" + (i + 1) + "' as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + " group by f_yhm) t) d";
+                            sql = "select d.rn,d.f_yhm,'6.36' as dj,d.yszje,d.yspwf,d.yssf,d.yssl,(select NVL(sum(f_bqje),0) from tbl_ld_cbiao where f_yhm=d.f_yhm and f_ztid='3' and f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + ") as sszje from (select '" + (i + 1) + "' as rn,t.* from (select f_yhm,NVL(sum(f_bqje),0) as yszje,NVL(sum(f_sf),0) as yssf,NVL(sum(f_pwf),0) as yspwf,NVL(sum(f_bqsl),0) as yssl from tbl_ld_cbiao where f_yhm='玖龙纸业(天津)有限公司' and f_sfjl not like '3.97^0^%' " + wherestr + " group by f_yhm) t) d";
                             DataTable dt1 = _iAccessData.Query(sql).Tables[0];
 
                             DataRow newrow1 = dt1.Rows[0];
@@ -272,7 +272,7 @@ namespace sara.dd.ldsw.service
                     }
                 }
                 string column = "rn,f_yhm,dj,yszje,yspwf,yssf,yssl,sszje";
-                string columnname = "排名,用户名,单价,应收总金额,应收排污费,应收水费,应收水量,实收总金额";
+                string columnname = "排名,用户名,单价,应收总金额,应收污水处理费,应收水费,应收水量,实收总金额";
                 string file = tt.ReportExcel(resultDataTable, column, columnname);
                 resultDic["result"] = "true";
                 resultDic["message"] = file;
@@ -1310,7 +1310,7 @@ namespace sara.dd.ldsw.service
             //水费单价
             reportdt.Columns.Add("sfdj", System.Type.GetType("System.String"));
 
-            //排污费单价
+            //污水处理费单价
             reportdt.Columns.Add("pwfdj", System.Type.GetType("System.String"));
 
             //单价
@@ -1368,6 +1368,7 @@ namespace sara.dd.ldsw.service
             string lyqsf = lyqdt.Rows[0]["f_jtsj"].ToString();
             string lyqpwf = lyqdt.Rows[0]["f_pwf"].ToString();
             string lyqdj = lyqdt.Rows[0]["dj"].ToString();
+
             //游乐港
             sql = "select f_jtsj,f_pwf,to_char((f_jtsj+f_pwf),'FM90.000') as dj from TBL_LDBM_JTSJ t where t.f_jsrq>sysdate and t.f_zzrq>sysdate and f_yslxid='106' order by to_number(f_jtsj) asc";
             DataTable ylgdt = _iAccessData.Query(sql).Tables[0];
@@ -1927,19 +1928,19 @@ namespace sara.dd.ldsw.service
             reportdt.Columns.Add("dyqssf", System.Type.GetType("System.String"));
             //当月欠收水量
             reportdt.Columns.Add("dyqssl", System.Type.GetType("System.String"));
-            //当月实收排污费
+            //当月实收污水处理费
             reportdt.Columns.Add("dysspwf", System.Type.GetType("System.String"));
-            //当月欠收排污费
+            //当月欠收污水处理费
             reportdt.Columns.Add("dyqspwf", System.Type.GetType("System.String"));
-            //当月应收排污费
+            //当月应收污水处理费
             reportdt.Columns.Add("dyyspwf", System.Type.GetType("System.String"));
             //收回本年水费
             reportdt.Columns.Add("shbnsf", System.Type.GetType("System.String"));
-            //收回本年排污费
+            //收回本年污水处理费
             reportdt.Columns.Add("shbnpwf", System.Type.GetType("System.String"));
             //收回欠年水费
             reportdt.Columns.Add("shqnsf", System.Type.GetType("System.String"));
-            //收回欠年排污费
+            //收回欠年污水处理费
             reportdt.Columns.Add("shqnpwf", System.Type.GetType("System.String"));
 
             //reportdt.Rows[0] 居民生活
@@ -1961,7 +1962,7 @@ namespace sara.dd.ldsw.service
             //列标题
             reportdt.Rows.Add("实收水费", "", " 当    月      实         收         情         况", "", "", "", "", "", "当 月 污 水 处 理 费", "", "", "  收  回  欠  费  情  况", "", "", "");
             //列标题
-            reportdt.Rows.Add("", "", "应    收     数", "", "实    收    数", "", "欠   收   数", "", "实收排污费（元）", "欠收排污费（元）", "排污费合计（元）", "本    年    度", "", " 上   年   度", "");
+            reportdt.Rows.Add("", "", "应    收     数", "", "实    收    数", "", "欠   收   数", "", "实收污水处理费（元）", "欠收污水处理费（元）", "污水处理费合计（元）", "本    年    度", "", " 上   年   度", "");
             //列标题
             reportdt.Rows.Add("", "", "水  费（元）", " 水  量（吨）", "水  费（元）", " 水  量（吨）", "水  费（元）", " 水  量（吨）", "", "", "", "水  费（元）", "污水处理费（元）", "水  费（元）", "污水处理费（元）");
 
@@ -2713,8 +2714,20 @@ namespace sara.dd.ldsw.service
             reportdt.Rows.Add("0");
             //reportdt.Rows[14] 光大银行网上缴费
             reportdt.Rows.Add("0");
+            //reportdt.Rows[15] 余额使用
+            reportdt.Rows.Add("0");
+            //reportdt.Rows[16] 余额预存
+            reportdt.Rows.Add("0");
+            //reportdt.Rows[17] E水余额使用
+            reportdt.Rows.Add("0");
+            //reportdt.Rows[18] E水余额预存
+            reportdt.Rows.Add("0");
+            //reportdt.Rows[19] 缴费机余额使用
+            reportdt.Rows.Add("0");
+            //reportdt.Rows[20] 缴费机余额预存
+            reportdt.Rows.Add("0");
 
-            //reportdt.Rows[15] 合计
+            //reportdt.Rows[21] 合计
             reportdt.Rows.Add("0");
 
             DateTime datastart = new DateTime(zbsj.Year, zbsj.Month, 1);
@@ -2735,6 +2748,16 @@ namespace sara.dd.ldsw.service
             //获取缴费信息
             string sql = "select f_jffs,sum(f_shss) as total from TBL_LD_JFB where f_yyyid in (" + userid + ") and f_jfrq " + czsjwhere + " group by f_jffs";
             DataTable dt = _iAccessData.Query(sql).Tables[0];
+            
+            sql = "select sum(f_syycje) as syye,sum(f_dszycje) as dszye from TBL_LD_JFB where f_jffs!='e水生活缴费' and f_jffs!='缴费机自助缴费' and f_yyyid in (" + userid + ") and f_jfrq " + czsjwhere;
+            DataTable yedt = _iAccessData.Query(sql).Tables[0];
+
+            sql = "select sum(f_syycje) as syye,sum(f_dszycje) as dszye from TBL_LD_JFB where f_jffs='e水生活缴费' and f_yyyid in (" + userid + ") and f_jfrq " + czsjwhere;
+            DataTable esyedt = _iAccessData.Query(sql).Tables[0];
+
+            sql = "select sum(f_syycje) as syye,sum(f_dszycje) as dszye from TBL_LD_JFB where f_jffs='缴费机自助缴费' and f_yyyid in (" + userid + ") and f_jfrq " + czsjwhere;
+            DataTable jfjyedt = _iAccessData.Query(sql).Tables[0];
+
             double total = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -2883,8 +2906,13 @@ namespace sara.dd.ldsw.service
                 }
             }
 
-
-            reportdt.Rows[15]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(total, 2);
+            reportdt.Rows[15]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(yedt.Rows[0]["syye"].ToString(), 2);
+            reportdt.Rows[16]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(yedt.Rows[0]["dszye"].ToString(), 2);
+            reportdt.Rows[17]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(esyedt.Rows[0]["syye"].ToString(), 2);
+            reportdt.Rows[18]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(esyedt.Rows[0]["dszye"].ToString(), 2);
+            reportdt.Rows[19]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(jfjyedt.Rows[0]["syye"].ToString(), 2);
+            reportdt.Rows[20]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(jfjyedt.Rows[0]["dszye"].ToString(), 2);
+            reportdt.Rows[21]["je"] = Eva.Library.Text.NumberTool.GetNumberByLength(total, 2);
 
 
 
@@ -4223,11 +4251,11 @@ namespace sara.dd.ldsw.service
             for (int j = 1; j <= 13; j++)
             {
                 reportdt.Columns.Add("yssf" + j, System.Type.GetType("System.String"));//应收水费
-                reportdt.Columns.Add("yspwf" + j, System.Type.GetType("System.String"));//应收排污费
+                reportdt.Columns.Add("yspwf" + j, System.Type.GetType("System.String"));//应收污水处理费
                 reportdt.Columns.Add("sssf" + j, System.Type.GetType("System.String"));//实收水费
-                reportdt.Columns.Add("sspwf" + j, System.Type.GetType("System.String"));//实收排污费
+                reportdt.Columns.Add("sspwf" + j, System.Type.GetType("System.String"));//实收污水处理费
                 reportdt.Columns.Add("qssf" + j, System.Type.GetType("System.String"));//欠收水费
-                reportdt.Columns.Add("qspwf" + j, System.Type.GetType("System.String"));//欠收排污费
+                reportdt.Columns.Add("qspwf" + j, System.Type.GetType("System.String"));//欠收污水处理费
                 reportdt.Columns.Add("hkl" + j, System.Type.GetType("System.String"));//回款率
             }
             DataRow dr5 = reportdt.NewRow();
@@ -4474,7 +4502,7 @@ namespace sara.dd.ldsw.service
                     double qssf = yssf - sssf;
                     reportdt.Rows[j]["qssf" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(qssf, 2);
 
-                    //应收排污费
+                    //应收污水处理费
                     if (jmdt.Rows[j]["yspwf"].ToString() != null && jmdt.Rows[j]["yspwf"].ToString() != "")
                     {
                         yspwf = Eva.Library.Text.NumberTool.Parse(jmdt.Rows[j]["yspwf"].ToString());
@@ -4486,7 +4514,7 @@ namespace sara.dd.ldsw.service
                         reportdt.Rows[j]["yspwf" + i] = "0.00";
                     }
 
-                    //实收排污费
+                    //实收污水处理费
                     if (jmdt.Rows[j]["sspwf"].ToString() != null && jmdt.Rows[j]["sspwf"].ToString() != "")
                     {
                         sspwf = Eva.Library.Text.NumberTool.Parse(jmdt.Rows[j]["sspwf"].ToString());
@@ -4498,7 +4526,7 @@ namespace sara.dd.ldsw.service
                         reportdt.Rows[j]["sspwf" + i] = "0.00";
                     }
 
-                    //欠收排污费
+                    //欠收污水处理费
                     double qspwf = yspwf - sspwf;
                     reportdt.Rows[j]["qspwf" + i] = Eva.Library.Text.NumberTool.GetNumberByLength(qspwf, 2);
 
@@ -4895,7 +4923,7 @@ namespace sara.dd.ldsw.service
             sql += "           from tbl_ld_cbiao  ";
             sql += "          where f_jfbhid in (select sys_id ";
             sql += "                               from tbl_ld_jfb  ";
-            sql += "                              where f_lyid in ('08080003','08080002','08080007','08080008','08080006')  ";
+            sql += "                              where f_lyid in ('08080003','08080002','08080008','08080009')  ";
             sql += "                                and f_ztid = '2'  ";
             sql += "                                and f_sfjl is not null  ";
             sql += "                                and f_czsj " + czsjwhere;
@@ -4914,6 +4942,41 @@ namespace sara.dd.ldsw.service
             sql += "            and f_xiekrid in (" + userid + ")) ";
 
 
+            string gdsql = "";
+            gdsql += " select * ";
+            gdsql += "   from (select f_sfjl,  ";
+            gdsql += "                f_yslxid,  ";
+            gdsql += "                f_sblxid,  ";
+            gdsql += "                f_lyid,  ";
+            gdsql += "                f_cbsj as rq,  ";
+            gdsql += "                'jxb' as lx  ";
+            gdsql += "           from tbl_ld_cbiao  ";
+            gdsql += "          where f_jfbhid in (select sys_id ";
+            gdsql += "                               from tbl_ld_jfb  ";
+            gdsql += "                              where f_lyid in ('08080006')  ";
+            gdsql += "                                and f_ztid = '2'  ";
+            gdsql += "                                and f_sfjl is not null  ";
+            gdsql += "                                and f_czsj " + czsjwhere;
+            gdsql += "                                and f_yyyid in (" + userid + "))) ";
+
+
+
+            string essql = "";
+            essql += " select * ";
+            essql += "   from (select f_sfjl,  ";
+            essql += "                f_yslxid,  ";
+            essql += "                f_sblxid,  ";
+            essql += "                f_lyid,  ";
+            essql += "                f_cbsj as rq,  ";
+            essql += "                'jxb' as lx  ";
+            essql += "           from tbl_ld_cbiao  ";
+            essql += "          where f_jfbhid in (select sys_id ";
+            essql += "                               from tbl_ld_jfb  ";
+            essql += "                              where f_lyid in ('08080007')  ";
+            essql += "                                and f_ztid = '2'  ";
+            essql += "                                and f_sfjl is not null  ";
+            essql += "                                and f_czsj " + czsjwhere;
+            essql += "                                and f_yyyid in (" + userid + "))) ";
             //当月
 
             string sqldy = sql + "  where rq  " + dywhere;
@@ -4934,35 +4997,118 @@ namespace sara.dd.ldsw.service
 
             dt_qn = _iAccessData.Query(sqlqn).Tables[0];
 
+
+            //光大当月
+
+            string gdsqldy = gdsql + "  where rq  " + dywhere;
+            gdsqldy += "  order by to_number(f_yslxid), f_sfjl ";
+
+            DataTable dt_gddy = _iAccessData.Query(gdsqldy).Tables[0];
+            //光大欠月
+
+            string gdsqlqy = gdsql + "  where rq  " + qywhere;
+            gdsqlqy += "  order by to_number(f_yslxid), f_sfjl ";
+
+            DataTable dt_gdqy = _iAccessData.Query(gdsqlqy).Tables[0];
+
+            //光大欠年
+            string gdsqlqn = gdsql + "  where rq  " + qnwhere;
+            gdsqlqn += "  order by to_number(f_yslxid), f_sfjl ";
+
+
+            DataTable dt_gdqn = _iAccessData.Query(gdsqlqn).Tables[0];
+
+
+            //E水当月
+
+            string essqldy = essql + "  where rq  " + dywhere;
+            essqldy += "  order by to_number(f_yslxid), f_sfjl ";
+
+            DataTable dt_esdy = _iAccessData.Query(essqldy).Tables[0];
+            //E水欠月
+
+            string essqlqy = essql + "  where rq  " + qywhere;
+            essqlqy += "  order by to_number(f_yslxid), f_sfjl ";
+
+            DataTable dt_esqy = _iAccessData.Query(essqlqy).Tables[0];
+
+            //E水欠年
+            string essqlqn = essql + "  where rq  " + qnwhere;
+            essqlqn += "  order by to_number(f_yslxid), f_sfjl ";
+
+
+            DataTable dt_esqn = _iAccessData.Query(essqlqn).Tables[0];
+
             //累计
             sql = "";
 
-            sql += "  select sum(jm) as jm, sum(tjjz) as tjjz, sum(yc) as yc, sum(ys) as ys ";
+            sql += "  select sum(jm) as jm, sum(tjjz) as tjjz, sum(yc) as yc, sum(ys) as ys,sum(syye) as syye,sum(dsye) as dsye ";
             sql += "  from ( ";
             sql += "  select sum(F_JMJELJ) as jm, ";
             sql += "      sum(F_SYTJJZSF + F_SYTJJZPWF) as tjjz, ";
             sql += "      sum(F_SYYE) as yc,";
-            sql += "      sum(F_SHYS) as ys";
+            sql += "      sum(F_SHYS) as ys,";
+            sql += "      sum(F_SYYCJE) as syye,";
+            sql += "      sum(F_DSZYCJE) as dsye";
             sql += "  from tbl_ld_jfb";
-            sql += "  where f_lyid in ('08080003','08080002','08080007','08080008','08080006')";
+            sql += "  where f_lyid in ('08080003','08080002','08080007','08080008','08080006','08080009')";
             sql += "  and f_ztid = '2'";
             sql += "  and f_czsj  " + czsjwhere;
-            sql += "  and f_yyyid in (" + userid + ")";
-            sql += "  union all ";
-            sql += "  select to_number('0') as jm,";
-            sql += "      sum(F_SYTJJZSF + F_SYTJJZPWF) as tjjz,";
-            sql += "      sum(F_SYYE) as yc,";
-            sql += "      sum(F_SHYS) as ys";
-            sql += "  from tbl_ld_ickss";
-            sql += "  where f_ztid in ('2','3','4')";
-            sql += "  and f_sfjl is not null";
-            sql += "  and f_xiekrq  " + czsjwhere;
-            sql += "  and f_xiekrid in (" + userid + "))";
+            sql += "  and f_yyyid in (" + userid + "))";
+            //sql += "  union all ";
+            //sql += "  select to_number('0') as jm,";
+            //sql += "      sum(F_SYTJJZSF + F_SYTJJZPWF) as tjjz,";
+            //sql += "      sum(F_SYYE) as yc,";
+            //sql += "      sum(F_SHYS) as ys";
+            //sql += "  from tbl_ld_ickss";
+            //sql += "  where f_ztid in ('2','3','4')";
+            //sql += "  and f_sfjl is not null";
+            //sql += "  and f_xiekrq  " + czsjwhere;
+            //sql += "  and f_xiekrid in (" + userid + "))";
 
 
 
 
             dt_lj = _iAccessData.Query(sql).Tables[0];
+
+
+            //非E 水余额
+            sql = "";
+
+            sql += "  select sum(syye) as syye,sum(dsye) as dsye ";
+            sql += "  from ( ";
+            sql += "  select ";
+            sql += "      sum(F_SYYCJE) as syye,";
+            sql += "      sum(F_DSZYCJE) as dsye";
+            sql += "  from tbl_ld_jfb";
+            sql += "  where f_lyid in ('08080003','08080002','08080008','08080006','08080009')";
+            sql += "  and f_ztid = '2'";
+            sql += "  and f_czsj  " + czsjwhere;
+            sql += "  and f_yyyid in (" + userid + "))";
+
+
+
+
+            DataTable dt_ye = _iAccessData.Query(sql).Tables[0];
+
+            //E 水余额
+            sql = "";
+
+            sql += "  select sum(syye) as syye,sum(dsye) as dsye ";
+            sql += "  from ( ";
+            sql += "  select ";
+            sql += "      sum(F_SYYCJE) as syye,";
+            sql += "      sum(F_DSZYCJE) as dsye";
+            sql += "  from tbl_ld_jfb";
+            sql += "  where f_lyid in ('08080007')";
+            sql += "  and f_ztid = '2'";
+            sql += "  and f_czsj  " + czsjwhere;
+            sql += "  and f_yyyid in (" + userid + "))";
+
+
+
+
+            DataTable dt_esye = _iAccessData.Query(sql).Tables[0];
 
             #endregion
 
@@ -4977,7 +5123,7 @@ namespace sara.dd.ldsw.service
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
-            dc.ColumnName = "dysfpwfdj";//当月水费排污费单价
+            dc.ColumnName = "dysfpwfdj";//当月水费污水处理费单价
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
@@ -4993,11 +5139,11 @@ namespace sara.dd.ldsw.service
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
-            dc.ColumnName = "dypwfdj";//当月排污费单价
+            dc.ColumnName = "dypwfdj";//当月污水处理费单价
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
-            dc.ColumnName = "dypwf";//当月排污费金额
+            dc.ColumnName = "dypwf";//当月污水处理费金额
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
@@ -5009,7 +5155,7 @@ namespace sara.dd.ldsw.service
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
-            dc.ColumnName = "qypwf";//	欠月排污费金额
+            dc.ColumnName = "qypwf";//	欠月污水处理费金额
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
@@ -5022,7 +5168,7 @@ namespace sara.dd.ldsw.service
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
-            dc.ColumnName = "qnpwf";//	欠年排污费金额
+            dc.ColumnName = "qnpwf";//	欠年污水处理费金额
             dt_target.Columns.Add(dc);
 
 
@@ -5282,6 +5428,37 @@ namespace sara.dd.ldsw.service
             DataRow[] drs_qn_tzhyys = dt_qn.Select("f_yslxid = '6' and f_sblxid = '100' and lx = 'jxb'"); //特种行业用水+机械表
             dt_target = Get08110002Dt(drs_qn_tzhyys, dt_target, "特种行业用水", "qn", 20);
 
+            //光大银行缴费
+
+            DataRow[] drs_dy_gdyh = dt_gddy.Select("lx = 'jxb'"); //光大自助缴费
+            dt_target = Get08110002Dt(drs_dy_gdyh, dt_target, "光大自助缴费", "dy", 21);
+
+            DataRow[] drs_qy_gdyh = dt_gdqy.Select("lx = 'jxb'"); //光大自助缴费
+            dt_target = Get08110002Dt(drs_qy_gdyh, dt_target, "光大自助缴费", "qy", 21);
+
+            DataRow[] drs_qn_gdyh = dt_gdqn.Select("lx = 'jxb'"); //光大自助缴费
+            dt_target = Get08110002Dt(drs_qn_gdyh, dt_target, "光大自助缴费", "qn", 21);
+
+            //E水公众号缴费
+
+            DataRow[] drs_dy_esgzh = dt_esdy.Select("lx = 'jxb'"); //光大自助缴费
+            dt_target = Get08110002Dt(drs_dy_esgzh, dt_target, "E水公众号缴费", "dy", 22);
+
+            DataRow[] drs_qy_esgzh = dt_esqy.Select("lx = 'jxb'"); //光大自助缴费
+            dt_target = Get08110002Dt(drs_qy_esgzh, dt_target, "E水公众号缴费", "qy", 22);
+
+            DataRow[] drs_qn_esgzh = dt_esqn.Select("lx = 'jxb'"); //光大自助缴费
+            dt_target = Get08110002Dt(drs_qn_esgzh, dt_target, "E水公众号缴费", "qn", 22);
+
+            //余额消减
+            dt_target = Get08110002EmptyRow(dt_target, "余额消减", "", "", 23);
+            //余额预存
+            dt_target = Get08110002EmptyRow(dt_target, "余额预存", "", "", 24);
+
+            //e水余额消减
+            dt_target = Get08110002EmptyRow(dt_target, "e水余额消减", "", "", 25);
+            //e水余额预存
+            dt_target = Get08110002EmptyRow(dt_target, "e水余额预存", "", "", 26);
 
             //合计
 
@@ -5311,53 +5488,85 @@ namespace sara.dd.ldsw.service
             string lastlx = "";
             for (int i = 0; i < dt_target.Rows.Count; i++)
             {
-
-                double dd_dysl = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["dysl"].ToString());
-                double dd_dysf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["dysf"].ToString());
-                double dd_dypwf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["dypwf"].ToString());
-
-                double dd_qysl = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qysl"].ToString());
-                double dd_qysf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qysf"].ToString());
-                double dd_qypwf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qypwf"].ToString());
-
-                double dd_qnsl = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qnsl"].ToString());
-                double dd_qnsf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qnsf"].ToString());
-                double dd_qnpwf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qnpwf"].ToString());
-
-                total_dysl += dd_dysl;
-                total_dysf += dd_dysf;
-                total_dypwf += dd_dypwf;
-
-                total_qysl += dd_qysl;
-                total_qysf += dd_qysf;
-                total_qypwf += dd_qypwf;
-
-                total_qnsl += dd_qnsl;
-                total_qnsf += dd_qnsf;
-                total_qnpwf += dd_qnpwf;
-
-                double sumsl = dd_dysl + dd_qysl + dd_qnsl;
-                double zjsf = dd_dysf + dd_qysf + dd_qnsf;
-                double zjpwf = dd_dypwf + dd_qypwf + dd_qnpwf;
-                double zjsl = zjsf + zjpwf;
-
-                total_sumsl += sumsl;
-                total_zjsl += zjsl;
-                total_zjsf += zjsf;
-                total_zjpwf += zjpwf;
-
-                if (dt_target.Rows[i]["lx"].ToString() != lastlx)
+                if ((dt_target.Rows[i]["lx"].ToString()) == "余额消减")
                 {
-                    lastlx = dt_target.Rows[i]["lx"].ToString();
+                    dt_target.Rows[i]["sumsl"] = "0";
+                    dt_target.Rows[i]["zjsf"] = "0";
+                    dt_target.Rows[i]["zjpwf"] = "0";
+                    dt_target.Rows[i]["zjsl"] = dt_ye.Rows[0]["syye"];
+                }
+                else if ((dt_target.Rows[i]["lx"].ToString()) == "余额预存")
+                {
+                    dt_target.Rows[i]["sumsl"] = "0";
+                    dt_target.Rows[i]["zjsf"] = "0";
+                    dt_target.Rows[i]["zjpwf"] = "0";
+                    dt_target.Rows[i]["zjsl"] = dt_ye.Rows[0]["dsye"];
+                }
+                else if ((dt_target.Rows[i]["lx"].ToString()) == "e水余额消减")
+                {
+                    dt_target.Rows[i]["sumsl"] = "0";
+                    dt_target.Rows[i]["zjsf"] = "0";
+                    dt_target.Rows[i]["zjpwf"] = "0";
+                    dt_target.Rows[i]["zjsl"] = dt_esye.Rows[0]["syye"];
+                }
+                else if ((dt_target.Rows[i]["lx"].ToString()) == "e水余额预存")
+                {
+                    dt_target.Rows[i]["sumsl"] = "0";
+                    dt_target.Rows[i]["zjsf"] = "0";
+                    dt_target.Rows[i]["zjpwf"] = "0";
+                    dt_target.Rows[i]["zjsl"] = dt_esye.Rows[0]["dsye"];
                 }
                 else
                 {
-                    dt_target.Rows[i]["lx"] = "";
+                    double dd_dysl = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["dysl"].ToString());
+                    double dd_dysf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["dysf"].ToString());
+                    double dd_dypwf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["dypwf"].ToString());
+
+                    double dd_qysl = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qysl"].ToString());
+                    double dd_qysf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qysf"].ToString());
+                    double dd_qypwf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qypwf"].ToString());
+
+                    double dd_qnsl = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qnsl"].ToString());
+                    double dd_qnsf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qnsf"].ToString());
+                    double dd_qnpwf = Eva.Library.Text.NumberTool.Parse(dt_target.Rows[i]["qnpwf"].ToString());
+
+                    total_dysl += dd_dysl;
+                    total_dysf += dd_dysf;
+                    total_dypwf += dd_dypwf;
+
+                    total_qysl += dd_qysl;
+                    total_qysf += dd_qysf;
+                    total_qypwf += dd_qypwf;
+
+                    total_qnsl += dd_qnsl;
+                    total_qnsf += dd_qnsf;
+                    total_qnpwf += dd_qnpwf;
+
+                    double sumsl = dd_dysl + dd_qysl + dd_qnsl;
+                    double zjsf = dd_dysf + dd_qysf + dd_qnsf;
+                    double zjpwf = dd_dypwf + dd_qypwf + dd_qnpwf;
+                    double zjsl = zjsf + zjpwf;
+
+                    total_sumsl += sumsl;
+                    total_zjsl += zjsl;
+                    total_zjsf += zjsf;
+                    total_zjpwf += zjpwf;
+
+                    if (dt_target.Rows[i]["lx"].ToString() != lastlx)
+                    {
+                        lastlx = dt_target.Rows[i]["lx"].ToString();
+                    }
+                    else
+                    {
+                        dt_target.Rows[i]["lx"] = "";
+                    }
+                    dt_target.Rows[i]["sumsl"] = Eva.Library.Text.NumberTool.GetNumberByLength(sumsl, 2);
+                    dt_target.Rows[i]["zjsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(zjsf, 2);
+                    dt_target.Rows[i]["zjpwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(zjpwf, 2);
+                    dt_target.Rows[i]["zjsl"] = Eva.Library.Text.NumberTool.GetNumberByLength(zjsl, 2);
                 }
-                dt_target.Rows[i]["sumsl"] = Eva.Library.Text.NumberTool.GetNumberByLength(sumsl, 2);
-                dt_target.Rows[i]["zjsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(zjsf, 2);
-                dt_target.Rows[i]["zjpwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(zjpwf, 2);
-                dt_target.Rows[i]["zjsl"] = Eva.Library.Text.NumberTool.GetNumberByLength(zjsl, 2);
+
+
 
                 dt_result.ImportRow(dt_target.Rows[i]);
             }
@@ -5463,9 +5672,9 @@ namespace sara.dd.ldsw.service
                     else if (name == "玖龙纸业淡化水")
                     {
 
-                        drn["dysfdj"] = "6.996";
+                        drn["dysfdj"] = "6.36";
                         drn["dypwfdj"] = "0.00";
-                        drn["dysfpwfdj"] = "6.996";
+                        drn["dysfpwfdj"] = "6.36";
                     }
                     else if (name == "IC卡邮储代收")
                     {
@@ -5719,6 +5928,8 @@ namespace sara.dd.ldsw.service
             return dt_target;
         }
 
+
+
         /// <summary>
         /// 获取日结转报表
         /// </summary>
@@ -5740,7 +5951,7 @@ namespace sara.dd.ldsw.service
             string czsjwhere = " between to_date('" + zbsj.ToString("yyyy-MM-dd") + " 00:00:00','yyyy-MM-dd hh24:mi:ss') and  to_date('" + zbsj.ToString("yyyy-MM-dd") + " 23:59:59','yyyy-MM-dd hh24:mi:ss')  ";
 
             //--当月;
-            string dywhere = " between trunc(add_months(last_day(to_date('" + zbsj.ToString("yyyy-MM-dd HH:mm:ss") + " ','yyyy-MM-dd hh24:mi:ss')), -1) + 1)  and last_day(to_date('" + zbsj.ToString("yyyy-MM-dd HH:mm:ss") + "','yyyy-MM-dd hh24:mi:ss')) ";
+            string dywhere = " between trunc(add_months(last_day(to_date('" + zbsj.ToString("yyyy-MM-dd HH:mm:ss") + " ','yyyy-MM-dd hh24:mi:ss')), -1) + 1)  and TRUNC(last_day(to_date('" + zbsj.ToString("yyyy-MM-dd HH:mm:ss") + " ', 'yyyy-MM-dd hh24:mi:ss')))+1-1/86400 ";
 
             //---欠月
             string qywhere = " between trunc(to_date('" + zbsj.ToString("yyyy-MM-dd HH:mm:ss") + "','yyyy-MM-dd hh24:mi:ss'),'yy')  and trunc(add_months(last_day(to_date('" + zbsj.ToString("yyyy-MM-dd HH:mm:ss") + "','yyyy-MM-dd hh24:mi:ss')), -1) + 1) -1 ";
@@ -5760,7 +5971,7 @@ namespace sara.dd.ldsw.service
             sql += "           from tbl_ld_cbiao  ";
             sql += "          where f_jfbhid in (select sys_id ";
             sql += "                               from tbl_ld_jfb  ";
-            sql += "                              where f_lyid in ('08080003','08080002','08080007','08080008','08080006')  ";
+            sql += "                              where f_lyid in ('08080003','08080002','08080007','08080008','08080006','08080009')  ";
             sql += "                                and f_ztid = '2'  ";
 
             for (int l = 0; l < khfzarray.Length; l++)
@@ -5827,14 +6038,18 @@ namespace sara.dd.ldsw.service
 
             //累计
             sql = "";
-            sql += "  select sum(jm) as jm, sum(tjjz) as tjjz, sum(yc) as yc, sum(ys) as ys ";
+            sql += "  select sum(jm) as jm, sum(tjjz) as tjjz, sum(yc) as yc,sum(ye) as ye,sum(dsye) as dsye,sum(yqjmsf) as yqjmsf,sum(yqjmpwf) as yqjmpwf, sum(ys) as ys ";
             sql += "  from ( ";
             sql += "  select sum(F_JMJELJ) as jm, ";
             sql += "      sum(F_SYTJJZSF + F_SYTJJZPWF) as tjjz, ";
             sql += "      sum(F_SYYE) as yc,";
-            sql += "      sum(F_SHYS) as ys";
+            sql += "      sum(F_SYYCJE) as ye,";
+            sql += "      sum(F_DSZYCJE) as dsye,";
+            sql += "      sum(F_YQJMSFJE) as yqjmsf,";
+            sql += "      sum(F_YQJMPWFJE) as yqjmpwf,";
+            sql += "      sum(F_SHSS) as ys";
             sql += "  from tbl_ld_jfb";
-            sql += "  where f_lyid in ('08080003','08080002','08080007','08080008','08080006')";
+            sql += "  where f_lyid in ('08080003','08080002','08080007','08080008','08080006','08080009')";
             sql += "  and f_ztid = '2'";
 
             for (int l = 0; l < khfzarray.Length; l++)
@@ -5865,7 +6080,11 @@ namespace sara.dd.ldsw.service
                 sql += "  select to_number('0') as jm,";
                 sql += "      sum(F_SYTJJZSF + F_SYTJJZPWF) as tjjz,";
                 sql += "      sum(F_SYYE) as yc,";
-                sql += "      sum(F_SHYS) as ys";
+                sql += "      to_number('0') as ye,";
+                sql += "      to_number('0') as dsye,";
+                sql += "      to_number('0') as yqjmsf,";
+                sql += "      to_number('0') as yqjmpwf,";
+                sql += "      sum(F_SHSS) as ys";
                 sql += "  from tbl_ld_ickss";
                 sql += "  where f_ztid in ('2','3','4')";
                 sql += "  and f_sfjl is not null";
@@ -5901,7 +6120,7 @@ namespace sara.dd.ldsw.service
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
-            dc.ColumnName = "pwf";//排污费
+            dc.ColumnName = "pwf";//污水处理费
             dt_target.Columns.Add(dc);
 
             dc = new DataColumn();
@@ -5919,6 +6138,23 @@ namespace sara.dd.ldsw.service
             dc = new DataColumn();
             dc.ColumnName = "xzyc";//	新增绿化表押金
             dt_target.Columns.Add(dc);
+
+            dc = new DataColumn();
+            dc.ColumnName = "yedk";//	余额抵扣
+            dt_target.Columns.Add(dc);
+
+            dc = new DataColumn();
+            dc.ColumnName = "yecz";//	余额充值
+            dt_target.Columns.Add(dc);
+
+            dc = new DataColumn();
+            dc.ColumnName = "yqjmsf";//	疫情减免水费
+            dt_target.Columns.Add(dc);
+
+            dc = new DataColumn();
+            dc.ColumnName = "yqjmpwf";//	疫情减免污水处理费
+            dt_target.Columns.Add(dc);
+
 
             dc = new DataColumn();
             dc.ColumnName = "ssje";//	实收金额
@@ -5997,6 +6233,10 @@ namespace sara.dd.ldsw.service
                 dr_target_new["ycdx"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["tjjz"].ToString(), 2);
                 dr_target_new["xzyc"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["yc"].ToString(), 2);
                 dr_target_new["ssje"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["ys"].ToString(), 2);
+                dr_target_new["yedk"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["ye"].ToString(), 2);
+                dr_target_new["yecz"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["dsye"].ToString(), 2);
+                dr_target_new["yqjmsf"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["yqjmsf"].ToString(), 2);
+                dr_target_new["yqjmpwf"] = Eva.Library.Text.NumberTool.GetNumberByLength(dt_lj.Rows[0]["yqjmpwf"].ToString(), 2);
             }
             else
             {
@@ -6004,6 +6244,10 @@ namespace sara.dd.ldsw.service
                 dr_target_new["ycdx"] = "0.0";
                 dr_target_new["xzyc"] = "0.0";
                 dr_target_new["ssje"] = "0.0";
+                dr_target_new["yedk"] = "0.0";
+                dr_target_new["yecz"] = "0.0";
+                dr_target_new["yqjmsf"] = "0.0";
+                dr_target_new["yqjmpwf"] = "0.0";
             }
 
 
@@ -6074,6 +6318,10 @@ namespace sara.dd.ldsw.service
             dr_target_new["ycdx"] = "0.0";
             dr_target_new["xzyc"] = "0.0";
             dr_target_new["ssje"] = "0.0";
+            dr_target_new["yedk"] = "0.0";
+            dr_target_new["yecz"] = "0.0";
+            dr_target_new["yqjmsf"] = "0.0";
+            dr_target_new["yqjmpwf"] = "0.0";
 
             dt_target.Rows.Add(dr_target_new);
 
@@ -6133,6 +6381,10 @@ namespace sara.dd.ldsw.service
                 drn["ycdx"] = "0.0";
                 drn["xzyc"] = "0.0";
                 drn["ssje"] = "0.0";
+                drn["yedk"] = "0.0";
+                drn["yecz"] = "0.0";
+                drn["yqjmsf"] = "0.0";
+                drn["yqjmpwf"] = "0.0";
 
                 dt_target.Rows.Add(drn);
 
@@ -6859,61 +7111,70 @@ namespace sara.dd.ldsw.service
 
         //自动报表引导
         [WebMethod]
-        public string autoReport(string userid, DateTime zbsj, string reporttype, string reporttypeid)
+        public string autoReport(string userid, DateTime zbsj, string reporttype,string reporttypeid, string khfzid)
         {
             //获取月底时间
             try
             {
+
                 zbsj = zbsj.AddDays(-1);
                 _iAccessData = sara.dd.ldsw.commonclass.commonclass.CreateIAccessData();
                 DataTable dt = new DataTable();
                 switch (reporttype)
                 {
+                    case "日结账报表":
+                        dt = Get08110001(userid, zbsj,khfzid, _iAccessData);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
+                        break;
+                    case "经管部日结账报表":
+                        dt = Get08110002(userid, zbsj, _iAccessData);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
+                        break;
                     case "用户情况年度汇总表":
                         dt = Get08110003(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "年度销售收入情况表":
                         dt = Get08110004(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "商业用水欠费统计表":
                         dt = Get08110005(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "水表更换情况年度统计表":
                         dt = Get08110006(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
 
                     case "收费情况年度统计表":
                         dt = Get08110007(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
 
                     case "节水办用户明细表":
                         dt = Get08110009(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "节水办用户信息变更明细表":
                         dt = Get08110010(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "月销售情况统计表":
                         dt = Get08110011(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "年水量及销售收入情况分析表":
                         dt = Get08110012(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "年居民水量情况分析表":
                         dt = Get08110013(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                     case "年销售水量情况汇总表":
                         dt = Get08110014(userid, zbsj, _iAccessData);
-                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid);
+                        reportdbCreate(dt, userid, zbsj, reporttype, reporttypeid, khfzid);
                         break;
                 }
 
@@ -6931,30 +7192,38 @@ namespace sara.dd.ldsw.service
 
         //报表数据自动生成
 
-        public void reportdbCreate(DataTable dt, string userid, DateTime zbsj, string reporttype, string reporttypeid)
+        public void reportdbCreate(DataTable dt, string userid, DateTime zbsj, string reporttype, string reporttypeid,string khfzid)
         {
             try
             {
                 //获取制表人详情
                 _iAccessData = sara.dd.ldsw.commonclass.commonclass.CreateIAccessData();
-                string sql = "select username,t.u_organid as organid,(select o_fullname from t_organ where o_id=t.u_organid) as organ from (select U_CODE as username,U_ORGANID FROM t_user where U_ID='" + userid + "') t";
+                string sql = "select username,t.u_organid as organid,(select o_fullname from t_organ where o_id=t.u_organid) as organ from (select U_CODE as username,U_ORGANID FROM t_user where U_ID in (" + userid + ")) t";
                 DataTable userdt = _iAccessData.Query(sql).Tables[0];
-                if (userdt.Rows.Count == 1)
+                if (userdt.Rows.Count >= 1)
                 {
-                    string username = userdt.Rows[0]["username"].ToString();
+                    string username = "";
+                    for(int ii=0;ii< userdt.Rows.Count; ii++)
+                    {
+                        username += userdt.Rows[ii]["username"].ToString()+",";
+                    }
+                    username = username.Trim(',');
                     string organid = userdt.Rows[0]["organid"].ToString();
                     string organ = userdt.Rows[0]["organ"].ToString();
 
                     sara.dd.ldsw.model.tbl_ld_report model = new model.tbl_ld_report();
-                    model.sys_creatuserid = userid;
-                    model.sys_creatusername = username;
+                    model.sys_creatuserid = userid.Split(',')[0];
+                    model.sys_creatusername = username.Split(',')[0];
                     model.sys_creatdate = zbsj;
-                    model.sys_lastedituserid = userid;
-                    model.sys_lasteditusername = username;
+                    model.sys_lastedituserid = userid.Split(',')[0];
+                    model.sys_lasteditusername = username.Split(',')[0];
                     model.sys_lasteditdate = zbsj;
                     model.sys_delflag = "0";
                     model.f_value1 = organid;
                     model.f_value2 = organ;
+                    model.f_value4 = khfzid;
+                    model.f_value3 = khfzid.Replace("4058", "客服中心总表").Replace("4054", "经营中心远传表").Replace("4057", "客服中心大用户表").Replace("4063", "经营中心IC卡表");
+                   
                     model.f_bbmc = "新建" + organ + reporttype + "_" + Eva.Library.Text.NumberTool.GetNoRepeatNumber();
                     model.f_bblx = reporttype;
                     model.f_bblxid = reporttypeid;
@@ -6965,7 +7234,7 @@ namespace sara.dd.ldsw.service
                     model.f_ztid = "1";
                     model.f_content = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt);
 
-                    _idal_tbl_ld_report.Add(model, null);
+                    string res = _idal_tbl_ld_report.Add(model, null);
                 }
                 else
                 {

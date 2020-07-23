@@ -1,0 +1,13 @@
+[{"version":"1.0.1",
+"location":"1",
+"programZip":"HuiXing.zip",
+"programExe":"HuiXing.exe",
+"programExePara":""
+
+},{"version":"1.0.29",
+"location":"2",
+"programZip":"sara.dd.ldsw.machine.zip",
+"programExe":"sara.dd.ldsw.machine.exe",
+"programExePara":""
+
+}]

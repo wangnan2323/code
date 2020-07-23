@@ -43,8 +43,21 @@ namespace sara.dd.ldsw.service
             try
             {
                 sara.dd.ldsw.model.tbl_ld_rwb model = Eva.Library.Format.FormatEntityTool.FormatJsonToModel<sara.dd.ldsw.model.tbl_ld_rwb>(json);
-                resultDic["result"] = "true";
-                resultDic["message"] = _idal_tbl_ld_rwb.Add(model, null);
+
+                //int count = int.Parse(_idal_tbl_ld_rwb.GetCount("f_khbh='" + model.f_khbh + "' and f_ztid!='3'",null));
+
+                //if(count > 0)
+                //{
+                //    resultDic["result"] = "false";
+                //    resultDic["message"] = "该用户有未执行完成的任务";
+                //}
+                //else
+                //{
+                    resultDic["result"] = "true";
+                    resultDic["message"] = _idal_tbl_ld_rwb.Add(model, null);
+                //}
+
+
 
                 NewLog("数据创建成功，创建的数据为：" + json, "sql_insert", clientInf);
             }
@@ -417,8 +430,9 @@ namespace sara.dd.ldsw.service
             resultDic["message"] = "";
             try
             {
+
                 sara.dd.ldsw.model.tbl_ld_rwb model = Eva.Library.Format.FormatEntityTool.FormatJsonToModel<sara.dd.ldsw.model.tbl_ld_rwb>(json);
-                object[] args = { model.f_mlid ,model.f_sbbh,model.f_yjzxsj.ToString("yyyy-MM-dd HH:mm:ss")};
+                object[] args = { model.f_mlid ,model.f_sbbh};
                 string result = Eva.Library.WebService.DynamicWebServices.InvokeWebService("http://162.16.166.1/sara.dd.waterdatacenter/service/service_tbl_waterdb_rw.asmx", "addLongdaRw", args).ToString();
 
 
@@ -428,6 +442,7 @@ namespace sara.dd.ldsw.service
                 {
                     model.f_rwid = dt.Rows[0]["sys_id"].ToString();
                     model.f_rwmc = dt.Rows[0]["f_rwmc"].ToString();
+                    model.f_yjzxsj = Convert.ToDateTime(dt.Rows[0]["f_yjzxsj"].ToString());
                     model.f_zt = "待执行";
                     model.f_ztid = "1";
                     columns = FormatColumns(columns).Replace("^", ",");

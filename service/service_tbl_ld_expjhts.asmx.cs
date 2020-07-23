@@ -848,7 +848,7 @@ namespace sara.dd.ldsw.service
                                                     syhsf = 0;
                                                 }
 
-                                                //计算排污费
+                                                //计算污水处理费
                                                 double sypwf = 0;
                                                 double syhpwf = 0;
 
@@ -916,6 +916,67 @@ namespace sara.dd.ldsw.service
                                             }
 
 
+                                            //判断是否存在疫情减免水费
+                                            if (model_tbl_ld_khb.f_yqjmsf != null && model_tbl_ld_khb.f_yqjmsf != "" && model_tbl_ld_khb.f_yqjmsf != "0" && ysfy>0)
+                                            {
+                                                double yqjmsfje = sflj * Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_yqjmsf) / 100;
+
+                                                if(ysfy > yqjmsfje)
+                                                {
+                                                    ysfy = ysfy - yqjmsfje;
+
+                                                    model_tbl_ld_jfb.f_yqjmsf = model_tbl_ld_khb.f_yqjmsf;
+                                                    model_tbl_ld_jfb.f_yqjmsfbfb = model_tbl_ld_khb.f_yqjmsf;
+                                                    model_tbl_ld_jfb.f_yqjmsfje = Eva.Library.Text.NumberTool.GetNumberByLength(yqjmsfje, 2);
+                                                }
+                                                else
+                                                {
+                                                    model_tbl_ld_jfb.f_yqjmsf = "0";
+                                                    model_tbl_ld_jfb.f_yqjmsfbfb = "0";
+                                                    model_tbl_ld_jfb.f_yqjmsfje = "0";
+                                                }                                               
+
+
+                                            }
+                                            else
+                                            {
+                                                model_tbl_ld_jfb.f_yqjmsf = "0";
+                                                model_tbl_ld_jfb.f_yqjmsfbfb = "0";
+                                                model_tbl_ld_jfb.f_yqjmsfje = "0";
+                                            }
+
+                                            //判断是否存在疫情减免污水处理费
+                                            if (model_tbl_ld_khb.f_yqjmpwf != null && model_tbl_ld_khb.f_yqjmpwf != "" && model_tbl_ld_khb.f_yqjmpwf != "0")
+                                            {
+                                                double yqjmsfpwf = pwflj * Eva.Library.Text.NumberTool.Parse(model_tbl_ld_khb.f_yqjmpwf) / 100;
+
+                                                if (ysfy > yqjmsfpwf)
+                                                {
+                                                    ysfy = ysfy - yqjmsfpwf;
+
+                                                    model_tbl_ld_jfb.f_yqjmpwf = model_tbl_ld_khb.f_yqjmpwf;
+                                                    model_tbl_ld_jfb.f_yqjmpwfbfb = model_tbl_ld_khb.f_yqjmpwf;
+                                                    model_tbl_ld_jfb.f_yqjmpwfje = Eva.Library.Text.NumberTool.GetNumberByLength(yqjmsfpwf, 2);
+                                                }
+                                                else
+                                                {
+                                                model_tbl_ld_jfb.f_yqjmpwf = "0";
+                                                model_tbl_ld_jfb.f_yqjmpwfbfb = "0";
+                                                model_tbl_ld_jfb.f_yqjmpwfje = "0";
+                                                }
+
+
+
+
+                                            }
+                                            else
+                                            {
+                                                model_tbl_ld_jfb.f_yqjmpwf = "0";
+                                                model_tbl_ld_jfb.f_yqjmpwfbfb = "0";
+                                                model_tbl_ld_jfb.f_yqjmpwfje = "0";
+                                            }
+
+
 
                                             model_tbl_ld_jfb.f_shys = Eva.Library.Text.NumberTool.GetNumberByLength(ysfy, 2);
                                             model_tbl_ld_jfb.f_shss = model_tbl_ld_jfb.f_shys;
@@ -928,11 +989,25 @@ namespace sara.dd.ldsw.service
                                             model_tbl_ld_jfb.f_cbbh = cbbhs;
                                             model_tbl_ld_jfb.f_cbbhid = cbbhids;
 
+                                            //余额部分初始值
+                                            model_tbl_ld_jfb.f_khyycje = "0";
+                                            model_tbl_ld_jfb.f_sfsyycje = "false";
+                                            model_tbl_ld_jfb.f_syycje = "0";
+                                            model_tbl_ld_jfb.f_dszycje = "0";
+                                            model_tbl_ld_jfb.f_yhycje = "0";
+
                                             string jfb_sys_id = idal_tbl_ld_jfb.Add(model_tbl_ld_jfb, t);
 
                                             jfb_sys_ids += jfb_sys_id + ",";
                                             sql = " update tbl_ld_cbiao set f_jfbh = '" + model_tbl_ld_jfb.f_jfbh + "' , f_jfbhid ='" + jfb_sys_id + "',  f_jfsj = to_date('" + model_tbl_ld_jfb.f_jfrq.ToString("yyyy-MM-dd HH:mm:ss") + "','yyyy-MM-dd hh24:mi:ss')  where sys_id in ('" + cbbhids.Replace(",", "','") + "')";
                                             t.ExecuteSql(sql);
+
+                                            //新增更新建行托收标志f_value5
+                                            string updatesql = "update tbl_ld_khb set f_value5='2' where sys_id='" + khbhidsarr[k] + "'";
+
+                                            t.ExecuteSql(updatesql);
+
+
 
                                         }
                                         else

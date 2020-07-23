@@ -198,6 +198,7 @@ var tbl_ld_kh_search_part_Obj = (function () {
             controlObj.singledropdownlistinit('search_f_cbgx_tbl_ld_kh_search_part', codeservice_cbgx, null);
 
             controlObj.singledropdownlistinit('search_f_sfqf_tbl_ld_kh_search_part', [{ id: 'true', text: '显示欠费' }, { id: 'false', text: '显示全部' }]);
+            controlObj.singledropdownlistinit('search_f_ye_tbl_ld_kh_search_part', [{ id: 'true', text: '存在余额' }, { id: 'false', text: '不存在余额' }]);
 
 
             //模态窗口
@@ -324,6 +325,7 @@ var tbl_ld_kh_search_part_Obj = (function () {
                         controlObj.text('search_f_bz_tbl_ld_kh_search_part', tbl_ld_kh_search_part.f_bz);
 
                         controlObj.singledropdownlistid('search_f_sfqf_tbl_ld_kh_search_part', tbl_ld_kh_search_part.f_sfqf);
+                        controlObj.singledropdownlistid('search_f_ye_tbl_ld_kh_search_part', tbl_ld_kh_search_part.f_ye);
                         controlObj.text('search_f_sqysl_tbl_ld_kh_search_part', tbl_ld_kh_search_part.f_sqysl);
                         controlObj.text('search_f_jhysl_tbl_ld_kh_search_part', tbl_ld_kh_search_part.f_jhysl);
                         controlObj.text('search_f_ickljgl_tbl_ld_kh_search_part', tbl_ld_kh_search_part.f_ickljgl);
@@ -483,6 +485,7 @@ var tbl_ld_kh_search_part_Obj = (function () {
                     tbl_ld_kh_search_part.f_zhcbrqto = controlObj.datetime('search_f_zhcbrq_tbl_ld_kh_search_part_dateto', 'search_f_zhcbrq_tbl_ld_kh_search_part_timeto'); //dateto + ' ' + timeto; 
 
                     tbl_ld_kh_search_part.f_sfqf = controlObj.singledropdownlistid('search_f_sfqf_tbl_ld_kh_search_part');
+                    tbl_ld_kh_search_part.f_ye = controlObj.singledropdownlistid('search_f_ye_tbl_ld_kh_search_part');
                     tbl_ld_kh_search_part.f_sqysl=controlObj.text('search_f_sqysl_tbl_ld_kh_search_part');
                     tbl_ld_kh_search_part.f_jhysl=controlObj.text('search_f_jhysl_tbl_ld_kh_search_part');
                     tbl_ld_kh_search_part.f_ickljgl=controlObj.text('search_f_ickljgl_tbl_ld_kh_search_part');
@@ -1011,6 +1014,8 @@ var tbl_ld_kh_search_part_Obj = (function () {
                 that._pr_searchcontent.type2.f_sfqf = '';
                 controlObj.singledropdownlistid('search_f_sfqf_tbl_ld_kh_search_part', that._pr_searchcontent.type2.f_sfqf);
 
+                that._pr_searchcontent.type2.f_ye = '';
+                controlObj.singledropdownlistid('search_f_ye_tbl_ld_kh_search_part', that._pr_searchcontent.type2.f_ye);
                 that._pr_searchcontent.type2.f_sqysl = '';
                 controlObj.text('search_f_sqysl_tbl_ld_kh_search_part', that._pr_searchcontent.type2.f_sqysl);
                 that._pr_searchcontent.type2.f_jhysl = '';
@@ -1392,6 +1397,14 @@ var tbl_ld_kh_search_part_Obj = (function () {
                         }
                         if (tbl_ld_kh_search_part.f_sfqf.length > 0 && tbl_ld_kh_search_part.f_sfqf == "true") {
                             whereClause += " f_ljqf > '0' and ";
+                        }
+                        if (tbl_ld_kh_search_part.f_ye.length > 0 && tbl_ld_kh_search_part.f_ye == "true")
+                        {
+                            whereClause += " f_ye is not null and to_number(f_ye) > 0 and ";
+                        }
+                        if (tbl_ld_kh_search_part.f_ye.length > 0 && tbl_ld_kh_search_part.f_ye == "false")
+                        {
+                            whereClause += " (f_ye = '0' or f_ye is null) and";
                         }
                         if (tbl_ld_kh_search_part.f_sqysl.length > 0) {
                             whereClause += " f_sqysl like '%" + tbl_ld_kh_search_part.f_sqysl + "%' and ";

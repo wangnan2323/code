@@ -589,7 +589,7 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 调价结转排污费
+		/// 调价结转污水处理费
 		/// </summary>
 		public string f_tjjzpwf
 		{

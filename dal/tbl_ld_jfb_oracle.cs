@@ -1065,6 +1065,166 @@ namespace sara.dd.ldsw.dal
                 parameter.Value = model.f_sfjl;
                 parameterList.Add(parameter);
             }
+            if (model.f_dyjtsl != null)
+            {
+                strSql1.Append("f_dyjtsl,");
+                strSql2.Append("'" + (model.f_dyjtsl) + "',");
+                strSql3.Append(":f_dyjtsl,");
+                parameter = new OracleParameter(":f_dyjtsl", OracleType.VarChar);
+                parameter.Value = model.f_dyjtsl;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dyjtsf != null)
+            {
+                strSql1.Append("f_dyjtsf,");
+                strSql2.Append("'" + (model.f_dyjtsf) + "',");
+                strSql3.Append(":f_dyjtsf,");
+                parameter = new OracleParameter(":f_dyjtsf", OracleType.VarChar);
+                parameter.Value = model.f_dyjtsf;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dejtsl != null)
+            {
+                strSql1.Append("f_dejtsl,");
+                strSql2.Append("'" + (model.f_dejtsl) + "',");
+                strSql3.Append(":f_dejtsl,");
+                parameter = new OracleParameter(":f_dejtsl", OracleType.VarChar);
+                parameter.Value = model.f_dejtsl;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dejtsf != null)
+            {
+                strSql1.Append("f_dejtsf,");
+                strSql2.Append("'" + (model.f_dejtsf) + "',");
+                strSql3.Append(":f_dejtsf,");
+                parameter = new OracleParameter(":f_dejtsf", OracleType.VarChar);
+                parameter.Value = model.f_dejtsf;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dsjtsl != null)
+            {
+                strSql1.Append("f_dsjtsl,");
+                strSql2.Append("'" + (model.f_dsjtsl) + "',");
+                strSql3.Append(":f_dsjtsl,");
+                parameter = new OracleParameter(":f_dsjtsl", OracleType.VarChar);
+                parameter.Value = model.f_dsjtsl;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dsjtsf != null)
+            {
+                strSql1.Append("f_dsjtsf,");
+                strSql2.Append("'" + (model.f_dsjtsf) + "',");
+                strSql3.Append(":f_dsjtsf,");
+                parameter = new OracleParameter(":f_dsjtsf", OracleType.VarChar);
+                parameter.Value = model.f_dsjtsf;
+                parameterList.Add(parameter);
+            }
+            if (model.f_khyycje != null)
+            {
+                strSql1.Append("f_khyycje,");
+                strSql2.Append("'" + (model.f_khyycje) + "',");
+                strSql3.Append(":f_khyycje,");
+                parameter = new OracleParameter(":f_khyycje", OracleType.VarChar);
+                parameter.Value = model.f_khyycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_sfsyycje != null)
+            {
+                strSql1.Append("f_sfsyycje,");
+                strSql2.Append("'" + (model.f_sfsyycje) + "',");
+                strSql3.Append(":f_sfsyycje,");
+                parameter = new OracleParameter(":f_sfsyycje", OracleType.VarChar);
+                parameter.Value = model.f_sfsyycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_syycje != null)
+            {
+                strSql1.Append("f_syycje,");
+                strSql2.Append("'" + (model.f_syycje) + "',");
+                strSql3.Append(":f_syycje,");
+                parameter = new OracleParameter(":f_syycje", OracleType.VarChar);
+                parameter.Value = model.f_syycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_yhycje != null)
+            {
+                strSql1.Append("f_yhycje,");
+                strSql2.Append("'" + (model.f_yhycje) + "',");
+                strSql3.Append(":f_yhycje,");
+                parameter = new OracleParameter(":f_yhycje", OracleType.VarChar);
+                parameter.Value = model.f_yhycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dszycje != null)
+            {
+                strSql1.Append("f_dszycje,");
+                strSql2.Append("'" + (model.f_dszycje) + "',");
+                strSql3.Append(":f_dszycje,");
+                parameter = new OracleParameter(":f_dszycje", OracleType.VarChar);
+                parameter.Value = model.f_dszycje;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmsfbfb != null)
+            {
+                strSql1.Append("f_yqjmsfbfb,");
+                strSql2.Append("'" + (model.f_yqjmsfbfb) + "',");
+                strSql3.Append(":f_yqjmsfbfb,");
+                parameter = new OracleParameter(":f_yqjmsfbfb", OracleType.VarChar);
+                parameter.Value = model.f_yqjmsfbfb;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmpwfbfb != null)
+            {
+                strSql1.Append("f_yqjmpwfbfb,");
+                strSql2.Append("'" + (model.f_yqjmpwfbfb) + "',");
+                strSql3.Append(":f_yqjmpwfbfb,");
+                parameter = new OracleParameter(":f_yqjmpwfbfb", OracleType.VarChar);
+                parameter.Value = model.f_yqjmpwfbfb;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmsfje != null)
+            {
+                strSql1.Append("f_yqjmsfje,");
+                strSql2.Append("'" + (model.f_yqjmsfje) + "',");
+                strSql3.Append(":f_yqjmsfje,");
+                parameter = new OracleParameter(":f_yqjmsfje", OracleType.VarChar);
+                parameter.Value = model.f_yqjmsfje;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmpwfje != null)
+            {
+                strSql1.Append("f_yqjmpwfje,");
+                strSql2.Append("'" + (model.f_yqjmpwfje) + "',");
+                strSql3.Append(":f_yqjmpwfje,");
+                parameter = new OracleParameter(":f_yqjmpwfje", OracleType.VarChar);
+                parameter.Value = model.f_yqjmpwfje;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmsf != null)
+            {
+                strSql1.Append("f_yqjmsf,");
+                strSql2.Append("'" + (model.f_yqjmsf) + "',");
+                strSql3.Append(":f_yqjmsf,");
+                parameter = new OracleParameter(":f_yqjmsf", OracleType.VarChar);
+                parameter.Value = model.f_yqjmsf;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmpwf != null)
+            {
+                strSql1.Append("f_yqjmpwf,");
+                strSql2.Append("'" + (model.f_yqjmpwf) + "',");
+                strSql3.Append(":f_yqjmpwf,");
+                parameter = new OracleParameter(":f_yqjmpwf", OracleType.VarChar);
+                parameter.Value = model.f_yqjmpwf;
+                parameterList.Add(parameter);
+            }
+
             strSql.Append("insert into tbl_ld_jfb(");
             strSql.Append(strSql1.ToString().Remove(strSql1.Length - 1));
             strSql.Append(")");
@@ -2176,6 +2336,148 @@ namespace sara.dd.ldsw.dal
                 parameter.Value = model.f_sfjl;
                 parameterList.Add(parameter);
             }
+            if (model.f_dyjtsl != null && columsList.Contains("f_dyjtsl"))
+            {
+                strSql.Append("f_dyjtsl='" + (model.f_dyjtsl) + "',");
+                strSql_use.Append("f_dyjtsl=:f_dyjtsl,");
+                parameter = new OracleParameter(":f_dyjtsl", OracleType.VarChar);
+                parameter.Value = model.f_dyjtsl;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dyjtsf != null && columsList.Contains("f_dyjtsf"))
+            {
+                strSql.Append("f_dyjtsf='" + (model.f_dyjtsf) + "',");
+                strSql_use.Append("f_dyjtsf=:f_dyjtsf,");
+                parameter = new OracleParameter(":f_dyjtsf", OracleType.VarChar);
+                parameter.Value = model.f_dyjtsf;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dejtsl != null && columsList.Contains("f_dejtsl"))
+            {
+                strSql.Append("f_dejtsl='" + (model.f_dejtsl) + "',");
+                strSql_use.Append("f_dejtsl=:f_dejtsl,");
+                parameter = new OracleParameter(":f_dejtsl", OracleType.VarChar);
+                parameter.Value = model.f_dejtsl;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dejtsf != null && columsList.Contains("f_dejtsf"))
+            {
+                strSql.Append("f_dejtsf='" + (model.f_dejtsf) + "',");
+                strSql_use.Append("f_dejtsf=:f_dejtsf,");
+                parameter = new OracleParameter(":f_dejtsf", OracleType.VarChar);
+                parameter.Value = model.f_dejtsf;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dsjtsl != null && columsList.Contains("f_dsjtsl"))
+            {
+                strSql.Append("f_dsjtsl='" + (model.f_dsjtsl) + "',");
+                strSql_use.Append("f_dsjtsl=:f_dsjtsl,");
+                parameter = new OracleParameter(":f_dsjtsl", OracleType.VarChar);
+                parameter.Value = model.f_dsjtsl;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dsjtsf != null && columsList.Contains("f_dsjtsf"))
+            {
+                strSql.Append("f_dsjtsf='" + (model.f_dsjtsf) + "',");
+                strSql_use.Append("f_dsjtsf=:f_dsjtsf,");
+                parameter = new OracleParameter(":f_dsjtsf", OracleType.VarChar);
+                parameter.Value = model.f_dsjtsf;
+                parameterList.Add(parameter);
+            }
+            if (model.f_khyycje != null && columsList.Contains("f_khyycje"))
+            {
+                strSql.Append("f_khyycje='" + (model.f_khyycje) + "',");
+                strSql_use.Append("f_khyycje=:f_khyycje,");
+                parameter = new OracleParameter(":f_khyycje", OracleType.VarChar);
+                parameter.Value = model.f_khyycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_sfsyycje != null && columsList.Contains("f_sfsyycje"))
+            {
+                strSql.Append("f_sfsyycje='" + (model.f_sfsyycje) + "',");
+                strSql_use.Append("f_sfsyycje=:f_sfsyycje,");
+                parameter = new OracleParameter(":f_sfsyycje", OracleType.VarChar);
+                parameter.Value = model.f_sfsyycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_syycje != null && columsList.Contains("f_syycje"))
+            {
+                strSql.Append("f_syycje='" + (model.f_syycje) + "',");
+                strSql_use.Append("f_syycje=:f_syycje,");
+                parameter = new OracleParameter(":f_syycje", OracleType.VarChar);
+                parameter.Value = model.f_syycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_yhycje != null && columsList.Contains("f_yhycje"))
+            {
+                strSql.Append("f_yhycje='" + (model.f_yhycje) + "',");
+                strSql_use.Append("f_yhycje=:f_yhycje,");
+                parameter = new OracleParameter(":f_yhycje", OracleType.VarChar);
+                parameter.Value = model.f_yhycje;
+                parameterList.Add(parameter);
+            }
+            if (model.f_dszycje != null && columsList.Contains("f_dszycje"))
+            {
+                strSql.Append("f_dszycje='" + (model.f_dszycje) + "',");
+                strSql_use.Append("f_dszycje=:f_dszycje,");
+                parameter = new OracleParameter(":f_dszycje", OracleType.VarChar);
+                parameter.Value = model.f_dszycje;
+                parameterList.Add(parameter);
+            }
+            //新增疫情减免
+            if (model.f_yqjmsfbfb != null && columsList.Contains("f_yqjmsfbfb"))
+            {
+                strSql.Append("f_yqjmsfbfb='" + (model.f_yqjmsfbfb) + "',");
+                strSql_use.Append("f_yqjmsfbfb=:f_yqjmsfbfb,");
+                parameter = new OracleParameter(":f_yqjmsfbfb", OracleType.VarChar);
+                parameter.Value = model.f_yqjmsfbfb;
+                parameterList.Add(parameter);
+            }
+            
+            if (model.f_yqjmpwfbfb != null && columsList.Contains("f_yqjmpwfbfb"))
+            {
+                strSql.Append("f_yqjmpwfbfb='" + (model.f_yqjmpwfbfb) + "',");
+                strSql_use.Append("f_yqjmpwfbfb=:f_yqjmpwfbfb,");
+                parameter = new OracleParameter(":f_yqjmpwfbfb", OracleType.VarChar);
+                parameter.Value = model.f_yqjmpwfbfb;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmsfje != null && columsList.Contains("f_yqjmsfje"))
+            {
+                strSql.Append("f_yqjmsfje='" + (model.f_yqjmsfje) + "',");
+                strSql_use.Append("f_yqjmsfje=:f_yqjmsfje,");
+                parameter = new OracleParameter(":f_yqjmsfje", OracleType.VarChar);
+                parameter.Value = model.f_yqjmsfje;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmpwfje != null && columsList.Contains("f_yqjmpwfje"))
+            {
+                strSql.Append("f_yqjmpwfje='" + (model.f_yqjmpwfje) + "',");
+                strSql_use.Append("f_yqjmpwfje=:f_yqjmpwfje,");
+                parameter = new OracleParameter(":f_yqjmpwfje", OracleType.VarChar);
+                parameter.Value = model.f_yqjmpwfje;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmsf != null && columsList.Contains("f_yqjmsf"))
+            {
+                strSql.Append("f_yqjmsf='" + (model.f_yqjmsf) + "',");
+                strSql_use.Append("f_yqjmsf=:f_yqjmsf,");
+                parameter = new OracleParameter(":f_yqjmsf", OracleType.VarChar);
+                parameter.Value = model.f_yqjmsf;
+                parameterList.Add(parameter);
+            }
+
+            if (model.f_yqjmpwf != null && columsList.Contains("f_yqjmpwf"))
+            {
+                strSql.Append("f_yqjmpwf='" + (model.f_yqjmpwf) + "',");
+                strSql_use.Append("f_yqjmpwf=:f_yqjmpwf,");
+                parameter = new OracleParameter(":f_yqjmpwf", OracleType.VarChar);
+                parameter.Value = model.f_yqjmpwf;
+                parameterList.Add(parameter);
+            }
             int n = strSql.ToString().LastIndexOf(",");
             strSql.Remove(n, 1);
             strSql.Append(" where sys_id='" + model.sys_id + "'");
@@ -2420,30 +2722,33 @@ namespace sara.dd.ldsw.dal
                 {
                     strSql.Append(" order by " + orderByString);
                 }
+
+                strSql.Append(" ) a ");
+                strSql.Append(" ) b ");
             }
             else
             {
-            strSql.Append(" select * from tbl_ld_jfb t where");
-            if (whereString.Trim() == "")
-            {
-                strSql.Append(" 1=1 ");
-            }
-            else
-            {
-                strSql.Append(" " + whereString);
-            }
-            if (orderByString.Trim() == "")
-            {
-                strSql.Append(" order by sys_creatdate desc ");
-            }
-            else
-            {
-                strSql.Append(" order by " + orderByString);
+                strSql.Append(" select * from tbl_ld_jfb t where");
+                if (whereString.Trim() == "")
+                {
+                    strSql.Append(" 1=1 ");
                 }
+                else
+                {
+                    strSql.Append(" " + whereString);
+                }
+                if (orderByString.Trim() == "")
+                {
+                    strSql.Append(" order by sys_creatdate desc ");
+                }
+                else
+                {
+                    strSql.Append(" order by " + orderByString);
+
+                }
+
             }
 
-            strSql.Append(" ) a ");
-            strSql.Append(" ) b ");
 
             if (pageSizeString != "" && pageSizeString != null && pageIndexString != "" && pageIndexString != null)
             {

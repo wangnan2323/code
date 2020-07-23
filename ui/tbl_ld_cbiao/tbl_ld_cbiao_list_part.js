@@ -2530,7 +2530,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
             });
             columnHashMap.put('f_pwf', {
                 field: 'f_pwf',
-                title: "排污费",
+                title: "污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
@@ -3402,7 +3402,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
         //}
         //var orderByString = ' sys_id desc';
         //var columnsString = 'f_khbh,f_sjbh,f_jfbh,f_yhm,f_dz,f_dj,f_cbyslj,f_sflj,f_pwflj,f_shss,f_jmjelj,f_jffs,f_jcfs,f_yyy,f_czsj,f_sfykfp,f_kplb,f_yyt,f_zt,f_ly';
-        //var colunmsName = '客户编号,收据编号,缴费编号,用户名,地址,单价,抄表应收累计,水费累计,排污费累计,算后实收,减免金额,缴费方式,缴存方式,操作人,操作时间,是否已开发票,开票类别,营业厅,状态,来源';
+        //var colunmsName = '客户编号,收据编号,缴费编号,用户名,地址,单价,抄表应收累计,水费累计,污水处理费累计,算后实收,减免金额,缴费方式,缴存方式,操作人,操作时间,是否已开发票,开票类别,营业厅,状态,来源';
         if (_whereClauseString == "")
         {
             var where = " 1=1 and";
@@ -3414,7 +3414,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
             where += " and f_khbh = " + that._pr_khbh;
         }
         var columnsString = 'f_cb_cbbh,f_khbh,f_cbbh,f_yhm,f_jfm,f_dh,f_dz,f_sqzm,f_bqzm,f_sqsl,f_bqsl,f_sf,f_pwf,f_bqje,f_cbyname,f_cbsj,f_ly,f_zt';
-        var colunmsName = '抄表编号,客户编号,抄本编号,用户名,缴费名,电话,地址,上期止码,本期止码,上期水量,本期水量,水费,排污费,本期金额,抄表员,抄表时间,来源,状态';
+        var colunmsName = '抄表编号,客户编号,抄本编号,用户名,缴费名,电话,地址,上期止码,本期止码,上期水量,本期水量,水费,污水处理费,本期金额,抄表员,抄表时间,来源,状态';
         var orderByString = ' sys_id desc';
         var data = {
             whereString: where,

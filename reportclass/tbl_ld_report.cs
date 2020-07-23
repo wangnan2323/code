@@ -144,7 +144,7 @@ namespace sara.dd.ldsw.reportclass
             dr_merge["startrow"] = (count_datasource - 1).ToString();
             dr_merge["startcolumn"] = "8";
             dr_merge["endrow"] = (count_datasource - 1).ToString();
-            dr_merge["endcolumn"] = "10";
+            dr_merge["endcolumn"] = "12";
             dt_merge.Rows.Add(dr_merge);
 
             //客户分组

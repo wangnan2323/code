@@ -618,7 +618,10 @@ namespace sara.dd.ldsw.service
 
                 if (yhm != null && yhm != "")
                 {
-                    model.f_nr = model.f_nr.Replace(model.f_gjzd, yhm);
+                    if (model.f_gjzd != null && model.f_gjzd != "")
+                    {
+                        model.f_nr = model.f_nr.Replace(model.f_gjzd, yhm);
+                    }
 
                     model.f_gjzd = yhm;
 

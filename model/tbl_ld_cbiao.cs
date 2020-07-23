@@ -190,6 +190,13 @@ namespace sara.dd.ldsw.model
 		private string _f_jmbhid;
 		private string _f_sfsfts;
         private string _f_sfjl;
+
+        private string _f_dyjtsl;
+        private string _f_dyjtsf;
+        private string _f_dejtsl;
+        private string _f_dejtsf;
+        private string _f_dsjtsl;
+        private string _f_dsjtsf;
 		/// <summary>
 		/// 主键
 		/// </summary>
@@ -964,7 +971,46 @@ namespace sara.dd.ldsw.model
             get { return _f_sfjl; }
             set { _f_sfjl = value; }
         }
-		#endregion Model
+
+        public string f_dyjtsl
+        {
+            get { return _f_dyjtsl; }
+            set { _f_dyjtsl = value; }
+        }
+
+
+        public string f_dyjtsf
+        {
+            get { return _f_dyjtsf; }
+            set { _f_dyjtsf = value; }
+        }
+
+        public string f_dejtsl
+        {
+            get { return _f_dejtsl; }
+            set { _f_dejtsl = value; }
+        }
+
+
+        public string f_dejtsf
+        {
+            get { return _f_dejtsf; }
+            set { _f_dejtsf = value; }
+        }
+
+        public string f_dsjtsl
+        {
+            get { return _f_dsjtsl; }
+            set { _f_dsjtsl = value; }
+        }
+
+
+        public string f_dsjtsf
+        {
+            get { return _f_dsjtsf; }
+            set { _f_dsjtsf = value; }
+        }
+        #endregion Model
     }
 }
 

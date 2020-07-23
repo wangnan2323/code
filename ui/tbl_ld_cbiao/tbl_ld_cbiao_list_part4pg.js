@@ -1112,7 +1112,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                 },
                 {
                     field: 'f_pwf',
-                    title: '排污费',
+                    title: '污水处理费',
                     "class": 'hidden',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)

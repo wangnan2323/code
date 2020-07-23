@@ -276,7 +276,7 @@ var tbl_ld_kh_query_list_Obj = (function ()
       { "id": "f_yhm", "text": "用户名" },
       { "id": "f_zhcbrq", "text": "最后抄表日期" },
       { "id": "f_ljqf", "text": "累计欠费" },
-      { "id": "f_tjjzpwf", "text": "调价结转排污费" },
+      { "id": "f_tjjzpwf", "text": "调价结转污水处理费" },
       { "id": "f_tjjzsf", "text": "调价结转水费" },
       //{ "id": "f_tssbbhid", "text": "停水水表编号id" },
       { "id": "f_nljgl", "text": "年累计购量" },
@@ -757,7 +757,7 @@ var tbl_ld_kh_query_list_Obj = (function ()
 
             columnHashMap.put('f_tjjzpwf', {
                 field: 'f_tjjzpwf',
-                title: "调价结转排污费",
+                title: "调价结转污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)

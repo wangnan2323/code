@@ -617,7 +617,7 @@ namespace sara.dd.ldsw.service
 
                 //获取本次需要计算的数据：此抄本，此评估的数据
                 StringBuilder sb = new StringBuilder();
-                sb.Append("select f_waterrent(t.f_khbhid,t.f_bqsl,'1') as je,");//79^19  水费^排污费
+                sb.Append("select f_waterrent(t.f_khbhid,t.f_bqsl,'1') as je,");//79^19  水费^污水处理费
                 sb.Append(" t.* from tbl_ld_cbiao t where t.f_cbbhid='" + cbenid + "' and t.f_ztid='1'");
                 if (pgid == "")
                 {
@@ -639,6 +639,7 @@ namespace sara.dd.ldsw.service
 
                     string sf = dt_tbl_ld_cbiao.Rows[i]["je"].ToString().Split('|')[0].Split('^')[0];
                     string pwf = dt_tbl_ld_cbiao.Rows[i]["je"].ToString().Split('|')[0].Split('^')[1];
+                    
 
                     string f_ljqf_old = model_tbl_ld_khb.f_ljqf;
                     if (model_tbl_ld_khb.f_ljqf == null || model_tbl_ld_khb.f_ljqf == "")
@@ -667,7 +668,7 @@ namespace sara.dd.ldsw.service
 
 
                     //此时抄表记录是“抄表”状态，所以肯定在运行库中
-                    //更新抄表表，水费、排污费、状态
+                    //更新抄表表，水费、污水处理费、状态
 
                     sara.dd.ldsw.model.tbl_ld_cbiao model_tbl_ld_cbiao = idal_tbl_ld_cbiao.GetList("sys_id='" + dt_tbl_ld_cbiao.Rows[i]["sys_id"].ToString() + "'", "", "", "*", "", "", t)[0];
                     model_tbl_ld_cbiao.f_zt = "已算费";
@@ -677,6 +678,43 @@ namespace sara.dd.ldsw.service
                     model_tbl_ld_cbiao.f_bqje = Eva.Library.Text.NumberTool.GetNumberByLength(Eva.Library.Text.NumberTool.Parse(sf) + Eva.Library.Text.NumberTool.Parse(pwf),2);
                     int ss = dt_tbl_ld_cbiao.Rows[i]["je"].ToString().IndexOf('|');
                     model_tbl_ld_cbiao.f_sfjl = dt_tbl_ld_cbiao.Rows[i]["je"].ToString().Substring(ss + 1);
+                    #region 阶梯水价分析
+                    model_tbl_ld_cbiao.f_dyjtsl = "0";
+                    model_tbl_ld_cbiao.f_dyjtsf = "0";
+                    model_tbl_ld_cbiao.f_dejtsl = "0";
+                    model_tbl_ld_cbiao.f_dejtsf = "0";
+                    model_tbl_ld_cbiao.f_dsjtsl = "0";
+                    model_tbl_ld_cbiao.f_dsjtsf = "0";
+
+                    string[] jtarr = model_tbl_ld_cbiao.f_sfjl.Split('|');
+
+
+                    for(int ii=0;ii< jtarr.Length; ii++)
+                    {
+                        
+                        if(jtarr[ii].StartsWith("3.95^.95") || jtarr[ii].StartsWith("3.95^0.95"))
+                        {
+                            //属于第一阶梯
+                            model_tbl_ld_cbiao.f_dyjtsl = jtarr[ii].Split('^')[2];
+                            model_tbl_ld_cbiao.f_dyjtsf = Eva.Library.Text.NumberTool.GetNumberByLength(4.9*Eva.Library.Text.NumberTool.Parse(model_tbl_ld_cbiao.f_dyjtsl), 2);
+                        }
+                        else if (jtarr[ii].StartsWith("5.25^.95") || jtarr[ii].StartsWith("5.25^0.95"))
+                        {
+                            //属于第二阶梯
+                            model_tbl_ld_cbiao.f_dejtsl = jtarr[ii].Split('^')[2];
+                            model_tbl_ld_cbiao.f_dejtsf = Eva.Library.Text.NumberTool.GetNumberByLength(6.2 * Eva.Library.Text.NumberTool.Parse(model_tbl_ld_cbiao.f_dejtsl), 2);
+
+                        }
+                        else if (jtarr[ii].StartsWith("7.05^.95") || jtarr[ii].StartsWith("7.05^0.95"))
+                        {
+                            //属于第三阶梯
+                            model_tbl_ld_cbiao.f_dsjtsl = jtarr[ii].Split('^')[2];
+                            model_tbl_ld_cbiao.f_dsjtsf = Eva.Library.Text.NumberTool.GetNumberByLength(8 * Eva.Library.Text.NumberTool.Parse(model_tbl_ld_cbiao.f_dsjtsl), 2);
+
+                        }
+                    }
+                    #endregion
+
                     if (pgid == "")
                     {
                         model_tbl_ld_cbiao.f_pgbhid = pgid_new;
@@ -686,7 +724,7 @@ namespace sara.dd.ldsw.service
                         model_tbl_ld_cbiao.f_pgpcmc = model_tbl_ld_pgb.f_pgpcmc;
                         model_tbl_ld_cbiao.f_pgsj = model_tbl_ld_pgb.f_pgsj;
                     }
-                    idal_tbl_ld_cbiao.Update(model_tbl_ld_cbiao, "f_zt,f_ztid,f_sf,f_pwf,f_pgbhid,f_pgbh,f_pgr,f_pgrid,f_pgpcmc,f_pgsj,f_bqje,f_sfjl", t);
+                    idal_tbl_ld_cbiao.Update(model_tbl_ld_cbiao, "f_zt,f_ztid,f_sf,f_pwf,f_pgbhid,f_pgbh,f_pgr,f_pgrid,f_pgpcmc,f_pgsj,f_bqje,f_sfjl,f_dyjtsl,f_dyjtsf,f_dejtsl,f_dejtsf,f_dsjtsl,f_dsjtsf", t);
 
                 }
 
@@ -737,6 +775,7 @@ namespace sara.dd.ldsw.service
                 }
                 string rows = "";
                 sys_ids = sys_ids.TrimEnd(',');
+                DataTable dt_result = new DataTable();
                 switch (type)
                 {
                     case "1":
@@ -792,6 +831,7 @@ namespace sara.dd.ldsw.service
                         sb.Append("         where t_kh.F_CBBHid = t.sys_id) as qfje ");
                         sb.Append("  from TBL_LD_CBEN t");
                         sb.Append(" where t.sys_id in ('" + sys_ids.Replace(",", "','") + "') ");
+                        dt_result = _iAccessData.Query(sb.ToString()).Tables[0];
                         #endregion
                         break;
                     case "2":
@@ -838,15 +878,63 @@ namespace sara.dd.ldsw.service
                         sb.Append("           and t_cb.f_cbsj >= add_months(sysdate,-t.f_cbzq)");
                         sb.Append("           and t_cb.f_ztid = '3') as yjfs,");
                         sb.Append("       ");
-                        sb.Append("       (select nvl(sum(to_number(t_jf.f_shss)),0)");
-                        sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
-                        sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
-                        sb.Append("           and t_kh.F_CBBHid = t.sys_id");
-                        sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
-                        sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
-                        sb.Append("           and t_cb.f_ztid = '3'");
-                        sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as yjfje,");
-                        sb.Append("       ");
+                        //sb.Append("       (select sum(to_number(nvl(t_jf.f_shss,0)))");
+                        //sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
+                        //sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
+                        //sb.Append("           and t_kh.F_CBBHid = t.sys_id");
+                        //sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
+                        //sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
+                        //sb.Append("           and t_cb.f_ztid = '3'");
+                        //sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as yjfje,");
+                        //sb.Append("       ");
+                        //sb.Append("       (select sum(to_number(nvl(t_jf.f_syycje,0)))");
+                        //sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
+                        //sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
+                        //sb.Append("           and t_kh.F_CBBHid = t.sys_id");
+                        //sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
+                        //sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
+                        //sb.Append("           and t_cb.f_ztid = '3'");
+                        //sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as syye,");
+                        //sb.Append("       ");
+                        //sb.Append("       (select sum(to_number(nvl(t_jf.f_dszycje,0)))");
+                        //sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
+                        //sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
+                        //sb.Append("           and t_kh.F_CBBHid = t.sys_id");
+                        //sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
+                        //sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
+                        //sb.Append("           and t_cb.f_ztid = '3'");
+                        //sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as dszye,");
+                        //sb.Append("       ");
+
+                        //sb.Append("       (select sum(to_number(nvl(t_jf.f_dyjtsf,0)))");
+                        //sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
+                        //sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
+                        //sb.Append("           and t_kh.F_CBBHid = t.sys_id");
+                        //sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
+                        //sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
+                        //sb.Append("           and t_cb.f_ztid = '3'");
+                        //sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as dyjtsf,");
+                        //sb.Append("       ");
+                        //sb.Append("       (select sum(to_number(nvl(t_jf.f_dejtsf,0)))");
+                        //sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
+                        //sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
+                        //sb.Append("           and t_kh.F_CBBHid = t.sys_id");
+                        //sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
+                        //sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
+                        //sb.Append("           and t_cb.f_ztid = '3'");
+                        //sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as dejtsf,");
+                        //sb.Append("       ");
+                        //sb.Append("       (select sum(to_number(nvl(t_jf.f_dsjtsf,0)))");
+                        //sb.Append("          from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf");
+                        //sb.Append("         where t_cb.f_khbhid = t_kh.sys_id");
+                        //sb.Append("           and t_kh.F_CBBHid = t.sys_id");
+                        //sb.Append("           and TRUNC(SYSDATE) <= t_kh.f_zhcbrq");
+                        //sb.Append("           and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq,-t.f_cbzq)");
+                        //sb.Append("           and t_cb.f_ztid = '3'");
+                        //sb.Append("           and t_cb.f_jfbhid = t_jf.sys_id) as dsjtsf,");
+                        //sb.Append("       ");
+
+
                         sb.Append("      (select count(*) ");
                         sb.Append("          from tbl_ld_khb t_kh ");
                         sb.Append("          left join tbl_ld_cbiao t_cb ");
@@ -866,10 +954,58 @@ namespace sara.dd.ldsw.service
                         sb.Append("         where t_kh.F_CBBHid = t.sys_id) as qfje ");
                         sb.Append("  from TBL_LD_CBEN t");
                         sb.Append(" where t.sys_id in ('" + sys_ids.Replace(",", "','") + "') ");
+                        dt_result = _iAccessData.Query(sb.ToString()).Tables[0];
+
+
+                        string sqlstring = "";
+                        //算后实收合计，使用余额合计，预存余额合计，阶梯水价合计
+                        sqlstring += "select t.f_cbbh,";
+                        sqlstring += "       sum(to_number(nvl(t_jf.f_shss, 0))) as yjfje,";
+                        sqlstring += "       sum(to_number(nvl(t_jf.f_syycje, '0'))) as syye,";
+                        sqlstring += "       sum(to_number(nvl(t_jf.f_dszycje, '0'))) as dszye,";
+                        sqlstring += "       sum(to_number(nvl(t_jf.f_dyjtsf, '0'))) as dyjtsf,";
+                        sqlstring += "       sum(to_number(nvl(t_jf.f_dejtsf, '0'))) as dejtsf,";
+                        sqlstring += "       sum(to_number(nvl(t_jf.f_dsjtsf, '0'))) as dsjtsf";
+                        sqlstring += "  from TBL_LD_CBIAO t_cb, tbl_ld_khb t_kh, tbl_ld_jfb t_jf, TBL_LD_CBEN t";
+                        sqlstring += " where t_cb.f_khbhid = t_kh.sys_id";
+                        sqlstring += "   and t_kh.F_CBBHid = t.sys_id";
+                        sqlstring += "   and TRUNC(SYSDATE) <= t_kh.f_zhcbrq";
+                        sqlstring += "   and t_jf.f_jfrq >= add_months(t_kh.f_zhcbrq, -t.f_cbzq)";
+                        sqlstring += "   and t_cb.f_ztid = '3'";
+                        sqlstring += "   and t_cb.f_jfbhid = t_jf.sys_id";
+                        sqlstring += "   and t.sys_id in ('" + sys_ids.Replace(",", "','") + "')";
+                        sqlstring += " group by t.f_cbbh";
+
+                        DataTable hjdt = _iAccessData.Query(sqlstring).Tables[0];
+                        dt_result.Columns.Add("YJFJE", typeof(string));
+                        dt_result.Columns.Add("SYYE", typeof(string));
+                        dt_result.Columns.Add("DSZYE", typeof(string));
+                        dt_result.Columns.Add("DYJTSF", typeof(string));
+                        dt_result.Columns.Add("DEJTSF", typeof(string));
+                        dt_result.Columns.Add("DSJTSF", typeof(string));
+
+                        for (int i = 0; i < dt_result.Rows.Count; i++)
+                        {
+                            for(int ii=0;ii< hjdt.Rows.Count; ii++)
+                            {
+                                if (dt_result.Rows[i]["F_CBBH"].ToString() == hjdt.Rows[ii]["F_CBBH"].ToString())
+                                {
+                                    dt_result.Rows[i]["YJFJE"] = hjdt.Rows[ii]["YJFJE"].ToString();
+                                    dt_result.Rows[i]["SYYE"] = hjdt.Rows[ii]["SYYE"].ToString();
+                                    dt_result.Rows[i]["DSZYE"] = hjdt.Rows[ii]["DSZYE"].ToString();
+                                    dt_result.Rows[i]["DYJTSF"] = hjdt.Rows[ii]["DYJTSF"].ToString();
+                                    dt_result.Rows[i]["DEJTSF"] = hjdt.Rows[ii]["DEJTSF"].ToString();
+                                    dt_result.Rows[i]["DSJTSF"] = hjdt.Rows[ii]["DSJTSF"].ToString();
+                                }
+                            }
+                        }
+
+
+
                         #endregion
                         break;
                 }
-                DataTable dt_result = _iAccessData.Query(sb.ToString()).Tables[0];
+                 
                 rows = Eva.Library.Format.FormatEntityTool.FormatDataTableToJson(dt_result);
 
 

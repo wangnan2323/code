@@ -1763,7 +1763,7 @@ var tbl_codefactory_list_Obj = ( function ()
                 doAjaxFunction( _serviceUrl, 'GetList', data, {
                     success: function ( message )
                     {
-                        debugger;
+                        ;
                         var messageJson = ( new Function( "", "return " + message ) )();
 
                         $( '#table_grid_tbl_codefactory_list' ).bootstrapTable( "loadJson", messageJson );
@@ -2088,7 +2088,7 @@ var tbl_codefactory_list_Obj = ( function ()
 
 $( document ).ready( function ()
 {
-    debugger;
+    ;
     tbl_codefactory_list_Obj.init();
 } );
 //=====================================

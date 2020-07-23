@@ -89,29 +89,29 @@ namespace sara.dd.ldsw.service
                                     #region 更新客户日志
                                     List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
                                     #region 对比各个业务子段，将不同的写入array
-                                    if (model.f_yhye != model_khb.f_ycje)
+                                    if (model.f_yhye != model.f_khyye)
                                     {
                                         IDictionary<string, string> temp = new Dictionary<string, string>();
                                         temp.Add("key", "f_ycje");
-                                        temp.Add("oldvalue", model_khb.f_ycje);
+                                        temp.Add("oldvalue", model.f_khyye);
                                         temp.Add("newvalue", model.f_yhye);
                                         temp.Add("name", "绿化表押金");
                                         array.Add(temp);
                                     }
-                                    if (model.f_syhtjjzpwf != model_khb.f_tjjzpwf)
+                                    if (model.f_syhtjjzpwf != model.f_khytjjzpwf)
                                     {
                                         IDictionary<string, string> temp = new Dictionary<string, string>();
                                         temp.Add("key", "f_tjjzpwf");
-                                        temp.Add("oldvalue", model_khb.f_tjjzpwf);
+                                        temp.Add("oldvalue", model.f_khytjjzpwf);
                                         temp.Add("newvalue", model.f_syhtjjzpwf);
-                                        temp.Add("name", "调价结转排污费");
+                                        temp.Add("name", "调价结转污水处理费");
                                         array.Add(temp);
                                     }
-                                    if (model.f_syhtjjzsf != model_khb.f_tjjzsf)
+                                    if (model.f_syhtjjzsf != model.f_khytjjzsf)
                                     {
                                         IDictionary<string, string> temp = new Dictionary<string, string>();
                                         temp.Add("key", "f_tjjzsf");
-                                        temp.Add("oldvalue", model_khb.f_tjjzsf);
+                                        temp.Add("oldvalue", model.f_khytjjzsf);
                                         temp.Add("newvalue", model.f_syhtjjzsf);
                                         temp.Add("name", "调价结转水费");
                                         array.Add(temp);
@@ -366,29 +366,29 @@ namespace sara.dd.ldsw.service
                                     #region 写入客户表日志
                                     List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
                                     #region 对比各个业务子段，将不同的写入array
-                                    if (model.f_yhye != model_khb.f_ycje)
+                                    if (model.f_yhye != model.f_khyye)
                                     {
                                         IDictionary<string, string> temp = new Dictionary<string, string>();
                                         temp.Add("key", "f_ycje");
-                                        temp.Add("oldvalue", model_khb.f_ycje);
+                                        temp.Add("oldvalue", model.f_khyye);
                                         temp.Add("newvalue", model.f_yhye);
                                         temp.Add("name", "绿化表押金");
                                         array.Add(temp);
                                     }
-                                    if (model.f_syhtjjzpwf != model_khb.f_tjjzpwf)
+                                    if (model.f_syhtjjzpwf != model.f_khytjjzpwf)
                                     {
                                         IDictionary<string, string> temp = new Dictionary<string, string>();
                                         temp.Add("key", "f_tjjzpwf");
-                                        temp.Add("oldvalue", model_khb.f_tjjzpwf);
+                                        temp.Add("oldvalue", model.f_khytjjzpwf);
                                         temp.Add("newvalue", model.f_syhtjjzpwf);
-                                        temp.Add("name", "调价结转排污费");
+                                        temp.Add("name", "调价结转污水处理费");
                                         array.Add(temp);
                                     }
-                                    if (model.f_syhtjjzsf != model_khb.f_tjjzsf)
+                                    if (model.f_syhtjjzsf != model.f_khytjjzsf)
                                     {
                                         IDictionary<string, string> temp = new Dictionary<string, string>();
                                         temp.Add("key", "f_tjjzsf");
-                                        temp.Add("oldvalue", model_khb.f_tjjzsf);
+                                        temp.Add("oldvalue", model.f_khytjjzsf);
                                         temp.Add("newvalue", model.f_syhtjjzsf);
                                         temp.Add("name", "调价结转水费");
                                         array.Add(temp);

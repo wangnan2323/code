@@ -918,7 +918,7 @@ namespace sara.dd.ldsw.service
                         khlist = new List<ldsw.model.tbl_ld_khb>();
                     }
 
-                    string updatesql = "update TBL_LD_KHB set F_VALUE5='' where F_VALUE5='1'";
+                    string updatesql = "update TBL_LD_KHB set F_VALUE5='' where F_VALUE5 is not null and F_VALUE5='1'";
                     t.ExecuteSql(updatesql);
 
                     sara.dd.ldsw.commonclass.FileOperation.writeFile(Eva.Library.Global.AppRootPath + "ychk" + model.sys_id + ".txt", maxtime.ToString() + "/" + maxtime.ToString());

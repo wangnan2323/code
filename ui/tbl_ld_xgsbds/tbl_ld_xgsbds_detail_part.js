@@ -620,7 +620,7 @@ var tbl_ld_xgsbds_detail_Obj = (function ()
       */
     getData = function (callbackFunction)
     {
-        debugger;
+        ;
         //var whereClause = ' sys_id = \'' + that._pr_sys_id + '\'';
         var whereClause = ' fk_tbl_maintable_sys_id = \'' + that._pr_fk_tbl_maintable_sys_id + '\'';
         var orderByString = '';
@@ -1261,7 +1261,7 @@ var tbl_ld_xgsbds_detail_Obj = (function ()
         {
             try
             {
-                debugger;
+                ;
                 _ladda_btn_command_analysis.start();
 
                 getModel({

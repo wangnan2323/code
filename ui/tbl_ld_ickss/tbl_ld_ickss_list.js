@@ -326,16 +326,16 @@ var tbl_ld_ickss_list_Obj = (function ()
                 { "id": "f_khfz", "text": " 客户分组" },
                 { "id": "f_cbbh", "text": "抄本编号" },
                 { "id": "f_dj", "text": " 单价" },
-                { "id": "f_pwf", "text": "排污费" },
+                { "id": "f_pwf", "text": "污水处理费" },
                 { "id": "f_ysje", "text": "应收金额" },
                 { "id": "f_jmhysje", "text": "减免后应收金额" },
                 { "id": "f_khytjjzsf", "text": "客户原调价结转水费" },
-                { "id": "f_khytjjzpwf", "text": "客户原调价结转排污费" },
+                { "id": "f_khytjjzpwf", "text": "客户原调价结转污水处理费" },
                 { "id": "f_sfsytjjz", "text": "是否使用调价结转" },
                 { "id": "f_sytjjzsf", "text": "使用调价结转水费" },
-                { "id": "f_sytjjzpwf", "text": "使用调价结转排污费" },
+                { "id": "f_sytjjzpwf", "text": "使用调价结转污水处理费" },
                 { "id": "f_syhtjjzsf", "text": "使用后调价结转水费" },
-                { "id": "f_syhtjjzpwf", "text": "使用后调价结转排污费" },
+                { "id": "f_syhtjjzpwf", "text": "使用后调价结转污水处理费" },
                 { "id": "f_khyye", "text": "客户原余额" },
                 { "id": "f_sfsyye", "text": "是否使用余额" },
                 { "id": "f_syye", "text": "使用余额" },
@@ -2635,7 +2635,7 @@ var tbl_ld_ickss_list_Obj = (function ()
             });
             columnHashMap.put('f_pwf', {
                 field: 'f_pwf',
-                title: "排污费",
+                title: "污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
@@ -2679,7 +2679,7 @@ var tbl_ld_ickss_list_Obj = (function ()
             });
             columnHashMap.put('f_khytjjzpwf', {
                 field: 'f_khytjjzpwf',
-                title: "客户原调价结转排污费",
+                title: "客户原调价结转污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
@@ -2720,7 +2720,7 @@ var tbl_ld_ickss_list_Obj = (function ()
             });
             columnHashMap.put('f_sytjjzpwf', {
                 field: 'f_sytjjzpwf',
-                title: "使用调价结转排污费",
+                title: "使用调价结转污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
@@ -2742,7 +2742,7 @@ var tbl_ld_ickss_list_Obj = (function ()
             });
             columnHashMap.put('f_syhtjjzpwf', {
                 field: 'f_syhtjjzpwf',
-                title: "使用后调价结转排污费",
+                title: "使用后调价结转污水处理费",
                 "class": '',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
@@ -3453,7 +3453,7 @@ var tbl_ld_ickss_list_Obj = (function ()
                         var messageJson = (new Function("", "return " + result))();
                         $("#sumsllj").html("<strong>本期水量合计:</strong>" + messageJson.f_sllj);
                         $("#sumsflj").html("<strong>水费合计:</strong>" + messageJson.f_sflj);
-                        $("#sumpwflj").html("<strong>排污费合计:</strong>" + messageJson.f_pwflj);
+                        $("#sumpwflj").html("<strong>污水处理费合计:</strong>" + messageJson.f_pwflj);
                         $("#sumshss").html("<strong>算后实收合计:</strong>" + messageJson.f_shss);
                     },
                     fail: function (message)

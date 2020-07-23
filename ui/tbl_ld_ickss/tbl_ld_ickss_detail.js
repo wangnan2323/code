@@ -2052,7 +2052,7 @@ var tbl_ld_ickss_detail_Obj = (function ()
         {
             if (type == "tg")
             {
-
+                debugger
                 var d = new Date();
 
                 tbl_ld_ickss_detail.f_sf = "-" + tbl_ld_ickss_detail.f_sf;
@@ -2147,8 +2147,14 @@ var tbl_ld_ickss_detail_Obj = (function ()
                 tbl_ld_ickss_detail.sys_creatusername = basePageObj._userInfoJson.sys_username;
                 tbl_ld_ickss_detail.sys_creatuserid = basePageObj._userInfoJson.sys_userid;
 
-                var sfjl = tbl_ld_ickss_detail.f_sfjl.split("^");
-                tbl_ld_ickss_detail.f_sfjl = sfjl[0] + "^" + sfjl[1] + "^-" + sfjl[2];
+                var sfjl = tbl_ld_ickss_detail.f_sfjl.split("|");
+                var ressfjl = "";
+                for (var i = 0; i < sfjl.length; i++)
+                {
+                    var jlmx = sfjl[i].split("^");
+                    ressfjl += jlmx[0] + "^" + jlmx[1] + "^-" + jlmx[2]+"|";
+                }
+                tbl_ld_ickss_detail.f_sfjl = ressfjl.trimEnd("|");
 
                 var data = {
                     json: JSON.stringify(tbl_ld_ickss_detail),
@@ -2737,7 +2743,7 @@ var tbl_ld_ickss_detail_Obj = (function ()
 
                                         controlObj.text('detail_f_khytjjzsf_tbl_ld_ickss_detail', khobj.f_tjjzsf);//客户原调价结转水费
 
-                                        controlObj.text('detail_f_khytjjzpwf_tbl_ld_ickss_detail', khobj.f_tjjzpwf);//客户原调价结转排污费
+                                        controlObj.text('detail_f_khytjjzpwf_tbl_ld_ickss_detail', khobj.f_tjjzpwf);//客户原调价结转污水处理费
 
                                         controlObj.text('detail_f_khyye_tbl_ld_ickss_detail', khobj.f_ycje);//绿化表押金
                                         //IC卡新建购水状态
@@ -3246,11 +3252,11 @@ var tbl_ld_ickss_detail_Obj = (function ()
                         controlObj.text('detail_f_sfjl_tbl_ld_ickss_detail ', messageJson.sf[0].sf.substring(aa));
                         var sfquery = messageJson.sf[0].sf.split('|')[0];
                         var sf = sfquery.split("^")[0];//水费
-                        var pwf = sfquery.split("^")[1];//排污费
+                        var pwf = sfquery.split("^")[1];//污水处理费
                         var ysje = (parseFloat(sf) + parseFloat(pwf)).toFixed(2);//应收金额
                         var dj = (parseFloat(ysje) / parseFloat(sl)).toFixed(2);//单价
                         controlObj.text('detail_f_sf_tbl_ld_ickss_detail', parseFloat(sf).toFixed(2));  //水费
-                        controlObj.text('detail_f_pwf_tbl_ld_ickss_detail', parseFloat(pwf).toFixed(2));  //排污费
+                        controlObj.text('detail_f_pwf_tbl_ld_ickss_detail', parseFloat(pwf).toFixed(2));  //污水处理费
                         controlObj.text('detail_f_ysje_tbl_ld_ickss_detail', ysje);  //应收金额
                         controlObj.text('detail_f_dj_tbl_ld_ickss_detail', dj);  //单价
                         controlObj.text('detail_f_shys_tbl_ld_ickss_detail', ysje);  //算后应收
@@ -3259,10 +3265,10 @@ var tbl_ld_ickss_detail_Obj = (function ()
 
                         //1.判断是否可以调价
                         var tjsf = controlObj.text('detail_f_khytjjzsf_tbl_ld_ickss_detail'); //客户原调价水费
-                        var tjpwf = controlObj.text('detail_f_khytjjzpwf_tbl_ld_ickss_detail'); //客户原调价排污费
+                        var tjpwf = controlObj.text('detail_f_khytjjzpwf_tbl_ld_ickss_detail'); //客户原调价污水处理费
                         var jmjelj = controlObj.text('detail_f_jmjelj_tbl_ld_jfb_detail'); //减免金额累计
                         var sytjsf = 0;//使用调价水费
-                        var sytjpwf = 0; //使用调价排污费
+                        var sytjpwf = 0; //使用调价污水处理费
                         if (tjsf != null && tjsf !== "" && parseFloat(tjsf) > 0 && (jmjelj == null || jmjelj == "" || parseFloat(jmjelj) == 0))
                         {
                             //1.1存在调价水费
@@ -3292,14 +3298,14 @@ var tbl_ld_ickss_detail_Obj = (function ()
                         }
                         if (tjpwf != null && tjpwf !== "" && parseFloat(tjpwf) > 0 && (jmjelj == null || jmjelj == "" || parseFloat(jmjelj) == 0))
                         {
-                            //1.2存在调价排污费
+                            //1.2存在调价污水处理费
                             controlObj.toggle('detail_f_sfsytjjz_tbl_ld_ickss_detail', 'true');
                             if (parseFloat(tjpwf) > parseFloat(pwf))
                             {
-                                //1.2.1调价排污费比排污费费多使用排污费费
+                                //1.2.1调价污水处理费比污水处理费费多使用污水处理费费
                                 sytjpwf = parseFloat(pwf).toFixed(2);
-                                controlObj.text('detail_f_sytjjzpwf_tbl_ld_ickss_detail', sytjpwf);//使用调价排污费
-                                controlObj.text('detail_f_syhtjjzpwf_tbl_ld_ickss_detail', (parseFloat(tjpwf) - parseFloat(sytjpwf)).toFixed(2));//使用后调价结转排污费
+                                controlObj.text('detail_f_sytjjzpwf_tbl_ld_ickss_detail', sytjpwf);//使用调价污水处理费
+                                controlObj.text('detail_f_syhtjjzpwf_tbl_ld_ickss_detail', (parseFloat(tjpwf) - parseFloat(sytjpwf)).toFixed(2));//使用后调价结转污水处理费
                                 var shys = controlObj.text('detail_f_shys_tbl_ld_ickss_detail'); //算后应收
                                 controlObj.text('detail_f_shys_tbl_ld_ickss_detail', (parseFloat(shys) - parseFloat(sytjpwf)).toFixed(2)); //算后应收更新
                                 controlObj.text('detail_f_shss_tbl_ld_ickss_detail', (parseFloat(shys) - parseFloat(sytjpwf)).toFixed(2)); //算后实收更新
@@ -3750,7 +3756,7 @@ var tbl_ld_ickss_detail_Obj = (function ()
             var yhlb = controlObj.text('detail_f_yslx_tbl_ld_ickss_detail');//用户类别
             var sf = controlObj.text('detail_f_sf_tbl_ld_ickss_detail');//水费/吨
             var lsh = controlObj.text('detail_f_jfdh_tbl_ld_ickss_detail');//流水号
-            var pwf = controlObj.text('detail_f_pwf_tbl_ld_ickss_detail');//排污费/吨
+            var pwf = controlObj.text('detail_f_pwf_tbl_ld_ickss_detail');//污水处理费/吨
             var sfdj = (parseFloat(sf) / parseFloat(bcgsds)).toFixed(2);
             var pwfdj = (parseFloat(pwf) / parseFloat(bcgsds)).toFixed(2);
             var dx = controlObj.text('detail_f_shssdx_tbl_ld_ickss_detail');//大写
@@ -3831,10 +3837,10 @@ var tbl_ld_ickss_detail_Obj = (function ()
             html += '<td colspan="3"  style="text-align:left;padding-left:10px;width:720px;height:70px; " >';
             html += '<table  style="width:520px;height:70px;border:0px #000000 solid;margin-right:200px" cellpadding="0" cellspacing="0" >';
             html += '<tr>';
-            html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:130px;height:40px;">水费/排污费单价<br/>（元/吨）</td>';
+            html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:130px;height:40px;">水费/污水处理费单价<br/>（元/吨）</td>';
             html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:40px;">本次购水量<br/>（吨）</td>';
             html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:40px;">水费合计<br/>（元）</td>';
-            html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:40px;">排污费合计<br/>（元）</td>';
+            html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:100px;height:40px;">污水处理费合计<br/>（元）</td>';
             html += '<td style="text-align:center;font-size:{fontsize}px;font-weight:bold;width:90px;height:40px;">金额<br/>（元）</td>';
             html += '</tr>';
             html += '<tr>';
@@ -3853,7 +3859,7 @@ var tbl_ld_ickss_detail_Obj = (function ()
             //html += '<tr>';
             //html += '<td style="text-align:left;font-size:16px;font-weight:bold;width:160px;height:32px;">本次购水吨数：</td>';
             //html += '<td style="text-align:left;font-size:16px;font-weight:bold;width:100px;height:32px;">' + bcgsds + '</td>';
-            //html += '<td style="text-align:left;font-size:16px;font-weight:bold;width:160px;height:32px;">排污费合计（元）：</td>';
+            //html += '<td style="text-align:left;font-size:16px;font-weight:bold;width:160px;height:32px;">污水处理费合计（元）：</td>';
             //html += '<td style="text-align:left;font-size:16px;font-weight:bold;width:100px;height:32px;">'+pwf+'</td>';
             //html += '</tr>';
 
@@ -4298,7 +4304,7 @@ var tbl_ld_ickss_detail_Obj = (function ()
                     {
                         var shys = controlObj.text('detail_f_shys_tbl_ld_ickss_detail');//算后应收
                         var sytjjzsf = controlObj.text('detail_f_sytjjzsf_tbl_ld_ickss_detail');//使用调价结转水费
-                        var sytjjzpwf = controlObj.text('detail_f_sytjjzpwf_tbl_ld_ickss_detail');//使用调价结转排污费
+                        var sytjjzpwf = controlObj.text('detail_f_sytjjzpwf_tbl_ld_ickss_detail');//使用调价结转污水处理费
                         var syycje = controlObj.text('detail_f_syye_tbl_ld_ickss_detail');//使用绿化表押金
                         //信息匹配，确认退购信息
                         var confirmContent = '<blockquote> ';
@@ -4311,7 +4317,7 @@ var tbl_ld_ickss_detail_Obj = (function ()
                         }
                         if (sytjjzpwf != null && sytjjzpwf != "" && parseFloat(sytjjzpwf) > 0)
                         {
-                            confirmContent += '<h5>退购后的客户的调价结转排污费' + sytjjzpwf + '元将归还至客户账户</h5>';
+                            confirmContent += '<h5>退购后的客户的调价结转污水处理费' + sytjjzpwf + '元将归还至客户账户</h5>';
                         }
                         if (syycje != null && syycje != "" && parseFloat(syycje) > 0)
                         {

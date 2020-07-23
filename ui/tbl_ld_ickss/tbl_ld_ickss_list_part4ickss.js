@@ -787,7 +787,7 @@ var tbl_ld_ickss_list_part4ickss_Obj = (function ()
 
                                                 {
                                                     field: 'f_pwf',
-                                                    title: '排污费',
+                                                    title: '污水处理费',
                                                     "class": '',
                                                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                                                     formatter: function (value, row, index)
@@ -986,7 +986,7 @@ var tbl_ld_ickss_list_part4ickss_Obj = (function ()
                                 },
                                 {
                                     field: 'f_khytjjzpwf',
-                                    title: '客户原调价结转排污费',
+                                    title: '客户原调价结转污水处理费',
                                     "class": 'hidden',
                                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                                     formatter: function (value, row, index)
@@ -1022,7 +1022,7 @@ var tbl_ld_ickss_list_part4ickss_Obj = (function ()
                                 },
                                 {
                                     field: 'f_sytjjzpwf',
-                                    title: '使用调价结转排污费',
+                                    title: '使用调价结转污水处理费',
                                     "class": 'hidden',
                                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                                     formatter: function (value, row, index)
@@ -1046,7 +1046,7 @@ var tbl_ld_ickss_list_part4ickss_Obj = (function ()
                                 },
                                 {
                                     field: 'f_syhtjjzpwf',
-                                    title: '使用后调价结转排污费',
+                                    title: '使用后调价结转污水处理费',
                                     "class": 'hidden',
                                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                                     formatter: function (value, row, index)

@@ -205,11 +205,28 @@ namespace sara.dd.ldsw.model
         private string _f_ly;
         private string _f_lyid;
         private string _f_sfjl;
-                
-		/// <summary>
-		/// 主键
-		/// </summary>
-		public int sys_id
+        private string _f_dyjtsl;
+        private string _f_dyjtsf;
+        private string _f_dejtsl;
+        private string _f_dejtsf;
+        private string _f_dsjtsl;
+        private string _f_dsjtsf;
+        private string _f_khyycje;
+        private string _f_sfsyycje;
+        private string _f_syycje;
+        private string _f_yhycje;
+        private string _f_dszycje;
+        private string _f_yqjmsfbfb;
+        private string _f_yqjmpwfbfb;
+        private string _f_yqjmsfje;
+        private string _f_yqjmpwfje;
+        private string _f_yqjmsf;
+        private string _f_yqjmpwf;
+
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public int sys_id
 		{
 			get{return _sys_id;}
 			set{ _sys_id=value;}
@@ -885,7 +902,7 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 排污费累计
+		/// 污水处理费累计
 		/// </summary>
 		public string f_pwflj
 		{
@@ -920,7 +937,7 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 客户原调价结转排污费
+		/// 客户原调价结转污水处理费
 		/// </summary>
 		public string f_khytjjzpwf
 		{
@@ -1082,7 +1099,7 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 使用调价结转排污费
+		/// 使用调价结转污水处理费
 		/// </summary>
 		public string f_sytjjzpwf
 		{
@@ -1100,7 +1117,7 @@ namespace sara.dd.ldsw.model
 		}
                 
 		/// <summary>
-		/// 调价结转调价排污费
+		/// 调价结转调价污水处理费
 		/// </summary>
 		public string f_syhtjjzpwf
 		{
@@ -1122,6 +1139,142 @@ namespace sara.dd.ldsw.model
         {
             get { return _f_sfjl; }
             set { _f_sfjl = value; }
+        }
+        /// <summary>
+        /// 第一阶梯水量
+        /// </summary>
+        public string f_dyjtsl
+        {
+            get { return _f_dyjtsl; }
+            set { _f_dyjtsl = value; }
+        }
+        /// <summary>
+        /// 第一阶梯水费
+        /// </summary>
+        public string f_dyjtsf
+        {
+            get { return _f_dyjtsf; }
+            set { _f_dyjtsf = value; }
+        }
+        /// <summary>
+        /// 第二阶梯水量
+        /// </summary>
+        public string f_dejtsl
+        {
+            get { return _f_dejtsl; }
+            set { _f_dejtsl = value; }
+        }
+        /// <summary>
+        /// 第二阶梯水费
+        /// </summary>
+        public string f_dejtsf
+        {
+            get { return _f_dejtsf; }
+            set { _f_dejtsf = value; }
+        }
+        /// <summary>
+        /// 第三阶梯水量
+        /// </summary>
+        public string f_dsjtsl
+        {
+            get { return _f_dsjtsl; }
+            set { _f_dsjtsl = value; }
+        }
+        /// <summary>
+        /// 第三阶梯水费
+        /// </summary>
+        public string f_dsjtsf
+        {
+            get { return _f_dsjtsf; }
+            set { _f_dsjtsf = value; }
+        }
+        /// <summary>
+        /// 客户原余额
+        /// </summary>
+       public string f_khyycje
+        {
+            get { return _f_khyycje; }
+            set { _f_khyycje = value; }
+        }       
+        /// <summary>
+        /// 是否使用余额
+        /// </summary>
+        public string f_sfsyycje
+        {
+            get { return _f_sfsyycje; }
+            set { _f_sfsyycje = value; }
+        }
+        /// <summary>
+        /// 使用余额
+        /// </summary>
+        public string f_syycje
+        {
+            get { return _f_syycje; }
+            set { _f_syycje = value; }
+        }
+        /// <summary>
+        ///用后余额
+        /// </summary>
+        public string f_yhycje
+        {
+            get { return _f_yhycje; }
+            set { _f_yhycje = value; }
+        }
+        /// <summary>
+        /// 多收转预存金额
+        /// </summary>
+        public string f_dszycje
+        {
+            get { return _f_dszycje; }
+            set { _f_dszycje = value; }
+        }
+        /// <summary>
+        /// 疫情减免水费百分比
+        /// </summary>
+        public string f_yqjmsfbfb
+        {
+            get { return _f_yqjmsfbfb; }
+            set { _f_yqjmsfbfb = value; }
+        }
+        /// <summary>
+        /// 疫情减免污水处理费百分比
+        /// </summary>
+        public string f_yqjmpwfbfb
+        {
+            get { return _f_yqjmpwfbfb; }
+            set { _f_yqjmpwfbfb = value; }
+        }
+        /// <summary>
+        /// 疫情减免水费金额
+        /// </summary>
+        public string f_yqjmsfje
+        {
+            get { return _f_yqjmsfje; }
+            set { _f_yqjmsfje = value; }
+        }
+        /// <summary>
+        /// 疫情减免污水处理费金额
+        /// </summary>
+        public string f_yqjmpwfje
+        {
+            get { return _f_yqjmpwfje; }
+            set { _f_yqjmpwfje = value; }
+        }
+        /// <summary>
+        /// 疫情减免水费
+        /// </summary>
+        public string f_yqjmsf
+        {
+            get { return _f_yqjmsf; }
+            set { _f_yqjmsf = value; }
+        }
+        /// <summary>
+        /// 疫情减免污水处理费
+        /// </summary>
+        public string f_yqjmpwf
+        {
+            get { return _f_yqjmpwf; }
+            set { _f_yqjmpwf = value; }
         }
         #endregion Model
     }

@@ -227,7 +227,7 @@ var tbl_ld_yslpm_list_Obj = (function ()
 
                 {
                     field: 'yspwf',
-                    title: '应收排污费',
+                    title: '应收污水处理费',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)

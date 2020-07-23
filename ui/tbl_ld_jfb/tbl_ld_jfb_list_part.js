@@ -308,7 +308,7 @@ var tbl_ld_jfb_list_Obj = (function ()
             columnHashMap.put('f_pwflj',
                 {
                     field: 'f_pwflj',
-                    title: '排污费累计',
+                    title: '污水处理费累计',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -334,7 +334,7 @@ var tbl_ld_jfb_list_Obj = (function ()
             columnHashMap.put('f_sytjjzpwf',
                 {
                     field: 'f_sytjjzpwf',
-                    title: '使用调价结转排污费',
+                    title: '使用调价结转污水处理费',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -359,6 +359,149 @@ var tbl_ld_jfb_list_Obj = (function ()
                 }
 
                );
+            columnHashMap.put('f_dyjtsl',
+                {
+                    field: 'f_dyjtsl',
+                    title: '第一阶梯水量',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                }
+               );
+            columnHashMap.put('f_dyjtsf',
+                {
+                    field: 'f_dyjtsf',
+                    title: '第一阶梯水费',
+                    "class": 'hidden',
+                    align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                    formatter: function (value, row, index)
+                    {
+                        var resultStr = value;
+                        return resultStr;
+                    }
+                }
+               );
+            columnHashMap.put('f_dejtsl',
+               {
+                   field: 'f_dejtsl',
+                   title: '第二阶梯水量',
+                   "class": 'hidden',
+                   align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                   formatter: function (value, row, index)
+                   {
+                       var resultStr = value;
+                       return resultStr;
+                   }
+               }
+              );
+            columnHashMap.put('f_dejtsf',
+               {
+                   field: 'f_dejtsf',
+                   title: '第二阶梯水费',
+                   "class": 'hidden',
+                   align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                   formatter: function (value, row, index)
+                   {
+                       var resultStr = value;
+                       return resultStr;
+                   }
+               }
+              );
+            columnHashMap.put('f_dsjtsl',
+              {
+                  field: 'f_dsjtsl',
+                  title: '第三阶梯水量',
+                  "class": 'hidden',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
+            columnHashMap.put('f_dsjtsf',
+              {
+                  field: 'f_dsjtsf',
+                  title: '第三阶梯水费',
+                  "class": 'hidden',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
+            columnHashMap.put('f_khyycje',
+              {
+                  field: 'f_khyycje',
+                  title: '客户原余额',
+                  "class": 'hidden',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
+            columnHashMap.put('f_sfsyycje',
+              {
+                  field: 'f_sfsyycje',
+                  title: '是否使用余额',
+                  "class": 'hidden',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
+            columnHashMap.put('f_syycje',
+              {
+                  field: 'f_syycje',
+                  title: '使用余额',
+                  "class": '',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
+            columnHashMap.put('f_yhycje',
+              {
+                  field: 'f_yhycje',
+                  title: '用后余额',
+                  "class": 'hidden',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
+            columnHashMap.put('f_dszycje',
+              {
+                  field: 'f_dszycje',
+                  title: '多收转预存金额',
+                  "class": 'hidden',
+                  align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                  formatter: function (value, row, index)
+                  {
+                      var resultStr = value;
+                      return resultStr;
+                  }
+              }
+             );
             columnHashMap.put('f_shss',
 
                 {
@@ -1175,7 +1318,7 @@ var tbl_ld_jfb_list_Obj = (function ()
 
                 {
                     field: 'f_khytjjzpwf',
-                    title: '客户原调价结转排污费',
+                    title: '客户原调价结转污水处理费',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -1387,7 +1530,7 @@ var tbl_ld_jfb_list_Obj = (function ()
 
                 {
                     field: 'f_syhtjjzpwf',
-                    title: '调价结转调价排污费',
+                    title: '调价结转调价污水处理费',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -1497,6 +1640,49 @@ var tbl_ld_jfb_list_Obj = (function ()
                 columnObj["class"] = '';
                 columnsarray.push(columnObj);
 
+                var columnObj = columnHashMap.get('f_dyjtsl');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_dyjtsf');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_dejtsl');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_dejtsf');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_dsjtsl');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_dsjtsf');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_khyycje');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_sfsyycje');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_syycje');
+                columnObj["class"] = '';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_yhycje');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
+
+                var columnObj = columnHashMap.get('f_dszycje');
+                columnObj["class"] = 'hidden';
+                columnsarray.push(columnObj);
                 var columnObj = columnHashMap.get('f_shss');
                 columnObj["class"] = '';
                 columnsarray.push(columnObj);
@@ -3544,8 +3730,6 @@ var tbl_ld_jfb_list_Obj = (function ()
                                 {
                                     whereClause += "(";
 
-
-
                                     whereClause += " f_jfbh like '%" + vv[i] + "%' or ";
 
                                     whereClause += " f_sjbh like '%" + vv[i] + "%' or ";
@@ -4369,7 +4553,7 @@ var tbl_ld_jfb_list_Obj = (function ()
                 var whereClause = _whereClauseString;
                 whereClause = "f_khbh = '" + that._pr_khbhs + "'";
                 var orderByString = ' sys_id desc';
-                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_yyy^f_yyyid^f_czsj^f_sfykfp^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_yyt^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_yytid^f_jmjelj^f_ly^f_lyid^f_sfjl^sys_id';
+                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_jfbh^f_sjbh^f_jfrq^f_jffs^f_jffsid^f_jcfs^f_jcfsid^f_yyy^f_yyyid^f_czsj^f_sfykfp^f_zt^f_ztid^f_bz^f_khbh^f_khbhid^f_yhbh^f_yhbhid^f_yhm^f_jfm^f_dz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_sbbh^f_sbbhid^f_lxtkhh^f_sblx^f_sblxid^f_rs^f_cbbh^f_cbbhid^f_znjbh^f_znjbhid^f_znjje^f_fjbh^f_fjbhid^f_fjje^f_yyt^f_dj^f_cbyslj^f_sllj^f_sflj^f_pwflj^f_jmhyslj^f_khytjjzsf^f_khytjjzpwf^f_sfsytjjz^f_khyye^f_sfsyye^f_syye^f_yhye^f_shys^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf^f_khyycje^f_sfsyycje^f_syycje^f_yhycje^f_dszycje^f_shss^f_hszl^f_shssdx^f_khfz^f_khfzid^f_cbenbh^f_cbenbhid^f_ljqf^f_kplb^f_kplbid^f_sytjjzsf^f_sytjjzpwf^f_syhtjjzsf^f_yytid^f_jmjelj^f_ly^f_lyid^f_sfjl^sys_id';
                 var data = {
                     whereString: whereClause,
                     orderByString: orderByString,
@@ -4487,22 +4671,22 @@ var tbl_ld_jfb_list_Obj = (function ()
             //}
             //var orderByString = ' sys_id desc';
             //var columnsString = 'f_khbh,f_sjbh,f_jfbh,f_yhm,f_dz,f_dj,f_cbyslj,f_sflj,f_pwflj,f_shss,f_jmjelj,f_jffs,f_jcfs,f_yyy,f_czsj,f_sfykfp,f_kplb,f_yyt,f_zt,f_ly';
-            //var colunmsName = '客户编号,收据编号,缴费编号,用户名,地址,单价,抄表应收累计,水费累计,排污费累计,算后实收,减免金额,缴费方式,缴存方式,操作人,操作时间,是否已开发票,开票类别,营业厅,状态,来源';
+            //var colunmsName = '客户编号,收据编号,缴费编号,用户名,地址,单价,抄表应收累计,水费累计,污水处理费累计,算后实收,减免金额,缴费方式,缴存方式,操作人,操作时间,是否已开发票,开票类别,营业厅,状态,来源';
          
             if (_whereClauseString == "")
             {
                 var where = " 1=1 and";
-                where += " f_khbh = " + that._pr_khbhs;
+                where += " f_khbh = '" + that._pr_khbhs + "'";
             }
             else
             {
                 var where = _whereClauseString;
-                where += " and f_khbh = " + that._pr_khbhs;
+                where += " and f_khbh = '" + that._pr_khbhs + "'";
             }
 
           
-                var columnsString = 'f_khbh,f_sjbh,f_jfbh,f_yhm,f_dz,f_dj,f_cbyslj,f_sflj,f_pwflj,f_shss,f_jmjelj,f_jffs,f_jcfs,f_yyy,f_czsj,f_sfykfp,f_kplb,f_yyt,f_zt,f_ly';
-                var colunmsName = '客户编号,收据编号,缴费编号,用户名,地址,单价,抄表应收累计,水费累计,排污费累计,算后实收,减免金额,缴费方式,缴存方式,操作人,操作时间,是否已开发票,开票类别,营业厅,状态,来源';
+            var columnsString = 'f_khbh,f_sjbh,f_jfbh,f_yhm,f_dz,f_dj,f_cbyslj,f_sflj,f_pwflj,f_syycje,f_shss,f_jmjelj,f_jffs,f_jcfs,f_yyy,f_czsj,f_sfykfp,f_kplb,f_yyt,f_zt,f_ly';
+            var colunmsName = '客户编号,收据编号,缴费编号,用户名,地址,单价,抄表应收累计,水费累计,污水处理费累计,使用余额,算后实收,减免金额,缴费方式,缴存方式,操作人,操作时间,是否已开发票,开票类别,营业厅,状态,来源';
          
             var orderByString = ' sys_id desc';
             var data = {

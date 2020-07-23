@@ -369,6 +369,8 @@
         };
 
     var that = {
+        _jtsjflag: true,
+        need2BeInContainer: false,
         need2BeInContainer: false,
         _serviceCommonUrl: _serviceCommonUrl,
         _commonJsToken: _commonJsToken,

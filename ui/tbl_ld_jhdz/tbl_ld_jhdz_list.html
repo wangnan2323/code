@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        交行对账
+    </title>
+    <link href="tbl_ld_jhdz_list.css" media="all" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery/jquery.1.9.1.min.js"></script>
+    <script src="//162.16.166.1/sara.resource.library/resource/jquery.include/jquery.include.min.js"></script>
+    <script src="tbl_ld_jhdz_list.js" type="text/javascript"></script>
+    <script>
+        $.include({
+            rootip: '162.16.166.1',
+            ismin: true,
+            file: ['base', 'resource',
+                 '../../commonjs/commonjs.js',
+                    '../../commoncss/commoncss.css',
+                '../basepage/basepage.css',
+                '../basepage/basepage.js'
+            ]
+        });
+    </script>
+
+
+</head>
+<body>
+    <!-- 顶端锁定部分 start -->
+    <div class="navbar navbar-fixed-top scroll-hide cc-navbar">
+        <!--div_basepage_head start-->
+        <div id="div_basepage_head"></div>
+        <!--div_basepage_head end-->
+        <!--空闲占位置符号，不能删除 start-->
+        <div class="row"></div>
+        <!--空闲占位置符号，不能删除 end-->
+        <!--按钮行 start -->
+        <div class="container-fluid main-content cc-command-full">
+            <div class="row ">
+                <div class="col-sm-2 col-xs-7 cc-command-button">
+                    <button id="btn_command_do_tbl_ld_jhdz_list" class="btn btn-success" onclick="tbl_ld_jhdz_list_Obj.btn_command_do_onclick();">对账</button>
+
+
+
+
+                </div>
+                <div class="col-sm-3 col-xs-7 cc-command-button">
+                    <div class="col-sm-2" style="text-align:right; margin-top:3px;">
+                        <label for="search_f_ly_tbl_ld_jhdz_list" class="control-label">来源<i class="icon-exclamation-sign hand hidden"></i></label>
+
+                    </div>
+                    <div class="col-sm-6" id="div_search_f_ly_tbl_ld_jhdz_list">
+                        <input id="search_f_ly_tbl_ld_jhdz_list" type="hidden">
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-1" style="text-align:left; margin-top:0px;">
+                    <div class="col-sm-2" style="text-align:right; margin-top:3px;">
+                        <label for="search_f_dzrq_tbl_ld_jhdz_list_date" class="control-label">对账日期<i class="icon-exclamation-sign hand hidden"></i></label>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div id="div_search_f_dzrq_tbl_ld_jhdz_list_date" class="form-group">
+
+                            <div id="search_f_dzrq_tbl_ld_jhdz_list_date" class="input-group date datepicker">
+                                <input class="form-control" type="text" />
+                                <span class="input-group-addon hand">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 hidden">
+                        <div id="div_search_f_dzrq_tbl_ld_jhdz_list_time" class="form-group">
+                            <label for="search_f_dzrq_tbl_ld_jhdz_list_time" class="control-label"><i class="icon-exclamation-sign hand hidden"></i></label>
+                            <div class="input-group bootstrap-timepicker">
+                                <input class="form-control" id="search_f_dzrq_tbl_ld_jhdz_list_time" type="text" />
+                                <span class="input-group-addon hand">
+                                    <i class="icon-time"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 cc-hidden-xs cc-command-search">
+
+                </div>
+                <div class="col-xs-3 cc-hidden-lg cc-hidden-md cc-hidden-sm cc-command-search-xs " style="text-align:right;">
+
+                </div>
+
+            </div>
+        </div>
+        <!--按钮行 end -->
+    </div>
+    <!-- 顶端锁定部分  end -->
+    <!--信息行 start-->
+    <div class="container-fluid main-content cc-info leftmenu-center-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <!--<div>缴费表</div>-->
+            </div>
+        </div>
+    </div>
+    <!--信息行 end-->
+    <!--内容部分 start-->
+    <div class="container-fluid main-content cc-grid leftmenu-center-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table" id="table_grid_tbl_ld_jhdz_list"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容部分 end-->
+    <!--底端锁定部分 start-->
+    <div class="navbar-fixed-bottom div-basepage-foot">
+        <div id="div_basepage_foot">
+        </div>
+    </div>
+    <!--底端锁定部分 end-->
+    <!--basepage_body start-->
+    <div id="div_basepage_body"></div>
+    <!--basepage_body end-->
+
+</body>
+
+</html>
+
+
+
+
+

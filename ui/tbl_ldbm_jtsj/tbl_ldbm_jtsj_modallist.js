@@ -1298,7 +1298,7 @@ var tbl_ldbm_jtsj_modallist_Obj = (function ()
 
                 {
                     field: 'f_pwf',
-                    title: '排污费',
+                    title: '污水处理费',
                     "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)

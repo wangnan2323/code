@@ -261,7 +261,7 @@ var tbl_ld_xxbgnr_modallist_Obj = (function ()
 { "id": "f_tbbh", "text": "套表编号", "type": "khb", "control": "text", "codetype": "", "codecontent": "", "validate": "", "from": "front,back", "field": "khb.f_tbbh" },
 { "id": "f_sfjlbjf", "text": "是否计量不计费", "type": "khb", "control": "toggle", "codetype": "", "codecontent": "", "validate": "", "from": "front,back", "field": "khb.f_sfjlbjf" },
 { "id": "f_zhcbrq", "text": "最后抄表日期", "type": "khb", "control": "datetime", "codetype": "", "codecontent": "", "validate": "lastday", "from": "back", "field": "khb.f_zhcbrq" },
-{ "id": "f_tjjzpwf", "text": "调价结转排污费", "type": "khb", "control": "text", "codetype": "", "codecontent": "", "validate": "number", "from": "front,back", "field": "khb.f_tjjzpwf" },
+{ "id": "f_tjjzpwf", "text": "调价结转污水处理费", "type": "khb", "control": "text", "codetype": "", "codecontent": "", "validate": "number", "from": "front,back", "field": "khb.f_tjjzpwf" },
 { "id": "f_tjjzsf", "text": "调价结转水费", "type": "khb", "control": "text", "codetype": "", "codecontent": "", "validate": "number", "from": "front,back", "field": "khb.f_tjjzsf" },
 { "id": "f_sqysl", "text": "申请用水量", "type": "khb", "control": "text", "codetype": "", "codecontent": "", "validate": "number", "from": "front,back", "field": "khb.f_sqysl" },
 { "id": "f_jhysl", "text": "计划用水量", "type": "khb", "control": "text", "codetype": "", "codecontent": "", "validate": "number", "from": "front,back", "field": "khb.f_jhysl" },

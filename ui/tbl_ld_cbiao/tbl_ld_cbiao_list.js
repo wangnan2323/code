@@ -19,25 +19,27 @@ var tbl_ld_cbiao_list_Obj = (function ()
     //=================================================================================
 
     var _serviceUrl = '//127.0.0.1/sara.dd.ldsw/service/service_tbl_ld_cbiao.asmx/',
-    //Grid控件的分页参数，设置为空即可实现不分页
-    _pageSize = '20',
+        //Grid控件的分页参数，设置为空即可实现不分页
+        _pageSize = '20',
         _isPage = true,
-    //Code数据存储容器
-    _baseCodeHashMap = null,
-    //校验结果容器
-    _validateMessage = null,
-    _validateMessage_searchtime = null,
-    //按钮工具
-    _ladda_btn_command_new = null,
-    _ladda_btn_command_delete = null,
-    _ladda_btn_command_exp = null,
-            _ladda_btn_command_his = null,
-    _ladda_btn_command_showcolunm = null,
-    //查询sql语句
-    _whereClauseString = '',
-    _default_two_from = '',//默认开始两月之内的
-    _defaultfrom = '',//默认开始时间，当前天
-    _defaultto = '',//默认开始时间，当前天
+        //Code数据存储容器
+        _baseCodeHashMap = null,
+        //校验结果容器
+        _validateMessage = null,
+        _validateMessage_searchtime = null,
+        //按钮工具
+        _ladda_btn_command_new = null,
+        _ladda_btn_command_delete = null,
+        _ladda_btn_command_exp = null,
+        _ladda_btn_command_his = null,
+        _ladda_btn_command_showcolunm = null,
+        //查询sql语句
+        _whereClauseString = '',
+        _default_two_from = '',//默认开始两月之内的
+        _defaultfrom = '',//默认开始时间，当前天
+        _defaultto = '',//默认开始时间，当前天
+
+
     //=================================================================================
     //                                      私有方法 
     //=================================================================================
@@ -276,58 +278,128 @@ var tbl_ld_cbiao_list_Obj = (function ()
                     _baseCodeHashMap.put('codeservice_yslx', resultArray['0555']);
                     var cbgx = [ { id: '1', text: '>' }, { id: '2', text: '>=' }, { id: '3', text: '<' }, { id: '4', text: '<=' }, { id: '5', text: '=' }];
                     _baseCodeHashMap.put('codeservice_cbgx', cbgx);
-                    var columnsArray = [
-                    { "id": "f_cb_cbbh",  "text": "抄表编号" },
-                    { "id": "f_khbh",  "text": "客户编号" },
-                    { "id": "f_sqzm",  "text": " 上期止码" },
-                    { "id": "f_bqzm",  "text": " 本期止码" },
-                    { "id": "f_bqsl",  "text": " 本期水量" },
-                    { "id": "f_sqsl",  "text": "上期水量" },
-                    { "id": "f_qsqpjsl", "text": "前三期平均水量" },
-                    { "id": "f_qlqpjsl", "text": "前六期平均水量" },
-                    { "id": "f_cbyname", "text": "抄表员" },
-                    { "id": "f_cbsj", "text": "抄表时间" },
-                    { "id": "f_bk", "text": "表况" },
-                    { "id": "f_zt", "text": "状态" },
-                    { "id": "f_ly", "text": "来源" },
-                    { "id": "f_bz", "text": "备注" },
-                    { "id": "f_sbbh", "text": "水表编号" },
-                    { "id": "f_sblx", "text": "水表类型" },
-                    { "id": "f_yslx", "text": "用水类型" },
-                    { "id": "f_lxtkhh", "text": "老系统客户号" },
-                    { "id": "f_cbbh", "text": "抄本编号" },
-                    { "id": "f_cbmc", "text": "抄本名称" },
-                    { "id": "f_yhbh", "text": "用户编号" },
-                    { "id": "f_yhm", "text": "用户名" },
-                    { "id": "f_jfm", "text": "缴费名" },
-                    { "id": "f_dh", "text": "电话" },
-                    { "id": "f_dz", "text": "地址" },
-                    { "id": "f_dy", "text": "地域" },
-                    { "id": "f_sc", "text": "水厂" },
-                    { "id": "f_qy", "text": "区域" },
-                    { "id": "f_pq", "text": "片区" },
-                    { "id": "f_pgbh", "text": "评估编号" },
-                    { "id": "f_pgr", "text": "评估人" },
-                    { "id": "f_pgpcmc", "text": "评估批次名称" },
-                    { "id": "f_pgsj", "text": "评估时间" },
-                    { "id": "f_jfbh", "text": "缴费编号" },
-                    { "id": "f_jfsj", "text": "缴费时间" },
-                    { "id": "f_bqje", "text": "本期金额" },
-                    { "id": "f_kj", "text": "口径" },
-                    { "id": "f_ztkhh", "text": "旧客户号" },
-                    { "id": "f_ztsbh", "text": "旧水表号" },
-                    { "id": "f_ztyhh", "text": "旧用户号" },
-                    { "id": "f_rs", "text": "人数" },
-                    { "id": "f_khfz", "text": "客户分组" },
-                    { "id": "f_sf", "text": " 水费" },
-                    { "id": "f_pwf", "text": "排污费" },
-                    { "id": "f_sjljsyl", "text": "年累计购量" },
-                    { "id": "f_jmje", "text": "减免金额" },
-                    { "id": "f_jmbh", "text": "减免编号" },
-                    { "id": "f_sfsfts", "text": "是否算费提示" },
-                    { "id": "f_sfjl", "text": "算法记录" }
+                    if (commonObj._jtsjflag)
+                    {
+                        var columnsArray = [
+                            { "id": "f_cb_cbbh", "text": "抄表编号" },
+                            { "id": "f_khbh", "text": "客户编号" },
+                            { "id": "f_sqzm", "text": " 上期止码" },
+                            { "id": "f_bqzm", "text": " 本期止码" },
+                            { "id": "f_bqsl", "text": " 本期水量" },
+                            { "id": "f_sqsl", "text": "上期水量" },
+                            { "id": "f_qsqpjsl", "text": "前三期平均水量" },
+                            { "id": "f_qlqpjsl", "text": "前六期平均水量" },
+                            { "id": "f_cbyname", "text": "抄表员" },
+                            { "id": "f_cbsj", "text": "抄表时间" },
+                            { "id": "f_bk", "text": "表况" },
+                            { "id": "f_zt", "text": "状态" },
+                            { "id": "f_ly", "text": "来源" },
+                            { "id": "f_bz", "text": "备注" },
+                            { "id": "f_sbbh", "text": "水表编号" },
+                            { "id": "f_sblx", "text": "水表类型" },
+                            { "id": "f_yslx", "text": "用水类型" },
+                            { "id": "f_lxtkhh", "text": "老系统客户号" },
+                            { "id": "f_cbbh", "text": "抄本编号" },
+                            { "id": "f_cbmc", "text": "抄本名称" },
+                            { "id": "f_yhbh", "text": "用户编号" },
+                            { "id": "f_yhm", "text": "用户名" },
+                            { "id": "f_jfm", "text": "缴费名" },
+                            { "id": "f_dh", "text": "电话" },
+                            { "id": "f_dz", "text": "地址" },
+                            { "id": "f_dy", "text": "地域" },
+                            { "id": "f_sc", "text": "水厂" },
+                            { "id": "f_qy", "text": "区域" },
+                            { "id": "f_pq", "text": "片区" },
+                            { "id": "f_pgbh", "text": "评估编号" },
+                            { "id": "f_pgr", "text": "评估人" },
+                            { "id": "f_pgpcmc", "text": "评估批次名称" },
+                            { "id": "f_pgsj", "text": "评估时间" },
+                            { "id": "f_jfbh", "text": "缴费编号" },
+                            { "id": "f_jfsj", "text": "缴费时间" },
+                            { "id": "f_bqje", "text": "本期金额" },
+                            { "id": "f_kj", "text": "口径" },
+                            { "id": "f_ztkhh", "text": "旧客户号" },
+                            { "id": "f_ztsbh", "text": "旧水表号" },
+                            { "id": "f_ztyhh", "text": "旧用户号" },
+                            { "id": "f_rs", "text": "人数" },
+                            { "id": "f_khfz", "text": "客户分组" },
+                            { "id": "f_sf", "text": " 水费" },
+                            { "id": "f_pwf", "text": "污水处理费" },
+                            { "id": "f_sjljsyl", "text": "年累计购量" },
+                            { "id": "f_jmje", "text": "减免金额" },
+                            { "id": "f_jmbh", "text": "减免编号" },
+                            { "id": "f_sfsfts", "text": "是否算费提示" },
+                            { "id": "f_sfjl", "text": "算法记录" },
+                            { "id": "f_dyjtsl", "text": "第一阶梯水量" },
+                            { "id": "f_dyjtsf", "text": "第一阶梯水费" },
+                            { "id": "f_dejtsl", "text": "第二阶梯水量" },
+                            { "id": "f_dejtsf", "text": "第二阶梯水费" },
+                            { "id": "f_dsjtsl", "text": "第三阶梯水量" },
+                            { "id": "f_dsjtsf", "text": "第三阶梯水费" }
+                        ]
+                    }
+                    else
+                    {
+                        var columnsArray = [
+                            { "id": "f_cb_cbbh", "text": "抄表编号" },
+                            { "id": "f_khbh", "text": "客户编号" },
+                            { "id": "f_sqzm", "text": " 上期止码" },
+                            { "id": "f_bqzm", "text": " 本期止码" },
+                            { "id": "f_bqsl", "text": " 本期水量" },
+                            { "id": "f_sqsl", "text": "上期水量" },
+                            { "id": "f_qsqpjsl", "text": "前三期平均水量" },
+                            { "id": "f_qlqpjsl", "text": "前六期平均水量" },
+                            { "id": "f_cbyname", "text": "抄表员" },
+                            { "id": "f_cbsj", "text": "抄表时间" },
+                            { "id": "f_bk", "text": "表况" },
+                            { "id": "f_zt", "text": "状态" },
+                            { "id": "f_ly", "text": "来源" },
+                            { "id": "f_bz", "text": "备注" },
+                            { "id": "f_sbbh", "text": "水表编号" },
+                            { "id": "f_sblx", "text": "水表类型" },
+                            { "id": "f_yslx", "text": "用水类型" },
+                            { "id": "f_lxtkhh", "text": "老系统客户号" },
+                            { "id": "f_cbbh", "text": "抄本编号" },
+                            { "id": "f_cbmc", "text": "抄本名称" },
+                            { "id": "f_yhbh", "text": "用户编号" },
+                            { "id": "f_yhm", "text": "用户名" },
+                            { "id": "f_jfm", "text": "缴费名" },
+                            { "id": "f_dh", "text": "电话" },
+                            { "id": "f_dz", "text": "地址" },
+                            { "id": "f_dy", "text": "地域" },
+                            { "id": "f_sc", "text": "水厂" },
+                            { "id": "f_qy", "text": "区域" },
+                            { "id": "f_pq", "text": "片区" },
+                            { "id": "f_pgbh", "text": "评估编号" },
+                            { "id": "f_pgr", "text": "评估人" },
+                            { "id": "f_pgpcmc", "text": "评估批次名称" },
+                            { "id": "f_pgsj", "text": "评估时间" },
+                            { "id": "f_jfbh", "text": "缴费编号" },
+                            { "id": "f_jfsj", "text": "缴费时间" },
+                            { "id": "f_bqje", "text": "本期金额" },
+                            { "id": "f_kj", "text": "口径" },
+                            { "id": "f_ztkhh", "text": "旧客户号" },
+                            { "id": "f_ztsbh", "text": "旧水表号" },
+                            { "id": "f_ztyhh", "text": "旧用户号" },
+                            { "id": "f_rs", "text": "人数" },
+                            { "id": "f_khfz", "text": "客户分组" },
+                            { "id": "f_sf", "text": " 水费" },
+                            { "id": "f_pwf", "text": "污水处理费" },
+                            { "id": "f_sjljsyl", "text": "年累计购量" },
+                            { "id": "f_jmje", "text": "减免金额" },
+                            { "id": "f_jmbh", "text": "减免编号" },
+                            { "id": "f_sfsfts", "text": "是否算费提示" },
+                            { "id": "f_sfjl", "text": "算法记录" }
+                            ]
+                    }
+
+                    var jtsjArray = [
+                        { "id": "1", "text": "显示第一阶梯" },
+                        { "id": "2", "text": "显示第二阶梯" },
+                        { "id": "3", "text": "显示第三阶梯" }
                     ]
                     _baseCodeHashMap.put('codeservice_cbiao', columnsArray);
+                    _baseCodeHashMap.put('codeservice_jtsj', jtsjArray);
                     var sqlJson = {
                          //"tbl_ldbm_yhfz": "select sys_id as id, f_fzbm||'_'||f_fzmc as text from tbl_ldbm_yhfz where sys_delflag='0' and f_ztid='0' order by sys_id",
                         //"tbl_ldbm_dycq": "select sys_id as id, f_mc as text ,sys_orderid as nodeid from tbl_ldbm_dycq where sys_delflag='0' and f_ztid='0'and length(sys_orderid)=4 order by sys_orderid",
@@ -431,12 +503,14 @@ var tbl_ld_cbiao_list_Obj = (function ()
             var codeservice_cbbh = _baseCodeHashMap.get('codeservice_cbbh');
             var codeservice_cbgx = _baseCodeHashMap.get('codeservice_cbgx');
             var codeservice_yslx = _baseCodeHashMap.get('codeservice_yslx');
+
+            var codeservice_jtsj = _baseCodeHashMap.get('codeservice_jtsj');
             controlObj.multidropdownlistinit('search_f_cbbh_tbl_ld_cbiao_list', codeservice_cbbh);
             controlObj.multidropdownlistinit('search_f_khfz_tbl_ld_cbiao_list', codeservice_khfz);
             controlObj.multidropdownlistinit('search_f_yhfz_tbl_ld_cbiao_list', codeservice_yhfz);
             controlObj.multidropdownlistinit('search_f_sbfz_tbl_ld_cbiao_list', codeservice_sbfz);
 
-
+            controlObj.multidropdownlistinit('search_f_jtsj_tbl_ld_cbiao_list', codeservice_jtsj);
 
             controlObj.multidropdownlistinit('search_f_bk_tbl_ld_cbiao_list', codeService_0543);
 
@@ -567,6 +641,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         controlObj.multidropdownlistid('search_f_yhfz_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_yhfzid);
                         controlObj.multidropdownlistid('search_f_sbfz_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_sbfzid);
                         controlObj.multidropdownlistid('search_f_cbbh_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_cbbhid);
+                        controlObj.multidropdownlistid('search_f_jtsj_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_jtsjid);
                         controlObj.text('search_f_sf_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_sf);
                         controlObj.text('search_f_pwf_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_pwf);
                         controlObj.text('search_f_sjljsyl_tbl_ld_cbiao_list', tbl_ld_cbiao_list.f_sjljsyl);
@@ -914,6 +989,8 @@ var tbl_ld_cbiao_list_Obj = (function ()
 
                     tbl_ld_cbiao_list.f_cbsl = controlObj.text('search_f_cbsl_tbl_ld_cbiao_list');
                     tbl_ld_cbiao_list.f_dz = controlObj.text('search_f_dz_tbl_ld_cbiao_list');
+
+                    tbl_ld_cbiao_list.f_jtsjid = controlObj.multidropdownlistid('search_f_jtsj_tbl_ld_cbiao_list');
                     that._pr_searchcontent.type2 = tbl_ld_cbiao_list;
                     break;
 
@@ -1564,6 +1641,9 @@ var tbl_ld_cbiao_list_Obj = (function ()
                 that._pr_searchcontent.type2.f_lyid = '';
                 controlObj.multidropdownlistid('search_f_ly_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_lyid);
 
+                that._pr_searchcontent.type2.f_jtsjid = '';
+                controlObj.multidropdownlistid('search_f_jtsj_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_jtsjid);
+
 
                 that._pr_searchcontent.type2.f_bz = '';
                 controlObj.text('search_f_bz_tbl_ld_cbiao_list', that._pr_searchcontent.type2.f_bz);
@@ -2077,6 +2157,39 @@ var tbl_ld_cbiao_list_Obj = (function ()
                             whereClause += aaa;
                             whereClause += ') and ';
                         }
+                        if (tbl_ld_cbiao_list.f_jtsjid.length > 0)
+                        {
+                            var elementArray = tbl_ld_cbiao_list.f_jtsjid.split(',');
+                            var aaa = '';
+                            $.each(elementArray, function (i, u)
+                            {
+                                if (i == 0)
+                                {
+                                    aaa += ' ';
+                                }
+                                else
+                                {
+                                    aaa += ' or ';
+                                }
+                                switch (elementArray[i])
+                                {
+                                    case "1":
+                                        aaa += "(f_dyjtsl>0)"
+                                        break;
+                                    case "2":
+                                        aaa += "(f_dejtsl>0)"
+                                        break;
+                                    case "3":
+                                        aaa += "(f_dsjtsl>0)"
+                                        break;
+                                }
+                               
+                            });
+                            whereClause += '(';
+                            whereClause += aaa;
+                            whereClause += ') and ';
+                        }
+
                         if (tbl_ld_cbiao_list.f_sbfzid.length > 0)
                         {
                             var elementArray = tbl_ld_cbiao_list.f_sbfzid.split(',');
@@ -3276,7 +3389,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
             columnHashMap.put('f_pwf', {
 
                 field: 'f_pwf',
-                title: "排污费",
+                title: "污水处理费",
                 "class": '',
                     align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                     formatter: function (value, row, index)
@@ -3358,6 +3471,78 @@ var tbl_ld_cbiao_list_Obj = (function ()
                 field: 'f_sfjl',
                 title: "算法记录",
                 "class": '',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_dyjtsl', {
+                field: 'f_dyjtsl',
+                title: "第一阶梯水量",
+                "class": 'jtsj',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_dyjtsf', {
+                field: 'f_dyjtsf',
+                title: "第一阶梯水费",
+                "class": 'jtsj',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_dejtsl', {
+                field: 'f_dejtsl',
+                title: "第二阶梯水量",
+                "class": 'jtsj',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_dejtsf', {
+                field: 'f_dejtsf',
+                title: "第二阶梯水费",
+                "class": 'jtsj',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_dsjtsl', {
+                field: 'f_dsjtsl',
+                title: "第三阶梯水量",
+                "class": 'jtsj',
+                align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
+                formatter: function (value, row, index)
+                {
+                    var resultStr = value;
+                    return resultStr;
+                }
+            });
+
+            columnHashMap.put('f_dsjtsf', {
+                field: 'f_dsjtsf',
+                title: "第三阶梯水费",
+                "class": 'jtsj',
                 align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                 formatter: function (value, row, index)
                 {
@@ -3449,6 +3634,40 @@ var tbl_ld_cbiao_list_Obj = (function ()
                 columnObj = columnHashMap.get('f_bqje');
                 columnObj["class"] = '';
                 columnsarray.push(columnObj);
+
+                if (commonObj._jtsjflag)
+                {
+                    columnObj = columnHashMap.get('f_dyjtsl');
+                    columnObj["class"] = '';
+                    columnsarray.push(columnObj);
+
+                    columnObj = columnHashMap.get('f_dyjtsf');
+                    columnObj["class"] = '';
+                    columnsarray.push(columnObj);
+
+                    columnObj = columnHashMap.get('f_dejtsl');
+                    columnObj["class"] = '';
+                    columnsarray.push(columnObj);
+
+                    columnObj = columnHashMap.get('f_dejtsf');
+                    columnObj["class"] = '';
+                    columnsarray.push(columnObj);
+
+                    columnObj = columnHashMap.get('f_dsjtsl');
+                    columnObj["class"] = '';
+                    columnsarray.push(columnObj);
+
+                    columnObj = columnHashMap.get('f_dsjtsf');
+                    columnObj["class"] = '';
+                    columnsarray.push(columnObj);
+                }
+                else
+                {
+
+                }
+
+
+
 
                 columnObj = columnHashMap.get('f_cbyname');
                 columnObj["class"] = '';
@@ -3992,6 +4211,13 @@ var tbl_ld_cbiao_list_Obj = (function ()
             f_ztyhh: '',
             f_rs: '',
 
+            f_dyjtsl: '',
+            f_dyjtsf: '',
+            f_dejtsl: '',
+            f_dejtsf: '',
+            f_dsjtsl: '',
+            f_dsjtsf:'',
+
 
 
 
@@ -4200,7 +4426,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                 }
 
                 var orderByString = ' f_cbsj desc';
-                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_yhbh^f_yhbhid^f_kj^f_kjid^f_ztkhh^f_ztsbh^f_ztyhh^f_rs^f_sfjl^sys_id';
+                var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_yhbh^f_yhbhid^f_kj^f_kjid^f_ztkhh^f_ztsbh^f_ztyhh^f_rs^f_sfjl^sys_id^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf';
 
                
 
@@ -4292,7 +4518,7 @@ var tbl_ld_cbiao_list_Obj = (function ()
                         var messageJson = (new Function("", "return " + result))();
                         $("#sumbqsl").html("<strong>本期水量合计:</strong>"+messageJson.f_bqsl);
                         $("#sumsf").html("<strong>水费合计:</strong>" + messageJson.f_sf);
-                        $("#sumpwf").html("<strong>排污费合计:</strong>" + messageJson.f_pwf);
+                        $("#sumpwf").html("<strong>污水处理费合计:</strong>" + messageJson.f_pwf);
                         $("#sumbqje").html("<strong>本期金额合计:</strong>" + messageJson.f_bqje);
 
                     },
@@ -4640,8 +4866,8 @@ var tbl_ld_cbiao_list_Obj = (function ()
             }
             else
             {
-            var columnsString = 'f_cb_cbbh,f_khbh,f_cbbh,f_yhm,f_jfm,f_dh,f_dz,f_sqzm,f_bqzm,f_sqsl,f_bqsl,f_bqje,f_qsqpjsl,f_qlqpjsl,f_cbyname,f_cbsj,f_ly,f_zt,f_bz,f_value10';
-            var colunmsName = '抄表编号,客户编号,抄本编号,用户名,缴费名,电话,地址,上期止码,本期止码,上期水量,当月水量,本期金额,前三期平均水量,前六期平均水量,抄表员,抄表时间,来源,状态,备注,银行账号';
+            var columnsString = 'f_cb_cbbh,f_khbh,f_cbbh,f_yhm,f_jfm,f_dh,f_dz,f_sqzm,f_bqzm,f_sqsl,f_bqsl,f_bqje,f_dyjtsl,f_dyjtsf,f_dejtsl,f_dejtsf,f_dsjtsl,f_dsjtsf,f_qsqpjsl,f_qlqpjsl,f_cbyname,f_cbsj,f_ly,f_zt,f_bz,f_value10';
+            var colunmsName = '抄表编号,客户编号,抄本编号,用户名,缴费名,电话,地址,上期止码,本期止码,上期水量,当月水量,本期金额,第一阶梯水量,第一阶梯水费,第二阶梯水量,第二阶梯水费,第三阶梯水量,第三阶梯水费,前三期平均水量,前六期平均水量,抄表员,抄表时间,来源,状态,备注,银行账号';
             }
             var orderByString = ' f_cbsj desc';
             var data = {

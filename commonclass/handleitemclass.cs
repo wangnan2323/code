@@ -34,6 +34,8 @@ namespace sara.dd.ldsw.commonclass
 
         private sara.dd.ldsw.idal.Itbl_ld_dyhlh idal_tbl_ld_dyhlh = new sara.dd.ldsw.dal.tbl_ld_dyhlh();
         private sara.dd.ldsw.model.tbl_ld_dyhlh model_tbl_ld_dyhlh = new sara.dd.ldsw.model.tbl_ld_dyhlh();
+        private sara.dd.ldsw.idal.Itbl_ld_yqjm idal_tbl_ld_yqjm = new sara.dd.ldsw.dal.tbl_ld_yqjm();
+        private sara.dd.ldsw.model.tbl_ld_yqjm model_tbl_ld_yqjm = new sara.dd.ldsw.model.tbl_ld_yqjm();
         private sara.dd.ldsw.idal.Itbl_ld_xgsbds idal_tbl_ld_xgsbds = new sara.dd.ldsw.dal.tbl_ld_xgsbds();
         private sara.dd.ldsw.model.tbl_ld_xgsbds model_tbl_ld_xgsbds = new sara.dd.ldsw.model.tbl_ld_xgsbds();
         private static Eva.Library.ServiceAdapter.IAdapter.IAuth _ia = Eva.Library.ServiceAdapter.AdapterFactory.AuthFactory.CreateService(Eva.Library.Configuration.ConfigurationManager.AppSettings["AppCode"]);
@@ -826,6 +828,76 @@ namespace sara.dd.ldsw.commonclass
                             model_tbl_ld_xgsbds.f_fxsj = DateTime.Parse("1900-1-1");
                             model_tbl_ld_xgsbds.f_xgsbdsmc = "修改水表底数_" + DateTime.Now.ToString("yyyyMMddHHmmss");
                             idal_tbl_ld_xgsbds.Add(model_tbl_ld_xgsbds, t);
+
+                        }
+                        break;
+                    #endregion
+
+                    #region 申请疫情减免
+                    case "tbl_ld_yqjm":
+                        {
+                            sara.dd.ldsw.idal.Itbl_ld_yqjm idal_tbl_ld_yqjm = new sara.dd.ldsw.dal.tbl_ld_yqjm();
+                            sara.dd.ldsw.model.tbl_ld_yqjm model_tbl_ld_yqjm = new sara.dd.ldsw.model.tbl_ld_yqjm();
+
+                            model_tbl_ld_yqjm.sys_id = 0;
+
+                            model_tbl_ld_yqjm.sys_orderid = "";
+
+                            model_tbl_ld_yqjm.sys_creatuserid = userid;
+
+                            model_tbl_ld_yqjm.sys_creatusername = username;
+
+                            model_tbl_ld_yqjm.sys_creatdate = DateTime.Now;
+
+                            model_tbl_ld_yqjm.sys_lastedituserid = userid;
+
+                            model_tbl_ld_yqjm.sys_lasteditusername = username;
+
+                            model_tbl_ld_yqjm.sys_lasteditdate = DateTime.Now;
+
+                            model_tbl_ld_yqjm.sys_deluserid = "";
+
+                            model_tbl_ld_yqjm.sys_delusername = "";
+
+                            model_tbl_ld_yqjm.sys_deldate = DateTime.Parse("1900-1-1");
+
+                            model_tbl_ld_yqjm.sys_delflag = "0";
+
+                            model_tbl_ld_yqjm.f_value1 = "";
+
+                            model_tbl_ld_yqjm.f_value2 = "";
+
+                            model_tbl_ld_yqjm.f_value3 = "";
+
+                            model_tbl_ld_yqjm.f_value4 = "";
+
+                            model_tbl_ld_yqjm.f_value5 = "";
+
+                            model_tbl_ld_yqjm.f_value6 = "";
+
+                            model_tbl_ld_yqjm.f_value7 = "";
+
+                            model_tbl_ld_yqjm.f_value8 = "";
+
+                            model_tbl_ld_yqjm.f_value9 = "";
+
+                            model_tbl_ld_yqjm.f_value10 = "";
+
+                            model_tbl_ld_yqjm.fk_tbl_maintable_sys_id = sMainTableID;
+
+                            model_tbl_ld_yqjm.f_khbh = "";
+
+                            model_tbl_ld_yqjm.f_yqjmsf = "0";
+
+                            model_tbl_ld_yqjm.f_yqjmpwf = "0";
+
+                            model_tbl_ld_yqjm.f_fj = sara.dd.ldsw.commonclass.filecontrol.GetNewFileId(null);
+
+                            model_tbl_ld_yqjm.f_zt = "新建";
+
+                            model_tbl_ld_yqjm.f_ztid = "0";
+
+                            idal_tbl_ld_yqjm.Add(model_tbl_ld_yqjm, t);
 
                         }
                         break;
@@ -1629,6 +1701,24 @@ namespace sara.dd.ldsw.commonclass
                         fileIDs = fileIDs.TrimEnd(',');
                         sara.dd.ldsw.commonclass.filecontrol.deleteByFileName(fileIDs, null);
                         idal_tbl_ld_xgsbds.Delete(" fk_tbl_maintable_sys_id = '" + maintable_sys_id + "' ", null);
+                        break;
+                    #endregion
+
+                    #region 疫情减免
+                    case "tbl_ld_yqjm":
+
+                        columnsString += "f_fj,";
+                        columnsString = columnsString.TrimEnd(',');
+                        List<sara.dd.ldsw.model.tbl_ld_yqjm> l_tbl_ld_yqjm = idal_tbl_ld_yqjm.GetList(" fk_tbl_maintable_sys_id = '" + maintable_sys_id + "' ", "", columnsString, "", "", null);
+                        foreach (sara.dd.ldsw.model.tbl_ld_yqjm model in l_tbl_ld_yqjm)
+                        {
+
+                            fileIDs += model.f_fj + ",";
+
+                        }
+                        fileIDs = fileIDs.TrimEnd(',');
+                        sara.dd.ldsw.commonclass.filecontrol.deleteByFileName(fileIDs, null);
+                        idal_tbl_ld_yqjm.Delete(" fk_tbl_maintable_sys_id = '" + maintable_sys_id + "' ", null);
                         break;
                     #endregion
 

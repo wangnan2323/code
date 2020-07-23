@@ -1774,7 +1774,7 @@ var tbl_ld_ickxj_detail_Obj = (function ()
             */
             f_value2_onchange = function (e)
             {
-                debugger
+                
                 var f_value2 = controlObj.singledropdownlistid('detail_f_value2_tbl_ld_ickxj_detail');
                 if (f_value2 == "水表编号")
                 {

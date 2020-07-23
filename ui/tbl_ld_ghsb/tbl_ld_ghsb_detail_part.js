@@ -2601,7 +2601,7 @@ var tbl_ld_ghsb_detail_Obj = (function ()
             },
         btn_command_opensearch_onclick: function ()
         {
-            debugger;
+            ;
             var khbh = controlObj.text('detail_f_khbh_tbl_ld_ghsb_detail');
             tbl_ld_khb_list_Obj._pr_khbh = khbh;
             tbl_ld_khb_list_Obj.openSearch({

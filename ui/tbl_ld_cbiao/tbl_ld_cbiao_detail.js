@@ -269,6 +269,12 @@ var tbl_ld_cbiao_detail_Obj = (function ()
             controlObj.textdisable('detail_f_jfm_tbl_ld_cbiao_detail', true);
             controlObj.textdisable('detail_f_dh_tbl_ld_cbiao_detail', true);
 
+            controlObj.textdisable('detail_f_dyjtsl_tbl_ld_cbiao_detail', true);
+            controlObj.textdisable('detail_f_dyjtsf_tbl_ld_cbiao_detail', true);
+            controlObj.textdisable('detail_f_dejtsl_tbl_ld_cbiao_detail', true);
+            controlObj.textdisable('detail_f_dejtsf_tbl_ld_cbiao_detail', true);
+            controlObj.textdisable('detail_f_dsjtsl_tbl_ld_cbiao_detail', true);
+            controlObj.textdisable('detail_f_dsjtsf_tbl_ld_cbiao_detail', true);
             //controlObj.textdisable('detail_f_khfz_tbl_ld_cbiao_detail', false);
             //controlObj.textdisable('detail_f_khfzid_tbl_ld_cbiao_detail', true);
             //controlObj.textdisable('detail_f_sf_tbl_ld_cbiao_detail', true);
@@ -593,6 +599,12 @@ var tbl_ld_cbiao_detail_Obj = (function ()
 
             controlObj.text('detail_f_sfjl_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_sfjl);
 
+            controlObj.text('detail_f_dyjtsl_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_dyjtsl);
+            controlObj.text('detail_f_dyjtsf_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_dyjtsf);
+            controlObj.text('detail_f_dejtsl_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_dejtsl);
+            controlObj.text('detail_f_dejtsf_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_dejtsf);
+            controlObj.text('detail_f_dsjtsl_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_dsjtsl);
+            controlObj.text('detail_f_dsjtsf_tbl_ld_cbiao_detail', tbl_ld_cbiao_detail.f_dsjtsf);
 
             callBackFunction.success();
         }
@@ -815,6 +827,13 @@ var tbl_ld_cbiao_detail_Obj = (function ()
             tbl_ld_cbiao_detail.f_rs = controlObj.text('detail_f_rs_tbl_ld_cbiao_detail');
 
             tbl_ld_cbiao_detail.f_sfjl = controlObj.text('detail_f_sfjl_tbl_ld_cbiao_detail');
+
+            tbl_ld_cbiao_detail.f_dyjtsl = controlObj.text('detail_f_dyjtsl_tbl_ld_cbiao_detail');
+            tbl_ld_cbiao_detail.f_dyjtsf = controlObj.text('detail_f_dyjtsf_tbl_ld_cbiao_detail');
+            tbl_ld_cbiao_detail.f_dejtsl = controlObj.text('detail_f_dejtsl_tbl_ld_cbiao_detail');
+            tbl_ld_cbiao_detail.f_dejtsf = controlObj.text('detail_f_dejtsf_tbl_ld_cbiao_detail');
+            tbl_ld_cbiao_detail.f_dsjtsl = controlObj.text('detail_f_dsjtsl_tbl_ld_cbiao_detail');
+            tbl_ld_cbiao_detail.f_dsjtsf = controlObj.text('detail_f_dsjtsf_tbl_ld_cbiao_detail');
 
             callBackFunction.success(tbl_ld_cbiao_detail);
         }
@@ -1316,6 +1335,32 @@ var tbl_ld_cbiao_detail_Obj = (function ()
                 errorMessageHansMap.put('detail_f_rs_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
             }
 
+            if (tbl_ld_cbiao_detail.f_dyjtsl.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dyjtsl_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+            if (tbl_ld_cbiao_detail.f_dyjtsf.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dyjtsf_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+
+            if (tbl_ld_cbiao_detail.f_dejtsl.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dejtsl_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+            if (tbl_ld_cbiao_detail.f_dejtsf.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dejtsf_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+
+            if (tbl_ld_cbiao_detail.f_dsjtsl.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dsjtsl_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
+            if (tbl_ld_cbiao_detail.f_dsjtsf.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dsjtsf_tbl_ld_cbiao_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
 
 
 
@@ -1439,7 +1484,7 @@ var tbl_ld_cbiao_detail_Obj = (function ()
         {
             var whereClause = ' sys_id = \'' + that._pr_sys_id + '\'';
             var orderByString = '';
-            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_yhbh^f_yhbhid^f_kj^f_kjid^f_ztkhh^f_ztsbh^f_ztyhh^f_rs^f_sfjl^sys_id';
+            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_yhbh^f_yhbhid^f_kj^f_kjid^f_ztkhh^f_ztsbh^f_ztyhh^f_rs^f_sfjl^sys_id^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf';
             var pageSizeString = '';
             var pageIndexString = '';
             var data = {
@@ -1487,7 +1532,7 @@ var tbl_ld_cbiao_detail_Obj = (function ()
         {
 
             var d = new Date();
-            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_kj^f_kjid^f_ztkhh^f_ztsbh^f_ztyhh^f_rs^f_sfjl^f_yhbh^f_yhbhid^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate';
+            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbhid^f_cbyid^f_cbyphoto^f_sbbhid^f_sblxid^f_yslxid^f_cbbhid^f_khbh^f_sqzm^f_bqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_cbyname^f_cbsj^f_bk^f_bkid^f_zt^f_ztid^f_ly^f_lyid^f_bz^f_yhm^f_jfm^f_dh^f_khfz^f_khfzid^f_sf^f_pwf^f_sjljsyl^f_jmje^f_jmbh^f_jmbhid^f_sfsfts^f_dz^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_lxtkhh^f_pgbh^f_pgbhid^f_pgr^f_pgrid^f_pgpcmc^f_pgsj^f_jfbh^f_jfbhid^f_jfsj^f_bqje^f_sbbh^f_sblx^f_yslx^f_cbbh^f_cbmc^f_cb_cbbh^f_cb_cbbhid^f_kj^f_kjid^f_ztkhh^f_ztsbh^f_ztyhh^f_rs^f_sfjl^f_yhbh^f_yhbhid^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_dyjtsl^f_dyjtsf^f_dejtsl^f_dejtsf^f_dsjtsl^f_dsjtsf';
             var json = {
                 sys_id: that._pr_sys_id,
 
@@ -1634,6 +1679,13 @@ var tbl_ld_cbiao_detail_Obj = (function ()
                 f_ztyhh: tbl_ld_cbiao_detail.f_ztyhh,
                 f_rs: tbl_ld_cbiao_detail.f_rs,
                 f_sfjl: tbl_ld_cbiao_detail.f_sfjl,
+
+                f_dyjtsl: tbl_ld_cbiao_detail.f_dyjtsl,
+                f_dyjtsf: tbl_ld_cbiao_detail.f_dyjtsf,
+                f_dejtsl: tbl_ld_cbiao_detail.f_dejtsl,
+                f_dejtsf: tbl_ld_cbiao_detail.f_dejtsf,
+                f_dsjtsl: tbl_ld_cbiao_detail.f_dsjtsl,
+                f_dsjtsf: tbl_ld_cbiao_detail.f_dsjtsf,
 
                 sys_lasteditusername: basePageObj._userInfoJson.sys_username,
                 sys_lastedituserid: basePageObj._userInfoJson.sys_userid,

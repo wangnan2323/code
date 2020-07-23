@@ -107,6 +107,18 @@ var tbl_ld_khb_detail_Obj = (function ()
 
                     _baseCodeHashMap.put('codeservice_0557', resultArray['0557']);
 
+                    var jmsfArray = [
+                        { "id": "0", "text": "0%" },
+                        { "id": "10", "text": "10%" }];
+
+
+                    var jmpwfArray = [
+                        { "id": "0", "text": "0%" },
+                        { "id": "100", "text": "100%" }];
+
+                    _baseCodeHashMap.put('codeservice_jmsf', jmsfArray);
+                    _baseCodeHashMap.put('codeservice_jmpwf', jmpwfArray);
+
                     //获取用水类型、抄本编号数据作为code下拉选项
                     var sqlStringsJson = {
                         "tbl_ld_cben": "select sys_id as id,f_cbbh as text,f_cbymc,f_cbyid,f_cbzq,f_cbmc ,decode(f_ztid,'0','false','true') as disabled from tbl_ld_cben order by f_cbbh",
@@ -175,13 +187,19 @@ var tbl_ld_khb_detail_Obj = (function ()
 
             var codeService_0556 = _baseCodeHashMap.get('codeservice_0556');
 
+            var codeService_jmsf = _baseCodeHashMap.get('codeservice_jmsf');
+            var codeService_jmpwf = _baseCodeHashMap.get('codeservice_jmpwf');
+
             controlObj.singledropdownlistinit('detail_f_yslx_tbl_ld_khb_detail', codeService_0555, f_yslx_onchange);
 
             controlObj.multidropdownlistinit('detail_f_khfz_tbl_ld_khb_detail', codeservice_khfz, f_khfz_onchange);
             controlObj.singledropdownlistinit('detail_f_cbbh_tbl_ld_khb_detail', codeservice_cben, f_cbbh_onchange);
 
-            controlObj.toggleinit('detail_f_sfjlbjf_tbl_ld_khb_detail', f_sfjlbjf_onchange);
+            controlObj.singledropdownlistinit('detail_f_yqjmsf_tbl_ld_khb_detail', codeService_jmsf, "");
+            controlObj.singledropdownlistinit('detail_f_yqjmpwf_tbl_ld_khb_detail', codeService_jmpwf, "");
 
+            controlObj.toggleinit('detail_f_sfjlbjf_tbl_ld_khb_detail', f_sfjlbjf_onchange);
+            controlObj.toggleinit('detail_f_sfdxcs_tbl_ld_khb_detail', '');
 
             controlObj.singledropdownlistinit('detail_f_zt_tbl_ld_khb_detail', codeService_0556, f_zt_onchange);
 
@@ -307,6 +325,8 @@ var tbl_ld_khb_detail_Obj = (function ()
 
 
             controlObj.singledropdownlistdisable('detail_f_cbbh_tbl_ld_khb_detail', isDisable);
+            controlObj.singledropdownlistdisable('detail_f_yqjmsf_tbl_ld_khb_detail', isDisable);
+            controlObj.singledropdownlistdisable('detail_f_yqjmpwf_tbl_ld_khb_detail', isDisable);
 
             controlObj.textdisable('detail_f_cbxh_tbl_ld_khb_detail', isDisable);
 
@@ -339,7 +359,7 @@ var tbl_ld_khb_detail_Obj = (function ()
             controlObj.textdisable('detail_f_dz_tbl_ld_khb_detail', isDisable);
 
             controlObj.textdisable('detail_f_sbdz_tbl_ld_khb_detail', isDisable);
-
+            controlObj.textdisable('detail_f_ye_tbl_ld_khb_detail', isDisable);
             controlObj.textdisable('detail_f_dh_tbl_ld_khb_detail', isDisable);
 
             controlObj.textdisable('detail_f_dy_tbl_ld_khb_detail', isDisable);
@@ -436,6 +456,11 @@ var tbl_ld_khb_detail_Obj = (function ()
             controlObj.textdisable('detail_f_sqysl_tbl_ld_khb_detail', isDisable);
             controlObj.textdisable('detail_f_jhysl_tbl_ld_khb_detail', isDisable);
             controlObj.textdisable('detail_f_ickljgl_tbl_ld_khb_detail', isDisable);
+
+            controlObj.textdisable('detail_f_dxcsyy_tbl_ld_khb_detail', isDisable);
+
+
+            controlObj.toggledisable('detail_f_sfdxcs_tbl_ld_khb_detail', isDisable);
 
 
             if (isDisable)
@@ -551,6 +576,10 @@ var tbl_ld_khb_detail_Obj = (function ()
 
             controlObj.singledropdownlistid('detail_f_cbbh_tbl_ld_khb_detail', tbl_ld_khb_detail.f_cbbhid);
 
+            controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_khb_detail', tbl_ld_khb_detail.f_yqjmsf);
+
+            controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_khb_detail', tbl_ld_khb_detail.f_yqjmpwf);
+
             controlObj.text('detail_f_cbxh_tbl_ld_khb_detail', tbl_ld_khb_detail.f_cbxh);
 
             controlObj.text('detail_f_cbyxm_tbl_ld_khb_detail', tbl_ld_khb_detail.f_cbyxm);
@@ -574,7 +603,7 @@ var tbl_ld_khb_detail_Obj = (function ()
             controlObj.text('detail_f_dz_tbl_ld_khb_detail', tbl_ld_khb_detail.f_dz);
 
             controlObj.text('detail_f_sbdz_tbl_ld_khb_detail', tbl_ld_khb_detail.f_sbdz);
-
+            controlObj.text('detail_f_ye_tbl_ld_khb_detail', tbl_ld_khb_detail.f_ye);
             controlObj.text('detail_f_dh_tbl_ld_khb_detail', tbl_ld_khb_detail.f_dh);
 
             controlObj.text('detail_f_dy_tbl_ld_khb_detail', tbl_ld_khb_detail.f_dy);
@@ -657,6 +686,11 @@ var tbl_ld_khb_detail_Obj = (function ()
             controlObj.text('detail_f_sqysl_tbl_ld_khb_detail', tbl_ld_khb_detail.f_sqysl);
             controlObj.text('detail_f_jhysl_tbl_ld_khb_detail', tbl_ld_khb_detail.f_jhysl);
             controlObj.text('detail_f_ickljgl_tbl_ld_khb_detail', tbl_ld_khb_detail.f_ickljgl);
+
+            controlObj.text('detail_f_dxcsyy_tbl_ld_khb_detail', tbl_ld_khb_detail.f_dxcsyy);
+
+            controlObj.toggle('detail_f_sfdxcs_tbl_ld_khb_detail', tbl_ld_khb_detail.f_sfdxcs);
+
             //初始化manyvalues控件
             that.initManyValuesDiv('detail_txt_f_tssbbh_tbl_ld_khb_detail', 'detail_f_tssbbh_tbl_ld_khb_detail', 'detail_div_f_tssbbh_tbl_ld_khb_detail');
 
@@ -733,6 +767,10 @@ var tbl_ld_khb_detail_Obj = (function ()
             tbl_ld_khb_detail.f_yslx = controlObj.singledropdownlist('detail_f_yslx_tbl_ld_khb_detail');
             tbl_ld_khb_detail.f_yslxid = controlObj.singledropdownlistid('detail_f_yslx_tbl_ld_khb_detail');
 
+            tbl_ld_khb_detail.f_yqjmsf = controlObj.singledropdownlistid('detail_f_yqjmsf_tbl_ld_khb_detail');
+
+            tbl_ld_khb_detail.f_yqjmpwf = controlObj.singledropdownlistid('detail_f_yqjmpwf_tbl_ld_khb_detail');
+
 
             tbl_ld_khb_detail.f_tbbh = controlObj.text('detail_f_tbbh_tbl_ld_khb_detail');
 
@@ -783,7 +821,7 @@ var tbl_ld_khb_detail_Obj = (function ()
 
             tbl_ld_khb_detail.f_sbdz = controlObj.text('detail_f_sbdz_tbl_ld_khb_detail');
 
-
+            tbl_ld_khb_detail.f_ye = controlObj.text('detail_f_ye_tbl_ld_khb_detail');
             tbl_ld_khb_detail.f_dh = controlObj.text('detail_f_dh_tbl_ld_khb_detail');
 
 
@@ -906,6 +944,13 @@ var tbl_ld_khb_detail_Obj = (function ()
             tbl_ld_khb_detail.f_sqysl = controlObj.text('detail_f_sqysl_tbl_ld_khb_detail');
             tbl_ld_khb_detail.f_jhysl = controlObj.text('detail_f_jhysl_tbl_ld_khb_detail');
             tbl_ld_khb_detail.f_ickljgl = controlObj.text('detail_f_ickljgl_tbl_ld_khb_detail');
+
+            tbl_ld_khb_detail.f_dxcsyy = controlObj.text('detail_f_dxcsyy_tbl_ld_khb_detail');
+
+
+            tbl_ld_khb_detail.f_sfdxcs = controlObj.toggle('detail_f_sfdxcs_tbl_ld_khb_detail');
+
+
             callBackFunction.success(tbl_ld_khb_detail);
         }
         catch (ex)
@@ -1254,6 +1299,10 @@ var tbl_ld_khb_detail_Obj = (function ()
             }
 
 
+            if (tbl_ld_khb_detail.f_ye != "" && !/^[0-9]+\.?[0-9]*$/.test(tbl_ld_khb_detail.f_ye))
+            {
+                errorMessageHansMap.put('detail_f_ye_tbl_ld_khb_detail', '必须是数字');
+            }
 
             if (tbl_ld_khb_detail.f_dh.length > 200)
             {
@@ -1564,7 +1613,10 @@ var tbl_ld_khb_detail_Obj = (function ()
                 errorMessageHansMap.put('detail_f_sbkjid_tbl_ld_khb_detail', '长度不能超过<a style="color:red">200</a>个字');
             }
 
-
+            if (tbl_ld_khb_detail.f_dxcsyy.length > 200)
+            {
+                errorMessageHansMap.put('detail_f_dxcsyy_tbl_ld_khb_detail', '长度不能超过<a style="color:red">200</a>个字');
+            }
 
 
             if (tbl_ld_khb_detail.f_sbkj.length > 200)
@@ -1630,7 +1682,7 @@ var tbl_ld_khb_detail_Obj = (function ()
         {
             var whereClause = ' sys_id = \'' + that._pr_sys_id + '\'';
             var orderByString = '';
-            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_ztkhh^f_khfz^f_khfzid^f_ycje^f_yslx^f_yslxid^f_tbbh^f_sfjlbjf^f_zt^f_ztid^f_bz^f_cbbh^f_cbbhid^f_cbxh^f_cbyxm^f_cbyid^f_cbzq^f_cbmc^f_yhbh^f_yhbhid^f_jfm^f_yhfz^f_yhfzid^f_dz^f_sbdz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_tsyxzh^f_hth^f_sfzh^f_khrq^f_sbbh^f_sbbhid^f_bqzm^f_sqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_ljgl^f_lxth^f_sblx^f_sblxid^f_jllx^f_jllxid^f_tssbbh^f_ztsbh^f_rs^f_sbkj^f_sbkjid^f_sbfz^f_sbfzid^f_ztyhh^f_wxwybz^f_zfbwybz^f_gdyhwybz^f_yhm^f_zhcbrq^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_sqysl^f_jhysl^f_ickljgl^sys_id';
+            var columnsString = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_ztkhh^f_khfz^f_khfzid^f_ycje^f_yslx^f_yslxid^f_tbbh^f_sfjlbjf^f_zt^f_ztid^f_bz^f_cbbh^f_cbbhid^f_cbxh^f_cbyxm^f_cbyid^f_cbzq^f_cbmc^f_yhbh^f_yhbhid^f_jfm^f_yhfz^f_yhfzid^f_dz^f_sbdz^f_ye^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_tsyxzh^f_hth^f_sfzh^f_khrq^f_sbbh^f_sbbhid^f_bqzm^f_sqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_ljgl^f_lxth^f_sblx^f_sblxid^f_jllx^f_jllxid^f_tssbbh^f_ztsbh^f_rs^f_sbkj^f_sbkjid^f_sbfz^f_sbfzid^f_ztyhh^f_wxwybz^f_zfbwybz^f_gdyhwybz^f_yhm^f_zhcbrq^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_sqysl^f_jhysl^f_ickljgl^sys_id^f_sfdxcs^f_dxcsyy^f_yqjmsf^f_yqjmpwf';
             var pageSizeString = '';
             var pageIndexString = '';
             var data = {
@@ -1664,7 +1716,7 @@ var tbl_ld_khb_detail_Obj = (function ()
         {
 
             var d = new Date();
-            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_ztkhh^f_khfz^f_khfzid^f_ycje^f_yslx^f_yslxid^f_tbbh^f_sfjlbjf^f_zt^f_ztid^f_bz^f_cbbh^f_cbbhid^f_cbxh^f_cbyxm^f_cbyid^f_cbzq^f_cbmc^f_yhbh^f_yhbhid^f_jfm^f_yhfz^f_yhfzid^f_dz^f_sbdz^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_tsyxzh^f_hth^f_sfzh^f_khrq^f_sbbh^f_sbbhid^f_bqzm^f_sqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_ljgl^f_lxth^f_sblx^f_sblxid^f_jllx^f_jllxid^f_tssbbh^f_ztsbh^f_rs^f_sbkj^f_sbkjid^f_sbfz^f_sbfzid^f_ztyhh^f_wxwybz^f_zfbwybz^f_gdyhwybz^f_yhm^f_zhcbrq^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_sqysl^f_jhysl^f_ickljgl^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate';
+            var columns = 'f_value1^f_value2^f_value3^f_value4^f_value5^f_value6^f_value7^f_value8^f_value9^f_value10^f_khbh^f_ztkhh^f_khfz^f_khfzid^f_ycje^f_yslx^f_yslxid^f_tbbh^f_sfjlbjf^f_zt^f_ztid^f_bz^f_cbbh^f_cbbhid^f_cbxh^f_cbyxm^f_cbyid^f_cbzq^f_cbmc^f_yhbh^f_yhbhid^f_jfm^f_yhfz^f_yhfzid^f_dz^f_sbdz^f_ye^f_dh^f_dy^f_dyid^f_sc^f_scid^f_qy^f_qyid^f_pq^f_pqid^f_tsyxzh^f_hth^f_sfzh^f_khrq^f_sbbh^f_sbbhid^f_bqzm^f_sqzm^f_bqsl^f_sqsl^f_qsqpjsl^f_qlqpjsl^f_ljgl^f_lxth^f_sblx^f_sblxid^f_jllx^f_jllxid^f_tssbbh^f_ztsbh^f_rs^f_sbkj^f_sbkjid^f_sbfz^f_sbfzid^f_ztyhh^f_wxwybz^f_zfbwybz^f_gdyhwybz^f_yhm^f_zhcbrq^f_ljqf^f_tjjzpwf^f_tjjzsf^f_tssbbhid^f_nljgl^f_sqysl^f_jhysl^f_ickljgl^sys_id^sys_lastedituserid^sys_lasteditusername^sys_lasteditdate^f_sfdxcs^f_dxcsyy^f_yqjmsf^f_yqjmpwf';
             var json = {
                 sys_id: that._pr_sys_id,
 
@@ -1735,6 +1787,7 @@ var tbl_ld_khb_detail_Obj = (function ()
                 f_dz: tbl_ld_khb_detail.f_dz,
 
                 f_sbdz: tbl_ld_khb_detail.f_sbdz,
+                f_ye: tbl_ld_khb_detail.f_ye,
 
                 f_dh: tbl_ld_khb_detail.f_dh,
 
@@ -1819,6 +1872,14 @@ var tbl_ld_khb_detail_Obj = (function ()
                 f_zhcbrq: tbl_ld_khb_detail.f_zhcbrq,
 
                 f_ljqf: tbl_ld_khb_detail.f_ljqf,
+
+                f_dxcsyy: tbl_ld_khb_detail.f_dxcsyy,
+
+                f_sfdxcs: tbl_ld_khb_detail.f_sfdxcs,
+
+                f_yqjmsf: tbl_ld_khb_detail.f_yqjmsf,
+
+                f_yqjmpwf: tbl_ld_khb_detail.f_yqjmpwf,
 
                 f_tjjzpwf: tbl_ld_khb_detail.f_tjjzpwf,
                 f_tjjzsf: tbl_ld_khb_detail.f_tjjzsf,
@@ -2402,6 +2463,7 @@ var tbl_ld_khb_detail_Obj = (function ()
                         controlObj.text('detail_f_dz_tbl_ld_khb_detail', resultJson["f_dz"]);
 
                         controlObj.text('detail_f_sbdz_tbl_ld_khb_detail', resultJson["f_sbdz"]);
+                        controlObj.text('detail_f_ye_tbl_ld_khb_detail', resultJson["f_ye"]);
 
                         controlObj.text('detail_f_dh_tbl_ld_khb_detail', resultJson["f_dh"]);
 
@@ -2530,7 +2592,7 @@ var tbl_ld_khb_detail_Obj = (function ()
                         controlObj.text('detail_f_sbfz_tbl_ld_khb_detail', resultJson["f_sbfz"]);
 
                         controlObj.text('detail_f_sbdz_tbl_ld_khb_detail', resultJson["f_sbdz"]);
-
+                        controlObj.text('detail_f_ye_tbl_ld_khb_detail', resultJson["f_ye"]);
                         controlObj.text('detail_f_sbfzid_tbl_ld_khb_detail', resultJson["f_sbfzid"]);
 
                         controlObj.text('detail_f_sbkj_tbl_ld_khb_detail', resultJson["f_sbkj"]);

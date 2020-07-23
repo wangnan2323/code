@@ -74,15 +74,24 @@ namespace sara.dd.ldsw.service
                     if(billKey.Length == 10)
                     {
                         //查询该用户未缴费的抄表记录
-                        DataTable dt = _iAccessData.Query("select wm_concat(sys_id) as sys_id,wm_concat(f_cb_cbbh) as f_cbbh,sum(f_bqje) as f_bqje,sum(f_bqsl) as f_bqsl,sum(f_sf) as f_sf,sum(f_pwf) as f_pwf,f_yhm,REPLACE(wm_concat(f_sfjl),',','|') as f_sfjl from TBL_LD_CBIAO where f_khbh='" + billKey+ "' and f_ztid='2' and f_cbbh not like 'PZ%' and f_cbbh not like 'YC%' group by f_yhm").Tables[0];
+                        string add_sqlStr = "sum(f_dyjtsl) as f_dyjtsl ,sum(f_dyjtsf) as f_dyjtsf ,sum(f_dejtsl) as f_dejtsl ,sum(f_dejtsf) as f_dejtsf ,sum(f_dsjtsl) as f_dsjtsl ,sum(f_dsjtsf) as f_dsjtsf ";
+                        DataTable dt = _iAccessData.Query("select wm_concat(sys_id) as sys_id,wm_concat(f_cb_cbbh) as f_cbbh,sum(f_bqje) as f_bqje,sum(f_bqsl) as f_bqsl,sum(f_sf) as f_sf,sum(f_pwf) as f_pwf,f_yhm,REPLACE(wm_concat(f_sfjl),',','|') as f_sfjl , "+ add_sqlStr + " from TBL_LD_CBIAO where f_khbh='" + billKey+ "' and f_ztid='2' and f_cbbh not like 'PZ%' and f_cbbh not like 'YC%' group by f_yhm").Tables[0];
 
+                        DataTable ye_dt = _iAccessData.Query("select NVL(f_ye,0) as f_ye from TBL_LD_KHB where f_khbh='" + billKey + "'").Tables[0];
+                        double ye = Eva.Library.Text.NumberTool.Parse(ye_dt.Rows[0]["f_ye"].ToString());
                         double bqje = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_bqje"].ToString());
                         double bqsl = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_bqsl"].ToString());
                         double sf = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_sf"].ToString());
                         double pwf = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_pwf"].ToString());
+                        double f_dyjtsl = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_dyjtsl"].ToString());
+                        double f_dyjtsf = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_dyjtsf"].ToString());
+                        double f_dejtsl = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_dejtsl"].ToString());
+                        double f_dejtsf = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_dejtsf"].ToString());
+                        double f_dsjtsl = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_dsjtsl"].ToString());
+                        double f_dsjtsf = Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_dsjtsf"].ToString());
 
                         //核实缴费信息正确性
-                        if (customerName.Trim() == dt.Rows[0]["f_yhm"].ToString() && Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_bqje"].ToString()) == Eva.Library.Text.NumberTool.Parse(payAmount))
+                        if (customerName.Trim() == dt.Rows[0]["f_yhm"].ToString() && (Eva.Library.Text.NumberTool.Parse(dt.Rows[0]["f_bqje"].ToString())- ye) == Eva.Library.Text.NumberTool.Parse(payAmount))
                         {
                             //客户信息
                             sara.dd.ldsw.idal.Itbl_ld_khb idal_tbl_ld_khb = new sara.dd.ldsw.dal.tbl_ld_khb();
@@ -155,10 +164,10 @@ namespace sara.dd.ldsw.service
                             jfmodel.f_sfsyye = "false";
                             jfmodel.f_syye = "0";
                             jfmodel.f_yhye = model_tbl_ld_khb.f_ycje;
-                            jfmodel.f_shys = Eva.Library.Text.NumberTool.GetNumberByLength(bqje, 2);
-                            jfmodel.f_shss = Eva.Library.Text.NumberTool.GetNumberByLength(bqje, 2);
+                            jfmodel.f_shys = payAmount;
+                            jfmodel.f_shss = payAmount;
                             jfmodel.f_hszl = "0";
-                            jfmodel.f_shssdx = sara.dd.ldsw.commonclass.commonclass.num2String((Eva.Library.Text.NumberTool.Parse(jfmodel.f_cbyslj)));
+                            jfmodel.f_shssdx = sara.dd.ldsw.commonclass.commonclass.num2String((Eva.Library.Text.NumberTool.Parse(payAmount)));
                             jfmodel.f_khfz = model_tbl_ld_khb.f_khfz;
                             jfmodel.f_khfzid = model_tbl_ld_khb.f_khfzid;
                             jfmodel.f_cbenbh = model_tbl_ld_khb.f_cbbh;
@@ -171,6 +180,25 @@ namespace sara.dd.ldsw.service
 
                             jfmodel.f_sfjl = dt.Rows[0]["f_sfjl"].ToString();
 
+                            jfmodel.f_dyjtsl = Eva.Library.Text.NumberTool.GetNumberByLength(f_dyjtsl, 2);
+                            jfmodel.f_dyjtsf = Eva.Library.Text.NumberTool.GetNumberByLength(f_dyjtsf, 2);
+                            jfmodel.f_dejtsl = Eva.Library.Text.NumberTool.GetNumberByLength(f_dejtsl, 2);
+                            jfmodel.f_dejtsf = Eva.Library.Text.NumberTool.GetNumberByLength(f_dejtsf, 2);
+                            jfmodel.f_dsjtsl = Eva.Library.Text.NumberTool.GetNumberByLength(f_dsjtsl, 2);
+                            jfmodel.f_dsjtsf = Eva.Library.Text.NumberTool.GetNumberByLength(f_dsjtsf, 2);
+                            jfmodel.f_khyycje = model_tbl_ld_khb.f_ye;
+                            if ( ye > 0)
+                            {
+                                jfmodel.f_sfsyycje = "true";
+                                jfmodel.f_syycje = model_tbl_ld_khb.f_ye;
+                            }
+                            else
+                            {
+                                jfmodel.f_sfsyycje = "false";
+                                jfmodel.f_syycje = "0";
+                            }
+                            jfmodel.f_yhycje = "0";
+                            jfmodel.f_dszycje = "0";
                             string jfbhid = idal_tbl_ld_jfb.Add(jfmodel, null);
                             #endregion
 
@@ -178,7 +206,7 @@ namespace sara.dd.ldsw.service
                             //更新抄表表
                             string updatecb = "update TBL_LD_CBIAO set F_ZT='已缴费',F_ZTID='3',F_JFBH='" + jfmodel.f_jfbh + "',F_JFBHID='" + jfbhid + "',F_JFSJ=to_date('" + jfmodel.f_jfrq + "','yyyy-MM-dd hh24:mi:ss') where SYS_ID in (" + dt.Rows[0]["sys_id"].ToString() + ")";
                             //更新客户表
-                            string updatekh = "update TBL_LD_KHB set F_YCJE='" + jfmodel.f_yhye + "',F_TJJZSF='" + jfmodel.f_syhtjjzsf + "',F_TJJZPWF='" + jfmodel.f_syhtjjzpwf + "',F_LJQF=nvl(F_LJQF,'0')-" + jfmodel.f_cbyslj + " where sys_id='" + jfmodel.f_khbhid + "'";
+                            string updatekh = "update TBL_LD_KHB set F_YCJE='" + jfmodel.f_yhye + "',F_TJJZSF='" + jfmodel.f_syhtjjzsf + "',F_TJJZPWF='" + jfmodel.f_syhtjjzpwf + "',F_LJQF= '0' ,f_ye = '"+ jfmodel.f_yhycje+ "' where sys_id='" + jfmodel.f_khbhid + "'";
 
                             int flag_cb = _iAccessData.ExecuteSql(updatecb);
                             int flag_kh = _iAccessData.ExecuteSql(updatekh);
@@ -190,32 +218,42 @@ namespace sara.dd.ldsw.service
                             List<IDictionary<string, string>> array = new List<IDictionary<string, string>>();
                             IDictionary<string, string> temp = null;
                             #region 对比各个业务子段，将不同的写入array
-                            if (jfmodel.f_yhye != model_tbl_ld_khb.f_ycje)
+                            if (jfmodel.f_yhye != jfmodel.f_khyye)
                             {
                                 temp = new Dictionary<string, string>();
                                 temp.Add("key", "f_ycje");
-                                temp.Add("oldvalue", model_tbl_ld_khb.f_ycje);
+                                temp.Add("oldvalue", jfmodel.f_khyye);
                                 temp.Add("newvalue", jfmodel.f_yhye);
                                 temp.Add("name", "绿化表押金");
                                 array.Add(temp);
                             }
-                            if (jfmodel.f_syhtjjzsf != model_tbl_ld_khb.f_tjjzsf)
+
+                            if (jfmodel.f_yhycje != jfmodel.f_khyycje)
+                            {
+                                temp = new Dictionary<string, string>();
+                                temp.Add("key", "f_ye");
+                                temp.Add("oldvalue", jfmodel.f_khyycje);
+                                temp.Add("newvalue", jfmodel.f_yhycje);
+                                temp.Add("name", "余额");
+                                array.Add(temp);
+                            }
+                            if (jfmodel.f_syhtjjzsf != jfmodel.f_khytjjzsf)
                             {
                                 temp = new Dictionary<string, string>();
                                 temp.Add("key", "f_tjjzsf");
-                                temp.Add("oldvalue", model_tbl_ld_khb.f_tjjzsf);
+                                temp.Add("oldvalue", jfmodel.f_khytjjzsf);
                                 temp.Add("newvalue", jfmodel.f_syhtjjzsf);
                                 temp.Add("name", "调价结转水费");
                                 array.Add(temp);
                             }
 
-                            if (jfmodel.f_syhtjjzpwf != model_tbl_ld_khb.f_tjjzpwf)
+                            if (jfmodel.f_syhtjjzpwf != jfmodel.f_khytjjzpwf)
                             {
                                 temp = new Dictionary<string, string>();
                                 temp.Add("key", "f_tjjzpwf");
-                                temp.Add("oldvalue", model_tbl_ld_khb.f_tjjzpwf);
+                                temp.Add("oldvalue", jfmodel.f_khytjjzpwf);
                                 temp.Add("newvalue", jfmodel.f_syhtjjzpwf);
-                                temp.Add("name", "调价结转排污费");
+                                temp.Add("name", "调价结转污水处理费");
                                 array.Add(temp);
                             }
                             if (jfmodel.f_cbyslj == null || jfmodel.f_cbyslj == "")

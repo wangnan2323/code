@@ -204,6 +204,7 @@ var tbl_ld_khb_list_Obj = (function ()
                 controlObj.multidropdownlistinit('search_f_khfz_tbl_ld_khb_list', codeservice_khfz);
                 controlObj.multidropdownlistinit('search_f_zt_tbl_ld_khb_list', codeService_0556);
                 controlObj.singledropdownlistinit('search_f_qfgx_tbl_ld_khb_list', codeservice_qfgx, null);
+                controlObj.singledropdownlistinit('search_f_qfgx2_tbl_ld_khb_list', codeservice_qfgx, null);
                 callBackFunction.success();
             }
             catch (ex)
@@ -340,6 +341,8 @@ var tbl_ld_khb_list_Obj = (function ()
 
                 tbl_ld_khb_list.f_qfgxid = controlObj.singledropdownlistid('search_f_qfgx_tbl_ld_khb_list');
                 tbl_ld_khb_list.f_qfje = controlObj.text('search_f_qfje_tbl_ld_khb_list');
+                tbl_ld_khb_list.f_qfgx2id = controlObj.singledropdownlistid('search_f_qfgx2_tbl_ld_khb_list');
+                tbl_ld_khb_list.f_qfje2 = controlObj.text('search_f_qfje2_tbl_ld_khb_list');
                 that._pr_searchcontent.type2 = tbl_ld_khb_list;
 
 
@@ -666,7 +669,21 @@ var tbl_ld_khb_list_Obj = (function ()
                     }
                 }
 
-
+                if ((tbl_ld_khb_list.f_qfgx2id.length != 0 && tbl_ld_khb_list.f_qfgx2id != '0') || tbl_ld_khb_list.f_qfje2.length != 0)
+                {
+                    if (tbl_ld_khb_list.f_qfgx2id.length != 0 && tbl_ld_khb_list.f_qfgx2id != '0' && tbl_ld_khb_list.f_qfje2.length != 0)
+                    {
+                        if (!/^[0-9]+\.?[0-9]*$/.test(tbl_ld_kh_search_part.f_qfje2))
+                        {
+                            errorMessageHansMap.put('search_f_qfje_tbl_ld_khb_list', '必须填写数字');
+                        }
+                    }
+                    else
+                    {
+                        errorMessageHansMap.put('search_f_qfgx2_tbl_ld_khb_list', '必须同时填写');
+                        errorMessageHansMap.put('search_f_qfje2_tbl_ld_khb_list', '必须同时填写');
+                    }
+                }
 
                 if (errorMessageHansMap.keys().length > 0)
                 {
@@ -1051,7 +1068,35 @@ var tbl_ld_khb_list_Obj = (function ()
 
 
 
+                    if (tbl_ld_khb_list.f_qfgx2id.length > 0 && tbl_ld_khb_list.f_qfgx2id != '0' && tbl_ld_khb_list.f_qfje2.length > 0)
+                    {
+                        whereClause += " f_ljqf ";
 
+                        switch (tbl_ld_khb_list.f_qfgx2id)
+                        {
+                            case "0":
+                                whereClause += " ";
+                                break;
+                            case "1":
+                                whereClause += ">";
+                                break;
+                            case "2":
+                                whereClause += ">=";
+                                break;
+                            case "3":
+                                whereClause += "<";
+                                break;
+                            case "4":
+                                whereClause += "<=";
+                                break;
+                            case "5":
+                                whereClause += "=";
+                                break;
+                        }
+
+                        whereClause += " " + tbl_ld_khb_list.f_qfje2 + " ";
+                        whereClause += " and ";
+                    }
 
 
 
@@ -2273,7 +2318,7 @@ var tbl_ld_khb_list_Obj = (function ()
                         },
                         {
                             field: 'f_tjjzpwf',
-                            title: "调价结转排污费",
+                            title: "调价结转污水处理费",
                             "class": 'hidden',
                             align: 'center', valign: 'middle', sortable: true, clickToSelect: true,
                             formatter: function (value, row, index)

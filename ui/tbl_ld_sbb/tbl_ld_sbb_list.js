@@ -2338,6 +2338,7 @@ var tbl_ld_sbb_list_Obj = (function ()
                     case "99":
                     case "19":
                     case "100":
+                    case "32":
                         codeservice_sblx[i]["disabled"] = false;
                         break;
                     default:
